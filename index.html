@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grand Theft Quest : le casse de l'équipe</title>
+<style>
+:root{--bg:#1a0b2e;--bg2:#2d0f45;--pink:#ff2e88;--cyan:#19e3d6;--sand:#ffd9a0;--ink:#fff6ea;--card:#25103c;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 60%,#5a1747 100%) fixed;color:var(--ink);font:17px/1.55 Georgia,'Times New Roman',serif;min-height:100vh}
+main{max-width:640px;margin:0 auto;padding:28px 18px 60px}
+h1{font:italic 900 clamp(2.4rem,9vw,4rem)/.95 Impact,'Arial Black',sans-serif;margin:8px 0 6px;color:var(--pink);text-shadow:3px 3px 0 var(--cyan);transform:skew(-6deg);letter-spacing:.5px}
+.sub{color:var(--sand);margin:0 0 22px}
+.dots{display:flex;gap:8px;margin:0 0 18px}
+.dots span{flex:1;height:8px;border-radius:4px;background:#ffffff22}
+.dots .done{background:var(--cyan)}.dots .now{background:var(--pink)}
+.card{background:var(--card);border:2px solid var(--pink);border-radius:14px;padding:22px;box-shadow:6px 6px 0 var(--cyan)}
+.era{color:var(--cyan);font:700 .95rem Arial,sans-serif;margin:0 0 6px}
+h2{font:900 1.5rem/1.2 Impact,'Arial Black',sans-serif;margin:0 0 12px;color:var(--sand)}
+.q{margin:0 0 16px}
+.box{background:#0d0618;border:1px dashed var(--cyan);border-radius:8px;padding:12px;margin:0 0 16px;font-family:'Courier New',monospace;word-break:break-all}
+input{width:100%;font:inherit;padding:12px;border-radius:8px;border:2px solid #ffffff44;background:#0d0618;color:var(--ink)}
+input:focus,button:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+.row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button{font:700 1rem Arial,sans-serif;padding:12px 20px;border:0;border-radius:8px;cursor:pointer;background:var(--pink);color:#fff}
+button.ghost{background:transparent;border:2px solid var(--cyan);color:var(--cyan)}
+.msg{min-height:1.6em;margin:12px 0 0;font-family:Arial,sans-serif}
+.ok{color:var(--cyan)}.ko{color:var(--pink)}
+.shake{animation:sh .35s}
+@keyframes sh{20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+.safe{width:min(300px,80vw);aspect-ratio:1;margin:10px auto;position:relative;perspective:900px}
+.inside{position:absolute;inset:0;border-radius:12px;background:#0d0618;border:8px solid #555;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;font:900 1.2rem/1.2 Impact,'Arial Black',sans-serif;color:var(--sand)}
+.door{position:absolute;inset:0;border-radius:12px;background:linear-gradient(135deg,#8a8f99,#4b4f58);border:8px solid #333;transform-origin:left center;transition:transform 1.8s cubic-bezier(.5,0,.2,1);display:flex;align-items:center;justify-content:center}
+.dial{width:42%;aspect-ratio:1;border-radius:50%;background:radial-gradient(#ddd,#777);border:6px solid #222;position:relative;transition:transform 1.4s ease-in-out}
+.dial::after{content:"";position:absolute;left:50%;top:6%;width:6%;height:34%;background:var(--pink);transform:translateX(-50%);border-radius:3px}
+.safe.open .dial{transform:rotate(720deg)}
+.safe.open .door{transform:rotateY(-115deg);transition-delay:1.4s}
+.win{text-align:center}
+.win h2{color:var(--pink);font-size:1.9rem}
+.hidden{display:none}
+@media (prefers-reduced-motion:reduce){.door,.dial{transition-duration:.01s;transition-delay:0s}.shake{animation:none}}
+</style>
+</head>
+<body>
+<main>
+<h1>Grand Theft Quest</h1>
+<p class="sub">Six missions pour remonter l'histoire de GTA et ouvrir le coffre. Réussissez-les dans l'ordre.</p>
+<div class="dots" id="dots" aria-label="Progression"></div>
+<section class="card" id="card"></section>
+</main>
+
+<script>
+/* ===== À PERSONNALISER : questions, réponses, indices ===== */
+var LEVELS=[
+ {era:"GTA, 1997",title:"Vue de dessus",q:"Dans le tout premier GTA, on joue en vue de dessus. Combien de grandes villes peut-on visiter ?",a:["3","trois"],hint:"Liberty City, San Andreas et Vice City."},
+ {era:"GTA III, 2001",title:"Le héros muet",q:"Dans GTA III, le héros ne prononce jamais un mot. Quel est son prénom ?",a:["claude"],hint:"Il porte la veste verte et la ville est Liberty City."},
+ {era:"Vice City, 2002",title:"Néons et synthés",q:"En quelle année se déroule l'histoire de GTA Vice City ?",a:["1986"],hint:"Pensez au milieu des années 80."},
+ {era:"San Andreas, 2004",title:"Le code culte",q:"Quel code de triche de San Andreas rend la vie, l'armure et l'argent d'un coup ?",a:["hesoyam"],hint:"Il commence par H et finit par M."},
+ {era:"GTA V, 2013",title:"Trois pour un casse",q:"GTA V a trois héros jouables : Michael, Franklin et... ? Donnez le prénom du troisième.",a:["trevor"],hint:"Il vit dans le désert de Blaine County."},
+ {era:"GTA VI, bientôt",title:"Le message chiffré",final:true,
+  q:"Un message a été chiffré avec la méthode de Vigenère. La clé est le prénom de l'héroïne de GTA VI. Déchiffrez-le pour obtenir le code du coffre.",
+  box:"DIWALPWNIVTYT",a:["sousleclavier"],hint:"La clé fait 5 lettres. Chaque lettre de la clé décale la lettre du message : L décale de 11, U de 20, C de 2, I de 8, A de 0."}
+];
+var PRIZE="GTA 6 pour toute l'équipe !";
+/* ========================================================== */
+var cur=0,card=document.getElementById('card'),dots=document.getElementById('dots'),ac;
+function norm(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'')}
+function beep(f,d,t){try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();var o=ac.createOscillator(),g=ac.createGain();o.type=t||'square';o.frequency.value=f;g.gain.value=.07;o.connect(g);g.connect(ac.destination);o.start();o.stop(ac.currentTime+d)}catch(e){}}
+function jingle(n){n.forEach(function(f,i){setTimeout(function(){beep(f,.18)},i*150)})}
+function drawDots(){dots.innerHTML='';LEVELS.forEach(function(_,i){var s=document.createElement('span');s.className=i<cur?'done':i===cur?'now':'';dots.appendChild(s)})}
+function render(){
+ drawDots();var L=LEVELS[cur];
+ card.innerHTML='<p class="era">Mission '+(cur+1)+' sur '+LEVELS.length+' : '+L.era+'</p><h2>'+L.title+'</h2><p class="q">'+L.q+'</p>'+(L.box?'<div class="box">'+L.box+'</div>':'')+
+ '<input id="ans" type="text" autocomplete="off" aria-label="Votre réponse" placeholder="Votre réponse">'+
+ '<div class="row"><button id="go">Valider</button><button class="ghost" id="hb">Un indice</button></div><p class="msg" id="msg" role="status"></p>';
+ var ans=document.getElementById('ans'),msg=document.getElementById('msg');
+ function check(){
+  if(L.a.indexOf(norm(ans.value))>-1){msg.className='msg ok';msg.textContent='Mission réussie !';jingle([523,659,784]);
+   setTimeout(function(){cur++;cur<LEVELS.length?render():win()},900)}
+  else{msg.className='msg ko';msg.textContent='Raté, réessayez.';card.classList.remove('shake');void card.offsetWidth;card.classList.add('shake');beep(130,.3,'sawtooth')}}
+ document.getElementById('go').onclick=check;
+ ans.onkeydown=function(e){if(e.key==='Enter')check()};
+ document.getElementById('hb').onclick=function(){msg.className='msg';msg.textContent='Indice : '+L.hint};
+ ans.focus();
+}
+function win(){
+ drawDots();dots.querySelectorAll('span').forEach(function(s){s.className='done'});
+ card.innerHTML='<div class="win"><p class="era">Code accepté</p><h2>Le coffre s\'ouvre...</h2><div class="safe" id="safe"><div class="inside">'+PRIZE+'</div><div class="door"><div class="dial"></div></div></div><p class="hidden" id="end">Bravo, mission accomplie ! Rendez-vous chez la personne qui vous a lancé ce défi pour récupérer votre cadeau.</p></div>';
+ setTimeout(function(){document.getElementById('safe').classList.add('open');jingle([392,523,659,784,1047])},600);
+ setTimeout(function(){document.getElementById('end').classList.remove('hidden')},3400);
+}
+render();
+</script>
+</body>
+</html>
