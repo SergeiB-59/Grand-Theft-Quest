@@ -34,6 +34,7 @@ h2{font:900 1.5rem/1.2 Impact,'Arial Black',sans-serif;margin:0 0 12px;color:var
 hr{border:0;border-top:1px dashed #ffffff33;margin:14px 0}
 .badge{background:var(--pink);color:#fff;border-radius:6px;padding:2px 8px;margin-right:6px}
 p{margin:0 0 12px}
+a{color:var(--cyan);font-weight:700}
 .box{background:#0d0618;border:1px dashed var(--cyan);border-radius:8px;padding:12px;margin:0 0 16px;font-family:'Courier New',monospace}
 .list{padding-left:22px;margin:0 0 14px;font-size:.95rem}.list small{color:var(--cyan);font-family:Arial,sans-serif}
 input{width:100%;font:inherit;padding:12px;border-radius:8px;border:2px solid #ffffff44;background:#0d0618;color:var(--ink)}
@@ -62,6 +63,9 @@ button.ghost{background:transparent;border:2px solid var(--cyan);color:var(--cya
 .safe.open .dial{transform:rotate(720deg)}
 .safe.open .door{transform:rotateY(-115deg);transition-delay:1.4s}
 .win{text-align:center}.win h2{color:var(--pink);font-size:1.7rem}
+.info{margin-top:16px;padding:14px;border:1px dashed var(--cyan);border-radius:8px;background:#0d0618}
+.rv{margin:0 0 14px}.rv .q{font-weight:700;margin:0 0 4px}.ra{color:var(--cyan);margin:0 0 6px}
+h3{font:700 1.05rem Arial,sans-serif;color:var(--pink);margin:18px 0 8px}
 .hidden{display:none}
 @media (prefers-reduced-motion:reduce){.door,.dial,.shackle{transition-duration:.01s;transition-delay:0s}.shake,.gold,.now .d{animation:none}}
 </style>
@@ -78,10 +82,10 @@ button.ghost{background:transparent;border:2px solid var(--cyan);color:var(--cya
 /* ===== À PERSONNALISER ===== */
 var VAULT_CODE="GTA6"; /* code du cadenas final (provisoire) */
 var M=[
- {n:"Grand Theft Auto",s:"GTA",st:["musique","énigme"]},
- {n:"Grand Theft Auto: London, 1969",s:"London 69",st:["musique","énigme"]},
- {n:"Grand Theft Auto: London, 1961",s:"London 61",st:["musique","énigme"]},
- {n:"Grand Theft Auto 2",s:"GTA 2",st:["musique","énigme"]},
+ {n:"Grand Theft Auto",s:"GTA",st:["énigme"]},
+ {n:"Grand Theft Auto: London, 1969",s:"London 69",st:["énigme"]},
+ {n:"Grand Theft Auto: London, 1961",s:"London 61",st:["énigme"]},
+ {n:"Grand Theft Auto 2",s:"GTA 2",st:["énigme"]},
  {n:"Grand Theft Auto III",s:"GTA III",st:["musique","énigme"]},
  {n:"Grand Theft Auto: Vice City",s:"Vice City",st:["musique","blind test","énigme"]},
  {n:"Grand Theft Auto: San Andreas",s:"San Andreas",st:["musique","blind test","énigme"]},
@@ -94,6 +98,35 @@ var M=[
 /* Contenu provisoire de chaque épreuve : q = question, a = réponses acceptées, hint = indice */
 function ph(t){return{t:t,q:"Contenu à définir. Pour tester, tapez « ok ».",a:["ok"],hint:"Indice à définir."}}
 M.forEach(function(m){m.st=m.st.map(ph)});
+/* Mission 1 : GTA (1997) */
+M[0].st[0].q="Dans le tout premier GTA (1997), combien de villes peut-on explorer ?";
+M[0].st[0].a=["3","trois"];
+M[0].st[0].hint="Consultez la page du jeu.";
+M[0].st[0].link="https://www.imdb.com/fr/title/tt0248048/?ref_=ext_shr_lnk";
+M[0].st[0].show="3 (Liberty City, San Andreas, Vice City)";
+M[0].st[0].info="Les trois villes du tout premier GTA sont <strong>Liberty City</strong> (inspirée de New York), <strong>San Andreas</strong> (inspirée de San Francisco) et <strong>Vice City</strong> (inspirée de Miami).";
+/* Mission 2 : London 1969 */
+M[1].st[0].show="Dan Houser";
+M[1].st[0].info="Né à Londres, <strong>Dan Houser</strong> signe seul l'écriture de cette extension : c'est le début de sa carrière de scénariste chez Rockstar. Il y glisse l'ambiance du Swinging London, de l'argot cockney et des clins d'œil aux frères Kray, célèbres figures du crime londonien. Ce goût du détail de culture populaire deviendra la marque de fabrique de toute la saga.";
+/* Mission 3 : London 1961 */
+M[2].st[0].q="Pour qui travaille-t-on dans cette seconde extension du premier opus ?";
+M[2].st[0].a=["haroldcartwright","cartwright"];
+M[2].st[0].show="Harold Cartwright";
+M[2].st[0].hint="Consultez la page du jeu.";
+M[2].st[0].link="https://www.imdb.com/fr/title/tt3205178/?ref_=ls_t_3";
+M[2].st[0].info="Londres, 1961 : <strong>Harold Cartwright</strong>, un caïd du crime qui prétend ne craindre personne, engage un jeune truand pour toutes sortes de sales boulots, que ce soit pour les redoutables jumeaux Crisp ou pour son propre gang. À la fin, il le félicite en personne dans un bar. Mais huit ans plus tard, dans London 1969, la roue tourne : ce sont les jumeaux Crisp qui ordonnent d'éliminer Harold. Cette extension, sortie gratuitement en juillet 1999, met en scène les mêmes personnages, en plus jeunes.";
+/* Mission 4 : GTA 2 */
+M[3].st[0].q="Dans GTA 2, quel est le nom du bâtiment où l'on doit aller pour sauvegarder sa partie ?";
+M[3].st[0].a=["jesussave","jesussaves","jesus","eglisejesussaves","leglisejesussaves"];
+M[3].st[0].show="Jesus Saves (l'église)";
+M[3].st[0].hint="Regardez cette vidéo.";
+M[3].st[0].lt="Ouvrir la vidéo";
+M[3].st[0].link="https://www.youtube.com/watch?v=DRc8vJRUrRo&t=93s";
+M[3].st[0].info="Dans GTA 2, il n'y a pas de bouton de sauvegarde : il faut trouver l'église <strong>Jesus Saves</strong> et y entrer, ce qui coûte de l'argent, donc mieux vaut avoir réussi quelques missions avant. Au fait, le héros s'appelle <strong>Claude Speed</strong> : ne le confondez pas avec Claude, le héros muet de GTA III.";
+M[1].st[0].q="Quel est le scénariste de l'extension Grand Theft Auto: London, 1969 du premier opus Grand Theft Auto ?";
+M[1].st[0].a=["danhouser","houser"];
+M[1].st[0].hint="Consultez la page du jeu.";
+M[1].st[0].link="https://www.imdb.com/fr/title/tt0290637/?ref_=mv_close";
 /* =========================== */
 var TY={"musique":"♪ Musique","blind test":"♫ Blind test","énigme":"? Énigme","énigme finale":"★ Énigme finale"};
 var KEY="gtq_v2",S=ld(),tm,ac,card=document.getElementById("card");
@@ -135,11 +168,16 @@ function mission(){
  function check(){
   if(p.a.indexOf(norm(ans.value))<0){bad(msg,"Raté, réessayez.");return}
   msg.className="msg ok";msg.textContent="Bien joué !";
-  if(S.s<n-1){S.s++;sv();jingle([523,659]);setTimeout(mission,700);return}
-  S.m++;S.s=0;S.pass=true;if(S.m===12)S.end=Date.now();sv();playPass();setTimeout(passScr,700)
+  var last=S.s>=n-1,nextFn=last?passScr:mission;
+  if(last){S.m++;S.s=0;S.pass=true;if(S.m===12)S.end=Date.now();playPass()}else{S.s++;jingle([523,659])}
+  sv();
+  if(!p.info){setTimeout(nextFn,700);return}
+  ans.disabled=true;$("go").disabled=true;$("hb").disabled=true;
+  var b=document.createElement("div");b.className="info";b.innerHTML='<p class="era">Le saviez-vous ?</p><p>'+p.info+'</p><div class="row"><button id="nx2">Continuer</button></div>';
+  card.appendChild(b);$("nx2").onclick=nextFn;$("nx2").focus();return
  }
  $("go").onclick=check;ans.onkeydown=function(e){if(e.key==="Enter")check()};
- $("hb").onclick=function(){msg.className="msg";msg.textContent="Indice : "+p.hint};ans.focus()
+ $("hb").onclick=function(){msg.className="msg";msg.innerHTML="Indice : "+esc(p.hint)+(p.link?' <a href="'+esc(p.link)+'" target="_blank" rel="noopener noreferrer">'+esc(p.lt||"Ouvrir la page du jeu")+'</a>':"")};ans.focus()
 }
 function passScr(){
  begin();draw();var k=S.m;
@@ -156,11 +194,19 @@ function padlock(){
  }
  $("op").onclick=go;c.onkeydown=function(e){if(e.key==="Enter")go()};c.focus()
 }
-function vault(){
- begin();draw();
- card.innerHTML=`<div class="win"><p class="era">Cadenas déverrouillé</p><h2>Le coffre s'ouvre...</h2><div class="safe" id="safe"><div class="inside">Coffre ouvert</div><div class="door"><div class="dial"></div></div></div><div class="hidden" id="end"><h2>Félicitations !</h2><p>Tu as réussi à passer toutes les missions, <strong>${esc(S.name)}</strong>.</p><p>Temps final : <strong>${fmt(S.end-S.start)}</strong></p><p>Envoie vite tes résultats à ton superviseur pour découvrir si tu es l'heureux vainqueur.</p></div></div>`;
+function vault(fast){
+ var f=fast===true;begin();draw();
+ card.innerHTML=`<div class="win"><p class="era">Cadenas déverrouillé</p><h2>Le coffre s'ouvre...</h2><div class="safe${f?" open":""}" id="safe"><div class="inside">Coffre ouvert</div><div class="door"><div class="dial"></div></div></div><div class="${f?"":"hidden"}" id="end"><h2>Félicitations !</h2><p>Tu as réussi à passer toutes les missions, <strong>${esc(S.name)}</strong>.</p><p>Temps final : <strong>${fmt(S.end-S.start)}</strong></p><p>Envoie vite tes résultats à ton superviseur pour découvrir si tu es l'heureux vainqueur.</p><div class="row" style="justify-content:center"><button class="ghost" id="rv">Revoir mes réponses et anecdotes</button></div></div></div>`;
+ $("rv").onclick=review;
+ if(f)return;
  setTimeout(function(){$("safe").classList.add("open");jingle([392,523,659,784,1047])},600);
  setTimeout(function(){$("end").classList.remove("hidden")},3400)
+}
+function review(){
+ begin();draw();
+ var h=M.map(function(m,i){var it=m.st.filter(function(p){return p.info||p.show}).map(function(p){return '<div class="rv"><p class="q">'+p.q+'</p><p class="ra">Réponse : <strong>'+esc(p.show||p.a[0])+'</strong></p>'+(p.info?'<div class="info"><p class="era">Le saviez-vous ?</p><p>'+p.info+'</p></div>':"")+"</div>"}).join("");return it?"<h3>Mission "+(i+1)+" : "+m.n+"</h3>"+it:""}).join("");
+ card.innerHTML='<p class="era">Dossier de mission</p><h2>Vos réponses et anecdotes</h2>'+h+'<div class="row"><button id="bk">Retour à mon score final</button></div>';
+ $("bk").onclick=function(){vault(true)};window.scrollTo(0,0)
 }
 /* démarrage */
 if(location.hash==="#reset-orga"){try{localStorage.removeItem(KEY)}catch(e){}S={};history.replaceState(null,"",location.pathname)}
