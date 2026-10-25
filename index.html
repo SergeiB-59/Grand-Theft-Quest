@@ -9,17 +9,33 @@
 *{box-sizing:border-box}
 html,body{margin:0}
 body{background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 60%,#5a1747 100%) fixed;color:var(--ink);font:17px/1.55 Georgia,'Times New Roman',serif;min-height:100vh}
-main{max-width:640px;margin:0 auto;padding:28px 18px 60px}
-h1{font:italic 900 clamp(2.4rem,9vw,4rem)/.95 Impact,'Arial Black',sans-serif;margin:8px 0 6px;color:var(--pink);text-shadow:3px 3px 0 var(--cyan);transform:skew(-6deg);letter-spacing:.5px}
+main{max-width:660px;margin:0 auto;padding:28px 18px 60px}
+h1{font:italic 900 clamp(2.4rem,9vw,4rem)/.95 Impact,'Arial Black',sans-serif;margin:8px 0 6px;color:var(--pink);text-shadow:3px 3px 0 var(--cyan);transform:skew(-6deg)}
 .sub{color:var(--sand);margin:0 0 22px}
-.dots{display:flex;gap:8px;margin:0 0 18px}
-.dots span{flex:1;height:8px;border-radius:4px;background:#ffffff22}
-.dots .done{background:var(--cyan)}.dots .now{background:var(--pink)}
+.play h1,.play .sub{display:none}
+#top{position:sticky;top:0;z-index:5;background:#1a0b2ef0;margin:-28px -18px 18px;padding:10px 18px 4px;border-bottom:2px solid #ffffff1a}
+.bar{display:flex;justify-content:space-between;align-items:baseline}
+.brand{font:italic 900 1.1rem Impact,'Arial Black',sans-serif;color:var(--pink);text-shadow:2px 2px 0 var(--cyan)}
+.timer{font:900 1.2rem Impact,'Arial Black',sans-serif;color:var(--cyan)}
+.frise{display:flex;list-style:none;margin:6px 0 0;padding:0 0 8px;overflow-x:auto;position:relative}
+.frise li{flex:0 0 74px;text-align:center;position:relative;font:700 .68rem Arial,sans-serif;color:#ffffff88}
+.frise li::before{content:"";position:absolute;top:13px;left:-50%;width:100%;height:3px;background:#ffffff22}
+.frise li:first-child::before{display:none}
+.frise li.done::before,.frise li.now::before{background:var(--cyan)}
+.d{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;border:2px solid #ffffff44;background:var(--bg);position:relative;font-size:.8rem}
+.l{display:block;margin-top:2px}
+.done .d{background:var(--cyan);border-color:var(--cyan);color:#0d0618}.done{color:var(--cyan)}
+.now .d{background:var(--pink);border-color:var(--pink);color:#fff;animation:pl 1.4s infinite}.now{color:var(--ink)}
+@keyframes pl{50%{box-shadow:0 0 0 7px #ff2e8844}}
 .card{background:var(--card);border:2px solid var(--pink);border-radius:14px;padding:22px;box-shadow:6px 6px 0 var(--cyan)}
 .era{color:var(--cyan);font:700 .95rem Arial,sans-serif;margin:0 0 6px}
 h2{font:900 1.5rem/1.2 Impact,'Arial Black',sans-serif;margin:0 0 12px;color:var(--sand)}
-.q{margin:0 0 16px}
-.box{background:#0d0618;border:1px dashed var(--cyan);border-radius:8px;padding:12px;margin:0 0 16px;font-family:'Courier New',monospace;word-break:break-all}
+.obj{color:var(--sand);margin:0 0 10px}
+hr{border:0;border-top:1px dashed #ffffff33;margin:14px 0}
+.badge{background:var(--pink);color:#fff;border-radius:6px;padding:2px 8px;margin-right:6px}
+p{margin:0 0 12px}
+.box{background:#0d0618;border:1px dashed var(--cyan);border-radius:8px;padding:12px;margin:0 0 16px;font-family:'Courier New',monospace}
+.list{padding-left:22px;margin:0 0 14px;font-size:.95rem}.list small{color:var(--cyan);font-family:Arial,sans-serif}
 input{width:100%;font:inherit;padding:12px;border-radius:8px;border:2px solid #ffffff44;background:#0d0618;color:var(--ink)}
 input:focus,button:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
 .row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
@@ -29,68 +45,126 @@ button.ghost{background:transparent;border:2px solid var(--cyan);color:var(--cya
 .ok{color:var(--cyan)}.ko{color:var(--pink)}
 .shake{animation:sh .35s}
 @keyframes sh{20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+.pass{text-align:center;padding:10px 0}
+.gold{font:900 clamp(2rem,9vw,3.2rem)/1 Impact,'Arial Black',sans-serif;color:#f5c542;text-shadow:3px 3px 0 #000,-1px -1px 0 #000;transform:skew(-4deg);margin:0 0 6px;animation:pop .6s}
+@keyframes pop{from{transform:scale(.5) skew(-4deg);opacity:0}}
+.resp{font:700 1.3rem Arial,sans-serif;color:var(--cyan)}
+.lock{width:min(260px,80%);margin:14px auto}
+.shackle{width:90px;height:64px;margin:0 auto -6px;border:12px solid #b8bcc6;border-bottom:0;border-radius:45px 45px 0 0;transition:transform .7s;transform-origin:right bottom}
+.lock.open .shackle{transform:translateY(-22px) rotate(-18deg)}
+.lbody{background:linear-gradient(160deg,#f1c40f,#a77c0a);border-radius:16px;padding:18px;border:3px solid #6b4f00}
+.lbody input{text-align:center;letter-spacing:.3em;font:900 1.4rem 'Courier New',monospace;text-transform:uppercase}
 .safe{width:min(300px,80vw);aspect-ratio:1;margin:10px auto;position:relative;perspective:900px}
-.inside{position:absolute;inset:0;border-radius:12px;background:#0d0618;border:8px solid #555;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;font:900 1.2rem/1.2 Impact,'Arial Black',sans-serif;color:var(--sand)}
+.inside{position:absolute;inset:0;border-radius:12px;background:#0d0618;border:8px solid #555;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;font:900 1.4rem/1.2 Impact,'Arial Black',sans-serif;color:var(--sand)}
 .door{position:absolute;inset:0;border-radius:12px;background:linear-gradient(135deg,#8a8f99,#4b4f58);border:8px solid #333;transform-origin:left center;transition:transform 1.8s cubic-bezier(.5,0,.2,1);display:flex;align-items:center;justify-content:center}
 .dial{width:42%;aspect-ratio:1;border-radius:50%;background:radial-gradient(#ddd,#777);border:6px solid #222;position:relative;transition:transform 1.4s ease-in-out}
 .dial::after{content:"";position:absolute;left:50%;top:6%;width:6%;height:34%;background:var(--pink);transform:translateX(-50%);border-radius:3px}
 .safe.open .dial{transform:rotate(720deg)}
 .safe.open .door{transform:rotateY(-115deg);transition-delay:1.4s}
-.win{text-align:center}
-.win h2{color:var(--pink);font-size:1.9rem}
+.win{text-align:center}.win h2{color:var(--pink);font-size:1.7rem}
 .hidden{display:none}
-@media (prefers-reduced-motion:reduce){.door,.dial{transition-duration:.01s;transition-delay:0s}.shake{animation:none}}
+@media (prefers-reduced-motion:reduce){.door,.dial,.shackle{transition-duration:.01s;transition-delay:0s}.shake,.gold,.now .d{animation:none}}
 </style>
 </head>
 <body>
 <main>
 <h1>Grand Theft Quest</h1>
-<p class="sub">Six missions pour remonter l'histoire de GTA et ouvrir le coffre. Réussissez-les dans l'ordre.</p>
-<div class="dots" id="dots" aria-label="Progression"></div>
+<p class="sub">Retracez l'histoire de GTA et ouvrez le coffre.</p>
+<div id="top" class="hidden"><div class="bar"><span class="brand">Grand Theft Quest</span><span class="timer" id="timer"></span></div><ol class="frise" id="fr" aria-label="Progression des missions"></ol></div>
 <section class="card" id="card"></section>
 </main>
 
 <script>
-/* ===== À PERSONNALISER : questions, réponses, indices ===== */
-var LEVELS=[
- {era:"GTA, 1997",title:"Vue de dessus",q:"Dans le tout premier GTA, on joue en vue de dessus. Combien de grandes villes peut-on visiter ?",a:["3","trois"],hint:"Liberty City, San Andreas et Vice City."},
- {era:"GTA III, 2001",title:"Le héros muet",q:"Dans GTA III, le héros ne prononce jamais un mot. Quel est son prénom ?",a:["claude"],hint:"Il porte la veste verte et la ville est Liberty City."},
- {era:"Vice City, 2002",title:"Néons et synthés",q:"En quelle année se déroule l'histoire de GTA Vice City ?",a:["1986"],hint:"Pensez au milieu des années 80."},
- {era:"San Andreas, 2004",title:"Le code culte",q:"Quel code de triche de San Andreas rend la vie, l'armure et l'argent d'un coup ?",a:["hesoyam"],hint:"Il commence par H et finit par M."},
- {era:"GTA V, 2013",title:"Trois pour un casse",q:"GTA V a trois héros jouables : Michael, Franklin et... ? Donnez le prénom du troisième.",a:["trevor"],hint:"Il vit dans le désert de Blaine County."},
- {era:"GTA VI, bientôt",title:"Le message chiffré",final:true,
-  q:"Un message a été chiffré avec la méthode de Vigenère. La clé est le prénom de l'héroïne de GTA VI. Déchiffrez-le pour obtenir le code du coffre.",
-  box:"DIWALPWNIVTYT",a:["sousleclavier"],hint:"La clé fait 5 lettres. Chaque lettre de la clé décale la lettre du message : L décale de 11, U de 20, C de 2, I de 8, A de 0."}
+/* ===== À PERSONNALISER ===== */
+var VAULT_CODE="GTA6"; /* code du cadenas final (provisoire) */
+var M=[
+ {n:"Grand Theft Auto",s:"GTA",st:["musique","énigme"]},
+ {n:"Grand Theft Auto: London, 1969",s:"London 69",st:["musique","énigme"]},
+ {n:"Grand Theft Auto: London, 1961",s:"London 61",st:["musique","énigme"]},
+ {n:"Grand Theft Auto 2",s:"GTA 2",st:["musique","énigme"]},
+ {n:"Grand Theft Auto III",s:"GTA III",st:["musique","énigme"]},
+ {n:"Grand Theft Auto: Vice City",s:"Vice City",st:["musique","blind test","énigme"]},
+ {n:"Grand Theft Auto: San Andreas",s:"San Andreas",st:["musique","blind test","énigme"]},
+ {n:"Grand Theft Auto: Vice City Stories",s:"VC Stories",st:["musique","énigme"]},
+ {n:"Grand Theft Auto IV",s:"GTA IV",st:["musique","blind test","énigme"]},
+ {n:"Grand Theft Auto: Chinatown Wars",s:"Chinatown",st:["énigme"]},
+ {n:"Grand Theft Auto V",s:"GTA V",st:["musique","blind test","blind test","énigme"]},
+ {n:"Grand Theft Auto VI",s:"GTA VI",st:["musique","énigme finale"]}
 ];
-var PRIZE="GTA 6 pour toute l'équipe !";
-/* ========================================================== */
-var cur=0,card=document.getElementById('card'),dots=document.getElementById('dots'),ac;
-function norm(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'')}
-function beep(f,d,t){try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();var o=ac.createOscillator(),g=ac.createGain();o.type=t||'square';o.frequency.value=f;g.gain.value=.07;o.connect(g);g.connect(ac.destination);o.start();o.stop(ac.currentTime+d)}catch(e){}}
+/* Contenu provisoire de chaque épreuve : q = question, a = réponses acceptées, hint = indice */
+function ph(t){return{t:t,q:"Contenu à définir. Pour tester, tapez « ok ».",a:["ok"],hint:"Indice à définir."}}
+M.forEach(function(m){m.st=m.st.map(ph)});
+/* =========================== */
+var TY={"musique":"♪ Musique","blind test":"♫ Blind test","énigme":"? Énigme","énigme finale":"★ Énigme finale"};
+var KEY="gtq_v2",S=ld(),tm,ac,card=document.getElementById("card");
+function ld(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}}}
+function sv(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function $(i){return document.getElementById(i)}
+function norm(s){return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]/g,"")}
+function esc(t){return String(t).replace(/[&<>"']/g,function(c){return "&#"+c.charCodeAt(0)+";"})}
+function fmt(ms){var t=Math.max(0,Math.floor(ms/1000)),m=Math.floor(t/60);return (m<10?"0":"")+m+":"+("0"+t%60).slice(-2)}
+/* sons */
+var passSnd=new Audio("mission-passed.mp3");passSnd.preload="auto";
+function ctx(){ac=ac||new (window.AudioContext||window.webkitAudioContext)()}
+function tone(f,t,d,type,v){var o=ac.createOscillator(),g=ac.createGain(),s=ac.currentTime+t;o.type=type;o.frequency.value=f;g.gain.setValueAtTime(0,s);g.gain.linearRampToValueAtTime(v,s+.02);g.gain.exponentialRampToValueAtTime(.001,s+d);o.connect(g);g.connect(ac.destination);o.start(s);o.stop(s+d+.05)}
+function beep(f,d,t){try{ctx();tone(f,0,d,t||"square",.07)}catch(e){}}
 function jingle(n){n.forEach(function(f,i){setTimeout(function(){beep(f,.18)},i*150)})}
-function drawDots(){dots.innerHTML='';LEVELS.forEach(function(_,i){var s=document.createElement('span');s.className=i<cur?'done':i===cur?'now':'';dots.appendChild(s)})}
-function render(){
- drawDots();var L=LEVELS[cur];
- card.innerHTML='<p class="era">Mission '+(cur+1)+' sur '+LEVELS.length+' : '+L.era+'</p><h2>'+L.title+'</h2><p class="q">'+L.q+'</p>'+(L.box?'<div class="box">'+L.box+'</div>':'')+
- '<input id="ans" type="text" autocomplete="off" aria-label="Votre réponse" placeholder="Votre réponse">'+
- '<div class="row"><button id="go">Valider</button><button class="ghost" id="hb">Un indice</button></div><p class="msg" id="msg" role="status"></p>';
- var ans=document.getElementById('ans'),msg=document.getElementById('msg');
+function fanfare(){try{ctx();[[392,0],[523,.14],[659,.28],[784,.42],[659,.62],[784,.76]].forEach(function(n){tone(n[0],n[1],.22,"square",.07)});[523,659,784,1047].forEach(function(f){tone(f,.98,1.6,"square",.045)});tone(131,.98,1.6,"triangle",.16);tone(196,.98,1.6,"triangle",.1);[1319,1568,2093].forEach(function(f,i){tone(f,1.1+i*.1,.5,"square",.03)})}catch(e){}}
+function playPass(){passSnd.currentTime=0;var p=passSnd.play();if(p&&p.catch)p.catch(fanfare)}
+/* chrono et frise */
+function tshow(){var el=$("timer");clearInterval(tm);function t(){el.textContent=(S.end?"Temps final ":"Temps ")+fmt((S.end||Date.now())-S.start)}t();if(!S.end)tm=setInterval(t,500)}
+function begin(){document.body.classList.add("play");$("top").classList.remove("hidden");tshow()}
+function draw(){var fr=$("fr");fr.innerHTML=M.map(function(m,i){var c=i<S.m?"done":(i===S.m&&!S.pass&&!S.end?"now":"");return '<li class="'+c+'"><span class="d">'+(i+1)+'</span><span class="l">'+m.s+"</span></li>"}).join("");var n=fr.querySelector(".now");if(n)fr.scrollLeft=n.offsetLeft-fr.clientWidth/2+37}
+function bad(msg,t){msg.className="msg ko";msg.textContent=t;card.classList.remove("shake");void card.offsetWidth;card.classList.add("shake");beep(130,.3,"sawtooth")}
+/* écrans */
+function nameScr(){
+ card.innerHTML=`<p class="era">Identification</p><h2>Qui êtes-vous, agent ?</h2><p class="q">Saisissez votre prénom et votre NOM. Ils serviront pour la fin de l'aventure.</p><input id="nm" type="text" maxlength="50" autocomplete="off" aria-label="Prénom NOM" placeholder="Prénom NOM"><div class="row"><button id="ok">Valider</button></div><p class="msg" id="msg" role="status"></p>`;
+ var nm=$("nm");
+ function go(){var v=nm.value.trim().replace(/\s+/g," ");if(v.indexOf(" ")<1||v.length<4){bad($("msg"),"Entrez votre prénom et votre NOM.");return}S={name:v};sv();beep(660,.12);brief()}
+ $("ok").onclick=go;nm.onkeydown=function(e){if(e.key==="Enter")go()};nm.focus()
+}
+function brief(){
+ var li=M.map(function(m){return "<li>"+m.n+"<br><small>"+m.st.map(function(x){return x.t}).join(" + ")+"</small></li>"}).join("");
+ card.innerHTML=`<p class="era">Briefing</p><h2>Votre mission, ${esc(S.name)}</h2><p>À l'occasion de la sortie de GTA 6, votre superviseur vous offre le jeu (édition standard) sur la plateforme de votre choix, ou une carte cadeau du même montant sur la plateforme de votre choix.</p><p>Pour cela, vous allez retracer l'histoire de GTA et répondre à des questions, énigmes et blind tests.</p><p><strong>L'objectif :</strong> débloquer la clé permettant d'ouvrir le coffre avec la récompense.</p><p>Le parcours est regroupé en 12 missions, selon les jeux :</p><ol class="list">${li}</ol><p>Le chrono démarre quand vous cliquez sur Continuer.</p><div class="row"><button id="ct">Continuer</button></div>`;
+ $("ct").onclick=function(){S.start=Date.now();S.m=0;S.s=0;sv();beep(660,.12);mission()}
+}
+function mission(){
+ begin();draw();var m=M[S.m],n=m.st.length,p=m.st[S.s],audio=p.t==="musique"||p.t==="blind test";
+ card.innerHTML=`<p class="era">Mission ${S.m+1} sur 12</p><h2>${m.n}</h2><p class="obj">Objectif : réussir ${n} épreuve${n>1?"s":""} (${m.st.map(function(x){return x.t}).join(", ")}).</p><hr><p class="era"><span class="badge">${TY[p.t]}</span> Étape ${S.s+1} sur ${n}</p><p class="q">${p.q}</p>${audio?'<div class="box">Lecteur audio à venir</div>':""}<input id="ans" type="text" autocomplete="off" aria-label="Votre réponse" placeholder="Votre réponse"><div class="row"><button id="go">Valider</button><button class="ghost" id="hb">Un indice</button></div><p class="msg" id="msg" role="status"></p>`;
+ var ans=$("ans"),msg=$("msg");
  function check(){
-  if(L.a.indexOf(norm(ans.value))>-1){msg.className='msg ok';msg.textContent='Mission réussie !';jingle([523,659,784]);
-   setTimeout(function(){cur++;cur<LEVELS.length?render():win()},900)}
-  else{msg.className='msg ko';msg.textContent='Raté, réessayez.';card.classList.remove('shake');void card.offsetWidth;card.classList.add('shake');beep(130,.3,'sawtooth')}}
- document.getElementById('go').onclick=check;
- ans.onkeydown=function(e){if(e.key==='Enter')check()};
- document.getElementById('hb').onclick=function(){msg.className='msg';msg.textContent='Indice : '+L.hint};
- ans.focus();
+  if(p.a.indexOf(norm(ans.value))<0){bad(msg,"Raté, réessayez.");return}
+  msg.className="msg ok";msg.textContent="Bien joué !";
+  if(S.s<n-1){S.s++;sv();jingle([523,659]);setTimeout(mission,700);return}
+  S.m++;S.s=0;S.pass=true;if(S.m===12)S.end=Date.now();sv();playPass();setTimeout(passScr,700)
+ }
+ $("go").onclick=check;ans.onkeydown=function(e){if(e.key==="Enter")check()};
+ $("hb").onclick=function(){msg.className="msg";msg.textContent="Indice : "+p.hint};ans.focus()
 }
-function win(){
- drawDots();dots.querySelectorAll('span').forEach(function(s){s.className='done'});
- card.innerHTML='<div class="win"><p class="era">Code accepté</p><h2>Le coffre s\'ouvre...</h2><div class="safe" id="safe"><div class="inside">'+PRIZE+'</div><div class="door"><div class="dial"></div></div></div><p class="hidden" id="end">Bravo, mission accomplie ! Rendez-vous chez la personne qui vous a lancé ce défi pour récupérer votre cadeau.</p></div>';
- setTimeout(function(){document.getElementById('safe').classList.add('open');jingle([392,523,659,784,1047])},600);
- setTimeout(function(){document.getElementById('end').classList.remove('hidden')},3400);
+function passScr(){
+ begin();draw();var k=S.m;
+ card.innerHTML=`<div class="pass"><p class="gold">Mission réussie</p><p class="resp">Respect +</p><p>Mission ${k} sur 12 terminée : ${M[k-1].n}.</p><div class="row" style="justify-content:center"><button id="nx">${k===12?"Accéder au coffre":"Mission suivante"}</button></div></div>`;
+ $("nx").onclick=function(){S.pass=false;sv();k===12?padlock():mission()}
 }
-render();
+function padlock(){
+ begin();draw();
+ card.innerHTML=`<p class="era">Dernière étape</p><h2>Le cadenas du coffre</h2><p class="q">Saisissez la clé que vous avez débloquée pour ouvrir le coffre-fort.</p><div class="lock" id="lk"><div class="shackle"></div><div class="lbody"><input id="code" type="text" maxlength="16" autocomplete="off" aria-label="Code du cadenas" placeholder="••••"></div></div><div class="row" style="justify-content:center"><button id="op">Ouvrir</button></div><p class="msg" id="msg" role="status"></p>`;
+ var c=$("code");
+ function go(){
+  if(norm(c.value)!==norm(VAULT_CODE)){bad($("msg"),"Le cadenas ne s'ouvre pas.");return}
+  $("lk").classList.add("open");jingle([392,523,659]);S.open=true;sv();setTimeout(vault,1300)
+ }
+ $("op").onclick=go;c.onkeydown=function(e){if(e.key==="Enter")go()};c.focus()
+}
+function vault(){
+ begin();draw();
+ card.innerHTML=`<div class="win"><p class="era">Cadenas déverrouillé</p><h2>Le coffre s'ouvre...</h2><div class="safe" id="safe"><div class="inside">Coffre ouvert</div><div class="door"><div class="dial"></div></div></div><div class="hidden" id="end"><h2>Félicitations !</h2><p>Tu as réussi à passer toutes les missions, <strong>${esc(S.name)}</strong>.</p><p>Temps final : <strong>${fmt(S.end-S.start)}</strong></p><p>Envoie vite tes résultats à ton superviseur pour découvrir si tu es l'heureux vainqueur.</p></div></div>`;
+ setTimeout(function(){$("safe").classList.add("open");jingle([392,523,659,784,1047])},600);
+ setTimeout(function(){$("end").classList.remove("hidden")},3400)
+}
+/* démarrage */
+if(location.hash==="#reset-orga"){try{localStorage.removeItem(KEY)}catch(e){}S={};history.replaceState(null,"",location.pathname)}
+if(S.open)vault();else if(S.end&&!S.pass)padlock();else if(S.start)S.pass?passScr():mission();else if(S.name)brief();else nameScr();
 </script>
 </body>
 </html>
