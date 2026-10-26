@@ -36,6 +36,7 @@ hr{border:0;border-top:1px dashed #ffffff33;margin:14px 0}
 .badge{background:var(--pink);color:#fff;border-radius:6px;padding:2px 8px;margin-right:6px}
 p{margin:0 0 12px}
 a{color:var(--cyan);font-weight:700}
+.pic{display:block;max-width:100%;max-height:300px;margin:0 auto 16px;border-radius:10px;border:2px solid var(--cyan)}
 .box{background:#0d0618;border:1px dashed var(--cyan);border-radius:8px;padding:12px;margin:0 0 16px;font-family:'Courier New',monospace}
 .list{padding-left:22px;margin:0 0 14px;font-size:.95rem}.list small{color:var(--cyan);font-family:Arial,sans-serif}
 input{width:100%;font:inherit;padding:12px;border-radius:8px;border:2px solid #ffffff44;background:#0d0618;color:var(--ink)}
@@ -90,8 +91,8 @@ var M=[
  {n:"Grand Theft Auto III",s:"GTA III",st:["énigme","énigme","blind test"]},
  {n:"Grand Theft Auto: Vice City",s:"Vice City",st:["blind test","énigme"]},
  {n:"Grand Theft Auto: San Andreas",s:"San Andreas",st:["blind test","énigme"]},
- {n:"Grand Theft Auto: Vice City Stories",s:"VC Stories",st:["énigme"]},
- {n:"Grand Theft Auto IV",s:"GTA IV",st:["blind test","énigme"]},
+ {n:"Grand Theft Auto: Vice City Stories",s:"VC Stories",st:["blind test"]},
+ {n:"Grand Theft Auto IV",s:"GTA IV",st:["blind test","énigme","énigme"]},
  {n:"Grand Theft Auto: Chinatown Wars",s:"Chinatown",st:["énigme"]},
  {n:"Grand Theft Auto V",s:"GTA V",st:["blind test","blind test","énigme"]},
  {n:"Grand Theft Auto VI",s:"GTA VI",st:["énigme finale"]}
@@ -156,10 +157,55 @@ M[4].st[2].show="Push It to the Limit (Paul Engemann)";
 M[4].st[2].hint="Ce morceau est aussi présent dans le film Scarface.";
 M[4].st[2].info="« Scarface (Push It to the Limit) », composé par Giorgio Moroder et chanté par <strong>Paul Engemann</strong>, vient de la bande originale du film Scarface (1983). Dans GTA III, on l'entend sur Flashback 95.6, la station des années 80. Vous le retrouverez aussi dans Vice City, dont l'ambiance doit beaucoup à ce film.";
 /* Mission 6 : Vice City */
-M[5].st[0].q="Blind test : quel artiste chante ce morceau ?";
-M[5].st[0].a=["philcollins","collins"];
-M[5].st[0].show="Phil Collins (In the Air Tonight)";
-M[5].st[0].info="C'est <strong>Phil Collins</strong>, avec « In the Air Tonight » (1981), un morceau devenu culte grâce à la série Miami Vice, qui a beaucoup inspiré Vice City. Dans Vice City Stories (2006), Phil Collins apparaît même en personne : il est le premier artiste réel à figurer tel quel dans un GTA, et le héros doit le protéger avant son concert.";
+M[5].st[0].q="Blind test : quel groupe joue ce morceau, présent dans le jeu GTA Vice City ?";
+M[5].st[0].a=["toto"];
+M[5].st[0].show="Toto (Africa)";
+M[5].st[0].hint="0 + 0 = ?";
+M[5].st[0].info="C'est <strong>Toto</strong>, avec « Africa » (1982). Ce morceau passe sur la radio Emotion 98.3 dans Vice City, et on l'entend aussi pendant la cinématique qui suit l'achat de l'usine de glaces Cherry Popper. Un morceau devenu culte bien au-delà du jeu.";
+M[5].st[1].q="Quelle est la célèbre voiture de cet opus, inspirée de la Ferrari Testarossa ?";
+M[5].st[1].a=["cheetah","lacheetah","grotticheetah"];
+M[5].st[1].show="La Cheetah";
+M[5].st[1].info="C'est la <strong>Cheetah</strong>, inspirée de la <strong>Ferrari Testarossa</strong>, icône des années 80, la décennie de Vice City et de la série Miami Vice. Elle fait partie des voitures les plus rapides du jeu, et la police de Vice City en utilise même une version banalisée.";
+/* Mission 7 : San Andreas */
+M[6].st[0].q="Blind test : quel est le titre de ce morceau, que l'on entend dans GTA San Andreas ?";
+M[6].st[0].a=["ahorsewithnoname","horsewithnoname","unchevalsansnom","chevalsansnom","caballosinnombre"];
+M[6].st[0].show="A Horse with No Name (America)";
+M[6].st[0].hint="Walter White chante aussi ce morceau dans Breaking Bad.";
+M[6].st[0].vid="san-andreas.mp4";
+M[6].st[0].gif="walter-white.gif";
+M[6].st[0].alt2="Walter White chante le morceau dans Breaking Bad";
+M[6].st[0].info="C'est <strong>« A Horse with No Name »</strong> du groupe America (1972), diffusé sur K-DST, la radio rock de San Andreas, idéale pour rouler dans le désert. Walter White le chante lui aussi dans Breaking Bad, dans la saison 3, épisode « Caballo sin Nombre », juste avant de se faire arrêter par la police.";
+M[6].st[1].q="Quel code de triche de San Andreas donne d'un coup la vie, l'armure et de l'argent au joueur ?";
+M[6].st[1].a=["hesoyam"];
+M[6].st[1].show="HESOYAM";
+M[6].st[1].hint="Il commence par H et finit par M.";
+M[6].st[1].info="C'est <strong>HESOYAM</strong>, le code de triche le plus célèbre de la saga : il remplit la vie et l'armure du joueur et lui donne 250 000 $. Il est devenu un véritable symbole du jeu, repris par de nombreux fans.";
+/* Mission 8 : Vice City Stories */
+M[7].st[0].q="Blind test : quel artiste chante ce morceau, présent dans le jeu GTA Vice City Stories ?";
+M[7].st[0].a=["philcollins","collins"];
+M[7].st[0].show="Phil Collins (In the Air Tonight)";
+M[7].st[0].hint="Il était aussi le batteur et chanteur du groupe Genesis.";
+M[7].st[0].info="C'est <strong>Phil Collins</strong>, avec « In the Air Tonight » (1981). Dans Vice City Stories (2006), il apparaît en personne : il est le premier artiste réel à figurer tel quel dans un GTA. Le héros doit le protéger avant son concert, où il joue justement ce morceau, que l'on entend aussi sur la radio Emotion 98.3.";
+/* Mission 9 : GTA IV */
+M[8].st[0].q="Blind test : quel artiste chante ce morceau, présent dans le jeu GTA IV ?";
+M[8].st[0].a=["kanyewest","kanye","ye"];
+M[8].st[0].show="Kanye West (Flashing Lights)";
+M[8].st[0].hint="Ce morceau est sorti en 2007 sur l'album « Graduation ».";
+M[8].st[0].info="C'est <strong>Kanye West</strong>, avec « Flashing Lights » (2007, en featuring avec Dwele), tiré de l'album Graduation. Dans GTA IV, on l'entend sur The Beat 102.7, la radio hip-hop et R&B inspirée de la vraie station new-yorkaise Hot 97.";
+M[8].st[1].q="Quel est le nom de ce lieu emblématique de Liberty City dans GTA IV ?";
+M[8].st[1].img="Star Junction.jpg";
+M[8].st[1].alt="Un lieu célèbre de Liberty City dans GTA IV";
+M[8].st[1].a=["starjunction"];
+M[8].st[1].show="Star Junction";
+M[8].st[1].hint="C'est l'équivalent de Times Square.";
+M[8].st[1].info="C'est <strong>Star Junction</strong>, un quartier au cœur d'Algonquin (l'équivalent de Manhattan), directement inspiré de Times Square. On y trouve notamment la salle de concert Live Central et le siège du journal Daily Globe.";
+M[8].st[2].q="Dans GTA IV, un célèbre easter egg se cache à l'intérieur de la Statue of Happiness : qu'y trouve-t-on ?";
+M[8].st[2].a=["coeur","uncoeur","lecoeur","coeurbattant","uncoeurbattant","lecoeurdelibertycity","coeurdelibertycity","heart","theheart"];
+M[8].st[2].show="Un cœur battant (le « Heart of Liberty City »)";
+M[8].st[2].hint="Il faut un hélicoptère pour y accéder.";
+M[8].st[2].info="C'est un <strong>énorme cœur battant</strong>, surnommé le « Heart of Liberty City ». Pour y accéder, il faut rejoindre Happiness Island en hélicoptère, jusqu'à une entrée marquée d'un panneau « No Hidden Content This Way », en haut du piédestal de la statue.";
+M[5].st[1].img="Car Cheetah.jpeg";
+M[5].st[1].alt="Une voiture célèbre de GTA Vice City";
 M[1].st[0].q="Quel est le scénariste de l'extension Grand Theft Auto: London, 1969 du premier opus Grand Theft Auto ?";
 M[1].st[0].a=["danhouser","houser"];
 M[1].st[0].hint="Consultez la page du jeu.";
@@ -170,7 +216,7 @@ var KEY="gtq_v2",S=ld(),tm,ac,bg,bgSrc="",want=false,card=document.getElementByI
 function ld(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}}}
 function sv(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
 function $(i){return document.getElementById(i)}
-function norm(s){return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]/g,"")}
+function norm(s){return s.toLowerCase().replace(/œ/g,"oe").replace(/æ/g,"ae").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]/g,"")}
 function esc(t){return String(t).replace(/[&<>"']/g,function(c){return "&#"+c.charCodeAt(0)+";"})}
 function fmt(ms){var t=Math.max(0,Math.floor(ms/1000)),m=Math.floor(t/60);return (m<10?"0":"")+m+":"+("0"+t%60).slice(-2)}
 /* sons */
@@ -204,7 +250,7 @@ function brief(){
 }
 function mission(){
  begin();draw();var m=M[S.m],n=m.st.length,p=m.st[S.s],audio=p.t==="blind test";want=!!m.mu&&!audio;bgPlay(m.mu,want);
- card.innerHTML=`<p class="era">Mission ${S.m+1} sur 12</p><h2>${m.n}</h2><p class="obj">Objectif : réussir ${n} épreuve${n>1?"s":""} (${m.st.map(function(x){return x.t}).join(", ")}).</p><hr><p class="era"><span class="badge">${TY[p.t]}</span> Étape ${S.s+1} sur ${n}</p><p class="q">${p.q}</p>${audio?'<div class="box">Lecteur audio à venir</div>':""}<input id="ans" type="text" autocomplete="off" aria-label="Votre réponse" placeholder="Votre réponse"><div class="row"><button id="go">Valider</button><button class="ghost" id="hb">Un indice</button></div><p class="msg" id="msg" role="status"></p>`;
+ card.innerHTML=`<p class="era">Mission ${S.m+1} sur 12</p><h2>${m.n}</h2><p class="obj">Objectif : réussir ${n} épreuve${n>1?"s":""} (${m.st.map(function(x){return x.t}).join(", ")}).</p><hr><p class="era"><span class="badge">${TY[p.t]}</span> Étape ${S.s+1} sur ${n}</p><p class="q">${p.q}</p>${p.img?'<img class="pic" src="'+encodeURIComponent(p.img)+'" alt="'+esc(p.alt||"Image de la question")+'" onerror="this.outerHTML=\'<div class=box>Image à venir</div>\'">':""}${audio?(p.vid?'<video class="pic" controls playsinline src="'+encodeURIComponent(p.vid)+'" onerror="this.outerHTML=\'<div class=box>Vidéo à venir</div>\'"></video>':'<div class="box">Lecteur audio à venir</div>'):""}<input id="ans" type="text" autocomplete="off" aria-label="Votre réponse" placeholder="Votre réponse"><div class="row"><button id="go">Valider</button><button class="ghost" id="hb">Un indice</button></div><p class="msg" id="msg" role="status"></p>`;
  var ans=$("ans"),msg=$("msg");
  function check(){
   if(p.a.indexOf(norm(ans.value))<0){bad(msg,"Raté, réessayez.");return}
@@ -214,7 +260,7 @@ function mission(){
   sv();
   if(!p.info){setTimeout(nextFn,700);return}
   ans.disabled=true;$("go").disabled=true;$("hb").disabled=true;
-  var b=document.createElement("div");b.className="info";b.innerHTML='<p class="era">Le saviez-vous ?</p><p>'+p.info+'</p><div class="row"><button id="nx2">Continuer</button></div>';
+  var b=document.createElement("div");b.className="info";b.innerHTML='<p class="era">Le saviez-vous ?</p>'+(p.gif?'<img class="pic" src="'+encodeURIComponent(p.gif)+'" alt="'+esc(p.alt2||"Animation")+'" onerror="this.style.display=\'none\'">':"")+'<p>'+p.info+'</p><div class="row"><button id="nx2">Continuer</button></div>';
   card.appendChild(b);$("nx2").onclick=nextFn;$("nx2").focus();return
  }
  $("go").onclick=check;ans.onkeydown=function(e){if(e.key==="Enter")check()};
@@ -245,7 +291,7 @@ function vault(fast){
 }
 function review(){
  begin();draw();
- var h=M.map(function(m,i){var it=m.st.filter(function(p){return p.info||p.show}).map(function(p){return '<div class="rv"><p class="q">'+p.q+'</p><p class="ra">Réponse : <strong>'+esc(p.show||p.a[0])+'</strong></p>'+(p.info?'<div class="info"><p class="era">Le saviez-vous ?</p><p>'+p.info+'</p></div>':"")+"</div>"}).join("");return it?"<h3>Mission "+(i+1)+" : "+m.n+"</h3>"+it:""}).join("");
+ var h=M.map(function(m,i){var it=m.st.filter(function(p){return p.info||p.show}).map(function(p){return '<div class="rv"><p class="q">'+p.q+'</p><p class="ra">Réponse : <strong>'+esc(p.show||p.a[0])+'</strong></p>'+(p.info?'<div class="info"><p class="era">Le saviez-vous ?</p>'+(p.gif?'<img class="pic" src="'+encodeURIComponent(p.gif)+'" alt="" onerror="this.style.display=\'none\'">':"")+'<p>'+p.info+'</p></div>':"")+"</div>"}).join("");return it?"<h3>Mission "+(i+1)+" : "+m.n+"</h3>"+it:""}).join("");
  card.innerHTML='<p class="era">Dossier de mission</p><h2>Vos réponses et anecdotes</h2>'+h+'<div class="row"><button id="bk">Retour à mon score final</button></div>';
  $("bk").onclick=function(){vault(true)};window.scrollTo(0,0)
 }
