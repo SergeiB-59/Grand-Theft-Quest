@@ -96,9 +96,23 @@ var M=[
  {n:"Grand Theft Auto V",s:"GTA V",st:["blind test","blind test","énigme"]},
  {n:"Grand Theft Auto VI",s:"GTA VI",st:["énigme finale"]}
 ];
-/* Musique de fond : 1 = la mission a sa musique (fichier mission-N.mp3 à déposer à côté de index.html), 0 = silence */
-var MU=[1,1,1,1,1,1,1,1,1,0,1,1];
-M.forEach(function(m,i){if(MU[i])m.mu="mission-"+(i+1)+".mp3"});
+/* Musique de fond de chaque mission : nom exact du fichier MP3 déposé à côté de index.html ("" = silence).
+   Attention : GitHub distingue majuscules et minuscules. */
+var MU=[
+ "GTA 1 Theme Song.mp3",
+ "GTA 1 Theme Song.mp3",
+ "GTA 1 Theme Song.mp3",
+ "Grand Theft Auto 2 - Main Theme.mp3",
+ "Grand Theft Auto 3 \u2014 Theme Song.mp3",
+ "Gta Vice City Theme.mp3",
+ "Grand Theft Auto San Andreas (Official Theme Song).mp3",
+ "Grand Theft Auto Vice City Stories Theme Song.mp3",
+ "Grand Theft Auto IV Theme Song _[best quality]_.mp3",
+ "",
+ "GTA V - Welcome to Los Santos Soundtrack - IntroTheme song.mp3",
+ "GTA 6 - Official Main Theme Music.mp3"
+];
+M.forEach(function(m,i){if(MU[i])m.mu=MU[i]});
 /* Contenu provisoire de chaque épreuve : q = question, a = réponses acceptées, hint = indice */
 function ph(t){return{t:t,q:"Contenu à définir. Pour tester, tapez « ok ».",a:["ok"],hint:"Indice à définir."}}
 M.forEach(function(m){m.st=m.st.map(ph)});
@@ -168,7 +182,7 @@ function jingle(n){n.forEach(function(f,i){setTimeout(function(){beep(f,.18)},i*
 function fanfare(){try{ctx();[[392,0],[523,.14],[659,.28],[784,.42],[659,.62],[784,.76]].forEach(function(n){tone(n[0],n[1],.22,"square",.07)});[523,659,784,1047].forEach(function(f){tone(f,.98,1.6,"square",.045)});tone(131,.98,1.6,"triangle",.16);tone(196,.98,1.6,"triangle",.1);[1319,1568,2093].forEach(function(f,i){tone(f,1.1+i*.1,.5,"square",.03)})}catch(e){}}
 function playPass(){passSnd.currentTime=0;var p=passSnd.play();if(p&&p.catch)p.catch(fanfare)}
 /* musique de fond */
-function bgPlay(src,on){try{if(!src||!on||S.mute){if(bg)bg.pause();return}if(!bg||bgSrc!==src){if(bg)bg.pause();bg=new Audio(src);bgSrc=src;bg.loop=true;bg.volume=.3}var p=bg.play();if(p&&p.catch)p.catch(function(){})}catch(e){}}
+function bgPlay(src,on){try{if(!src||!on||S.mute){if(bg)bg.pause();return}if(!bg||bgSrc!==src){if(bg)bg.pause();bg=new Audio(encodeURIComponent(src));bgSrc=src;bg.loop=true;bg.volume=.3}var p=bg.play();if(p&&p.catch)p.catch(function(){})}catch(e){}}
 document.addEventListener("click",function(){if(want&&bg&&bg.paused&&!S.mute){var p=bg.play();if(p&&p.catch)p.catch(function(){})}},true);
 function mlabel(){$("mt").textContent=S.mute?"♪ Off":"♪ On"}
 /* chrono et frise */
