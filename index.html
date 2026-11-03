@@ -68,6 +68,12 @@ button.ghost{background:transparent;border:2px solid var(--cyan);color:var(--cya
 .info{margin-top:16px;padding:14px;border:1px dashed var(--cyan);border-radius:8px;background:#0d0618}
 .rv{margin:0 0 14px}.rv .q{font-weight:700;margin:0 0 4px}.ra{color:var(--cyan);margin:0 0 6px}
 h3{font:700 1.05rem Arial,sans-serif;color:var(--pink);margin:18px 0 8px}
+.go{width:100%;background:#1fbf5b;margin-top:16px;font-size:1.25rem;padding:16px}.big{font-size:1.4rem;padding:18px}
+button:disabled{opacity:.4;cursor:not-allowed}
+.chk{display:block;margin:16px 0;font-family:Arial,sans-serif;cursor:pointer}.chk input{width:22px;height:22px;margin-right:10px;vertical-align:middle;accent-color:#ff2e88}
+.warn{color:#ff3b3b;font-weight:700}.hint{margin:10px 0 0;font-family:Arial,sans-serif}.hint+iframe{display:block;margin-top:8px;border-radius:8px}
+.aud{width:100%;margin:0 0 16px}.cover{max-height:230px}.rules p{margin:0 0 8px}
+.tbar{height:6px;background:#ffffff22;border-radius:3px;margin-top:18px;overflow:hidden}.tbar i{display:block;height:100%;background:var(--cyan);animation:fill 4.2s linear forwards}@keyframes fill{from{width:0}to{width:100%}}
 .hidden{display:none}
 @media (prefers-reduced-motion:reduce){.door,.dial,.shackle{transition-duration:.01s;transition-delay:0s}.shake,.gold,.now .d{animation:none}}
 </style>
@@ -210,8 +216,27 @@ M[1].st[0].q="Quel est le scénariste de l'extension Grand Theft Auto: London, 1
 M[1].st[0].a=["danhouser","houser"];
 M[1].st[0].hint="Consultez la page du jeu.";
 M[1].st[0].link="https://www.imdb.com/fr/title/tt0290637/?ref_=mv_close";
+/* ===== Ajustements v3 : jaquettes, photos, extraits audio, indices ===== */
+M[0].st[0].cover="Jacquette GTA 1.jpg";
+M[1].st[0].cover="Jacquette GTA 1 London 69.jpg";M[1].st[0].ipic="Dan Houser.jpg";
+M[2].st[0].cover="Jacquette GTA 1 London 61.jpg";M[2].st[0].ipic="HaroldCartwright-GTAL61-Portrait.jpg";
+M[3].st[0].cover="Jacquette GTA 2.jpg";M[3].st[0].warn="(COUPER LE SON YOUTUBE)";
+M[4].st[0].img="Chinatown GTA3.jpg";
+M[4].st[0].hints=[{t:"Repérez le quartier sur cette vue.",embed:'<iframe src="https://www.google.com/maps/embed?pb=!4v1793663095953!6m8!1m7!1sTEoD-BQPIbWUULJROHiBCQ!2m2!1d41.8528475711565!2d-87.63197830536967!3f170.78263005687643!4f12.620798403512566!5f0.7820865974627469" width="600" height="450" style="border:0;max-width:100%" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>'}];
+M[4].st[1].cover="Jacquette GTA 3.jpg";M[4].st[1].ipic="Toni Cipriani.jpg";
+M[4].st[1].hints=[{t:"Michael Madsen lui a prêté sa voix.",link:"https://www.imdb.com/fr/title/tt0277723/?ref_=ls_t_5",lt:"Voir la page du jeu"}];
+M[4].st[2].aud="Scarface  Push It to the Limit.mp3";M[4].st[2].hint="Célèbre musique connue dans un film avec le fameux Tony Montana.";
+M[5].st[0].aud="Toto - Africa.mp3";
+M[5].st[1].q="Quelle est cette célèbre voiture de GTA Vice City ?";M[5].st[1].hint="Très fortement inspirée de la Ferrari Testarossa des années 80.";
+M[6].st[0].aud="America - A Horse With No Name.mp3";M[6].st[0].ipic="In the desert.jpg";
+M[6].st[0].hints=[{t:"Walter White chante cette chanson dans l'épisode « Caballo sin nombre » de la saison 3 de Breaking Bad."},{t:"Dernier indice :",link:"https://www.youtube.com/watch?v=3VvoH7lff8A",lt:"Ouvrir la vidéo"}];
+M[6].st[1].q="Quel objet est débloqué en réalisant ce code de triche sur PS2 ?";M[6].st[1].img="Jetpack.png";
+M[6].st[1].a=["jetpack","unjetpack","lejetpack"];M[6].st[1].show="Un jetpack";
+M[6].st[1].hints=[{t:"Les astuces du jeu sont listées ici.",link:"https://www.gamekult.com/jeux/grand-theft-auto-san-andreas-3010001510/astuces.html",lt:"Voir les astuces"}];
+M[6].st[1].info="C'est le <strong>jetpack</strong> ! Dans San Andreas, c'est un prototype militaire de l'Area 69 : CJ doit le voler pour The Truth dans la mission « Black Project », et il réapparaît ensuite à Verdant Meadows.";M[6].st[1].ipic="Jetpack 1.png";
+M[7].st[0].aud="Phil Collins - In The Air Tonight.mp3";M[7].st[0].hint="Il fait partie du groupe Genesis.";M[7].st[0].ipic="Phil Collins Portrait.jpg";
 /* =========================== */
-var TY={"musique":"♪ Musique","blind test":"♫ Blind test","énigme":"? Énigme","énigme finale":"★ Énigme finale"};
+var TY={"musique":"♪ Musique","blind test":"♫ Blind test","énigme":"? Question","énigme finale":"★ Énigme finale"};
 var KEY="gtq_v2",S=ld(),tm,ac,bg,bgSrc="",want=false,card=document.getElementById("card");
 function ld(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}}}
 function sv(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
@@ -220,12 +245,13 @@ function norm(s){return s.toLowerCase().replace(/œ/g,"oe").replace(/æ/g,"ae").
 function esc(t){return String(t).replace(/[&<>"']/g,function(c){return "&#"+c.charCodeAt(0)+";"})}
 function fmt(ms){var t=Math.max(0,Math.floor(ms/1000)),m=Math.floor(t/60);return (m<10?"0":"")+m+":"+("0"+t%60).slice(-2)}
 /* sons */
-var passSnd=new Audio("mission-passed.mp3");passSnd.preload="auto";
+var passSnd=new Audio(encodeURIComponent("Mission Passed.mp3")),failSnd=new Audio(encodeURIComponent("Mission Failed.mp3"));passSnd.preload=failSnd.preload="auto";
 function ctx(){ac=ac||new (window.AudioContext||window.webkitAudioContext)()}
 function tone(f,t,d,type,v){var o=ac.createOscillator(),g=ac.createGain(),s=ac.currentTime+t;o.type=type;o.frequency.value=f;g.gain.setValueAtTime(0,s);g.gain.linearRampToValueAtTime(v,s+.02);g.gain.exponentialRampToValueAtTime(.001,s+d);o.connect(g);g.connect(ac.destination);o.start(s);o.stop(s+d+.05)}
 function beep(f,d,t){try{ctx();tone(f,0,d,t||"square",.07)}catch(e){}}
 function jingle(n){n.forEach(function(f,i){setTimeout(function(){beep(f,.18)},i*150)})}
 function fanfare(){try{ctx();[[392,0],[523,.14],[659,.28],[784,.42],[659,.62],[784,.76]].forEach(function(n){tone(n[0],n[1],.22,"square",.07)});[523,659,784,1047].forEach(function(f){tone(f,.98,1.6,"square",.045)});tone(131,.98,1.6,"triangle",.16);tone(196,.98,1.6,"triangle",.1);[1319,1568,2093].forEach(function(f,i){tone(f,1.1+i*.1,.5,"square",.03)})}catch(e){}}
+function playFail(){failSnd.currentTime=0;var p=failSnd.play();if(p&&p.catch)p.catch(function(){beep(130,.3,"sawtooth")})}
 function playPass(){passSnd.currentTime=0;var p=passSnd.play();if(p&&p.catch)p.catch(fanfare)}
 /* musique de fond */
 function bgPlay(src,on){try{if(!src||!on||S.mute){if(bg)bg.pause();return}if(!bg||bgSrc!==src){if(bg)bg.pause();bg=new Audio(encodeURIComponent(src));bgSrc=src;bg.loop=true;bg.volume=.3}var p=bg.play();if(p&&p.catch)p.catch(function(){})}catch(e){}}
@@ -234,8 +260,8 @@ function mlabel(){$("mt").textContent=S.mute?"♪ Off":"♪ On"}
 /* chrono et frise */
 function tshow(){var el=$("timer");clearInterval(tm);function t(){el.textContent=(S.end?"Temps final ":"Temps ")+fmt((S.end||Date.now())-S.start)}t();if(!S.end)tm=setInterval(t,500)}
 function begin(){document.body.classList.add("play");$("top").classList.remove("hidden");tshow()}
-function draw(){var fr=$("fr");fr.innerHTML=M.map(function(m,i){var c=i<S.m?"done":(i===S.m&&!S.pass&&!S.end?"now":"");return '<li class="'+c+'"><span class="d">'+(i+1)+'</span><span class="l">'+m.s+"</span></li>"}).join("");var n=fr.querySelector(".now");if(n)fr.scrollLeft=n.offsetLeft-fr.clientWidth/2+37}
-function bad(msg,t){msg.className="msg ko";msg.textContent=t;card.classList.remove("shake");void card.offsetWidth;card.classList.add("shake");beep(130,.3,"sawtooth")}
+function draw(){var fr=$("fr");fr.innerHTML=M.map(function(m,i){var c=i<S.m?"done":(i===S.m&&!S.end?"now":"");return '<li class="'+c+'"><span class="d">'+(i+1)+'</span><span class="l">'+m.s+"</span></li>"}).join("");var n=fr.querySelector(".now");if(n)fr.scrollLeft=n.offsetLeft-fr.clientWidth/2+37}
+function bad(msg,t,fail){msg.className="msg ko";msg.textContent=t;card.classList.remove("shake");void card.offsetWidth;card.classList.add("shake");if(fail)playFail();else beep(130,.3,"sawtooth")}
 /* écrans */
 function nameScr(){
  card.innerHTML=`<p class="era">Identification</p><h2>Qui êtes-vous, agent ?</h2><p class="q">Saisissez votre prénom et votre NOM. Ils serviront pour la fin de l'aventure.</p><input id="nm" type="text" maxlength="50" autocomplete="off" aria-label="Prénom NOM" placeholder="Prénom NOM"><div class="row"><button id="ok">Valider</button></div><p class="msg" id="msg" role="status"></p>`;
@@ -243,33 +269,53 @@ function nameScr(){
  function go(){var v=nm.value.trim().replace(/\s+/g," ");if(v.indexOf(" ")<1||v.length<4){bad($("msg"),"Entrez votre prénom et votre NOM.");return}S={name:v};sv();beep(660,.12);brief()}
  $("ok").onclick=go;nm.onkeydown=function(e){if(e.key==="Enter")go()};nm.focus()
 }
+function lab(t){return t==="énigme"?"question":t}
+var TRANS={2:["GTA premier du nom","GTA 2"],3:["GTA 2","GTA III"],4:["GTA III","Vice City"],5:["Vice City","San Andreas"],6:["San Andreas","Vice City Stories"],7:["Vice City Stories","GTA IV"]};
+function pic(f,c,hide){return `<img class="pic ${c||""}" src="${encodeURIComponent(f)}" alt="" onerror="${hide?"this.style.display='none'":"this.outerHTML='<div class=box>Image à venir</div>'"}">`}
+function infoHTML(p){return p.info?`<div class="info"><p class="era">Le saviez-vous ?</p>${p.gif?pic(p.gif,"",1):""}${p.ipic?pic(p.ipic,"",1):""}<p>${p.info}</p></div>`:""}
+function hints(p){return p.hints||[{t:p.hint,link:p.link,lt:p.lt,warn:p.warn,embed:p.embed}]}
+function hintHTML(h){return `<p class="hint">${h.t?"Indice : "+esc(h.t):"Indice :"}${h.link?` <a href="${esc(h.link)}" target="_blank" rel="noopener noreferrer">${esc(h.lt||"Ouvrir la page du jeu")}</a>`:""}${h.warn?` <span class="warn">${esc(h.warn)}</span>`:""}</p>${h.embed||""}`}
 function brief(){
- var li=M.map(function(m){return "<li>"+m.n+"<br><small>"+(m.mu?"musique + ":"")+m.st.map(function(x){return x.t}).join(" + ")+"</small></li>"}).join("");
- card.innerHTML=`<p class="era">Briefing</p><h2>Votre mission, ${esc(S.name)}</h2><p>À l'occasion de la sortie de GTA 6, votre superviseur vous offre le jeu (édition standard) sur la plateforme de votre choix, ou une carte cadeau du même montant sur la plateforme de votre choix.</p><p>Pour cela, vous allez retracer l'histoire de GTA et répondre à des questions, énigmes et blind tests.</p><p><strong>L'objectif :</strong> débloquer la clé permettant d'ouvrir le coffre avec la récompense.</p><p>Le parcours est regroupé en 12 missions, selon les jeux :</p><ol class="list">${li}</ol><p>Le chrono démarre quand vous cliquez sur Continuer.</p><div class="row"><button id="ct">Continuer</button></div>`;
- $("ct").onclick=function(){S.start=Date.now();S.m=0;S.s=0;sv();beep(660,.12);mission()}
+ var fr=M.map(function(m,i){return '<li><span class="d">'+(i+1)+'</span><span class="l">'+m.s+"</span></li>"}).join("");
+ card.innerHTML=`<p class="era">Briefing</p><h2>Votre mission, ${esc(S.name)}</h2><p>À l'occasion de la sortie de GTA 6, votre Superviseur vous offre le jeu (édition standard) sur la plateforme de votre choix, ou un bon d'achat de même valeur sur la plateforme de votre choix.</p><p>Pour cela, retracez l'histoire de GTA à travers 12 missions, des opus les plus anciens jusqu'à GTA VI. <strong>L'objectif :</strong> débloquer la clé qui ouvre le coffre-fort.</p><ol class="frise" id="bf">${fr}</ol><h2 style="margin-top:14px">Règles du jeu</h2><div class="info rules"><p>• Questions retraçant l'histoire de GTA, blind tests et plus encore. Plus vous avancez, plus la difficulté augmente.</p><p>• <strong>Interdiction formelle d'utiliser l'IA.</strong> Un compteur influencera votre score final et pourrait vous pénaliser. Un compteur supplémentaire s'ajoute à chaque fois que vous quittez cet onglet pour faire une recherche.</p><p>• Des indices sont disponibles sous les questions, mais ils comptent dans votre score.</p><p>• Chaque mauvaise réponse est comptée, mais vous pouvez continuer.</p><p>• Le grand gagnant résout l'énigme finale avec le temps le plus court, sans IA, avec le moins d'indices et de recherches web.</p><p>• À la fin, envoyez votre score final à votre Superviseur.</p></div><label class="chk"><input type="checkbox" id="ck">J'ai bien pris en compte les règles du jeu et m'engage à ne pas utiliser l'IA.</label><button class="go big" id="st" disabled>Commencer le braquage !</button>`;
+ var li=$("bf").children,k=0,iv=setInterval(function(){for(var i=0;i<li.length;i++)li[i].className=i<k?"done":i===k?"now":"";k=(k+1)%(li.length+2)},650);
+ $("ck").onchange=function(){$("st").disabled=!$("ck").checked};
+ $("st").onclick=function(){clearInterval(iv);S.rules=true;sv();beep(660,.12);prologue()}
+}
+function prologue(){
+ card.innerHTML=`<p class="era">Prologue</p><h2>Le message du Superviseur</h2><video id="pv" class="pic" style="max-height:none;width:100%" playsinline preload="auto" src="${encodeURIComponent("Prologue du challenge.mp4")}"></video><div class="row"><button id="pp">Lancer le prologue</button></div>`;
+ var v=$("pv"),done=false;
+ function go(){if(done)return;done=true;S.start=Date.now();S.m=0;S.s=0;S.pass=false;sv();mission()}
+ v.onended=go;v.onerror=go;v.onplaying=function(){$("pp").classList.add("hidden")};
+ $("pp").onclick=function(){v.play().catch(go)};
+ var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})
 }
 function mission(){
  begin();draw();var m=M[S.m],n=m.st.length,p=m.st[S.s],audio=p.t==="blind test";want=!!m.mu&&!audio;bgPlay(m.mu,want);
- card.innerHTML=`<p class="era">Mission ${S.m+1} sur 12</p><h2>${m.n}</h2><p class="obj">Objectif : réussir ${n} épreuve${n>1?"s":""} (${m.st.map(function(x){return x.t}).join(", ")}).</p><hr><p class="era"><span class="badge">${TY[p.t]}</span> Étape ${S.s+1} sur ${n}</p><p class="q">${p.q}</p>${p.img?'<img class="pic" src="'+encodeURIComponent(p.img)+'" alt="'+esc(p.alt||"Image de la question")+'" onerror="this.outerHTML=\'<div class=box>Image à venir</div>\'">':""}${audio?(p.vid?'<video class="pic" controls playsinline src="'+encodeURIComponent(p.vid)+'" onerror="this.outerHTML=\'<div class=box>Vidéo à venir</div>\'"></video>':'<div class="box">Lecteur audio à venir</div>'):""}<input id="ans" type="text" autocomplete="off" aria-label="Votre réponse" placeholder="Votre réponse"><div class="row"><button id="go">Valider</button><button class="ghost" id="hb">Un indice</button></div><p class="msg" id="msg" role="status"></p>`;
- var ans=$("ans"),msg=$("msg");
+ var key=S.m+"-"+S.s;S.hs=S.hs||{};var hs=hints(p),shown=S.hs[key]||0;
+ var media=audio?(p.aud?`<audio class="aud" controls preload="auto" src="${encodeURIComponent(p.aud)}" onerror="this.outerHTML='<div class=box>Extrait à venir</div>'"></audio>`:'<div class="box">Extrait à venir</div>'):"";
+ card.innerHTML=`<p class="era">Mission ${S.m+1} sur 12</p><h2>${m.n}</h2><p class="obj">Objectif : réussir ${n} épreuve${n>1?"s":""} (${m.st.map(function(x){return lab(x.t)}).join(", ")}).</p><hr><p class="era"><span class="badge">${TY[p.t]}</span> Étape ${S.s+1} sur ${n}</p>${p.cover?pic(p.cover,"cover",1):""}<p class="q">${p.q}</p>${p.img?pic(p.img):""}${media}<input id="ans" type="text" autocomplete="off" aria-label="Votre réponse" placeholder="Votre réponse"><div class="row"><button id="go">Valider</button><button class="ghost" id="hb">Un indice</button></div><div id="hl"></div><p class="msg" id="msg" role="status"></p>`;
+ var ans=$("ans"),msg=$("msg"),hb=$("hb"),hl=$("hl");
+ function lbl(){hb.textContent=shown===0?"Un indice":shown>=hs.length?"Plus d'indice":shown===hs.length-1?"Dernier indice":"Indice suivant";hb.disabled=shown>=hs.length}
+ for(var i=0;i<shown;i++)hl.innerHTML+=hintHTML(hs[i]);lbl();
+ hb.onclick=function(){if(shown>=hs.length)return;hl.innerHTML+=hintHTML(hs[shown]);shown++;S.hs[key]=shown;S.hints=(S.hints||0)+1;sv();lbl()};
  function check(){
-  if(p.a.indexOf(norm(ans.value))<0){bad(msg,"Raté, réessayez.");return}
-  msg.className="msg ok";msg.textContent="Bien joué !";
-  var last=S.s>=n-1,nextFn=last?passScr:mission;
-  if(last){S.m++;S.s=0;S.pass=true;if(S.m===12)S.end=Date.now();want=false;bgPlay(0,false);playPass()}else{S.s++;jingle([523,659])}
-  sv();
-  if(!p.info){setTimeout(nextFn,700);return}
-  ans.disabled=true;$("go").disabled=true;$("hb").disabled=true;
-  var b=document.createElement("div");b.className="info";b.innerHTML='<p class="era">Le saviez-vous ?</p>'+(p.gif?'<img class="pic" src="'+encodeURIComponent(p.gif)+'" alt="'+esc(p.alt2||"Animation")+'" onerror="this.style.display=\'none\'">':"")+'<p>'+p.info+'</p><div class="row"><button id="nx2">Continuer</button></div>';
-  card.appendChild(b);$("nx2").onclick=nextFn;$("nx2").focus();return
+  if(p.a.indexOf(norm(ans.value))<0){S.wrong=(S.wrong||0)+1;sv();bad(msg,"Raté, réessayez.",true);return}
+  S.lm=S.m;S.ls=S.s;
+  if(S.s<n-1)S.s++;else{S.m++;S.s=0;want=false;bgPlay(0,false);if(S.m===12)S.end=Date.now()}
+  S.pass=true;sv();playPass();passScr()
  }
- $("go").onclick=check;ans.onkeydown=function(e){if(e.key==="Enter")check()};
- $("hb").onclick=function(){msg.className="msg";msg.innerHTML="Indice : "+esc(p.hint)+(p.link?' <a href="'+esc(p.link)+'" target="_blank" rel="noopener noreferrer">'+esc(p.lt||"Ouvrir la page du jeu")+'</a>':"")};ans.focus()
+ $("go").onclick=check;ans.onkeydown=function(e){if(e.key==="Enter")check()};ans.focus()
 }
 function passScr(){
- begin();draw();var k=S.m;
- card.innerHTML=`<div class="pass"><p class="gold">Mission réussie</p><p class="resp">Respect +</p><p>Mission ${k} sur 12 terminée : ${M[k-1].n}.</p><div class="row" style="justify-content:center"><button id="nx">${k===12?"Accéder au coffre":"Mission suivante"}</button></div></div>`;
- $("nx").onclick=function(){S.pass=false;sv();k===12?padlock():mission()}
+ begin();draw();var p=M[S.lm].st[S.ls],k=S.lm,changed=S.m>S.lm;
+ card.innerHTML=`<div class="pass"><p class="gold">Mission réussie</p></div>${infoHTML(p)}<button class="go" id="nx">Mission suivante</button>`;
+ $("nx").onclick=function(){S.pass=false;sv();if(S.end){padlock();return}if(changed&&TRANS[k])transition(k,mission);else mission()}
+}
+function transition(k,done){
+ begin();draw();var t=TRANS[k];jingle([392,523,659,784]);
+ card.innerHTML=`<div class="pass"><p class="era">Chapitre terminé</p><p class="gold">${t[0]}, c'est terminé !</p><p class="q">Direction <strong>${t[1]}</strong>…</p><div class="tbar"><i></i></div></div>`;
+ setTimeout(done,4300)
 }
 function padlock(){
  begin();draw();
@@ -283,7 +329,7 @@ function padlock(){
 }
 function vault(fast){
  var f=fast===true;begin();draw();
- card.innerHTML=`<div class="win"><p class="era">Cadenas déverrouillé</p><h2>Le coffre s'ouvre...</h2><div class="safe${f?" open":""}" id="safe"><div class="inside">Coffre ouvert</div><div class="door"><div class="dial"></div></div></div><div class="${f?"":"hidden"}" id="end"><h2>Félicitations !</h2><p>Tu as réussi à passer toutes les missions, <strong>${esc(S.name)}</strong>.</p><p>Temps final : <strong>${fmt(S.end-S.start)}</strong></p><p>Envoie vite tes résultats à ton superviseur pour découvrir si tu es l'heureux vainqueur.</p><div class="row" style="justify-content:center"><button class="ghost" id="rv">Revoir mes réponses et anecdotes</button></div></div></div>`;
+ card.innerHTML=`<div class="win"><p class="era">Cadenas déverrouillé</p><h2>Le coffre s'ouvre...</h2><div class="safe${f?" open":""}" id="safe"><div class="inside">Coffre ouvert</div><div class="door"><div class="dial"></div></div></div><div class="${f?"":"hidden"}" id="end"><h2>Félicitations !</h2><p>Tu as réussi à passer toutes les missions, <strong>${esc(S.name)}</strong>.</p><p>Temps final : <strong>${fmt(S.end-S.start)}</strong><br>Mauvaises réponses : <strong>${S.wrong||0}</strong><br>Indices utilisés : <strong>${S.hints||0}</strong><br>Sorties d'onglet : <strong>${S.tabs||0}</strong></p><p>Envoie vite tes résultats à ton superviseur pour découvrir si tu es l'heureux vainqueur.</p><div class="row" style="justify-content:center"><button class="ghost" id="rv">Revoir mes réponses et anecdotes</button></div></div></div>`;
  $("rv").onclick=review;
  if(f)return;
  setTimeout(function(){$("safe").classList.add("open");jingle([392,523,659,784,1047])},600);
@@ -291,14 +337,15 @@ function vault(fast){
 }
 function review(){
  begin();draw();
- var h=M.map(function(m,i){var it=m.st.filter(function(p){return p.info||p.show}).map(function(p){return '<div class="rv"><p class="q">'+p.q+'</p><p class="ra">Réponse : <strong>'+esc(p.show||p.a[0])+'</strong></p>'+(p.info?'<div class="info"><p class="era">Le saviez-vous ?</p>'+(p.gif?'<img class="pic" src="'+encodeURIComponent(p.gif)+'" alt="" onerror="this.style.display=\'none\'">':"")+'<p>'+p.info+'</p></div>':"")+"</div>"}).join("");return it?"<h3>Mission "+(i+1)+" : "+m.n+"</h3>"+it:""}).join("");
+ var h=M.map(function(m,i){var it=m.st.filter(function(p){return p.info||p.show}).map(function(p){return '<div class="rv"><p class="q">'+p.q+'</p><p class="ra">Réponse : <strong>'+esc(p.show||p.a[0])+'</strong></p>'+infoHTML(p)+"</div>"}).join("");return it?"<h3>Mission "+(i+1)+" : "+m.n+"</h3>"+it:""}).join("");
  card.innerHTML='<p class="era">Dossier de mission</p><h2>Vos réponses et anecdotes</h2>'+h+'<div class="row"><button id="bk">Retour à mon score final</button></div>';
  $("bk").onclick=function(){vault(true)};window.scrollTo(0,0)
 }
 /* démarrage */
+document.addEventListener("visibilitychange",function(){if(document.hidden&&S.start&&!S.end){S.tabs=(S.tabs||0)+1;sv()}});
 $("mt").onclick=function(){S.mute=!S.mute;sv();mlabel();if(S.mute){if(bg)bg.pause()}else if(want&&bg){var p=bg.play();if(p&&p.catch)p.catch(function(){})}};mlabel();
 if(location.hash==="#reset-orga"){try{localStorage.removeItem(KEY)}catch(e){}S={};history.replaceState(null,"",location.pathname)}
-if(S.open)vault();else if(S.end&&!S.pass)padlock();else if(S.start)S.pass?passScr():mission();else if(S.name)brief();else nameScr();
+if(S.open)vault();else if(S.end&&!S.pass)padlock();else if(S.start)S.pass?passScr():mission();else if(S.rules)prologue();else if(S.name)brief();else nameScr();
 </script>
 </body>
 </html>
