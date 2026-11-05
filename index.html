@@ -243,6 +243,9 @@ var KEY="gtq_v2",S=ld(),tm,ac,bg,bgSrc="",want=false,card=document.getElementByI
 function ld(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}}}
 function sv(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
 function $(i){return document.getElementById(i)}
+function hh(s){var x=5381;for(var i=0;i<s.length;i++)x=((x<<5)+x+s.charCodeAt(i))|0;return x}
+var ADM=-928097401;
+function adminBtn(row,label,fn){if(!S.admin)return;var b=document.createElement("button");b.className="ghost";b.textContent=label;b.onclick=fn;row.appendChild(b)}
 function norm(s){return s.toLowerCase().replace(/œ/g,"oe").replace(/æ/g,"ae").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]/g,"")}
 function esc(t){return String(t).replace(/[&<>"']/g,function(c){return "&#"+c.charCodeAt(0)+";"})}
 function fmt(ms){var t=Math.max(0,Math.floor(ms/1000)),m=Math.floor(t/60);return (m<10?"0":"")+m+":"+("0"+t%60).slice(-2)}
@@ -268,7 +271,7 @@ function bad(msg,t,fail){msg.className="msg ko";msg.textContent=t;card.classList
 function nameScr(){
  card.innerHTML=`<p class="era">Identification</p><h2>Qui êtes-vous, agent ?</h2><p class="q">Saisissez votre prénom et votre NOM. Ils serviront pour la fin de l'aventure.</p><input id="nm" type="text" maxlength="50" autocomplete="off" aria-label="Prénom NOM" placeholder="Prénom NOM"><div class="row"><button id="ok">Valider</button></div><p class="msg" id="msg" role="status"></p>`;
  var nm=$("nm");
- function go(){var v=nm.value.trim().replace(/\s+/g," ");if(v.indexOf(" ")<1||v.length<4){bad($("msg"),"Entrez votre prénom et votre NOM.");return}S={name:v};sv();beep(660,.12);brief()}
+ function go(){var v=nm.value.trim().replace(/\s+/g," ");if(v.indexOf(" ")<1||v.length<4){bad($("msg"),"Entrez votre prénom et votre NOM.");return}S={name:v};if(hh(norm(v))===ADM)S.admin=true;sv();beep(660,.12);brief()}
  $("ok").onclick=go;nm.onkeydown=function(e){if(e.key==="Enter")go()};nm.focus()
 }
 function lab(t){return t==="énigme"?"question":t}
@@ -290,6 +293,7 @@ function prologue(){
  function go(){if(done)return;done=true;S.start=Date.now();S.m=0;S.s=0;S.pass=false;sv();mission()}
  v.onended=go;v.onerror=go;v.onplaying=function(){$("pp").classList.add("hidden")};
  $("pp").onclick=function(){v.play().catch(go)};
+ adminBtn($("pp").parentNode,"Passer le prologue (admin)",go);
  var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})
 }
 function mission(){
@@ -303,11 +307,14 @@ function mission(){
  hb.onclick=function(){if(shown>=hs.length)return;hl.innerHTML+=hintHTML(hs[shown]);shown++;S.hs[key]=shown;S.hints=(S.hints||0)+1;sv();lbl()};
  function check(){
   if(p.a.indexOf(norm(ans.value))<0){S.wrong=(S.wrong||0)+1;sv();bad(msg,"Raté, réessayez.",true);return}
+  ok()
+ }
+ function ok(){
   S.lm=S.m;S.ls=S.s;
   if(S.s<n-1)S.s++;else{S.m++;S.s=0;want=false;bgPlay(0,false);if(S.m===12)S.end=Date.now()}
   S.pass=true;sv();playPass();passScr()
  }
- $("go").onclick=check;ans.onkeydown=function(e){if(e.key==="Enter")check()};ans.focus()
+ $("go").onclick=check;ans.onkeydown=function(e){if(e.key==="Enter")check()};adminBtn($("go").parentNode,"Passer (admin)",ok);ans.focus()
 }
 function passScr(){
  begin();draw();var p=M[S.lm].st[S.ls],k=S.lm,changed=S.m>S.lm;
@@ -327,6 +334,7 @@ function padlock(){
   if(norm(c.value)!==norm(VAULT_CODE)){bad($("msg"),"Le cadenas ne s'ouvre pas.");return}
   $("lk").classList.add("open");jingle([392,523,659]);S.open=true;sv();setTimeout(vault,1300)
  }
+ adminBtn($("op").parentNode,"Ouvrir (admin)",function(){$("lk").classList.add("open");jingle([392,523,659]);S.open=true;sv();setTimeout(vault,1300)});
  $("op").onclick=go;c.onkeydown=function(e){if(e.key==="Enter")go()};c.focus()
 }
 function vault(fast){
