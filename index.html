@@ -85,6 +85,7 @@ button:disabled{opacity:.4;cursor:not-allowed}
 .key:active{background:var(--pink)}
 .mapw{max-width:420px;margin:0 auto 16px}.mapw svg{width:100%;height:auto;border:2px solid var(--cyan);border-radius:12px;background:#0b1030}
 .reg{fill:#3a1a6e;stroke:var(--cyan);stroke-width:2;cursor:pointer;transition:fill .2s}.reg:hover,.reg:focus{fill:#6b1d70;outline:none}.reg.sel{fill:var(--pink)}
+.pinw{position:relative;max-width:520px;margin:0 auto;line-height:0;touch-action:manipulation}.pinw img{width:100%;height:auto;border:2px solid var(--cyan);border-radius:12px;cursor:crosshair;display:block}.pinw .dot{position:absolute;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;background:#ff2e88aa;border:3px solid #fff;box-shadow:0 0 12px #ff2e88;pointer-events:none}
 .cap{font:.8rem Arial,sans-serif;color:var(--sand);text-align:center;margin:6px 0 0}
 .hidden{display:none}
 @media (prefers-reduced-motion:reduce){.door,.dial,.shackle{transition-duration:.01s;transition-delay:0s}.shake,.gold,.now .d{animation:none}}
@@ -250,11 +251,12 @@ M[7].st[0].aud="audio-m8.mp3";M[7].st[0].hint="Il fait partie du groupe Genesis.
 M[8].st[0].aud="audio-m9.mp3";
 M[8].st[0].hints=[{t:"Cet artiste a d'abord été producteur avant de devenir rappeur."},{t:"Ce morceau vient d'un album sorti en 2007, dont le titre évoque la fin des études."}];
 /* GTA IV : 3 épreuves interactives */
-M[8].st[3].kind="map";M[8].st[3].target="broker";
-M[8].st[3].q="Sur ce plan de Liberty City, cliquez sur l'arrondissement où Roman, le cousin de Niko, vit et dirige sa compagnie de taxis.";
-M[8].st[3].show="Broker (équivalent de Brooklyn)";
-M[8].st[3].hints=[{t:"Niko débarque du cargo Platypus dans cet arrondissement."},{t:"Il est inspiré de Brooklyn."},{t:"Il se trouve au sud-est d'Algonquin, l'île centrale qui correspond à Manhattan."}];
-M[8].st[3].info="C'est <strong>Broker</strong>, l'équivalent de Brooklyn. Niko y débarque du Platypus à East Hook, et Roman y gère sa petite compagnie de taxis dans le quartier de Hove Beach, loin de la vie de luxe qu'il décrivait dans ses lettres.";
+M[8].st[3].kind="pin";M[8].st[3].mapimg="carte-m9.png";M[8].st[3].tx=25.0;M[8].st[3].ty=44.4;M[8].st[3].tol=6;
+M[8].st[3].q="Sur ce plan de Liberty City, placez votre repère à l'endroit exact où se trouve la compagnie de taxis de Roman, le cousin de Niko.";
+M[8].st[3].show="Hove Beach (Broker), à l'angle de Cisco Street et d'Iroquois Avenue";
+M[8].st[3].ipic="carte-m9-reponse.png";
+M[8].st[3].hints=[{t:"Elle est au bord de l'eau, juste au-dessus de la grande route du pont, sur ce plan."},{t:"Elle se trouve dans le quartier de Hove Beach, à l'angle de Cisco Street et d'Iroquois Avenue."},{t:"Cherchez un pâté de maisons dans le quart supérieur gauche de la carte, entre les quais et la grande avenue verticale."}];
+M[8].st[3].info="Elle est à l'angle de <strong>Cisco Street</strong> et d'<strong>Iroquois Avenue</strong>, dans le quartier de <strong>Hove Beach</strong>, à Broker (l'équivalent de Brooklyn). C'est là que Niko retrouve Roman à son arrivée, loin de la vie de luxe qu'il décrivait dans ses lettres.";
 M[8].st[4].kind="phone";M[8].st[4].target="3595550100";
 M[8].st[4].q="Sur le téléphone de Niko, composez le numéro de triche qui fait apparaître l'hélicoptère armé de la NOOSE, l'Annihilator.";
 M[8].st[4].show="359-555-0100 (FLY-555-0100)";
@@ -325,7 +327,9 @@ function prologue(){
  var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})
 }
 function crackle(){try{ctx();var n=Math.floor(ac.sampleRate*.08),b=ac.createBuffer(1,n,ac.sampleRate),d=b.getChannelData(0);for(var i=0;i<n;i++)d[i]=(Math.random()*2-1)*(1-i/n);var o=ac.createBufferSource(),g=ac.createGain();g.gain.value=.05;o.buffer=b;o.connect(g);g.connect(ac.destination);o.start()}catch(e){}}
-function dtmf(k){try{ctx();var rows=[[1,2,3],[4,5,6],[7,8,9],["*",0,"#"]],R=[697,770,852,941],C=[1209,1336,1477];for(var r=0;r<4;r++)for(var c=0;c<3;c++)if(String(rows[r][c])===k){tone(R[r],0,.14,"sine",.05);tone(C[c],0,.14,"sine",.05)}}catch(e){}}
+var keyA=new Audio(encodeURIComponent("phone-key.mp3")),keyOk=true;keyA.preload="auto";keyA.onerror=function(){keyOk=false};
+function dtmf(k){if(keyOk){try{var c=keyA.cloneNode();c.volume=.8;var r=c.play();if(r&&r.catch)r.catch(function(){dtmfSynth(k)});return}catch(e){}}dtmfSynth(k)}
+function dtmfSynth(k){try{ctx();var rows=[[1,2,3],[4,5,6],[7,8,9],["*",0,"#"]],R=[697,770,852,941],C=[1209,1336,1477];for(var r=0;r<4;r++)for(var c=0;c<3;c++)if(String(rows[r][c])===k){tone(R[r],0,.14,"sine",.05);tone(C[c],0,.14,"sine",.05)}}catch(e){}}
 var WG={
  radio:function(p){
   $("wg").innerHTML='<div class="radio"><div class="rdisp"><span id="rf">90.0</span><small> FM</small></div><div class="rscale"><i id="rn"></i></div><input type="range" id="rr" min="87.5" max="108" step="0.1" value="90" aria-label="Fréquence radio"><div class="row"><button type="button" class="ghost" id="rm">− 0,1</button><button type="button" class="ghost" id="rp">+ 0,1</button></div></div>';
@@ -343,6 +347,12 @@ var WG={
   Array.prototype.forEach.call(document.querySelectorAll(".key"),function(b){b.onclick=function(){var k=b.getAttribute("data-k");dtmf(k);if(/\d/.test(k)&&num.length<10){num+=k;show()}}});
   $("pdel").onclick=function(){num=num.slice(0,-1);show();beep(300,.06)};
   return {ok:function(){return num===p.target}}
+ },
+ pin:function(p){
+  $("wg").innerHTML='<div class="mapw"><div class="pinw" id="pw"><img id="pi" src="'+encodeURIComponent(p.mapimg)+'" alt="Plan de Liberty City" draggable="false" onerror="this.outerHTML=\'<div class=box>Carte à venir</div>\'"></div><p class="cap">Touchez la carte pour placer votre repère, puis validez.</p></div>';
+  var pt=null,pw=$("pw");
+  pw.onclick=function(e){var im=$("pi");if(!im||!im.getBoundingClientRect)return;var r=im.getBoundingClientRect();if(!r.width)return;var x=(e.clientX-r.left)/r.width*100,y=(e.clientY-r.top)/r.height*100;pt={x:x,y:y};var d=pw.querySelector(".dot");if(!d){d=document.createElement("div");d.className="dot";pw.appendChild(d)}d.style.left=x+"%";d.style.top=y+"%";beep(520,.06)};
+  return {ok:function(){return !!pt&&Math.sqrt(Math.pow(pt.x-p.tx,2)+Math.pow(pt.y-p.ty,2))<=p.tol}}
  },
  map:function(p){
   var R=[["alderney","28,70 105,52 112,140 98,215 118,285 60,300 25,230 38,150"],["algonquin","150,35 205,28 218,120 212,215 232,262 190,282 160,240 152,140"],["bohan","245,38 335,30 342,105 262,118"],["dukes","262,128 340,116 335,200 292,232 258,206"],["broker","242,238 292,244 338,214 330,300 300,335 235,325 215,285"]],sel="";
