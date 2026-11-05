@@ -259,6 +259,7 @@ M[8].st[3].info="Le numéro est <strong>359-555-0100</strong>, soit <strong>FLY-
 M[8].st[4].kind="radio";M[8].st[4].target=97.8;
 M[8].st[4].q="Réglez le cadran sur la fréquence de Liberty Rock Radio, la station de rock classique de GTA IV.";
 M[8].st[4].aud="audio-m9b.m4a";
+M[8].st[4].decoys=[{f:96.9,aud:"audio-m9c.m4a"},{f:98.8,aud:"audio-m9d.m4a"}];
 M[8].st[4].show="Liberty Rock Radio 97.8";
 M[8].st[4].hints=[{t:"Cette station est animée par une légende du rock, Iggy Pop."},{t:"Sa fréquence est comprise entre 95 et 100 MHz."},{t:"Elle commence par 97."}];
 M[8].st[4].info="C'est <strong>Liberty Rock Radio 97.8</strong>, la station de rock classique de GTA IV, animée par Iggy Pop. À l'opposé, <strong>The Beat 102.7</strong>, celle de « Flashing Lights », diffuse du hip-hop et du R&B.";
@@ -285,7 +286,7 @@ function playFail(){if(S.mute)return;failSnd.currentTime=0;var p=failSnd.play();
 function stopSnd(){[passSnd,failSnd].forEach(function(a){try{a.pause();a.currentTime=0}catch(e){}})}
 function playPass(){if(S.mute)return;passSnd.currentTime=0;var p=passSnd.play();if(p&&p.catch)p.catch(fanfare)}
 /* musique de fond */
-function bgPlay(src,on){try{if(!src||!on||S.mute){if(bg)bg.pause();return}if(!bg||bgSrc!==src){if(bg)bg.pause();bg=new Audio(encodeURIComponent(src));bgSrc=src;bg.loop=true;bg.volume=.3}var p=bg.play();if(p&&p.catch)p.catch(function(){})}catch(e){}}
+function bgPlay(src,on){try{if(!src||!on||S.mute){if(bg)bg.pause();return}if(!bg||bgSrc!==src){if(bg)bg.pause();bg=new Audio(encodeURIComponent(src));bgSrc=src;bg.loop=true;bg.volume=.18}var p=bg.play();if(p&&p.catch)p.catch(function(){})}catch(e){}}
 document.addEventListener("click",function(){if(want&&bg&&bg.paused&&!S.mute){var p=bg.play();if(p&&p.catch)p.catch(function(){})}},true);
 function mlabel(){$("mt").textContent=S.mute?"♪ Off":"♪ On"}
 /* chrono et frise */
@@ -341,21 +342,25 @@ var keyA=new Audio(encodeURIComponent("phone-key.mp3")),keyOk=true;keyA.preload=
 function dtmf(k){if(S.mute)return;if(keyOk){try{var c=keyA.cloneNode();c.volume=.8;var r=c.play();if(r&&r.catch)r.catch(function(){dtmfSynth(k)});return}catch(e){}}dtmfSynth(k)}
 function dtmfSynth(k){try{ctx();var rows=[[1,2,3],[4,5,6],[7,8,9],["*",0,"#"]],R=[697,770,852,941],C=[1209,1336,1477];for(var r=0;r<4;r++)for(var c=0;c<3;c++)if(String(rows[r][c])===k){tone(R[r],0,.14,"sine",.05);tone(C[c],0,.14,"sine",.05)}}catch(e){}}
 var RAD={a:null,s:null};
-function radioStop(){if(RAD.a){try{RAD.a.pause()}catch(e){}RAD.a=null}if(RAD.s){try{RAD.s.s.stop()}catch(e){}RAD.s=null}}
+function radioStop(){(RAD.all||[]).forEach(function(x){if(x.a)try{x.a.pause()}catch(e){}});RAD.all=null;if(RAD.a){try{RAD.a.pause()}catch(e){}RAD.a=null}if(RAD.s){try{RAD.s.s.stop()}catch(e){}RAD.s=null}}
 var WG={
  radio:function(p){
   $("wg").innerHTML='<div class="radio"><div class="rdisp"><span id="rf">90.0</span><small> FM</small></div><div class="rscale"><i id="rn"></i></div><input type="range" id="rr" min="87.5" max="108" step="0.1" value="90" aria-label="Fréquence radio"><div class="row"><button type="button" class="ghost" id="rm">− 0,1</button><button type="button" class="ghost" id="rp">+ 0,1</button></div></div>';
   radioStop();
-  var r=$("rr"),f=90,locked=false,st=null,rA=null;
-  if(p.aud){rA=new Audio(encodeURIComponent(p.aud));rA.loop=true;rA.preload="auto";rA.muted=!!S.mute;RAD.a=rA}
+  var r=$("rr"),f=90,locked=false,st=null,rA=null,cur=null;
+  var ST=[{f:p.target,aud:p.aud,good:true}].concat(p.decoys||[]);
+  ST.forEach(function(x){if(x.aud){x.a=new Audio(encodeURIComponent(x.aud));x.a.loop=true;x.a.preload="auto";x.a.muted=!!S.mute;x.a.onerror=function(){x.bad=true}}});
+  RAD.all=ST;
   function startStatic(){if(st)return;try{ctx();if(ac.state==="suspended")ac.resume();var n=ac.sampleRate*2,bf=ac.createBuffer(1,n,ac.sampleRate),d=bf.getChannelData(0);for(var i=0;i<n;i++)d[i]=Math.random()*2-1;var s=ac.createBufferSource(),g=ac.createGain();s.buffer=bf;s.loop=true;g.gain.value=S.mute?0:.03;s.connect(g);g.connect(ac.destination);s.start();st={s:s,g:g};RAD.s=st}catch(e){}}
   function stopStatic(){if(st){try{st.s.stop()}catch(e){}st=null;RAD.s=null}}
   function burst(){if(!st)return;try{if(S.mute)return;var t=ac.currentTime,g=st.g.gain;g.cancelScheduledValues(t);g.setValueAtTime(.17,t);g.linearRampToValueAtTime(.03,t+.35)}catch(e){}}
   function draw(){$("rr").value=f;$("rf").textContent=f.toFixed(1);$("rn").style.left=((f-87.5)/20.5*100)+"%"}
   function set(v){f=Math.round(Math.max(87.5,Math.min(108,v))*10)/10;draw();
-   var on=Math.abs(f-p.target)<.05;
-   if(on&&!locked){locked=true;stopStatic();if(rA){try{rA.currentTime=0;var pr=rA.play();if(pr&&pr.catch)pr.catch(function(){})}catch(e){}}}
-   else if(!on){if(locked){locked=false;if(rA)rA.pause()}startStatic();burst()}}
+   var hit=null;ST.forEach(function(x){if(Math.abs(f-x.f)<.05&&x.a&&!x.bad)hit=x});
+   if(hit!==cur){if(cur){cur.a.pause();RAD.a=null}cur=hit;
+    if(hit){stopStatic();RAD.a=hit.a;try{var pr=hit.a.play();if(pr&&pr.catch)pr.catch(function(){})}catch(e){}}}
+   locked=Math.abs(f-p.target)<.05;
+   if(!hit){startStatic();burst()}}
   r.oninput=function(){set(parseFloat(r.value))};
   $("rm").onclick=function(){set(f-.1)};$("rp").onclick=function(){set(f+.1)};draw();startStatic();
   return {ok:function(){return locked}}
@@ -399,7 +404,7 @@ function mission(){
  function ok(){
   S.lm=S.m;S.ls=S.s;
   if(S.s<n-1)S.s++;else{S.m++;S.s=0;want=false;bgPlay(0,false);if(S.m===12)S.end=Date.now()}
-  S.pass=true;sv();if(p.kind==="radio"){if(RAD.s){try{RAD.s.s.stop()}catch(e){}RAD.s=null}}else playPass();passScr()
+  S.pass=true;sv();if(p.kind==="radio"){if(RAD.s){try{RAD.s.s.stop()}catch(e){}RAD.s=null}(RAD.all||[]).forEach(function(x){if(!x.good&&x.a)x.a.pause()})}else playPass();passScr()
  }
  $("go").onclick=check;ans.onkeydown=function(e){if(e.key==="Enter")check()};adminBtn($("go").parentNode,"Passer (admin)",ok);if(!p.kind)ans.focus()
 }
@@ -440,7 +445,7 @@ function review(){
 }
 /* démarrage */
 document.addEventListener("visibilitychange",function(){if(document.hidden&&S.start&&!S.end){S.tabs=(S.tabs||0)+1;sv()}});
-$("mt").onclick=function(){S.mute=!S.mute;sv();mlabel();if(RAD.a)RAD.a.muted=!!S.mute;if(RAD.s){try{RAD.s.g.gain.cancelScheduledValues(0);RAD.s.g.gain.value=S.mute?0:.03}catch(e){}}if(S.mute){stopSnd();var _a=document.querySelectorAll("audio");Array.prototype.forEach.call(_a,function(x){x.pause()})}if(S.mute){if(bg)bg.pause()}else if(want&&bg){var p=bg.play();if(p&&p.catch)p.catch(function(){})}};mlabel();
+$("mt").onclick=function(){S.mute=!S.mute;sv();mlabel();(RAD.all||[]).forEach(function(x){if(x.a)x.a.muted=!!S.mute});if(RAD.s){try{RAD.s.g.gain.cancelScheduledValues(0);RAD.s.g.gain.value=S.mute?0:.03}catch(e){}}if(S.mute){stopSnd();var _a=document.querySelectorAll("audio");Array.prototype.forEach.call(_a,function(x){x.pause()})}if(S.mute){if(bg)bg.pause()}else if(want&&bg){var p=bg.play();if(p&&p.catch)p.catch(function(){})}};mlabel();
 if(location.hash==="#reset-orga"){try{localStorage.removeItem(KEY)}catch(e){}S={};history.replaceState(null,"",location.pathname)}
 if(S.open)vault();else if(S.end&&!S.pass)padlock();else if(S.start)S.pass?passScr():mission();else if(S.rules)prologue();else if(S.name)brief();else nameScr();
 </script>
