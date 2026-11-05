@@ -74,6 +74,18 @@ button:disabled{opacity:.4;cursor:not-allowed}
 .warn{color:#ff3b3b;font-weight:700}.hint{margin:10px 0 0;font-family:Arial,sans-serif}.hint+iframe{display:block;margin-top:8px;border-radius:8px}
 .aud{width:100%;margin:0 0 16px}.cover{max-height:230px}.rules p{margin:0 0 8px}
 .tbar{height:6px;background:#ffffff22;border-radius:3px;margin-top:18px;overflow:hidden}.tbar i{display:block;height:100%;background:var(--cyan);animation:fill 4.2s linear forwards}@keyframes fill{from{width:0}to{width:100%}}
+.radio,.phone{max-width:340px;margin:0 auto 16px;padding:16px;border:2px solid var(--cyan);border-radius:14px;background:#0d0618}
+.rdisp{font:900 2.6rem 'Courier New',monospace;color:var(--cyan);text-align:center;text-shadow:0 0 14px #19e3d688}.rdisp small{font-size:1rem}
+.rscale{position:relative;height:34px;margin:6px 0 12px;border-radius:6px;background:#1a0b2e repeating-linear-gradient(90deg,#ffffff55 0 2px,transparent 2px 20px)}.rscale i{position:absolute;top:-4px;bottom:-4px;width:4px;margin-left:-2px;background:var(--pink);box-shadow:0 0 10px var(--pink);border-radius:2px}
+.radio input[type=range]{padding:0;border:0;background:transparent;accent-color:#ff2e88}
+.radio .row,.phone .row{justify-content:center}
+.pdisp{font:900 1.8rem 'Courier New',monospace;color:var(--cyan);text-align:center;min-height:2.4rem;letter-spacing:.12em;margin-bottom:10px}
+.pad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.key{display:flex;flex-direction:column;align-items:center;gap:0;padding:10px 0;background:#25103c;border:2px solid #ffffff33;font-family:Arial,sans-serif}.key b{font-size:1.5rem}.key small{font-size:.65rem;color:var(--cyan);min-height:.9em;letter-spacing:2px}
+.key:active{background:var(--pink)}
+.mapw{max-width:420px;margin:0 auto 16px}.mapw svg{width:100%;height:auto;border:2px solid var(--cyan);border-radius:12px;background:#0b1030}
+.reg{fill:#3a1a6e;stroke:var(--cyan);stroke-width:2;cursor:pointer;transition:fill .2s}.reg:hover,.reg:focus{fill:#6b1d70;outline:none}.reg.sel{fill:var(--pink)}
+.cap{font:.8rem Arial,sans-serif;color:var(--sand);text-align:center;margin:6px 0 0}
 .hidden{display:none}
 @media (prefers-reduced-motion:reduce){.door,.dial,.shackle{transition-duration:.01s;transition-delay:0s}.shake,.gold,.now .d{animation:none}}
 </style>
@@ -98,7 +110,7 @@ var M=[
  {n:"Grand Theft Auto: Vice City",s:"Vice City",st:["blind test","énigme"]},
  {n:"Grand Theft Auto: San Andreas",s:"San Andreas",st:["blind test","énigme"]},
  {n:"Grand Theft Auto: Vice City Stories",s:"VC Stories",st:["blind test"]},
- {n:"Grand Theft Auto IV",s:"GTA IV",st:["blind test","énigme","énigme"]},
+ {n:"Grand Theft Auto IV",s:"GTA IV",st:["blind test","énigme","énigme","énigme","énigme","énigme"]},
  {n:"Grand Theft Auto: Chinatown Wars",s:"Chinatown",st:["énigme"]},
  {n:"Grand Theft Auto V",s:"GTA V",st:["blind test","blind test","énigme"]},
  {n:"Grand Theft Auto VI",s:"GTA VI",st:["énigme finale"]}
@@ -237,6 +249,22 @@ M[6].st[1].info="C'est le <strong>jetpack</strong> ! Dans San Andreas, c'est un 
 M[7].st[0].aud="audio-m8.mp3";M[7].st[0].hint="Il fait partie du groupe Genesis.";M[7].st[0].ipic="Phil Collins Portrait.jpg";
 M[8].st[0].aud="audio-m9.mp3";
 M[8].st[0].hints=[{t:"Cet artiste a d'abord été producteur avant de devenir rappeur."},{t:"Ce morceau vient d'un album sorti en 2007, dont le titre évoque la fin des études."}];
+/* GTA IV : 3 épreuves interactives */
+M[8].st[3].kind="map";M[8].st[3].target="broker";
+M[8].st[3].q="Sur ce plan de Liberty City, cliquez sur l'arrondissement où Roman, le cousin de Niko, vit et dirige sa compagnie de taxis.";
+M[8].st[3].show="Broker (équivalent de Brooklyn)";
+M[8].st[3].hints=[{t:"Niko débarque du cargo Platypus dans cet arrondissement."},{t:"Il est inspiré de Brooklyn."},{t:"Il se trouve au sud-est d'Algonquin, l'île centrale qui correspond à Manhattan."}];
+M[8].st[3].info="C'est <strong>Broker</strong>, l'équivalent de Brooklyn. Niko y débarque du Platypus à East Hook, et Roman y gère sa petite compagnie de taxis dans le quartier de Hove Beach, loin de la vie de luxe qu'il décrivait dans ses lettres.";
+M[8].st[4].kind="phone";M[8].st[4].target="3595550100";
+M[8].st[4].q="Sur le téléphone de Niko, composez le numéro de triche qui fait apparaître l'hélicoptère armé de la NOOSE, l'Annihilator.";
+M[8].st[4].show="359-555-0100 (FLY-555-0100)";
+M[8].st[4].hints=[{t:"Les numéros de triche de GTA IV suivent le format XXX-555-XXXX."},{t:"Ce numéro s'écrit aussi avec des lettres : trois lettres, puis 555-0100. Regardez les lettres sur les touches du clavier."},{t:"Les trois lettres sont F, L et Y."}];
+M[8].st[4].info="Le numéro est <strong>359-555-0100</strong>, soit <strong>FLY-555-0100</strong> en lettres. Dans GTA IV, les codes de triche se composent sur le téléphone de Niko. Attention : appeler l'Annihilator bloque certains succès, dont « Walk Free » et « One Man Army ».";
+M[8].st[5].kind="radio";M[8].st[5].target=97.8;
+M[8].st[5].q="Réglez le cadran sur la fréquence de Liberty Rock Radio, la station de rock classique de GTA IV.";
+M[8].st[5].show="Liberty Rock Radio 97.8";
+M[8].st[5].hints=[{t:"Cette station est animée par une légende du rock, Iggy Pop."},{t:"Sa fréquence est comprise entre 95 et 100 MHz."},{t:"Elle commence par 97."}];
+M[8].st[5].info="C'est <strong>Liberty Rock Radio 97.8</strong>, la station de rock classique de GTA IV, animée par Iggy Pop. À l'opposé, <strong>The Beat 102.7</strong>, celle de « Flashing Lights », diffuse du hip-hop et du R&B.";
 /* =========================== */
 var TY={"musique":"♪ Musique","blind test":"♫ Blind test","énigme":"? Question","énigme finale":"★ Énigme finale"};
 var KEY="gtq_v2",S=ld(),tm,ac,bg,bgSrc="",want=false,card=document.getElementById("card");
@@ -296,17 +324,46 @@ function prologue(){
  adminBtn($("pp").parentNode,"Passer le prologue (admin)",go);
  var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})
 }
+function crackle(){try{ctx();var n=Math.floor(ac.sampleRate*.08),b=ac.createBuffer(1,n,ac.sampleRate),d=b.getChannelData(0);for(var i=0;i<n;i++)d[i]=(Math.random()*2-1)*(1-i/n);var o=ac.createBufferSource(),g=ac.createGain();g.gain.value=.05;o.buffer=b;o.connect(g);g.connect(ac.destination);o.start()}catch(e){}}
+function dtmf(k){try{ctx();var rows=[[1,2,3],[4,5,6],[7,8,9],["*",0,"#"]],R=[697,770,852,941],C=[1209,1336,1477];for(var r=0;r<4;r++)for(var c=0;c<3;c++)if(String(rows[r][c])===k){tone(R[r],0,.14,"sine",.05);tone(C[c],0,.14,"sine",.05)}}catch(e){}}
+var WG={
+ radio:function(p){
+  $("wg").innerHTML='<div class="radio"><div class="rdisp"><span id="rf">90.0</span><small> FM</small></div><div class="rscale"><i id="rn"></i></div><input type="range" id="rr" min="87.5" max="108" step="0.1" value="90" aria-label="Fréquence radio"><div class="row"><button type="button" class="ghost" id="rm">− 0,1</button><button type="button" class="ghost" id="rp">+ 0,1</button></div></div>';
+  var r=$("rr"),f=90;
+  function draw(){$("rr").value=f;$("rf").textContent=f.toFixed(1);$("rn").style.left=((f-87.5)/20.5*100)+"%"}
+  function set(v){f=Math.round(Math.max(87.5,Math.min(108,v))*10)/10;draw();crackle()}
+  r.oninput=function(){set(parseFloat(r.value))};
+  $("rm").onclick=function(){set(f-.1)};$("rp").onclick=function(){set(f+.1)};draw();
+  return {ok:function(){return Math.abs(f-p.target)<.05}}
+ },
+ phone:function(p){
+  var L={2:"ABC",3:"DEF",4:"GHI",5:"JKL",6:"MNO",7:"PQRS",8:"TUV",9:"WXYZ"},K=["1","2","3","4","5","6","7","8","9","*","0","#"],num="";
+  $("wg").innerHTML='<div class="phone"><div class="pdisp" id="pd">&nbsp;</div><div class="pad">'+K.map(function(k){return '<button type="button" class="key" data-k="'+k+'"><b>'+k+'</b><small>'+(L[k]||"")+'</small></button>'}).join("")+'</div><div class="row"><button type="button" class="ghost" id="pdel">⌫ Effacer</button></div></div>';
+  function show(){var t=num.length>6?num.slice(0,3)+"-"+num.slice(3,6)+"-"+num.slice(6):num.length>3?num.slice(0,3)+"-"+num.slice(3):num;$("pd").textContent=t||" "}
+  Array.prototype.forEach.call(document.querySelectorAll(".key"),function(b){b.onclick=function(){var k=b.getAttribute("data-k");dtmf(k);if(/\d/.test(k)&&num.length<10){num+=k;show()}}});
+  $("pdel").onclick=function(){num=num.slice(0,-1);show();beep(300,.06)};
+  return {ok:function(){return num===p.target}}
+ },
+ map:function(p){
+  var R=[["alderney","28,70 105,52 112,140 98,215 118,285 60,300 25,230 38,150"],["algonquin","150,35 205,28 218,120 212,215 232,262 190,282 160,240 152,140"],["bohan","245,38 335,30 342,105 262,118"],["dukes","262,128 340,116 335,200 292,232 258,206"],["broker","242,238 292,244 338,214 330,300 300,335 235,325 215,285"]],sel="";
+  $("wg").innerHTML='<div class="mapw"><svg viewBox="0 0 370 350" role="group" aria-label="Plan schématique de Liberty City">'+R.map(function(r,i){return '<polygon class="reg" data-id="'+r[0]+'" points="'+r[1]+'" tabindex="0" role="button" aria-label="Zone '+(i+1)+'"></polygon>'}).join("")+'<text x="345" y="338" fill="#ffd9a0" font-size="14" font-family="Arial" text-anchor="middle">N ↑</text></svg><p class="cap">Plan schématique de Liberty City (nord en haut). Touchez une zone pour la sélectionner.</p></div>';
+  var regs=document.querySelectorAll(".reg");
+  function pick(el){sel=el.getAttribute("data-id");Array.prototype.forEach.call(regs,function(x){x.classList.toggle("sel",x===el)});beep(520,.06)}
+  Array.prototype.forEach.call(regs,function(el){el.onclick=function(){pick(el)};el.onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();pick(el)}}});
+  return {ok:function(){return sel===p.target}}
+ }
+};
 function mission(){
  begin();draw();var m=M[S.m],n=m.st.length,p=m.st[S.s],audio=p.t==="blind test";want=!!m.mu&&!audio;bgPlay(m.mu,want);
  var key=S.m+"-"+S.s;S.hs=S.hs||{};var hs=hints(p),shown=S.hs[key]||0;
  var media=audio?(p.aud?`<audio class="aud" controls preload="auto" src="${encodeURIComponent(p.aud)}" onerror="this.outerHTML='<div class=box>Extrait à venir</div>'"></audio>`:'<div class="box">Extrait à venir</div>'):"";
- card.innerHTML=`<p class="era">Mission ${S.m+1} sur 12</p><h2>${m.n}</h2><p class="obj">Objectif : réussir ${n} épreuve${n>1?"s":""} (${m.st.map(function(x){return lab(x.t)}).join(", ")}).</p><hr><p class="era"><span class="badge">${TY[p.t]}</span> Étape ${S.s+1} sur ${n}</p>${p.cover?pic(p.cover,"cover",1):""}<p class="q">${p.q}</p>${p.img?pic(p.img):""}${media}<input id="ans" type="text" autocomplete="off" aria-label="Votre réponse" placeholder="Votre réponse"><div class="row"><button id="go">Valider</button><button class="ghost" id="hb">Un indice</button></div><div id="hl"></div><p class="msg" id="msg" role="status"></p>`;
- var ans=$("ans"),msg=$("msg"),hb=$("hb"),hl=$("hl");
+ card.innerHTML=`<p class="era">Mission ${S.m+1} sur 12</p><h2>${m.n}</h2><p class="obj">Objectif : réussir ${n} épreuve${n>1?"s":""} (${m.st.map(function(x){return lab(x.t)}).join(", ")}).</p><hr><p class="era"><span class="badge">${TY[p.t]}</span> Étape ${S.s+1} sur ${n}</p>${p.cover?pic(p.cover,"cover",1):""}<p class="q">${p.q}</p>${p.img?pic(p.img):""}${media}${p.kind?'<div id="wg"></div>':""}<input id="ans" type="text" autocomplete="off" aria-label="Votre réponse" placeholder="Votre réponse"><div class="row"><button id="go">Valider</button><button class="ghost" id="hb">Un indice</button></div><div id="hl"></div><p class="msg" id="msg" role="status"></p>`;
+ var ans=$("ans"),msg=$("msg"),hb=$("hb"),hl=$("hl");var Wd=p.kind?WG[p.kind](p):null;if(p.kind)ans.style.display="none";
  function lbl(){hb.textContent=shown===0?"Un indice":shown>=hs.length?"Plus d'indice":shown===hs.length-1?"Dernier indice":"Indice suivant";hb.disabled=shown>=hs.length}
  for(var i=0;i<shown;i++)hl.innerHTML+=hintHTML(hs[i]);lbl();
  hb.onclick=function(){if(shown>=hs.length)return;hl.innerHTML+=hintHTML(hs[shown]);shown++;S.hs[key]=shown;S.hints=(S.hints||0)+1;sv();lbl()};
  function check(){
-  if(p.a.indexOf(norm(ans.value))<0){S.wrong=(S.wrong||0)+1;sv();bad(msg,"Raté, réessayez.",true);return}
+  if(p.kind?!Wd.ok():p.a.indexOf(norm(ans.value))<0){S.wrong=(S.wrong||0)+1;sv();bad(msg,"Raté, réessayez.",true);return}
   ok()
  }
  function ok(){
@@ -314,7 +371,7 @@ function mission(){
   if(S.s<n-1)S.s++;else{S.m++;S.s=0;want=false;bgPlay(0,false);if(S.m===12)S.end=Date.now()}
   S.pass=true;sv();playPass();passScr()
  }
- $("go").onclick=check;ans.onkeydown=function(e){if(e.key==="Enter")check()};adminBtn($("go").parentNode,"Passer (admin)",ok);ans.focus()
+ $("go").onclick=check;ans.onkeydown=function(e){if(e.key==="Enter")check()};adminBtn($("go").parentNode,"Passer (admin)",ok);if(!p.kind)ans.focus()
 }
 function passScr(){
  begin();draw();var p=M[S.lm].st[S.ls],k=S.lm,changed=S.m>S.lm;
