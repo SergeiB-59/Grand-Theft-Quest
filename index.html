@@ -375,7 +375,8 @@ var keyA=new Audio(encodeURIComponent("phone-key.mp3")),keyOk=true;keyA.preload=
 function dtmf(k){if(S.mute)return;if(keyOk){try{var c=keyA.cloneNode();c.volume=.8;var r=c.play();if(r&&r.catch)r.catch(function(){dtmfSynth(k)});return}catch(e){}}dtmfSynth(k)}
 function dtmfSynth(k){try{ctx();var rows=[[1,2,3],[4,5,6],[7,8,9],["*",0,"#"]],R=[697,770,852,941],C=[1209,1336,1477];for(var r=0;r<4;r++)for(var c=0;c<3;c++)if(String(rows[r][c])===k){tone(R[r],0,.14,"sine",.05);tone(C[c],0,.14,"sine",.05)}}catch(e){}}
 var RAD={a:null,s:null};
-var CLN=[],XA=[];function cleanW(){var c=CLN;CLN=[];c.forEach(function(f){try{f()}catch(e){}})}
+var CLN=[],XA=[];
+function fadeXA(ms){XA.forEach(function(a){if(a.paused)return;var v0=a.volume,t0=Date.now(),iv=setInterval(function(){var k=(Date.now()-t0)/ms;if(k>=1){clearInterval(iv);try{a.pause();a.volume=v0}catch(e){}}else a.volume=v0*(1-k)},60)})}function cleanW(){var c=CLN;CLN=[];c.forEach(function(f){try{f()}catch(e){}})}
 function radioStop(){cleanW();(RAD.all||[]).forEach(function(x){if(x.a)try{x.a.pause()}catch(e){}});RAD.all=null;if(RAD.a){try{RAD.a.pause()}catch(e){}RAD.a=null}if(RAD.s){try{RAD.s.s.stop()}catch(e){}RAD.s=null}}
 var WG={
  radio:function(p){
@@ -431,7 +432,7 @@ var WG={
      if(tonal&&(!f0||Math.abs(fr-f0)/f0<.12)){run+=dt}else run=Math.max(0,run-dt*1.5);
      f0=tonal?fr:0;
      if(!tonal&&rms>.05){noisy+=dt;if(noisy>600){$("wst").textContent="Les taxis de Liberty City ne s'arrêtent pas pour si peu…";noisy=0}}
-     if(run>220)win()
+     if(run>110)win()
     }
     loop()
    }).catch(function(){$("wst").textContent="Accès au micro refusé.";fallback()})
@@ -467,19 +468,22 @@ var WG={
     else for(var i=0;i<10;i++)(function(i){setTimeout(function(){beep(i%2?620:900,.18,"square")},i*200)})(i)}
    alT=setTimeout(function(){flash(false);try{alA.pause()}catch(e){}},dur)}
   crA.loop=true;crA.preload=stA.preload="auto";stA.volume=.22;
+  var ecA=new Audio(encodeURIComponent("audio-m10-écrou.mp3")),ecOk=true;ecA.loop=true;ecA.preload="auto";ecA.onerror=function(){ecOk=false};XA.push(ecA);
+  function ecPlay(){if(S.mute||!ecOk||!ecA.paused)return;try{var q=ecA.play();if(q&&q.catch)q.catch(function(){})}catch(e){}}
+  function ecStop(){try{ecA.pause()}catch(e){}}
   var rue=new Audio(encodeURIComponent("audio-m10-rue.mp3"));rue.loop=true;rue.volume=.12;XA.push(rue,stA,alA);
   if(!S.mute){try{var rp=rue.play();if(rp&&rp.catch)rp.catch(function(){})}catch(e){}}
   var rueKick=function(){if(!S.mute&&rue.paused&&!done){var q=rue.play();if(q&&q.catch)q.catch(function(){})}};document.addEventListener("pointerdown",rueKick,true);crA.onerror=function(){crOk=false};stA.onerror=function(){stOk=false};
   function stopCr(){clearInterval(tm);clearInterval(crank);crank=0;try{crA.pause()}catch(e){}}
-  CLN.push(function(){stopCr();clearTimeout(alT);flash(false);document.removeEventListener("pointerdown",rueKick,true);try{alA.pause();rue.pause()}catch(e){}XA=XA.filter(function(x){return x!==rue&&x!==alA})});
+  CLN.push(function(){stopCr();clearTimeout(alT);flash(false);document.removeEventListener("pointerdown",rueKick,true);try{alA.pause();rue.pause();ecA.pause()}catch(e){}XA=XA.filter(function(x){return x!==rue&&x!==alA&&x!==ecA})});
   function msg(t){$("hst").textContent=t}
   Array.prototype.forEach.call(document.querySelectorAll(".scr"),function(el){
    var acc=0,prev=null,moved=false;
    function ang(e){var r=el.getBoundingClientRect();return Math.atan2(e.clientY-(r.top+r.height/2),e.clientX-(r.left+r.width/2))}
-   function turn(d){acc=Math.min(acc+d,Math.PI*.6);el.firstChild.style.transform="rotate("+(acc*180/Math.PI)+"deg)";if(acc<=-Math.PI*4&&!el.classList.contains("out")){el.classList.add("out");beep(900,.05);left--;if(!left)open()}}
+   function turn(d){acc=Math.min(acc+d,Math.PI*.6);el.firstChild.style.transform="rotate("+(acc*180/Math.PI)+"deg)";if(acc<=-Math.PI*4&&!el.classList.contains("out")){el.classList.add("out");ecStop();beep(900,.05);left--;if(!left)open()}}
    el.onpointerdown=function(e){e.preventDefault();el.setPointerCapture(e.pointerId);prev=ang(e);moved=false};
-   el.onpointermove=function(e){if(prev===null)return;var a=ang(e),d=a-prev;if(d>Math.PI)d-=2*Math.PI;if(d<-Math.PI)d+=2*Math.PI;prev=a;if(Math.abs(d)>.02){moved=true;turn(d);if(acc>=Math.PI*.6)msg("Ça force… la vis ne bouge pas dans ce sens-là.");if(Math.random()<.15)beep(1400,.015)}};
-   el.onpointerup=el.onpointercancel=function(){prev=null};
+   el.onpointermove=function(e){if(prev===null)return;var a=ang(e),d=a-prev;if(d>Math.PI)d-=2*Math.PI;if(d<-Math.PI)d+=2*Math.PI;prev=a;if(Math.abs(d)>.02){moved=true;turn(d);if(acc>=Math.PI*.6){msg("Ça force… la vis ne bouge pas dans ce sens-là.");ecStop()}else if(d<0){if(ecOk&&!S.mute)ecPlay();else if(Math.random()<.15)beep(1400,.015)}}};
+   el.onpointerup=el.onpointercancel=function(){prev=null;ecStop()};
   });
   function open(){$("pnl").classList.add("off");beep(200,.2,"triangle");msg("");setTimeout(function(){$("sch").hidden=false},900)}
   $("sch").onclick=function(){var b=$("schb");b.hidden=!b.hidden;$("sch").textContent=b.hidden?"📄 Retourner le cache":"📄 Cacher le schéma"};
@@ -562,7 +566,7 @@ function mission(){
 function passScr(){
  begin();draw();var p=M[S.lm].st[S.ls],k=S.lm,changed=S.m>S.lm;
  card.innerHTML=`<div class="pass"><p class="gold">Mission réussie</p></div>${infoHTML(p)}<button class="go" id="nx">Mission suivante</button>`;
- $("nx").onclick=function(){stopSnd();S.pass=false;sv();if(S.end){padlock();return}if(changed&&TRANS[k])transition(k,mission);else mission()}
+ $("nx").onclick=function(){stopSnd();fadeXA(3500);S.pass=false;sv();if(S.end){padlock();return}if(changed&&TRANS[k])transition(k,mission);else mission()}
 }
 function transition(k,done){
  begin();draw();var t=TRANS[k];jingle([392,523,659,784]);
