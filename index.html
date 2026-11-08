@@ -80,6 +80,24 @@ button:disabled{opacity:.4;cursor:not-allowed}
 .radio input[type=range]{padding:0;border:0;background:transparent;accent-color:#ff2e88}
 .radio .row,.phone .row{justify-content:center}
 .pdisp{font:900 1.8rem 'Courier New',monospace;color:var(--cyan);text-align:center;min-height:2.4rem;letter-spacing:.12em;margin-bottom:10px}
+[hidden]{display:none!important}
+.street{position:relative;height:80px;border-radius:10px;background:linear-gradient(#120a1f 62%,#2a2a33 62%);overflow:hidden;margin-bottom:12px}
+.street:after{content:"";position:absolute;left:0;right:0;bottom:16px;border-top:3px dashed #ffd9a055}
+.taxi{position:absolute;bottom:4px;left:110%;font-size:46px;line-height:1;transition:left 1.6s cubic-bezier(.2,.8,.3,1)}.taxi.come{left:52%}
+.meter{height:8px;background:#222;border-radius:4px;overflow:hidden;margin:10px 0}.meter i{display:block;height:100%;width:0;background:var(--cyan);transition:width .08s}
+.hw,.wh{max-width:360px;margin:0 auto 16px;padding:14px;border:2px solid var(--cyan);border-radius:14px;background:#0d0618;text-align:center}
+.hwst,.whst{font:700 .85rem Arial,sans-serif;color:#ffd9a0;margin:6px 0 10px;min-height:1.2em}
+.hwb{position:relative;width:100%;aspect-ratio:280/180;border-radius:10px;background:#140b1d;overflow:hidden;user-select:none;-webkit-user-select:none}
+.pnl{position:absolute;inset:7%;border-radius:8px;background:linear-gradient(135deg,#777a84,#3b3d45);box-shadow:inset 0 0 0 2px #9a9ca4,0 4px 10px #000a;transition:transform .9s ease-in,opacity .9s;z-index:2}
+.pnl.off{transform:translateY(150%) rotate(20deg);opacity:0;pointer-events:none}
+.pnl b{position:absolute;left:0;right:0;top:44%;font:700 .7rem Arial,sans-serif;color:#2a2b30;letter-spacing:2px}
+.scr{position:absolute;width:38px;height:38px;margin:-19px 0 0 -19px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#eee,#7b7d85);box-shadow:0 2px 4px #0009;touch-action:none;cursor:grab;transition:opacity .3s,transform .3s}
+.scr i{position:absolute;left:17px;top:5px;width:4px;height:28px;background:#333;border-radius:2px}
+.scr.out{opacity:0;transform:scale(1.7);pointer-events:none}
+.hwsvg{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
+.ignw{margin-top:12px}.ignw svg{width:200px;max-width:70%;touch-action:none;cursor:grab}.ignw .cap{font-size:.85rem}
+.ign{margin-top:12px;width:100%;padding:12px;font:900 1rem Arial,sans-serif;border-radius:10px;border:2px solid #ff2e88;background:#2a0d1c;color:#fff;touch-action:none;user-select:none;-webkit-user-select:none}
+.ignbar{height:8px;background:#222;border-radius:4px;overflow:hidden;margin-top:8px}.ignbar i{display:block;height:100%;width:0;background:#ff2e88}
 .pad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .key{display:flex;flex-direction:column;align-items:center;gap:0;padding:10px 0;background:#25103c;border:2px solid #ffffff33;font-family:Arial,sans-serif}.key b{font-size:1.5rem}.key small{font-size:.65rem;color:var(--cyan);min-height:.9em;letter-spacing:2px}
 .key:active{background:var(--pink)}
@@ -112,7 +130,7 @@ var M=[
  {n:"Grand Theft Auto: San Andreas",s:"San Andreas",st:["blind test","énigme"]},
  {n:"Grand Theft Auto: Vice City Stories",s:"VC Stories",st:["blind test"]},
  {n:"Grand Theft Auto IV",s:"GTA IV",st:["blind test","énigme","énigme","énigme","énigme"]},
- {n:"Grand Theft Auto: Chinatown Wars",s:"Chinatown",st:["énigme"]},
+ {n:"Grand Theft Auto: Chinatown Wars",s:"Chinatown",st:["mini-jeu","mini-jeu"]},
  {n:"Grand Theft Auto V",s:"GTA V",st:["blind test","blind test","énigme"]},
  {n:"Grand Theft Auto VI",s:"GTA VI",st:["énigme finale"]}
 ];
@@ -263,8 +281,20 @@ M[8].st[4].decoys=[{f:96.9,aud:"audio-m9c.mp3"},{f:98.8,aud:"audio-m9d.mp3"}];
 M[8].st[4].show="Liberty Rock Radio 97.8";
 M[8].st[4].hints=[{t:"Cette station est animée par une légende du rock, Iggy Pop."},{t:"Sa fréquence est comprise entre 95 et 100 MHz."},{t:"Elle commence par 97."}];
 M[8].st[4].info="C'est <strong>Liberty Rock Radio 97.8</strong>, la station de rock classique de GTA IV, animée par Iggy Pop. À l'opposé, <strong>The Beat 102.7</strong>, celle de « Flashing Lights », diffuse du hip-hop et du R&B.";
+
+/* Mission 10 : GTA Chinatown Wars (mini-jeux) */
+M[9].st[0].kind="whistle";
+M[9].st[0].q="Liberty City, 3 h du matin. Huang Lee doit rentrer à sa planque, mais aucun bouton ne vous permettra d'appeler un taxi. Faites-le exactement comme sur Nintendo DS.";
+M[9].st[0].show="En sifflant dans le micro";
+M[9].st[0].hints=[{t:"Sur Nintendo DS, il n'y avait pas que l'écran tactile et les boutons…"},{t:"La console possédait un micro. Et crier « Taxi ! » ne suffira pas."},{t:"Faites comme un vrai New-Yorkais au bord du trottoir…"}];
+M[9].st[0].info="Sur Nintendo DS, Chinatown Wars permettait d'appeler un taxi <strong>en sifflant dans le micro</strong> de la console (ou en maintenant le bouton X). Le jeu exploitait toutes les particularités de la DS : écran tactile pour démarrer les voitures, préparer des cocktails Molotov, gratter des tickets ou tatouer des clients.";
+M[9].st[1].kind="hotwire";
+M[9].st[1].q="Une voiture garée vous tend les bras… mais pas de clé. Démarrez-la comme Huang Lee : dévissez le cache, branchez les bons fils et lancez le moteur.";
+M[9].st[1].show="Voiture démarrée sans clé";
+M[9].st[1].hints=[{t:"Pour une vis, faites tourner la souris (ou votre doigt) autour d'elle, comme un tournevis."},{t:"Chaque fil se branche sur la borne de sa couleur : glissez de l'un à l'autre."},{t:"Pour le contact, tournez la clé jusqu'à START et gardez-la tenue jusqu'à ce que le moteur démarre."}];
+M[9].st[1].info="Dans Chinatown Wars sur DS, voler une voiture garée lançait un <strong>mini-jeu sur l'écran tactile</strong> : dévisser un cache, brancher des fils, tourner un tournevis dans le contacteur… Sur PSP, sans écran tactile, ces mini-jeux ont été simplifiés en appuis de boutons.";
 /* =========================== */
-var TY={"musique":"♪ Musique","blind test":"♫ Blind test","énigme":"? Question","énigme finale":"★ Énigme finale"};
+var TY={"mini-jeu":"🎮 Mini-jeu","musique":"♪ Musique","blind test":"♫ Blind test","énigme":"? Question","énigme finale":"★ Énigme finale"};
 var KEY="gtq_v2",S=ld(),tm,ac,bg,bgSrc="",want=false,card=document.getElementById("card");
 function ld(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}}}
 function sv(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
@@ -316,7 +346,7 @@ function nameScr(){
  $("ok").onclick=go;nm.onkeydown=function(e){if(e.key==="Enter")go()};nm.focus()
 }
 function lab(t){return t==="énigme"?"question":t}
-var TRANS={2:["GTA premier du nom","GTA 2"],3:["GTA 2","GTA III"],4:["GTA III","Vice City"],5:["Vice City","San Andreas"],6:["San Andreas","Vice City Stories"],7:["Vice City Stories","GTA IV"]};
+var TRANS={2:["GTA premier du nom","GTA 2"],3:["GTA 2","GTA III"],4:["GTA III","Vice City"],5:["Vice City","San Andreas"],6:["San Andreas","Vice City Stories"],7:["Vice City Stories","GTA IV"],8:["GTA IV","Chinatown Wars"],9:["Chinatown Wars","GTA V"]};
 function pic(f,c,hide){return `<img class="pic ${c||""}" src="${encodeURIComponent(f)}" alt="" onerror="${hide?"this.style.display='none'":"this.outerHTML='<div class=box>Image à venir</div>'"}">`}
 function infoHTML(p){return p.info?`<div class="info"><p class="era">Le saviez-vous ?</p>${p.gif?pic(p.gif,"",1):""}${p.ipic?pic(p.ipic,"",1):""}<p>${p.info}</p></div>`:""}
 function hints(p){return p.hints||[{t:p.hint,link:p.link,lt:p.lt,warn:p.warn,embed:p.embed}]}
@@ -342,7 +372,8 @@ var keyA=new Audio(encodeURIComponent("phone-key.mp3")),keyOk=true;keyA.preload=
 function dtmf(k){if(S.mute)return;if(keyOk){try{var c=keyA.cloneNode();c.volume=.8;var r=c.play();if(r&&r.catch)r.catch(function(){dtmfSynth(k)});return}catch(e){}}dtmfSynth(k)}
 function dtmfSynth(k){try{ctx();var rows=[[1,2,3],[4,5,6],[7,8,9],["*",0,"#"]],R=[697,770,852,941],C=[1209,1336,1477];for(var r=0;r<4;r++)for(var c=0;c<3;c++)if(String(rows[r][c])===k){tone(R[r],0,.14,"sine",.05);tone(C[c],0,.14,"sine",.05)}}catch(e){}}
 var RAD={a:null,s:null};
-function radioStop(){(RAD.all||[]).forEach(function(x){if(x.a)try{x.a.pause()}catch(e){}});RAD.all=null;if(RAD.a){try{RAD.a.pause()}catch(e){}RAD.a=null}if(RAD.s){try{RAD.s.s.stop()}catch(e){}RAD.s=null}}
+var CLN=[];function cleanW(){var c=CLN;CLN=[];c.forEach(function(f){try{f()}catch(e){}})}
+function radioStop(){cleanW();(RAD.all||[]).forEach(function(x){if(x.a)try{x.a.pause()}catch(e){}});RAD.all=null;if(RAD.a){try{RAD.a.pause()}catch(e){}RAD.a=null}if(RAD.s){try{RAD.s.s.stop()}catch(e){}RAD.s=null}}
 var WG={
  radio:function(p){
   $("wg").innerHTML='<div class="radio"><div class="rdisp"><span id="rf">90.0</span><small> FM</small></div><div class="rscale"><i id="rn"></i></div><input type="range" id="rr" min="87.5" max="108" step="0.1" value="90" aria-label="Fréquence radio"><div class="row"><button type="button" class="ghost" id="rm">− 0,1</button><button type="button" class="ghost" id="rp">+ 0,1</button></div></div>';
@@ -364,6 +395,91 @@ var WG={
   r.oninput=function(){set(parseFloat(r.value))};
   $("rm").onclick=function(){set(f-.1)};$("rp").onclick=function(){set(f+.1)};draw();startStatic();
   return {ok:function(){return locked}}
+ },
+ whistle:function(p){
+  $("wg").innerHTML='<div class="wh"><div class="street"><div class="taxi" id="tx">🚕</div></div><button type="button" class="go" id="wmic">🎙️ Activer le micro</button><div class="meter" id="wmt" hidden><i id="wlv"></i></div><p class="whst" id="wst"></p><button type="button" class="ghost" id="wno">Pas de micro ?</button><input id="wtx" type="text" autocomplete="off" placeholder="Comment appelez-vous le taxi ?" hidden></div>';
+  var done=false,stream=null,raf=0,run=0,noisy=0,last=0,f0=0;$("go").style.display="none";
+  function stop(){cancelAnimationFrame(raf);raf=0;if(stream){stream.getTracks().forEach(function(t){t.stop()});stream=null}}
+  CLN.push(stop);
+  function win(){if(done)return;done=true;stop();$("wst").textContent="Le taxi vous a entendu !";$("tx").classList.add("come");
+   setTimeout(function(){beep(440,.15);setTimeout(function(){beep(350,.25)},180)},1300);setTimeout(function(){$("go").click()},2600)}
+  function fallback(){$("wtx").hidden=false;$("go").style.display="";$("wno").hidden=true;$("wtx").focus()}
+  $("wno").onclick=fallback;
+  $("wtx").onkeydown=function(e){if(e.key==="Enter")$("go").click()};
+  $("wmic").onclick=function(){
+   if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){$("wst").textContent="Micro indisponible sur cet appareil.";fallback();return}
+   navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}}).then(function(s){
+    stream=s;ctx();if(ac.state==="suspended")ac.resume();
+    var src=ac.createMediaStreamSource(s),an=ac.createAnalyser();an.fftSize=2048;an.smoothingTimeConstant=.2;src.connect(an);
+    var fb=new Float32Array(an.frequencyBinCount),td=new Float32Array(an.fftSize),hz=ac.sampleRate/an.fftSize;
+    var lo=Math.floor(500/hz),hi=Math.ceil(4500/hz),blo=Math.floor(150/hz),bhi=Math.ceil(7000/hz);
+    $("wmic").hidden=true;$("wmt").hidden=false;$("wst").textContent="Le micro vous écoute…";last=performance.now();
+    function loop(){
+     raf=requestAnimationFrame(loop);var now=performance.now(),dt=now-last;last=now;
+     an.getFloatTimeDomainData(td);var rms=0;for(var i=0;i<td.length;i++)rms+=td[i]*td[i];rms=Math.sqrt(rms/td.length);
+     $("wlv").style.width=Math.min(100,rms*600)+"%";
+     an.getFloatFrequencyData(fb);var pk=-1,pv=-1e9;for(i=lo;i<=hi;i++)if(fb[i]>pv){pv=fb[i];pk=i}
+     var tot=0,peak=0;for(i=blo;i<=bhi;i++){var e=Math.pow(10,fb[i]/10);tot+=e;if(Math.abs(i-pk)<=2)peak+=e}
+     var ratio=tot>0?peak/tot:0,fr=pk*hz;
+     var tonal=pv>-60&&ratio>.45&&rms>.004;
+     if(tonal&&(!f0||Math.abs(fr-f0)/f0<.25)){run+=dt}else run=Math.max(0,run-dt*2);
+     f0=tonal?fr:0;
+     if(!tonal&&rms>.05){noisy+=dt;if(noisy>600){$("wst").textContent="Les taxis de Liberty City ne s'arrêtent pas pour si peu…";noisy=0}}
+     if(run>450)win()
+    }
+    loop()
+   }).catch(function(){$("wst").textContent="Accès au micro refusé.";fallback()})
+  };
+  return {ok:function(){return done||norm($("wtx").value).indexOf("siffl")>=0}}
+ },
+ hotwire:function(p){
+  var C=[["#ff3b3b","rouge"],["#ffd23b","jaune"],["#3b8bff","bleu"]],R=[2,0,1],L=[40,90,140];
+  var scr=[[14,16],[86,16],[14,84],[86,84]];
+  $("wg").innerHTML='<div class="hw"><p class="hwst" id="hst">Étape 1 sur 3 : dévissez le cache</p><div class="hwb" id="hwb"><svg class="hwsvg" id="hsv" viewBox="0 0 280 180" aria-label="Fils à brancher"><rect x="0" y="0" width="280" height="180" fill="#140b1d"/>'+
+   L.map(function(y,i){return '<circle cx="30" cy="'+y+'" r="12" fill="'+C[i][0]+'" data-w="'+i+'"/><circle cx="250" cy="'+y+'" r="12" fill="none" stroke="'+C[R[i]][0]+'" stroke-width="5"/><circle cx="250" cy="'+y+'" r="5" fill="'+C[R[i]][0]+'"/>'}).join("")+
+   '<g id="hln"></g><line id="hdr" x1="0" y1="0" x2="0" y2="0" stroke-width="7" stroke-linecap="round" visibility="hidden"/></svg><div class="pnl" id="pnl"><b>ROCKSTAR MOTORS</b>'+
+   scr.map(function(c,i){return '<div class="scr" data-s="'+i+'" style="left:'+c[0]+'%;top:'+c[1]+'%"><i></i></div>'}).join("")+'</div></div>'+
+   '<div class="ignw" id="ign" hidden><svg id="isv" viewBox="-30 -20 260 230" aria-label="Contacteur à clé"><circle cx="100" cy="100" r="78" fill="#2b2d33" stroke="#9a9ca4" stroke-width="4"/><circle cx="100" cy="100" r="58" fill="#1b1c21"/>'+
+   [["OFF",-90],["ACC",-45],["ON",0],["START",40]].map(function(x){var a=(x[1]-90)*Math.PI/180;return '<text x="'+(100+102*Math.cos(a))+'" y="'+(105+102*Math.sin(a))+'" fill="'+(x[0]==="START"?"#ff2e88":"#ffd9a0")+'" font-size="13" font-family="Arial" font-weight="700" text-anchor="middle">'+x[0]+'</text>'}).join("")+
+   '<g id="key" style="transform-origin:100px 100px;transform:rotate(-90deg)"><rect x="92" y="40" width="16" height="120" rx="6" fill="#c9a227"/><circle cx="100" cy="100" r="30" fill="#d9b23a" stroke="#8a6d12" stroke-width="3"/><rect x="96" y="44" width="8" height="40" rx="3" fill="#8a6d12"/><circle cx="100" cy="100" r="8" fill="#8a6d12"/></g></svg><p class="cap">Tournez la clé jusqu\'à START et tenez-la le temps que le moteur démarre.</p><div class="ignbar"><i id="ibi"></i></div></div></div>';
+  $("go").style.display="none";
+  var done=false,left=4,conn=0,ok3=[false,false,false],tm=0,crank=0;
+  CLN.push(function(){clearInterval(tm);clearInterval(crank)});
+  Array.prototype.forEach.call(document.querySelectorAll(".scr"),function(el){
+   var acc=0,prev=null,moved=false;
+   function ang(e){var r=el.getBoundingClientRect();return Math.atan2(e.clientY-(r.top+r.height/2),e.clientX-(r.left+r.width/2))}
+   function turn(d){acc+=d;el.firstChild.style.transform="rotate("+(acc*180/Math.PI)+"deg)";if(Math.abs(acc)>=Math.PI*3&&!el.classList.contains("out")){el.classList.add("out");beep(900,.05);left--;if(!left)open()}}
+   el.onpointerdown=function(e){e.preventDefault();el.setPointerCapture(e.pointerId);prev=ang(e);moved=false};
+   el.onpointermove=function(e){if(prev===null)return;var a=ang(e),d=a-prev;if(d>Math.PI)d-=2*Math.PI;if(d<-Math.PI)d+=2*Math.PI;prev=a;if(Math.abs(d)>.02){moved=true;turn(d);if(Math.random()<.15)beep(1400,.015)}};
+   el.onpointerup=el.onpointercancel=function(){if(!moved&&prev!==null)turn(Math.PI/2);prev=null};
+  });
+  function open(){$("pnl").classList.add("off");beep(200,.2,"triangle");$("hst").textContent="Étape 2 sur 3 : branchez chaque fil sur la bonne borne"}
+  var sv=$("hsv"),dr=$("hdr"),cur=-1;
+  function pt(e){var r=sv.getBoundingClientRect();return {x:(e.clientX-r.left)/r.width*280,y:(e.clientY-r.top)/r.height*180}}
+  sv.onpointerdown=function(e){if(left)return;var q=pt(e);for(var i=0;i<3;i++)if(!ok3[i]&&Math.hypot(q.x-30,q.y-L[i])<20){cur=i;sv.setPointerCapture(e.pointerId);dr.setAttribute("stroke",C[i][0]);dr.setAttribute("x1",30);dr.setAttribute("y1",L[i]);dr.setAttribute("x2",q.x);dr.setAttribute("y2",q.y);dr.setAttribute("visibility","visible");e.preventDefault();return}};
+  sv.onpointermove=function(e){if(cur<0)return;var q=pt(e);dr.setAttribute("x2",q.x);dr.setAttribute("y2",q.y)};
+  sv.onpointerup=sv.onpointercancel=function(e){if(cur<0)return;var q=pt(e),hit=-1;for(var j=0;j<3;j++)if(Math.hypot(q.x-250,q.y-L[j])<24)hit=j;
+   dr.setAttribute("visibility","hidden");
+   if(hit>=0&&R[hit]===cur){ok3[cur]=true;conn++;$("hln").innerHTML+='<path d="M30 '+L[cur]+' C140 '+L[cur]+' 140 '+L[hit]+' 250 '+L[hit]+'" stroke="'+C[cur][0]+'" stroke-width="7" fill="none" stroke-linecap="round"/>';beep(700,.08);
+    if(conn===3){$("hst").textContent="Étape 3 sur 3 : lancez le moteur";$("ign").hidden=false}}
+   else if(hit>=0){beep(110,.25,"sawtooth");$("hst").textContent="Bzzzt ! Mauvaise borne, ça fait des étincelles…"}
+   cur=-1};
+  var held=0,ig=$("ign"),isv=$("isv"),key=$("key"),kang=-90,drag=false;
+  function setK(d){kang=d;key.style.transform="rotate("+d+"deg)"}
+  function kAng(e){var r=isv.getBoundingClientRect(),x=e.clientX-(r.left+r.width/2),y=e.clientY-(r.top+r.height/2);return Math.atan2(y,x)*180/Math.PI}
+  var off0=0;
+  isv.style.touchAction="none";
+  isv.onpointerdown=function(e){if(done)return;e.preventDefault();isv.setPointerCapture(e.pointerId);drag=true;key.style.transition="none";off0=kAng(e)-kang;beep(1200,.02)};
+  isv.onpointermove=function(e){if(!drag||done)return;var d=kAng(e)-off0;while(d-kang>180)d-=360;while(d-kang<-180)d+=360;d=Math.max(-90,Math.min(40,d));
+   var pz=kang<-30?0:kang<20?1:2,nz=d<-30?0:d<20?1:2;if(nz!==pz)beep(nz>pz?900:600,.03);setK(d);
+   if(d>=32){if(!crank){crank=setInterval(function(){beep(70+Math.random()*30,.09,"sawtooth")},140);tm=setInterval(function(){held+=50;$("ibi").style.width=Math.min(100,held/15)+"%";if(held>=1500){clearInterval(tm);clearInterval(crank);crank=0;start()}},50)}}
+   else stopCrank()};
+  function stopCrank(){if(crank){clearInterval(tm);clearInterval(crank);crank=0;held=0;$("ibi").style.width="0"}}
+  isv.onpointerup=isv.onpointercancel=function(){if(done)return;drag=false;stopCrank();if(kang>0){key.style.transition="transform .25s";setK(0)}};
+  function start(){done=true;$("hst").textContent="Vroum ! Le moteur tourne.";drag=false;key.style.transition="transform .3s";setK(0);
+   if(!S.mute){try{ctx();var o=ac.createOscillator(),g=ac.createGain(),t=ac.currentTime;o.type="sawtooth";o.frequency.setValueAtTime(60,t);o.frequency.exponentialRampToValueAtTime(190,t+.7);o.frequency.exponentialRampToValueAtTime(90,t+1.6);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.12,t+.1);g.gain.exponentialRampToValueAtTime(.001,t+1.8);o.connect(g);g.connect(ac.destination);o.start(t);o.stop(t+1.9)}catch(e){}}
+   setTimeout(function(){$("go").click()},1600)}
+  return {ok:function(){return done}}
  },
  phone:function(p){
   var L={2:"ABC",3:"DEF",4:"GHI",5:"JKL",6:"MNO",7:"PQRS",8:"TUV",9:"WXYZ"},K=["1","2","3","4","5","6","7","8","9","*","0","#"],num="";
