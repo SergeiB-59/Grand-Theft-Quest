@@ -96,6 +96,7 @@ button:disabled{opacity:.4;cursor:not-allowed}
 .scr.out{opacity:0;transform:scale(1.7);pointer-events:none}
 .hwsvg{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
 .ignw{margin-top:12px}.schema{margin:10px auto 0;max-width:260px;padding:10px 12px;border-radius:8px;background:#f1ead8;color:#2a2116;font:600 .82rem Arial,sans-serif;transform:rotate(-1.5deg);box-shadow:0 3px 8px #0008}.schema .era{color:#7a5a12;margin:0 0 6px}.schema table{width:100%;border-collapse:collapse}.schema td{padding:2px 4px}.schema .warn{margin:6px 0 0;color:#a3122a;font-size:.75rem}.dotc{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px;border:1px solid #0006}#sch{margin-top:10px}
+#flash{position:fixed;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:999}#flash.on{animation:phares .5s steps(1) infinite}@keyframes phares{0%{opacity:.85}50%{opacity:0}}
 .hwb.zap{animation:zap .5s}@keyframes zap{0%,100%{box-shadow:none}20%,60%{box-shadow:0 0 0 3px #fff,0 0 30px 10px #7fd4ff}40%{box-shadow:none}}
 .ignw svg{width:200px;max-width:70%;touch-action:none;cursor:grab}.ignw .cap{font-size:.85rem}
 .ign{margin-top:12px;width:100%;padding:12px;font:900 1rem Arial,sans-serif;border-radius:10px;border:2px solid #ff2e88;background:#2a0d1c;color:#fff;touch-action:none;user-select:none;-webkit-user-select:none}
@@ -148,7 +149,7 @@ var MU=[
  "Grand Theft Auto San Andreas (Official Theme Song).mp3",
  "Grand Theft Auto Vice City Stories Theme Song.mp3",
  "Grand Theft Auto IV Theme Song _[best quality]_.mp3",
- "audio-m10-rue.mp3",
+ "",
  "GTA V - Welcome to Los Santos Soundtrack - IntroTheme song.mp3",
  "GTA 6 - Official Main Theme Music.mp3"
 ];
@@ -374,7 +375,7 @@ var keyA=new Audio(encodeURIComponent("phone-key.mp3")),keyOk=true;keyA.preload=
 function dtmf(k){if(S.mute)return;if(keyOk){try{var c=keyA.cloneNode();c.volume=.8;var r=c.play();if(r&&r.catch)r.catch(function(){dtmfSynth(k)});return}catch(e){}}dtmfSynth(k)}
 function dtmfSynth(k){try{ctx();var rows=[[1,2,3],[4,5,6],[7,8,9],["*",0,"#"]],R=[697,770,852,941],C=[1209,1336,1477];for(var r=0;r<4;r++)for(var c=0;c<3;c++)if(String(rows[r][c])===k){tone(R[r],0,.14,"sine",.05);tone(C[c],0,.14,"sine",.05)}}catch(e){}}
 var RAD={a:null,s:null};
-var CLN=[];function cleanW(){var c=CLN;CLN=[];c.forEach(function(f){try{f()}catch(e){}})}
+var CLN=[],XA=[];function cleanW(){var c=CLN;CLN=[];c.forEach(function(f){try{f()}catch(e){}})}
 function radioStop(){cleanW();(RAD.all||[]).forEach(function(x){if(x.a)try{x.a.pause()}catch(e){}});RAD.all=null;if(RAD.a){try{RAD.a.pause()}catch(e){}RAD.a=null}if(RAD.s){try{RAD.s.s.stop()}catch(e){}RAD.s=null}}
 var WG={
  radio:function(p){
@@ -427,10 +428,10 @@ var WG={
      var low=-1e9;for(i=blo;i<pk-6;i++)if(fb[i]>low)low=fb[i];
      var side=-1e9;for(i=pk-12;i<=pk+12;i++)if(Math.abs(i-pk)>4&&fb[i]>side)side=fb[i];
      var tonal=pv>-60&&ratio>.55&&rms>.004&&pv-low>22&&pv-side>18;
-     if(tonal&&(!f0||Math.abs(fr-f0)/f0<.1)){run+=dt}else run=Math.max(0,run-dt*3);
+     if(tonal&&(!f0||Math.abs(fr-f0)/f0<.12)){run+=dt}else run=Math.max(0,run-dt*1.5);
      f0=tonal?fr:0;
      if(!tonal&&rms>.05){noisy+=dt;if(noisy>600){$("wst").textContent="Les taxis de Liberty City ne s'arrêtent pas pour si peu…";noisy=0}}
-     if(run>650)win()
+     if(run>220)win()
     }
     loop()
    }).catch(function(){$("wst").textContent="Accès au micro refusé.";fallback()})
@@ -460,11 +461,17 @@ var WG={
   /* sons optionnels fournis : démarreur (boucle) et moteur qui démarre */
   var crA=new Audio(encodeURIComponent("audio-m10-demarreur.mp3")),stA=new Audio(encodeURIComponent("audio-m10-moteur.mp3")),crOk=true,stOk=true;
   var alA=new Audio(encodeURIComponent("audio-m10-alarme.mp3")),alOk=true,alT=0;alA.preload="auto";alA.onerror=function(){alOk=false};
-  function alarm(){if(S.mute)return;clearTimeout(alT);if(alOk){try{alA.currentTime=0;var pr=alA.play();if(pr&&pr.catch)pr.catch(function(){});alT=setTimeout(function(){alA.pause()},4000);return}catch(e){}}
-   for(var i=0;i<10;i++)(function(i){setTimeout(function(){beep(i%2?620:900,.18,"square")},i*200)})(i)}
-  crA.loop=true;crA.preload=stA.preload="auto";crA.onerror=function(){crOk=false};stA.onerror=function(){stOk=false};
+  function flash(on){var f=$("flash");if(!f){f=document.createElement("div");f.id="flash";document.body.appendChild(f)}f.classList.toggle("on",!!on)}
+  function alarm(){clearTimeout(alT);var dur=alOk?4000:2000;flash(true);
+   if(!S.mute){if(alOk){try{alA.currentTime=0;var pr=alA.play();if(pr&&pr.catch)pr.catch(function(){})}catch(e){}}
+    else for(var i=0;i<10;i++)(function(i){setTimeout(function(){beep(i%2?620:900,.18,"square")},i*200)})(i)}
+   alT=setTimeout(function(){flash(false);try{alA.pause()}catch(e){}},dur)}
+  crA.loop=true;crA.preload=stA.preload="auto";stA.volume=.22;
+  var rue=new Audio(encodeURIComponent("audio-m10-rue.mp3"));rue.loop=true;rue.volume=.12;XA.push(rue,stA,alA);
+  if(!S.mute){try{var rp=rue.play();if(rp&&rp.catch)rp.catch(function(){})}catch(e){}}
+  var rueKick=function(){if(!S.mute&&rue.paused&&!done){var q=rue.play();if(q&&q.catch)q.catch(function(){})}};document.addEventListener("pointerdown",rueKick,true);crA.onerror=function(){crOk=false};stA.onerror=function(){stOk=false};
   function stopCr(){clearInterval(tm);clearInterval(crank);crank=0;try{crA.pause()}catch(e){}}
-  CLN.push(function(){stopCr();clearTimeout(alT);try{stA.pause();alA.pause()}catch(e){}});
+  CLN.push(function(){stopCr();clearTimeout(alT);flash(false);document.removeEventListener("pointerdown",rueKick,true);try{alA.pause();rue.pause()}catch(e){}XA=XA.filter(function(x){return x!==rue&&x!==alA})});
   function msg(t){$("hst").textContent=t}
   Array.prototype.forEach.call(document.querySelectorAll(".scr"),function(el){
    var acc=0,prev=null,moved=false;
@@ -478,7 +485,7 @@ var WG={
   $("sch").onclick=function(){var b=$("schb");b.hidden=!b.hidden;$("sch").textContent=b.hidden?"📄 Retourner le cache":"📄 Cacher le schéma"};
   var sv=$("hsv"),dr=$("hdr"),cur=-1;
   function pt(e){var r=sv.getBoundingClientRect();return {x:(e.clientX-r.left)/r.width*280,y:(e.clientY-r.top)/r.height*204}}
-  function short(t){conn={};n=0;$("hln").innerHTML="";beep(110,.35,"sawtooth");setTimeout(function(){beep(90,.3,"sawtooth")},120);setTimeout(alarm,350);
+  function short(t){conn={};n=0;$("hln").innerHTML="";alarm();
    var b=$("hwb");b.classList.remove("zap");void b.offsetWidth;b.classList.add("zap");msg(t+" Tous les fils ont sauté, recommencez.")}
   sv.onpointerdown=function(e){if(left||n===5)return;var q=pt(e);for(var i=0;i<5;i++)if(!conn[LO[i]]&&Math.hypot(q.x-30,q.y-Y[i])<18){cur=i;sv.setPointerCapture(e.pointerId);dr.setAttribute("stroke",W[LO[i]][0]);dr.setAttribute("x1",30);dr.setAttribute("y1",Y[i]);dr.setAttribute("x2",q.x);dr.setAttribute("y2",q.y);dr.setAttribute("visibility","visible");e.preventDefault();return}};
   sv.onpointermove=function(e){if(cur<0)return;var q=pt(e);dr.setAttribute("x2",q.x);dr.setAttribute("y2",q.y)};
@@ -589,7 +596,7 @@ function review(){
 }
 /* démarrage */
 document.addEventListener("visibilitychange",function(){if(document.hidden&&S.start&&!S.end){S.tabs=(S.tabs||0)+1;sv()}});
-$("mt").onclick=function(){S.mute=!S.mute;sv();mlabel();(RAD.all||[]).forEach(function(x){if(x.a)x.a.muted=!!S.mute});if(RAD.s){try{RAD.s.g.gain.cancelScheduledValues(0);RAD.s.g.gain.value=S.mute?0:.03}catch(e){}}if(S.mute){stopSnd();var _a=document.querySelectorAll("audio");Array.prototype.forEach.call(_a,function(x){x.pause()})}if(S.mute){if(bg)bg.pause()}else if(want&&bg){var p=bg.play();if(p&&p.catch)p.catch(function(){})}};mlabel();
+$("mt").onclick=function(){S.mute=!S.mute;sv();mlabel();(RAD.all||[]).forEach(function(x){if(x.a)x.a.muted=!!S.mute});if(RAD.s){try{RAD.s.g.gain.cancelScheduledValues(0);RAD.s.g.gain.value=S.mute?0:.03}catch(e){}}if(S.mute){stopSnd();XA.forEach(function(x){try{x.pause()}catch(e){}});var _a=document.querySelectorAll("audio");Array.prototype.forEach.call(_a,function(x){x.pause()})}if(S.mute){if(bg)bg.pause()}else if(want&&bg){var p=bg.play();if(p&&p.catch)p.catch(function(){})}};mlabel();
 if(location.hash==="#reset-orga"){try{localStorage.removeItem(KEY)}catch(e){}S={};history.replaceState(null,"",location.pathname)}
 if(S.open)vault();else if(S.end&&!S.pass)padlock();else if(S.start)S.pass?passScr():mission();else if(S.rules)prologue();else if(S.name)brief();else nameScr();
 </script>
