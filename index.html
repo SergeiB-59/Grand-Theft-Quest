@@ -87,7 +87,7 @@ button:disabled{opacity:.4;cursor:not-allowed}
 .meter{height:8px;background:#222;border-radius:4px;overflow:hidden;margin:10px 0}.meter i{display:block;height:100%;width:0;background:var(--cyan);transition:width .08s}
 .hw,.wh{max-width:360px;margin:0 auto 16px;padding:14px;border:2px solid var(--cyan);border-radius:14px;background:#0d0618;text-align:center}
 .hwst,.whst{font:700 .85rem Arial,sans-serif;color:#ffd9a0;margin:6px 0 10px;min-height:1.2em}
-.hwb{position:relative;width:100%;aspect-ratio:280/180;border-radius:10px;background:#140b1d;overflow:hidden;user-select:none;-webkit-user-select:none}
+.hwb{position:relative;width:100%;aspect-ratio:280/204;border-radius:10px;background:#140b1d;overflow:hidden;user-select:none;-webkit-user-select:none}
 .pnl{position:absolute;inset:7%;border-radius:8px;background:linear-gradient(135deg,#777a84,#3b3d45);box-shadow:inset 0 0 0 2px #9a9ca4,0 4px 10px #000a;transition:transform .9s ease-in,opacity .9s;z-index:2}
 .pnl.off{transform:translateY(150%) rotate(20deg);opacity:0;pointer-events:none}
 .pnl b{position:absolute;left:0;right:0;top:44%;font:700 .7rem Arial,sans-serif;color:#2a2b30;letter-spacing:2px}
@@ -95,7 +95,9 @@ button:disabled{opacity:.4;cursor:not-allowed}
 .scr i{position:absolute;left:17px;top:5px;width:4px;height:28px;background:#333;border-radius:2px}
 .scr.out{opacity:0;transform:scale(1.7);pointer-events:none}
 .hwsvg{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
-.ignw{margin-top:12px}.ignw svg{width:200px;max-width:70%;touch-action:none;cursor:grab}.ignw .cap{font-size:.85rem}
+.ignw{margin-top:12px}.schema{margin:10px auto 0;max-width:260px;padding:10px 12px;border-radius:8px;background:#f1ead8;color:#2a2116;font:600 .82rem Arial,sans-serif;transform:rotate(-1.5deg);box-shadow:0 3px 8px #0008}.schema .era{color:#7a5a12;margin:0 0 6px}.schema table{width:100%;border-collapse:collapse}.schema td{padding:2px 4px}.schema .warn{margin:6px 0 0;color:#a3122a;font-size:.75rem}.dotc{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px;border:1px solid #0006}#sch{margin-top:10px}
+.hwb.zap{animation:zap .5s}@keyframes zap{0%,100%{box-shadow:none}20%,60%{box-shadow:0 0 0 3px #fff,0 0 30px 10px #7fd4ff}40%{box-shadow:none}}
+.ignw svg{width:200px;max-width:70%;touch-action:none;cursor:grab}.ignw .cap{font-size:.85rem}
 .ign{margin-top:12px;width:100%;padding:12px;font:900 1rem Arial,sans-serif;border-radius:10px;border:2px solid #ff2e88;background:#2a0d1c;color:#fff;touch-action:none;user-select:none;-webkit-user-select:none}
 .ignbar{height:8px;background:#222;border-radius:4px;overflow:hidden;margin-top:8px}.ignbar i{display:block;height:100%;width:0;background:#ff2e88}
 .pad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
@@ -146,7 +148,7 @@ var MU=[
  "Grand Theft Auto San Andreas (Official Theme Song).mp3",
  "Grand Theft Auto Vice City Stories Theme Song.mp3",
  "Grand Theft Auto IV Theme Song _[best quality]_.mp3",
- "",
+ "audio-m10-rue.mp3",
  "GTA V - Welcome to Los Santos Soundtrack - IntroTheme song.mp3",
  "GTA 6 - Official Main Theme Music.mp3"
 ];
@@ -289,9 +291,9 @@ M[9].st[0].show="En sifflant dans le micro";
 M[9].st[0].hints=[{t:"Sur Nintendo DS, il n'y avait pas que l'écran tactile et les boutons…"},{t:"La console possédait un micro. Et crier « Taxi ! » ne suffira pas."},{t:"Faites comme un vrai New-Yorkais au bord du trottoir…"}];
 M[9].st[0].info="Sur Nintendo DS, Chinatown Wars permettait d'appeler un taxi <strong>en sifflant dans le micro</strong> de la console (ou en maintenant le bouton X). Le jeu exploitait toutes les particularités de la DS : écran tactile pour démarrer les voitures, préparer des cocktails Molotov, gratter des tickets ou tatouer des clients.";
 M[9].st[1].kind="hotwire";
-M[9].st[1].q="Une voiture garée vous tend les bras… mais pas de clé. Démarrez-la comme Huang Lee : dévissez le cache, branchez les bons fils et lancez le moteur.";
+M[9].st[1].q="Une voiture garée vous tend les bras… mais pas de clé. Démarrez-la comme Huang Lee.";
 M[9].st[1].show="Voiture démarrée sans clé";
-M[9].st[1].hints=[{t:"Pour une vis, faites tourner la souris (ou votre doigt) autour d'elle, comme un tournevis."},{t:"Chaque fil se branche sur la borne de sa couleur : glissez de l'un à l'autre."},{t:"Pour le contact, tournez la clé jusqu'à START et gardez-la tenue jusqu'à ce que le moteur démarre."}];
+M[9].st[1].hints=[{t:"Le cache est vissé : un tournevis tourne dans quel sens pour dévisser ?"},{t:"Le schéma de câblage se trouve au dos du cache."},{t:"Tout le monde commence par la masse. Pour le contact, il faut tenir la clé."}];
 M[9].st[1].info="Dans Chinatown Wars sur DS, voler une voiture garée lançait un <strong>mini-jeu sur l'écran tactile</strong> : dévisser un cache, brancher des fils, tourner un tournevis dans le contacteur… Sur PSP, sans écran tactile, ces mini-jeux ont été simplifiés en appuis de boutons.";
 /* =========================== */
 var TY={"mini-jeu":"🎮 Mini-jeu","musique":"♪ Musique","blind test":"♫ Blind test","énigme":"? Question","énigme finale":"★ Énigme finale"};
@@ -412,7 +414,7 @@ var WG={
     stream=s;ctx();if(ac.state==="suspended")ac.resume();
     var src=ac.createMediaStreamSource(s),an=ac.createAnalyser();an.fftSize=2048;an.smoothingTimeConstant=.2;src.connect(an);
     var fb=new Float32Array(an.frequencyBinCount),td=new Float32Array(an.fftSize),hz=ac.sampleRate/an.fftSize;
-    var lo=Math.floor(500/hz),hi=Math.ceil(4500/hz),blo=Math.floor(150/hz),bhi=Math.ceil(7000/hz);
+    var lo=Math.floor(900/hz),hi=Math.ceil(4500/hz),blo=Math.floor(150/hz),bhi=Math.ceil(7000/hz);
     $("wmic").hidden=true;$("wmt").hidden=false;$("wst").textContent="Le micro vous écoute…";last=performance.now();
     function loop(){
      raf=requestAnimationFrame(loop);var now=performance.now(),dt=now-last;last=now;
@@ -421,11 +423,14 @@ var WG={
      an.getFloatFrequencyData(fb);var pk=-1,pv=-1e9;for(i=lo;i<=hi;i++)if(fb[i]>pv){pv=fb[i];pk=i}
      var tot=0,peak=0;for(i=blo;i<=bhi;i++){var e=Math.pow(10,fb[i]/10);tot+=e;if(Math.abs(i-pk)<=2)peak+=e}
      var ratio=tot>0?peak/tot:0,fr=pk*hz;
-     var tonal=pv>-60&&ratio>.45&&rms>.004;
-     if(tonal&&(!f0||Math.abs(fr-f0)/f0<.25)){run+=dt}else run=Math.max(0,run-dt*2);
+     /* la voix a toujours des harmoniques graves fortes sous le pic ; un sifflement non */
+     var low=-1e9;for(i=blo;i<pk-6;i++)if(fb[i]>low)low=fb[i];
+     var side=-1e9;for(i=pk-12;i<=pk+12;i++)if(Math.abs(i-pk)>4&&fb[i]>side)side=fb[i];
+     var tonal=pv>-60&&ratio>.55&&rms>.004&&pv-low>22&&pv-side>18;
+     if(tonal&&(!f0||Math.abs(fr-f0)/f0<.1)){run+=dt}else run=Math.max(0,run-dt*3);
      f0=tonal?fr:0;
      if(!tonal&&rms>.05){noisy+=dt;if(noisy>600){$("wst").textContent="Les taxis de Liberty City ne s'arrêtent pas pour si peu…";noisy=0}}
-     if(run>450)win()
+     if(run>650)win()
     }
     loop()
    }).catch(function(){$("wst").textContent="Accès au micro refusé.";fallback()})
@@ -433,52 +438,75 @@ var WG={
   return {ok:function(){return done||norm($("wtx").value).indexOf("siffl")>=0}}
  },
  hotwire:function(p){
-  var C=[["#ff3b3b","rouge"],["#ffd23b","jaune"],["#3b8bff","bleu"]],R=[2,0,1],L=[40,90,140];
-  var scr=[[14,16],[86,16],[14,84],[86,84]];
-  $("wg").innerHTML='<div class="hw"><p class="hwst" id="hst">Étape 1 sur 3 : dévissez le cache</p><div class="hwb" id="hwb"><svg class="hwsvg" id="hsv" viewBox="0 0 280 180" aria-label="Fils à brancher"><rect x="0" y="0" width="280" height="180" fill="#140b1d"/>'+
-   L.map(function(y,i){return '<circle cx="30" cy="'+y+'" r="12" fill="'+C[i][0]+'" data-w="'+i+'"/><circle cx="250" cy="'+y+'" r="12" fill="none" stroke="'+C[R[i]][0]+'" stroke-width="5"/><circle cx="250" cy="'+y+'" r="5" fill="'+C[R[i]][0]+'"/>'}).join("")+
+  /* 5 fils, 5 bornes nommées et mélangées ; le schéma est au dos du cache ; GND puis BAT en premier, sinon court-circuit */
+  var W=[["#ff3b3b","Rouge","BAT"],["#2b2b2b","Noir","GND"],["#ffd23b","Jaune","IGN"],["#3b8bff","Bleu","ACC"],["#2ecc71","Vert","ST"]];
+  function mix(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+  var LO=mix([0,1,2,3,4]),RO=mix(["BAT","GND","IGN","ACC","ST"]),Y=[26,64,102,140,178];
+  var scr=[[12,14],[88,14],[12,86],[88,86],[50,14],[50,86]];
+  $("wg").innerHTML='<div class="hw"><div class="hwb" id="hwb"><svg class="hwsvg" id="hsv" viewBox="0 0 280 204" aria-label="Fils à brancher"><rect x="0" y="0" width="280" height="204" fill="#140b1d"/>'+
+   LO.map(function(w,i){return '<rect x="0" y="'+(Y[i]-5)+'" width="22" height="10" fill="'+W[w][0]+'" stroke="#666" stroke-width="1"/><circle cx="30" cy="'+Y[i]+'" r="11" fill="'+W[w][0]+'" stroke="#aaa" stroke-width="1.5"/>'}).join("")+
+   RO.map(function(l,i){return '<circle cx="230" cy="'+Y[i]+'" r="11" fill="#3a3b42" stroke="#b9bbc3" stroke-width="3"/><circle cx="230" cy="'+Y[i]+'" r="4" fill="#d6d7dc"/><text x="257" y="'+(Y[i]+4)+'" fill="#ffd9a0" font-size="10" font-family="Arial" font-weight="700" text-anchor="middle">'+l+'</text>'}).join("")+
    '<g id="hln"></g><line id="hdr" x1="0" y1="0" x2="0" y2="0" stroke-width="7" stroke-linecap="round" visibility="hidden"/></svg><div class="pnl" id="pnl"><b>ROCKSTAR MOTORS</b>'+
-   scr.map(function(c,i){return '<div class="scr" data-s="'+i+'" style="left:'+c[0]+'%;top:'+c[1]+'%"><i></i></div>'}).join("")+'</div></div>'+
+   scr.map(function(c,i){return '<div class="scr" style="left:'+c[0]+'%;top:'+c[1]+'%"><i style="transform:rotate('+Math.floor(Math.random()*180)+'deg)"></i></div>'}).join("")+'</div></div>'+
+   '<button type="button" class="ghost" id="sch" hidden>📄 Retourner le cache</button><div class="schema" id="schb" hidden><p class="era">Schéma de câblage</p><table>'+
+   W.map(function(w){return '<tr><td><span class="dotc" style="background:'+w[0]+'"></span>'+w[1]+'</td><td>→</td><td><strong>'+w[2]+'</strong></td></tr>'}).join("")+
+   '</table><p class="warn">⚠ Brancher la masse en premier, puis la batterie. Sinon : court-circuit.</p></div>'+
+   '<p class="hwst" id="hst"></p>'+
    '<div class="ignw" id="ign" hidden><svg id="isv" viewBox="-30 -20 260 230" aria-label="Contacteur à clé"><circle cx="100" cy="100" r="78" fill="#2b2d33" stroke="#9a9ca4" stroke-width="4"/><circle cx="100" cy="100" r="58" fill="#1b1c21"/>'+
    [["OFF",-90],["ACC",-45],["ON",0],["START",40]].map(function(x){var a=(x[1]-90)*Math.PI/180;return '<text x="'+(100+102*Math.cos(a))+'" y="'+(105+102*Math.sin(a))+'" fill="'+(x[0]==="START"?"#ff2e88":"#ffd9a0")+'" font-size="13" font-family="Arial" font-weight="700" text-anchor="middle">'+x[0]+'</text>'}).join("")+
-   '<g id="key" style="transform-origin:100px 100px;transform:rotate(-90deg)"><rect x="92" y="40" width="16" height="120" rx="6" fill="#c9a227"/><circle cx="100" cy="100" r="30" fill="#d9b23a" stroke="#8a6d12" stroke-width="3"/><rect x="96" y="44" width="8" height="40" rx="3" fill="#8a6d12"/><circle cx="100" cy="100" r="8" fill="#8a6d12"/></g></svg><p class="cap">Tournez la clé jusqu\'à START et tenez-la le temps que le moteur démarre.</p><div class="ignbar"><i id="ibi"></i></div></div></div>';
+   '<g id="key" style="transform-origin:100px 100px;transform:rotate(-90deg)"><rect x="92" y="40" width="16" height="120" rx="6" fill="#c9a227"/><circle cx="100" cy="100" r="30" fill="#d9b23a" stroke="#8a6d12" stroke-width="3"/><rect x="96" y="44" width="8" height="40" rx="3" fill="#8a6d12"/><circle cx="100" cy="100" r="8" fill="#8a6d12"/></g></svg><div class="ignbar"><i id="ibi"></i></div></div></div>';
   $("go").style.display="none";
-  var done=false,left=4,conn=0,ok3=[false,false,false],tm=0,crank=0;
-  CLN.push(function(){clearInterval(tm);clearInterval(crank)});
+  var done=false,left=scr.length,conn={},n=0,tm=0,crank=0;
+  /* sons optionnels fournis : démarreur (boucle) et moteur qui démarre */
+  var crA=new Audio(encodeURIComponent("audio-m10-demarreur.mp3")),stA=new Audio(encodeURIComponent("audio-m10-moteur.mp3")),crOk=true,stOk=true;
+  var alA=new Audio(encodeURIComponent("audio-m10-alarme.mp3")),alOk=true,alT=0;alA.preload="auto";alA.onerror=function(){alOk=false};
+  function alarm(){if(S.mute)return;clearTimeout(alT);if(alOk){try{alA.currentTime=0;var pr=alA.play();if(pr&&pr.catch)pr.catch(function(){});alT=setTimeout(function(){alA.pause()},4000);return}catch(e){}}
+   for(var i=0;i<10;i++)(function(i){setTimeout(function(){beep(i%2?620:900,.18,"square")},i*200)})(i)}
+  crA.loop=true;crA.preload=stA.preload="auto";crA.onerror=function(){crOk=false};stA.onerror=function(){stOk=false};
+  function stopCr(){clearInterval(tm);clearInterval(crank);crank=0;try{crA.pause()}catch(e){}}
+  CLN.push(function(){stopCr();clearTimeout(alT);try{stA.pause();alA.pause()}catch(e){}});
+  function msg(t){$("hst").textContent=t}
   Array.prototype.forEach.call(document.querySelectorAll(".scr"),function(el){
    var acc=0,prev=null,moved=false;
    function ang(e){var r=el.getBoundingClientRect();return Math.atan2(e.clientY-(r.top+r.height/2),e.clientX-(r.left+r.width/2))}
-   function turn(d){acc+=d;el.firstChild.style.transform="rotate("+(acc*180/Math.PI)+"deg)";if(Math.abs(acc)>=Math.PI*3&&!el.classList.contains("out")){el.classList.add("out");beep(900,.05);left--;if(!left)open()}}
+   function turn(d){acc=Math.min(acc+d,Math.PI*.6);el.firstChild.style.transform="rotate("+(acc*180/Math.PI)+"deg)";if(acc<=-Math.PI*4&&!el.classList.contains("out")){el.classList.add("out");beep(900,.05);left--;if(!left)open()}}
    el.onpointerdown=function(e){e.preventDefault();el.setPointerCapture(e.pointerId);prev=ang(e);moved=false};
-   el.onpointermove=function(e){if(prev===null)return;var a=ang(e),d=a-prev;if(d>Math.PI)d-=2*Math.PI;if(d<-Math.PI)d+=2*Math.PI;prev=a;if(Math.abs(d)>.02){moved=true;turn(d);if(Math.random()<.15)beep(1400,.015)}};
-   el.onpointerup=el.onpointercancel=function(){if(!moved&&prev!==null)turn(Math.PI/2);prev=null};
+   el.onpointermove=function(e){if(prev===null)return;var a=ang(e),d=a-prev;if(d>Math.PI)d-=2*Math.PI;if(d<-Math.PI)d+=2*Math.PI;prev=a;if(Math.abs(d)>.02){moved=true;turn(d);if(acc>=Math.PI*.6)msg("Ça force… la vis ne bouge pas dans ce sens-là.");if(Math.random()<.15)beep(1400,.015)}};
+   el.onpointerup=el.onpointercancel=function(){prev=null};
   });
-  function open(){$("pnl").classList.add("off");beep(200,.2,"triangle");$("hst").textContent="Étape 2 sur 3 : branchez chaque fil sur la bonne borne"}
+  function open(){$("pnl").classList.add("off");beep(200,.2,"triangle");msg("");setTimeout(function(){$("sch").hidden=false},900)}
+  $("sch").onclick=function(){var b=$("schb");b.hidden=!b.hidden;$("sch").textContent=b.hidden?"📄 Retourner le cache":"📄 Cacher le schéma"};
   var sv=$("hsv"),dr=$("hdr"),cur=-1;
-  function pt(e){var r=sv.getBoundingClientRect();return {x:(e.clientX-r.left)/r.width*280,y:(e.clientY-r.top)/r.height*180}}
-  sv.onpointerdown=function(e){if(left)return;var q=pt(e);for(var i=0;i<3;i++)if(!ok3[i]&&Math.hypot(q.x-30,q.y-L[i])<20){cur=i;sv.setPointerCapture(e.pointerId);dr.setAttribute("stroke",C[i][0]);dr.setAttribute("x1",30);dr.setAttribute("y1",L[i]);dr.setAttribute("x2",q.x);dr.setAttribute("y2",q.y);dr.setAttribute("visibility","visible");e.preventDefault();return}};
+  function pt(e){var r=sv.getBoundingClientRect();return {x:(e.clientX-r.left)/r.width*280,y:(e.clientY-r.top)/r.height*204}}
+  function short(t){conn={};n=0;$("hln").innerHTML="";beep(110,.35,"sawtooth");setTimeout(function(){beep(90,.3,"sawtooth")},120);setTimeout(alarm,350);
+   var b=$("hwb");b.classList.remove("zap");void b.offsetWidth;b.classList.add("zap");msg(t+" Tous les fils ont sauté, recommencez.")}
+  sv.onpointerdown=function(e){if(left||n===5)return;var q=pt(e);for(var i=0;i<5;i++)if(!conn[LO[i]]&&Math.hypot(q.x-30,q.y-Y[i])<18){cur=i;sv.setPointerCapture(e.pointerId);dr.setAttribute("stroke",W[LO[i]][0]);dr.setAttribute("x1",30);dr.setAttribute("y1",Y[i]);dr.setAttribute("x2",q.x);dr.setAttribute("y2",q.y);dr.setAttribute("visibility","visible");e.preventDefault();return}};
   sv.onpointermove=function(e){if(cur<0)return;var q=pt(e);dr.setAttribute("x2",q.x);dr.setAttribute("y2",q.y)};
-  sv.onpointerup=sv.onpointercancel=function(e){if(cur<0)return;var q=pt(e),hit=-1;for(var j=0;j<3;j++)if(Math.hypot(q.x-250,q.y-L[j])<24)hit=j;
-   dr.setAttribute("visibility","hidden");
-   if(hit>=0&&R[hit]===cur){ok3[cur]=true;conn++;$("hln").innerHTML+='<path d="M30 '+L[cur]+' C140 '+L[cur]+' 140 '+L[hit]+' 250 '+L[hit]+'" stroke="'+C[cur][0]+'" stroke-width="7" fill="none" stroke-linecap="round"/>';beep(700,.08);
-    if(conn===3){$("hst").textContent="Étape 3 sur 3 : lancez le moteur";$("ign").hidden=false}}
-   else if(hit>=0){beep(110,.25,"sawtooth");$("hst").textContent="Bzzzt ! Mauvaise borne, ça fait des étincelles…"}
-   cur=-1};
-  var held=0,ig=$("ign"),isv=$("isv"),key=$("key"),kang=-90,drag=false;
+  sv.onpointerup=sv.onpointercancel=function(e){if(cur<0)return;var q=pt(e),hit=-1;for(var j=0;j<5;j++)if(Math.hypot(q.x-230,q.y-Y[j])<18)hit=j;
+   dr.setAttribute("visibility","hidden");var w=LO[cur],c=cur;cur=-1;if(hit<0)return;
+   var used=false;for(var k in conn)if(conn[k]===hit)used=true;if(used){msg("Cette borne est déjà occupée.");return}
+   if(RO[hit]!==W[w][2]){short("Bzzzt ! Court-circuit : mauvaise borne.");return}
+   if(n===0&&W[w][2]!=="GND"){short("Bzzzt ! Court-circuit : il fallait commencer par la masse.");return}
+   if(n===1&&W[w][2]!=="BAT"){short("Bzzzt ! Court-circuit : la batterie devait suivre la masse.");return}
+   conn[w]=hit;n++;$("hln").innerHTML+='<path d="M30 '+Y[c]+' C140 '+Y[c]+' 130 '+Y[hit]+' 230 '+Y[hit]+'" stroke="'+W[w][0]+'" stroke-width="7" fill="none" stroke-linecap="round" opacity=".95"/>';beep(700,.08);msg("");
+   if(n===5){beep(1047,.12);$("ign").hidden=false;$("sch").hidden=true;$("schb").hidden=true}};
+  var held=0,isv=$("isv"),key=$("key"),kang=-90,drag=false,off0=0;
   function setK(d){kang=d;key.style.transform="rotate("+d+"deg)"}
   function kAng(e){var r=isv.getBoundingClientRect(),x=e.clientX-(r.left+r.width/2),y=e.clientY-(r.top+r.height/2);return Math.atan2(y,x)*180/Math.PI}
-  var off0=0;
-  isv.style.touchAction="none";
+  function startCr(){if(crank)return;held=0;
+   if(crOk&&!S.mute){try{crA.currentTime=0;var pr=crA.play();if(pr&&pr.catch)pr.catch(function(){})}catch(e){}crank=1}
+   else crank=setInterval(function(){beep(70+Math.random()*30,.09,"sawtooth")},140);
+   tm=setInterval(function(){held+=50;$("ibi").style.width=Math.min(100,held/18)+"%";if(held>=1800){stopCr();start()}},50)}
+  function endCr(){if(crank||tm){stopCr();held=0;$("ibi").style.width="0"}}
   isv.onpointerdown=function(e){if(done)return;e.preventDefault();isv.setPointerCapture(e.pointerId);drag=true;key.style.transition="none";off0=kAng(e)-kang;beep(1200,.02)};
   isv.onpointermove=function(e){if(!drag||done)return;var d=kAng(e)-off0;while(d-kang>180)d-=360;while(d-kang<-180)d+=360;d=Math.max(-90,Math.min(40,d));
    var pz=kang<-30?0:kang<20?1:2,nz=d<-30?0:d<20?1:2;if(nz!==pz)beep(nz>pz?900:600,.03);setK(d);
-   if(d>=32){if(!crank){crank=setInterval(function(){beep(70+Math.random()*30,.09,"sawtooth")},140);tm=setInterval(function(){held+=50;$("ibi").style.width=Math.min(100,held/15)+"%";if(held>=1500){clearInterval(tm);clearInterval(crank);crank=0;start()}},50)}}
-   else stopCrank()};
-  function stopCrank(){if(crank){clearInterval(tm);clearInterval(crank);crank=0;held=0;$("ibi").style.width="0"}}
-  isv.onpointerup=isv.onpointercancel=function(){if(done)return;drag=false;stopCrank();if(kang>0){key.style.transition="transform .25s";setK(0)}};
-  function start(){done=true;$("hst").textContent="Vroum ! Le moteur tourne.";drag=false;key.style.transition="transform .3s";setK(0);
-   if(!S.mute){try{ctx();var o=ac.createOscillator(),g=ac.createGain(),t=ac.currentTime;o.type="sawtooth";o.frequency.setValueAtTime(60,t);o.frequency.exponentialRampToValueAtTime(190,t+.7);o.frequency.exponentialRampToValueAtTime(90,t+1.6);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.12,t+.1);g.gain.exponentialRampToValueAtTime(.001,t+1.8);o.connect(g);g.connect(ac.destination);o.start(t);o.stop(t+1.9)}catch(e){}}
-   setTimeout(function(){$("go").click()},1600)}
+   if(d>=32)startCr();else endCr()};
+  isv.onpointerup=isv.onpointercancel=function(){if(done)return;drag=false;endCr();if(kang>0){key.style.transition="transform .25s";setK(0)}};
+  function start(){done=true;msg("Vroum ! Le moteur tourne.");drag=false;key.style.transition="transform .3s";setK(0);
+   if(S.mute){}else if(stOk){try{stA.currentTime=0;var pr=stA.play();if(pr&&pr.catch)pr.catch(function(){})}catch(e){}}
+   else{try{ctx();var o=ac.createOscillator(),g=ac.createGain(),t=ac.currentTime;o.type="sawtooth";o.frequency.setValueAtTime(60,t);o.frequency.exponentialRampToValueAtTime(190,t+.7);o.frequency.exponentialRampToValueAtTime(90,t+1.6);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.12,t+.1);g.gain.exponentialRampToValueAtTime(.001,t+1.8);o.connect(g);g.connect(ac.destination);o.start(t);o.stop(t+1.9)}catch(e){}}
+   setTimeout(function(){$("go").click()},2200)}
   return {ok:function(){return done}}
  },
  phone:function(p){
