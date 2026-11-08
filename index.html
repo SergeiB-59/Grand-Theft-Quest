@@ -95,7 +95,13 @@ button:disabled{opacity:.4;cursor:not-allowed}
 .scr i{position:absolute;left:17px;top:5px;width:4px;height:28px;background:#333;border-radius:2px}
 .scr.out{opacity:0;transform:scale(1.7);pointer-events:none}
 .hwsvg{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
-.ignw{margin-top:12px}.schema{margin:10px auto 0;max-width:260px;padding:10px 12px;border-radius:8px;background:#f1ead8;color:#2a2116;font:600 .82rem Arial,sans-serif;transform:rotate(-1.5deg);box-shadow:0 3px 8px #0008}.schema .era{color:#7a5a12;margin:0 0 6px}.schema table{width:100%;border-collapse:collapse}.schema td{padding:2px 4px}.schema .warn{margin:6px 0 0;color:#a3122a;font-size:.75rem}.dotc{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px;border:1px solid #0006}#sch{margin-top:10px}
+.ignw{margin-top:12px}.schema{margin:10px auto 0;max-width:260px;padding:10px 12px;border-radius:8px;background:#f1ead8;color:#2a2116;font:600 .82rem Arial,sans-serif;transform:rotate(-1.5deg);box-shadow:0 3px 8px #0008}.schema .era{color:#7a5a12;margin:0 0 6px}.schema table{width:100%;border-collapse:collapse}.schema td{padding:2px 4px}.schema .warn{margin:6px 0 0;color:#a3122a;font-size:.75rem}.dotc{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px;border:1px solid #0006}.gb{position:relative;margin:14px auto 0;width:230px;height:92px;perspective:500px;border-radius:12px;background:#17181d;box-shadow:inset 0 0 0 3px #2c2d33,0 3px 8px #0008}
+.gbin{position:absolute;inset:9px;border-radius:7px;background:radial-gradient(#15151a,#060608);overflow:hidden}
+.paper{position:absolute;left:50%;top:50%;width:84px;height:50px;margin:-25px 0 0 -42px;background:#f1ead8;border-radius:3px;transform:rotate(-7deg);box-shadow:0 2px 5px #000c;cursor:pointer;font:800 .5rem/1.25 Arial,sans-serif;color:#7a5a12;display:flex;align-items:center;justify-content:center;text-align:center}
+.junk{position:absolute;left:14px;bottom:6px;font-size:22px;transform:rotate(20deg)}.junk.j2{left:auto;right:16px;bottom:10px;font-size:16px}
+.gbflap{position:absolute;inset:4px;border-radius:10px;background:linear-gradient(#41434c,#26272d);transform-origin:50% 100%;transition:transform .7s cubic-bezier(.3,1.3,.5,1);cursor:pointer;box-shadow:inset 0 0 0 2px #50525b;display:flex;justify-content:center;z-index:2}
+.gbh{margin-top:14px;width:60px;height:11px;border-radius:6px;background:#8a8c94;box-shadow:inset 0 2px 3px #0008}
+.gb.open .gbflap{transform:rotateX(-80deg)}
 #flash{position:fixed;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:999}#flash.on{animation:phares .5s steps(1) infinite}@keyframes phares{0%{opacity:.85}50%{opacity:0}}
 .hwb.zap{animation:zap .5s}@keyframes zap{0%,100%{box-shadow:none}20%,60%{box-shadow:0 0 0 3px #fff,0 0 30px 10px #7fd4ff}40%{box-shadow:none}}
 .ignw svg{width:200px;max-width:70%;touch-action:none;cursor:grab}.ignw .cap{font-size:.85rem}
@@ -294,7 +300,7 @@ M[9].st[0].info="Sur Nintendo DS, Chinatown Wars permettait d'appeler un taxi <s
 M[9].st[1].kind="hotwire";
 M[9].st[1].q="Une voiture garée vous tend les bras… mais pas de clé. Démarrez-la comme Huang Lee.";
 M[9].st[1].show="Voiture démarrée sans clé";
-M[9].st[1].hints=[{t:"Le cache est vissé : un tournevis tourne dans quel sens pour dévisser ?"},{t:"Le schéma de câblage se trouve au dos du cache."},{t:"Tout le monde commence par la masse. Pour le contact, il faut tenir la clé."}];
+M[9].st[1].hints=[{t:"Le cache est vissé : un tournevis tourne dans quel sens pour dévisser ?"},{t:"Un conducteur range toujours ses papiers dans la boîte à gants…"},{t:"Tout le monde commence par la masse. Pour le contact, il faut tenir la clé."}];
 M[9].st[1].info="Dans Chinatown Wars sur DS, voler une voiture garée lançait un <strong>mini-jeu sur l'écran tactile</strong> : dévisser un cache, brancher des fils, tourner un tournevis dans le contacteur… Sur PSP, sans écran tactile, ces mini-jeux ont été simplifiés en appuis de boutons.";
 /* =========================== */
 var TY={"mini-jeu":"🎮 Mini-jeu","musique":"♪ Musique","blind test":"♫ Blind test","énigme":"? Question","énigme finale":"★ Énigme finale"};
@@ -450,7 +456,7 @@ var WG={
    RO.map(function(l,i){return '<circle cx="230" cy="'+Y[i]+'" r="11" fill="#3a3b42" stroke="#b9bbc3" stroke-width="3"/><circle cx="230" cy="'+Y[i]+'" r="4" fill="#d6d7dc"/><text x="257" y="'+(Y[i]+4)+'" fill="#ffd9a0" font-size="10" font-family="Arial" font-weight="700" text-anchor="middle">'+l+'</text>'}).join("")+
    '<g id="hln"></g><line id="hdr" x1="0" y1="0" x2="0" y2="0" stroke-width="7" stroke-linecap="round" visibility="hidden"/></svg><div class="pnl" id="pnl"><b>ROCKSTAR MOTORS</b>'+
    scr.map(function(c,i){return '<div class="scr" style="left:'+c[0]+'%;top:'+c[1]+'%"><i style="transform:rotate('+Math.floor(Math.random()*180)+'deg)"></i></div>'}).join("")+'</div></div>'+
-   '<button type="button" class="ghost" id="sch" hidden>📄 Retourner le cache</button><div class="schema" id="schb" hidden><p class="era">Schéma de câblage</p><table>'+
+   '<div class="gb" id="gb" title="Boîte à gants"><div class="gbin"><div class="paper" id="paper" role="button" tabindex="0" aria-label="Papier plié">NOTICE<br>ROCKSTAR<br>MOTORS</div><span class="junk">🕶️</span><span class="junk j2">🍬</span></div><div class="gbflap" id="gbf" role="button" tabindex="0" aria-label="Boîte à gants"><span class="gbh"></span></div></div><div class="schema" id="schb" hidden><p class="era">Schéma de câblage</p><table>'+
    W.map(function(w){return '<tr><td><span class="dotc" style="background:'+w[0]+'"></span>'+w[1]+'</td><td>→</td><td><strong>'+w[2]+'</strong></td></tr>'}).join("")+
    '</table><p class="warn">⚠ Brancher la masse en premier, puis la batterie. Sinon : court-circuit.</p></div>'+
    '<p class="hwst" id="hst"></p>'+
@@ -485,8 +491,12 @@ var WG={
    el.onpointermove=function(e){if(prev===null)return;var a=ang(e),d=a-prev;if(d>Math.PI)d-=2*Math.PI;if(d<-Math.PI)d+=2*Math.PI;prev=a;if(Math.abs(d)>.02){moved=true;turn(d);if(acc>=Math.PI*.6){msg("Ça force… la vis ne bouge pas dans ce sens-là.");ecStop()}else if(d<0){if(ecOk&&!S.mute)ecPlay();else if(Math.random()<.15)beep(1400,.015)}}};
    el.onpointerup=el.onpointercancel=function(){prev=null;ecStop()};
   });
-  function open(){$("pnl").classList.add("off");beep(200,.2,"triangle");msg("");setTimeout(function(){$("sch").hidden=false},900)}
-  $("sch").onclick=function(){var b=$("schb");b.hidden=!b.hidden;$("sch").textContent=b.hidden?"📄 Retourner le cache":"📄 Cacher le schéma"};
+  function open(){$("pnl").classList.add("off");beep(200,.2,"triangle");msg("")}
+  var gb=$("gb");
+  function gbT(){var o=gb.classList.toggle("open");beep(o?520:380,.06);setTimeout(function(){beep(o?260:200,.05)},90);if(!o)$("schb").hidden=true}
+  $("gbf").onclick=gbT;$("gbf").onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();gbT()}};
+  function papT(){if(!gb.classList.contains("open"))return;var b=$("schb");b.hidden=!b.hidden;beep(1500,.03)}
+  $("paper").onclick=papT;$("paper").onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();papT()}};
   var sv=$("hsv"),dr=$("hdr"),cur=-1;
   function pt(e){var r=sv.getBoundingClientRect();return {x:(e.clientX-r.left)/r.width*280,y:(e.clientY-r.top)/r.height*204}}
   function short(t){conn={};n=0;$("hln").innerHTML="";alarm();
@@ -500,7 +510,7 @@ var WG={
    if(n===0&&W[w][2]!=="GND"){short("Bzzzt ! Court-circuit : il fallait commencer par la masse.");return}
    if(n===1&&W[w][2]!=="BAT"){short("Bzzzt ! Court-circuit : la batterie devait suivre la masse.");return}
    conn[w]=hit;n++;$("hln").innerHTML+='<path d="M30 '+Y[c]+' C140 '+Y[c]+' 130 '+Y[hit]+' 230 '+Y[hit]+'" stroke="'+W[w][0]+'" stroke-width="7" fill="none" stroke-linecap="round" opacity=".95"/>';beep(700,.08);msg("");
-   if(n===5){beep(1047,.12);$("ign").hidden=false;$("sch").hidden=true;$("schb").hidden=true}};
+   if(n===5){beep(1047,.12);$("ign").hidden=false;$("gb").hidden=true;$("schb").hidden=true}};
   var held=0,isv=$("isv"),key=$("key"),kang=-90,drag=false,off0=0;
   function setK(d){kang=d;key.style.transform="rotate("+d+"deg)"}
   function kAng(e){var r=isv.getBoundingClientRect(),x=e.clientX-(r.left+r.width/2),y=e.clientY-(r.top+r.height/2);return Math.atan2(y,x)*180/Math.PI}
