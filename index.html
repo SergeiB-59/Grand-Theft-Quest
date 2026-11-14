@@ -70,10 +70,11 @@ button.ghost{background:transparent;border:2px solid var(--cyan);color:var(--cya
 h3{font:700 1.05rem Arial,sans-serif;color:var(--pink);margin:18px 0 8px}
 .go{width:100%;background:#1fbf5b;margin-top:16px;font-size:1.25rem;padding:16px}.big{font-size:1.4rem;padding:18px}
 button:disabled{opacity:.4;cursor:not-allowed}
+img{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 .chk{display:block;margin:16px 0;font-family:Arial,sans-serif;cursor:pointer}.chk input{width:22px;height:22px;margin-right:10px;vertical-align:middle;accent-color:#ff2e88}
 .warn{color:#ff3b3b;font-weight:700}.hint{margin:10px 0 0;font-family:Arial,sans-serif}.hint+iframe{display:block;margin-top:8px;border-radius:8px}
 .aud{width:100%;margin:0 0 16px}.cover{max-height:230px}.rules p{margin:0 0 8px}
-.tbar{height:6px;background:#ffffff22;border-radius:3px;margin-top:18px;overflow:hidden}.tbar i{display:block;height:100%;background:var(--cyan);animation:fill 4.2s linear forwards}@keyframes fill{from{width:0}to{width:100%}}
+.tbar{position:relative;height:6px;background:#ffffff22;border-radius:3px;margin-top:34px;overflow:visible}.tbar i{border-radius:3px}.tbar .pl{position:absolute;top:-24px;left:0;font-size:26px;line-height:1;font-style:normal;animation:plane 4.2s linear forwards;filter:drop-shadow(0 0 6px #00e5ff)}@keyframes plane{from{left:-6px}to{left:calc(100% - 26px)}}.tbar i{display:block;height:100%;background:var(--cyan);animation:fill 4.2s linear forwards}@keyframes fill{from{width:0}to{width:100%}}
 .radio,.phone{max-width:340px;margin:0 auto 16px;padding:16px;border:2px solid var(--cyan);border-radius:14px;background:#0d0618}
 .rdisp{font:900 2.6rem 'Courier New',monospace;color:var(--cyan);text-align:center;text-shadow:0 0 14px #19e3d688}.rdisp small{font-size:1rem}
 .rscale{position:relative;height:34px;margin:6px 0 12px;border-radius:6px;background:#1a0b2e repeating-linear-gradient(90deg,#ffffff55 0 2px,transparent 2px 20px)}.rscale i{position:absolute;top:-4px;bottom:-4px;width:4px;margin-left:-2px;background:var(--pink);box-shadow:0 0 10px var(--pink);border-radius:2px}
@@ -165,8 +166,8 @@ button:disabled{opacity:.4;cursor:not-allowed}
 .lph{max-width:320px;margin:0 auto;background:#050505;border:3px solid #333;border-radius:26px;padding:14px 12px;font-family:'Courier New',monospace;color:#39ff14;text-align:center;box-shadow:0 0 18px #39ff1422}
 .lph .pht{color:#ccc;font-family:Arial,sans-serif}
 .slots{display:flex;flex-wrap:nowrap;justify-content:center;gap:2px;margin:8px 0 12px}.slots span{width:14px;height:20px;font-size:.85rem!important;border-bottom:2px solid #39ff1455;font:900 .95rem 'Courier New',monospace;color:#39ff1466}.slots .ok{color:#39ff14}.slots .cu{color:#fff;animation:bl 1s steps(1) infinite}
-.big{font:900 3.4rem 'Courier New',monospace;height:4.2rem;line-height:4.2rem;margin:0 auto 6px;width:4.4rem;border:2px solid #333;border-radius:10px}.big .g{color:#39ff14;text-shadow:0 0 12px #39ff14}.big .r{color:#ff3b3b;text-shadow:0 0 10px #ff3b3b}
-.big.shk{animation:shk .35s}@keyframes shk{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.hbig{font:900 3.4rem 'Courier New',monospace;height:4.2rem;line-height:4.2rem;margin:0 auto 6px;width:4.4rem;border:2px solid #333;border-radius:10px}.hbig .g{color:#39ff14;text-shadow:0 0 12px #39ff14}.hbig .r{color:#ff3b3b;text-shadow:0 0 10px #ff3b3b}
+.hbig.shk{animation:shk .35s}@keyframes shk{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 .notes{background:#fff9d6;color:#2a2116;border-radius:10px;padding:10px 12px;text-align:left;font:600 .85rem/1.5 Arial,sans-serif}.notes .era{color:#7a5a12}
 .pkw{position:relative;max-width:360px;margin:0 auto}
 .grille{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:900 clamp(2rem,10vw,3rem) Impact,'Arial Black',sans-serif;color:#fff;background:#a3122acc;border-radius:10px;text-shadow:3px 3px 0 #000;animation:stamp .5s both;text-align:center}
@@ -190,6 +191,13 @@ button:disabled{opacity:.4;cursor:not-allowed}
 .mal.ringing{animation:ring .35s infinite;border-color:#f5c542}
 #mal .phone2{margin:12px auto 0}
 .buzz1{animation:buzz .5s}
+.vroom{position:relative;height:280px;margin:8px 0;border-radius:12px;background:linear-gradient(#2c2e33,#1b1c21);border:3px solid #6d7078;box-shadow:inset 0 0 30px #000}
+.lt2{position:absolute;width:21%;height:22%;padding:0;display:flex;align-items:center;justify-content:center;background:none;border:0;transform:rotate(var(--r));transition:transform .45s,opacity .45s;cursor:pointer}
+.lt2 span{font-size:2.1rem;filter:drop-shadow(0 3px 4px #000)}.lt2 .gbars i{width:24px;height:11px}.lt2:hover{transform:rotate(var(--r)) scale(1.15)}
+.lt2.took{transform:translateY(120px) scale(.2);opacity:0;pointer-events:none}
+.call{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#0d0618;border:2px solid #6fdc6f;border-radius:16px;padding:14px;margin-bottom:12px;animation:buzz .6s infinite}
+.call .face{flex-basis:64px;width:64px;height:64px}.call>div:nth-child(2){flex:1}.call .cn{font:900 1.3rem Impact,'Arial Black',sans-serif;margin:2px 0}.call #pick{background:#1fbf5b}
+#bdw.slam{animation:slam .55s cubic-bezier(.2,1.6,.4,1) both}@keyframes slam{0%{transform:scale(1.6) rotate(-6deg);opacity:0}70%{opacity:1}100%{transform:none}}
 
 .tps{display:block;width:100%;max-width:360px;aspect-ratio:360/420;margin:0 auto 8px;border-radius:10px;border:2px solid var(--cyan);background:#000}
 .gbars{display:flex;flex-direction:column;align-items:center;gap:2px}.gbars div{display:flex;gap:3px}.gbars i{display:block;width:46px;height:20px;background:linear-gradient(#ffe88a,#c99a12);clip-path:polygon(14% 0,86% 0,100% 100%,0 100%);animation:shine 1.8s infinite}
@@ -371,12 +379,12 @@ M[8].st[1].img="img-m9.jpg";
 M[8].st[1].alt="Un lieu célèbre de Liberty City dans GTA IV";
 M[8].st[1].a=["starjunction"];
 M[8].st[1].show="Star Junction";
-M[8].st[1].hint="C'est l'équivalent de Times Square.";
+M[8].st[1].hints=[{t:"C'est l'équivalent de Times Square."},{t:"Dernier indice :",link:"https://gta.fandom.com/fr/wiki/Cat%C3%A9gorie:Lieux_dans_GTA_IV?from=S",lt:"Voir les lieux de GTA IV"}];
 M[8].st[1].info="C'est <strong>Star Junction</strong>, un quartier au cœur d'Algonquin (l'équivalent de Manhattan), directement inspiré de Times Square. On y trouve notamment la salle de concert Live Central et le siège du journal Daily Globe.";
 M[8].st[2].q="Dans GTA IV, un célèbre easter egg se cache à l'intérieur de la Statue of Happiness : qu'y trouve-t-on ?";
 M[8].st[2].a=["coeur","uncoeur","lecoeur","coeurbattant","uncoeurbattant","lecoeurdelibertycity","coeurdelibertycity","heart","theheart"];
 M[8].st[2].show="Un cœur battant (le « Heart of Liberty City »)";
-M[8].st[2].hint="Il faut un hélicoptère pour y accéder.";
+M[8].st[2].hints=[{t:"Une plaque près de l'entrée annonce « No Hidden Content This Way »… une blague des développeurs."},{t:"Ce n'est pas un objet : c'est vivant, et ça fait un bruit régulier."},{t:"Dernier indice :",link:"https://www.youtube.com/watch?v=jfxxNfL39hc",lt:"Ouvrir la vidéo"}];
 M[8].st[2].info="C'est un <strong>énorme cœur battant</strong>, surnommé le « Heart of Liberty City ». Pour y accéder, il faut rejoindre Happiness Island en hélicoptère, jusqu'à une entrée marquée d'un panneau « No Hidden Content This Way », en haut du piédestal de la statue.";
 M[5].st[1].img="img-m6.jpeg";
 M[5].st[1].alt="Une voiture célèbre de GTA Vice City";
@@ -395,16 +403,17 @@ M[4].st[1].cover="Jacquette GTA 3.jpg";M[4].st[1].ipic="Toni Cipriani.jpg";
 M[4].st[1].hints=[{t:"Michael Madsen lui a prêté sa voix.",link:"https://www.imdb.com/fr/title/tt0277723/?ref_=ls_t_5",lt:"Voir la page du jeu"}];
 M[4].st[2].aud="audio-m5.mp3";M[4].st[2].hint="Célèbre musique connue dans un film avec le fameux Tony Montana.";
 M[5].st[0].aud="audio-m6.mp3";
-M[5].st[1].q="Quelle est cette célèbre voiture de GTA Vice City ?";M[5].st[1].hint="Très fortement inspirée de la Ferrari Testarossa des années 80.";
+M[5].st[1].q="Quelle est cette célèbre voiture de GTA Vice City ?";M[5].st[1].hints=[{t:"Très fortement inspirée de la Ferrari Testarossa des années 80."},{t:"Tous les véhicules du jeu sont listés ici.",link:"https://www.gta-vicecity.fr/vehicules.html",lt:"Voir les véhicules"},{t:"6e ligne, dernière colonne."}];
 M[6].st[0].aud="audio-m7.mp3";M[6].st[0].ipic="In the desert.jpg";
 M[6].st[0].hints=[{t:"Walter White chante cette chanson dans l'épisode « Caballo sin nombre » de la saison 3 de Breaking Bad."},{t:"Dernier indice :",link:"https://www.youtube.com/watch?v=3VvoH7lff8A",lt:"Ouvrir la vidéo"}];
 M[6].st[1].q="Quel objet est débloqué en réalisant ce code de triche sur PS2 ?";M[6].st[1].img="img-m7.png";
 M[6].st[1].a=["jetpack","unjetpack","lejetpack"];M[6].st[1].show="Un jetpack";
 M[6].st[1].hints=[{t:"Les astuces du jeu sont listées ici.",link:"https://www.gamekult.com/jeux/grand-theft-auto-san-andreas-3010001510/astuces.html",lt:"Voir les astuces"}];
 M[6].st[1].info="C'est le <strong>jetpack</strong> ! Dans San Andreas, c'est un prototype militaire de l'Area 69 : CJ doit le voler pour The Truth dans la mission « Black Project », et il réapparaît ensuite à Verdant Meadows.";M[6].st[1].ipic="Jetpack 1.png";
-M[7].st[0].aud="audio-m8.mp3";M[7].st[0].hint="Il fait partie du groupe Genesis.";M[7].st[0].ipic="Phil Collins Portrait.jpg";
+M[7].st[0].aud="audio-m8.mp3";M[7].st[0].hints=[{t:"Il fait partie du groupe Genesis."},{t:"Le break de batterie de ce tube est mythique : une pub l'a même fait rejouer… par un gorille."}];M[7].st[0].ipic="Phil Collins Portrait.jpg";
 M[8].st[0].aud="audio-m9.mp3";
-M[8].st[0].hints=[{t:"Cet artiste a d'abord été producteur avant de devenir rappeur."},{t:"Ce morceau vient d'un album sorti en 2007, dont le titre évoque la fin des études."}];
+M[8].st[0].hints=[{t:"Cet artiste a d'abord été producteur avant de devenir rappeur."},{t:"La pochette de son album de 2007 met en scène un ours en peluche, sa mascotte de l'époque."},{t:"Il a été marié à Kim Kardashian et se fait aujourd'hui appeler « Ye »."}];
+M[8].obj="Réussir 5 épreuves.";
 /* GTA IV : 3 épreuves interactives */
 M[8].st[3].kind="phone";M[8].st[3].target="3595550100";
 M[8].st[3].q="Sur le téléphone de Niko, composez le numéro de triche qui fait apparaître l'hélicoptère armé de la NOOSE, l'Annihilator.";
@@ -435,7 +444,7 @@ M[9].st[1].info="Dans Chinatown Wars sur DS, voler une voiture garée lançait u
 M[10].obj="Réussir les 4 missions de préparation pour terminer par le braquage final du coffre de Lamar.";
 M[10].st[0].kind="crew";M[10].st[0].noPass=1;M[10].st[0].lbl="Mission de préparation 1";
 M[10].st[0].q="Recruter l'équipe du braquage.";
-M[10].st[0].dl=[{w:"Franklin",t:"Lester, j'ai un coup pour toi. Un vieux pote d'enfance m'a fait un sale coup : il s'est barré avec mon butin.",a:"voix-m11-01.mp3"},{w:"Franklin",t:"Si t'es bon, je partagerai la somme avec toi. Lester supervise, et Trevor pourra nous aider si ça foire.",a:"voix-m11-02.mp3"},{w:"Lester",t:"Il nous faut une équipe : un hacker, un chauffeur et un tireur. Et la liste en bas du tableau, tu n'y touches pas. J'ai déjà travaillé avec eux : compte pas sur eux.",a:"voix-m11-03.mp3"},{w:"Lester",t:"Je veux la meilleure équipe possible. Mais je ne lâche pas plus de 25 % du butin à l'équipe. Pas un de plus.",a:"voix-m11-04.mp3"}];
+M[10].st[0].dl=[{w:"Franklin",t:"Lester, j'ai un coup pour toi. Un vieux pote d'enfance m'a fait un sale coup : il s'est barré avec mon butin.",a:"voix-m11-01.mp3"},{w:"Franklin",t:"Si t'es bon, je partagerai la somme avec toi. Lester supervise, et Trevor pourra nous aider si ça foire.",a:"voix-m11-02.mp3"},{w:"Lester",t:"Il nous faut une équipe : un hacker, un chauffeur et un tireur. Et la liste en bas du tableau, tu n'y touches pas. J'ai déjà travaillé avec eux : compte pas sur eux.",a:"voix-m11-03.mp3"},{w:"Franklin",t:"Je veux la meilleure équipe possible. Mais je ne lâche pas plus de 25 % du butin à l'équipe. Pas un de plus.",a:"voix-m11-04.mp3"}];
 M[10].st[0].show="Chris Feltz, Taliana Martinez et Mike Welsh (25 %)";
 M[10].st[0].hints=[{t:"Il faut la meilleure compétence totale possible, pas forcément le meilleur à chaque poste."},{t:"Les plus forts coûtent trop cher ensemble : sacrifiez un peu de talent à chaque poste."},{t:"La bonne équipe coûte exactement 25 %."}];
 M[10].st[0].info="Dans GTA V, avant chaque braquage, on choisit ses complices : plus ils sont doués, plus leur part du butin est élevée. Un complice bon marché peut faire capoter le coup… mais il progresse s'il survit au braquage.";
@@ -448,9 +457,9 @@ M[10].st[1].gif="gif-m11.gif";
 M[10].st[1].show="CHOPISMINEBITCH! · coffre n° 0451";
 M[10].st[1].hints=[{t:"Ne verrouillez que quand le caractère s'affiche en vert."},{t:"Le code parle du chien que Lamar et Franklin se disputent."},{t:"Il est en anglais et se termine par un point d'exclamation."}];
 M[10].st[1].info="Chop, le rottweiler, appartient d'abord à Lamar, mais c'est Franklin qui finit par s'en occuper. Une application compagnon de GTA V permettait même de le dresser depuis son téléphone.";
-M[10].st[2].kind="spot";M[10].st[2].noPass=1;M[10].st[2].lbl="Mission de préparation 3";M[10].st[2].mu="audio-m11-braquage.mp3";
+M[10].st[2].kind="spot";M[10].st[2].lbl="Mission de préparation 3";M[10].st[2].mu="audio-m11-braquage.mp3";
 M[10].st[2].q="Localiser la halte du fourgon blindé.";
-M[10].st[2].dl=[{w:"Lester",t:"Deuxième tuile : Taliana s'est tiré une balle dans le pied.",a:"voix-m11-10.mp3"},{w:"Lester",t:"Elle a voulu faire tourner son flingue autour du doigt, comme dans un western. Elle a oublié la sécurité. Et ses orteils.",a:"voix-m11-11.mp3"},{w:"Lester",t:"Il nous faut le fourgon blindé et les tenues des convoyeurs de fonds : c'est notre ticket d'entrée dans la banque, jusqu'au coffre.",a:"voix-m11-12.mp3"},{w:"Lester",t:"Avant de filer aux urgences, Taliana a photographié le fourgon pendant sa halte. Elle n'a pas eu le temps de dire où. À toi de reconnaître le parking.",a:"voix-m11-13.mp3"}];
+M[10].st[2].dl=[{w:"Lester",t:"Deuxième tuile : Taliana s'est tiré une balle dans le pied.",a:"voix-m11-10.mp3"},{w:"Lester",t:"Elle a voulu faire tourner son flingue autour du doigt… Elle s'est prise pour John Marston ou quoi ? Elle a oublié la sécurité. Et ses orteils.",a:"voix-m11-11.mp3"},{w:"Lester",t:"Il nous faut le fourgon blindé et les tenues des convoyeurs de fonds : c'est notre ticket d'entrée dans la banque, jusqu'au coffre.",a:"voix-m11-12.mp3"},{w:"Lester",t:"Avant de filer aux urgences, Taliana a photographié le fourgon pendant sa halte. Elle n'a pas eu le temps de dire où. À toi de reconnaître le parking.",a:"voix-m11-13.mp3"}];
 M[10].st[2].after=[{w:"Lester",t:"Ah, tu connais l'endroit, hein ! Gros malin !",a:"voix-m11-14.mp3"},{w:"Lester",t:"Le fourgon doit sûrement s'arrêter ici pour récupérer les fonds.",a:"voix-m11-15.mp3"}];
 M[10].st[2].sel="img-m11.jpg";
 M[10].st[2].choices=["Parking du Vanilla Unicorn","Parking du Bahama Mamas","Parking du Tequi-la-la","Parking du Yellow Jack Inn","Parking du Hen House","Parking du Split Sides West"];
@@ -458,7 +467,7 @@ M[10].st[2].target="Parking du Vanilla Unicorn";
 M[10].st[2].show="Le parking du Vanilla Unicorn";
 M[10].st[2].hints=[];
 M[10].st[2].info="Le Vanilla Unicorn, le club de strip-tease du quartier de Strawberry, finit par appartenir à Trevor au fil de l'histoire de GTA V.";
-M[10].st[3].kind="sneak";M[10].st[3].noPass=1;M[10].st[3].lbl="Mission de préparation 4";M[10].st[3].mu="audio-m11-braquage.mp3";
+M[10].st[3].kind="sneak";M[10].st[3].lbl="Mission de préparation 4";M[10].st[3].mu="audio-m11-braquage.mp3";
 M[10].st[3].q="Voler le fourgon blindé et une tenue de convoyeur.";
 M[10].st[3].dl=[{w:"Lester",t:"Merde, mais c'est pas vrai ! Mike nous a lâchés.",a:"voix-m11-16.mp3"},{w:"Lester",t:"En allant chercher le fourgon, il est entré dans le bar de strip-tease et n'en est jamais ressorti. J'ai toujours su que c'était un porc.",a:"voix-m11-17.mp3"},{w:"Lester",t:"On va se débrouiller. Rejoins le fourgon et prends une tenue de convoyeur sans te faire repérer.",a:"voix-m11-18.mp3"},{w:"Lester",t:"Le vigile fait sa ronde avec sa lampe : reste hors de son faisceau. Les caméras balaient le parking : si tu entres dans leur cercle rouge, t'es grillé. La tenue est dans le sac, au fond du parking.",a:"voix-m11-19.mp3"}];
 M[10].st[3].after=[{w:"Lester",t:"Bien joué.",a:"voix-m11-20.mp3"},{w:"Franklin",t:"Je savais que je pouvais compter sur toi. Continue, frère !",a:"voix-m11-21.mp3"}];
@@ -467,9 +476,9 @@ M[10].st[3].hints=[];
 M[10].st[3].info="Dans GTA V, chaque grand braquage se prépare par des « missions de préparation » : voler un véhicule, du matériel ou des uniformes. Le dernier coup du jeu, « The Big Score », vise justement des lingots d'or de la Union Depository.";
 M[10].st[4].kind="heist";M[10].st[4].lbl="Braquage final";
 M[10].st[4].q="Braquer le coffre de Lamar à l'Union Depository.";
-M[10].st[4].dl=[{w:"Lester",t:"Bon. Toute l'équipe a foiré. Il ne reste que toi.",a:"voix-m11-22.mp3"},{w:"Franklin",t:"Non, il reste moi, Franklin. Et j'vais appeler un ami.",a:"voix-m11-23.mp3"},{w:"Trevor",t:"Si c'est le support informatique de SGP, va chier !!!",a:"voix-m11-24.mp3"},{w:"Lester",t:"Non, c'est Lester. J'ai besoin de toi maintenant : rejoins la position.",a:"voix-m11-25.mp3"},{w:"Trevor",t:"Ça sent les problèmes… OK, j'suis partant.",a:"voix-m11-26.mp3"}];
+M[10].st[4].dl=[{w:"Lester",t:"Bon. Toute l'équipe a foiré. Il ne reste que toi.",a:"voix-m11-22.mp3"},{w:"Franklin",t:"Hé, et moi, tu m'oublies ? T'inquiète, vieux briscard : j'appelle un vieil ami.",a:"voix-m11-23.mp3"},{w:"Trevor",t:"Si c'est le support informatique de SGP, va chier !!!",a:"voix-m11-24.mp3"},{w:"Franklin",t:"Non, c'est Franklin. J'ai besoin de toi maintenant : rejoins la position.",a:"voix-m11-25.mp3"},{w:"Trevor",t:"Ça sent les problèmes… j'adore ! OK, j'suis partant !",a:"voix-m11-26.mp3"}];
 M[10].st[4].script={
- brief:[{w:"Franklin",t:"Trevor, le coffre est là. Tu fais sauter les quatre verrous à la perceuse. Doucement : si la mèche chauffe trop, elle casse.",a:"voix-m11-27.mp3"},{w:"Trevor",t:"WOUHOU ! C'est comme si c'était fait ! C'est partiiiiiiiii ************ !",a:"voix-m11-28.mp3"}],
+ brief:[{w:"Franklin",t:"Trevor, le coffre est là. Tu fais sauter les quatre verrous à la perceuse. Doucement : si la mèche chauffe trop, elle casse. Quant à toi, surveille nos arrières.",a:"voix-m11-27.mp3"},{w:"Trevor",t:"WOUHOU ! C'est comme si c'était fait ! C'est partiiiiiiiii ************ !",a:"voix-m11-28.mp3"}],
  over:[{w:"Trevor",t:"Merde ! La mèche a surchauffé… Pas le choix, on doit attendre qu'elle refroidisse.",a:"voix-m11-29.mp3"},{w:"Lester",t:"On s'est fait repérer ! Dépêchez-vous !",a:"voix-m11-30.mp3"},{w:"Franklin",t:"Merde, merde, merde ! On va finir au trou !",a:"voix-m11-31.mp3"},{w:"Trevor",t:"OK les gars, le temps qu'elle refroidisse… on va s'ambiancer !",a:"voix-m11-32.mp3"}],
  open:[{w:"Trevor",t:"C'est bon, on a réussi, put**n !",a:"voix-m11-33.mp3"},{w:"Franklin",t:"Allez, faut pas traîner, prenez tout.",a:"voix-m11-34.mp3"},{w:"Lester",t:"Dépêchez-vous, il vous reste 2 minutes !",a:"voix-m11-35.mp3"}],
  case:[{w:"Franklin",t:"Attends… C'est quoi cette mallette ? Elle est cassée… Y a un téléphone dedans. Il sonne !",a:"voix-m11-36.mp3"}],
@@ -534,7 +543,7 @@ function nameScr(){
 }
 function lab(t){return t==="énigme"?"question":t}
 var TRANS={2:["GTA premier du nom","GTA 2"],3:["GTA 2","GTA III"],4:["GTA III","Vice City"],5:["Vice City","San Andreas"],6:["San Andreas","Vice City Stories"],7:["Vice City Stories","GTA IV"],8:["GTA IV","Chinatown Wars"],9:["Chinatown Wars","GTA V"],10:["GTA V","GTA VI"]};
-function pic(f,c,hide){return `<img class="pic ${c||""}" src="${encodeURIComponent(f)}" alt="" onerror="${hide?"this.style.display='none'":"this.outerHTML='<div class=box>Image à venir</div>'"}">`}
+function pic(f,c,hide){return `<img class="pic ${c||""}" draggable="false" src="${encodeURIComponent(f)}" alt="" onerror="${hide?"this.style.display='none'":"this.outerHTML='<div class=box>Image à venir</div>'"}">`}
 function infoHTML(p){return p.info?`<div class="info"><p class="era">Le saviez-vous ?</p>${p.gif?pic(p.gif,"",1):""}${p.ipic?pic(p.ipic,"",1):""}<p>${p.info}</p></div>`:""}
 function hints(p){return p.hints||[{t:p.hint,link:p.link,lt:p.lt,warn:p.warn,embed:p.embed}]}
 function hintHTML(h){return `<p class="hint">${h.t?"Indice : "+esc(h.t):"Indice :"}${h.link?` <a href="${esc(h.link)}" target="_blank" rel="noopener noreferrer">${esc(h.lt||"Ouvrir la page du jeu")}</a>`:""}${h.warn?` <span class="warn">${esc(h.warn)}</span>`:""}</p>${h.embed||""}`}
@@ -607,15 +616,28 @@ function dlg(box,lines,done){
  }
  show()
 }
+function ringer(){var a=null,iv=0;if(!S.mute){a=new Audio(encodeURIComponent("audio-m11-sonnerie.mp3"));a.loop=true;a.volume=.6;a.onerror=function(){a=null;if(!iv)iv=setInterval(function(){beep(1400,.12);setTimeout(function(){beep(1750,.12)},150)},1100)};var q=a.play();if(q&&q.catch)q.catch(function(){})}
+ var stop=function(){clearInterval(iv);iv=0;if(a){try{a.pause()}catch(e){}a=null}};CLN.push(stop);return stop}
+function thump(){if(S.mute)return;var a=new Audio(encodeURIComponent("audio-m11-affiche.mp3"));a.onerror=function(){beep(70,.25,"triangle");setTimeout(function(){beep(1800,.03)},120)};var q=a.play();if(q&&q.catch)q.catch(function(){})}
 function hstep(p,i,game,noKeep){
- $("wg").innerHTML=board(i)+'<div id="dl"></div><div id="gm"></div>';$("go").style.display="none";
+ $("wg").innerHTML='<div id="bdw">'+board(i)+'</div><div id="dl"></div><div id="gm"></div>';$("go").style.display="none";
  var key="m11-"+i;S.dls=S.dls||{};
+ if(i===0&&!S.dls[key]){
+  $("bdw").hidden=true;$("gm").hidden=true;var stop=ringer();
+  $("dl").innerHTML='<div class="call">'+face("Franklin")+'<div><p class="era">📞 Appel groupé entrant…</p><p class="cn">Franklin</p><p class="hks">avec Lester et vous</p></div><button type="button" id="pick">📞 Décrocher</button></div>';
+  $("pick").onclick=function(){stop();beep(1200,.05);
+   var L=p.dl.map(function(l,k){return k===2?Object.assign({},l,{on:function(){var b=$("bdw");b.hidden=false;b.classList.add("slam");thump()}}):l});
+   dlg($("dl"),L,function(){S.dls[key]=1;sv();replayBtn();$("gm").hidden=false;game($("gm"))})};
+  function replayBtn(){$("dl").innerHTML='<button type="button" class="ghost sm" id="rb">↺ Relire le briefing</button>';$("rb").onclick=function(){dlg($("dl"),p.dl,replayBtn)}}
+  return}
  function replayBtn(){if(noKeep){$("dl").innerHTML="";return}$("dl").innerHTML='<button type="button" class="ghost sm" id="rb">↺ Relire le briefing</button>';$("rb").onclick=function(){dlg($("dl"),p.dl,replayBtn)}}
  if(S.dls[key]&&!noKeep){replayBtn();game($("gm"));return}
  $("gm").hidden=true;
  dlg($("dl"),p.dl,function(){if(!noKeep){S.dls[key]=1;sv()}replayBtn();$("gm").hidden=false;game($("gm"))})
 }
 var CLN=[],XA=[];
+/* pas de clic droit / glisser sur les images et les extraits audio */
+document.addEventListener("contextmenu",function(e){if(e.target.closest("img,audio,video,canvas"))e.preventDefault()});document.addEventListener("dragstart",function(e){if(e.target.closest("img,audio"))e.preventDefault()});
 function fadeXA(ms){XA.forEach(function(a){if(a.paused)return;var v0=a.volume,t0=Date.now(),iv=setInterval(function(){var k=(Date.now()-t0)/ms;if(k>=1){clearInterval(iv);try{a.pause();a.volume=v0}catch(e){}}else a.volume=v0*(1-k)},60)})}function cleanW(){var c=CLN;CLN=[];c.forEach(function(f){try{f()}catch(e){}})}
 function radioStop(){cleanW();(RAD.all||[]).forEach(function(x){if(x.a)try{x.a.pause()}catch(e){}});RAD.all=null;if(RAD.a){try{RAD.a.pause()}catch(e){}RAD.a=null}if(RAD.s){try{RAD.s.s.stop()}catch(e){}RAD.s=null}}
 var WG={
@@ -641,15 +663,17 @@ var WG={
   return {ok:function(){return locked}}
  },
  whistle:function(p){
-  $("wg").innerHTML='<div class="wh"><div class="street"><div class="taxi" id="tx">🚕</div></div><button type="button" class="go" id="wmic">🎙️ Activer le micro</button><div class="meter" id="wmt" hidden><i id="wlv"></i></div><p class="whst" id="wst"></p><button type="button" class="ghost" id="wno">Pas de micro ?</button><input id="wtx" type="text" autocomplete="off" placeholder="Comment appelez-vous le taxi ?" hidden></div>';
+  $("wg").innerHTML='<div class="wh"><div class="street"><div class="taxi" id="tx">🚕</div></div><button type="button" class="go" id="wmic">🎙️ Activer le micro</button><div class="meter" id="wmt" hidden><i id="wlv"></i></div><p class="whst" id="wst"></p><button type="button" class="ghost" id="wno">Pas de micro ?</button><input id="wtx" type="text" autocomplete="off" placeholder="Comment appelez-vous le taxi ?" hidden><button type="button" id="wgo" hidden>Valider</button></div>';
   var done=false,stream=null,raf=0,run=0,noisy=0,last=0,f0=0;$("go").style.display="none";
   function stop(){cancelAnimationFrame(raf);raf=0;if(stream){stream.getTracks().forEach(function(t){t.stop()});stream=null}}
   CLN.push(stop);
   function win(){if(done)return;done=true;stop();$("wst").textContent="Le taxi vous a entendu !";$("tx").classList.add("come");
    setTimeout(function(){beep(440,.15);setTimeout(function(){beep(350,.25)},180)},1300);setTimeout(function(){$("go").click()},2600)}
-  function fallback(){$("wtx").hidden=false;$("go").style.display="";$("wno").hidden=true;$("wtx").focus()}
+  function fallback(){$("wtx").hidden=false;$("wgo").hidden=false;$("wno").hidden=true;$("wtx").focus()}
+  function typed(){if(done)return;if(norm($("wtx").value).indexOf("siffl")>=0){$("wgo").disabled=true;win()}else{S.wrong=(S.wrong||0)+1;sv();bad($("msg"),"Raté, réessayez.",true)}}
+  $("wgo").onclick=typed;
   $("wno").onclick=fallback;
-  $("wtx").onkeydown=function(e){if(e.key==="Enter")$("go").click()};
+  $("wtx").onkeydown=function(e){if(e.key==="Enter")typed()};
   $("wmic").onclick=function(){
    if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){$("wst").textContent="Micro indisponible sur cet appareil.";fallback();return}
    navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}}).then(function(s){
@@ -677,7 +701,7 @@ var WG={
     loop()
    }).catch(function(){$("wst").textContent="Accès au micro refusé.";fallback()})
   };
-  return {ok:function(){return done||norm($("wtx").value).indexOf("siffl")>=0}}
+  return {ok:function(){return done}}
  },
  hotwire:function(p){
   /* 5 fils, 5 bornes nommées et mélangées ; le schéma est au dos du cache ; GND puis BAT en premier, sinon court-circuit */
@@ -707,7 +731,7 @@ var WG={
    if(!S.mute){if(alOk){try{alA.currentTime=0;var pr=alA.play();if(pr&&pr.catch)pr.catch(function(){})}catch(e){}}
     else for(var i=0;i<10;i++)(function(i){setTimeout(function(){beep(i%2?620:900,.18,"square")},i*200)})(i)}
    alT=setTimeout(function(){flash(false);try{alA.pause()}catch(e){}},dur)}
-  crA.loop=true;crA.preload=stA.preload="auto";stA.volume=.22;
+  crA.loop=true;crA.preload=stA.preload="auto";stA.volume=.08;
   var ecA=new Audio(encodeURIComponent("audio-m10-écrou.mp3")),ecOk=true;ecA.loop=true;ecA.preload="auto";ecA.onerror=function(){ecOk=false};XA.push(ecA);
   function ecPlay(){if(S.mute||!ecOk||!ecA.paused)return;try{var q=ecA.play();if(q&&q.catch)q.catch(function(){})}catch(e){}}
   function ecStop(){try{ecA.pause()}catch(e){}}
@@ -770,7 +794,7 @@ var WG={
    ["Tireur","🔫",[["Packie McReary",94,15,"Ancien de la mafia irlandaise. Très motivé.","crew-packie.jpg"],["Mike Welsh",70,7,"Bon tireur. Un peu trop fan des bars de nuit.","crew-mike.jpg"],["Norm Richards",40,4,"A braqué la mauvaise banque deux fois.","crew-norm.jpg"]]]];
   var BEST=["Chris Feltz","Taliana Martinez","Mike Welsh"],sel=[null,null,null],done=false;
   hstep(p,0,function(g){
-   var O=R.map(function(r){return shuf(r[2])});
+   var O;do{O=R.map(function(r){return shuf(r[2])})}while(new Set(O.map(function(c,k){return c.map(function(x){return x[0]}).indexOf(BEST[k])})).size<3);
    g.innerHTML='<div class="postit">📌 <b>Consignes de Lester</b><br>1 hacker, 1 chauffeur, 1 tireur.<br>La meilleure équipe possible…<br><b>mais 25 % du butin maximum pour l\'équipe.</b></div>'+
     R.map(function(r,ri){return '<p class="era">'+r[1]+' '+r[0]+'</p><div class="cands">'+O[ri].map(function(c,ci){return '<button type="button" class="cand" data-r="'+ri+'" data-c="'+ci+'"><div class="cph"><span>🥷</span><img src="'+encodeURIComponent(c[4])+'" alt="" onerror="this.remove()"></div><b>'+c[0]+'</b><span class="sk"><i style="width:'+c[1]+'%"></i></span><small>Compétence '+c[1]+' %<br>Part '+c[2]+' %</small><em>'+c[3]+'</em><i class="stp">RECRUTÉ</i></button>'}).join("")+'</div>'}).join("")+
     '<p class="tot" id="tot">Part de l\'équipe : 0 %</p><div class="row"><button type="button" id="hire">Recruter cette équipe</button></div><p class="msg" id="cm" role="status"></p>';
@@ -796,11 +820,11 @@ var WG={
   hstep(p,1,function(g){
    var N=PW.length,cur=0,busy=false,AL="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?#$".split(""),SET=[],pos=[];
    for(var i=0;i<N;i++){SET.push(shuf(shuf(AL.filter(function(c){return c!==PW[i]})).slice(0,7).concat(PW[i])));pos.push(Math.floor(Math.random()*8))}
-   g.innerHTML='<div class="lph" id="hkp"><p class="pht">📱 iFruit de Lamar · <span id="lk">🔒 verrouillé</span></p><div id="hks"><div class="slots" id="slots"></div><div class="big" id="big"></div><p class="hks">Le bon caractère s\'affiche en <b style="color:#39ff14">VERT</b>, les mauvais en <b style="color:#ff3b3b">ROUGE</b>.</p><button type="button" class="hkb" id="lockb">VERROUILLER (espace)</button><p class="hkm" id="hkm"></p></div></div>';
+   g.innerHTML='<div class="lph" id="hkp"><p class="pht">📱 iFruit de Lamar · <span id="lk">🔒 verrouillé</span></p><div id="hks"><div class="slots" id="slots"></div><div class="hbig" id="big"></div><p class="hks">Le bon caractère s\'affiche en <b style="color:#39ff14">VERT</b>, les mauvais en <b style="color:#ff3b3b">ROUGE</b>.</p><button type="button" class="hkb" id="lockb">VERROUILLER (espace)</button><p class="hkm" id="hkm"></p></div></div>';
    function ch(){return SET[cur][pos[cur]%8]}
    function draw(){var h="";for(var k=0;k<N;k++)h+='<span class="'+(k<cur?"ok":k===cur?"cu":"")+'">'+(k<cur?esc(PW[k]):k===cur?"▮":"•")+'</span>';$("slots").innerHTML=h;
     if(cur<N){var c=ch();$("big").innerHTML='<span class="'+(c===PW[cur]?"g":"r")+'">'+esc(c)+'</span>'}}
-   iv=setInterval(function(){if(!busy&&!done&&cur<N){pos[cur]++;draw()}},430);draw();
+   iv=setInterval(function(){if(!busy&&!done&&cur<N){pos[cur]++;draw()}},650);draw();
    lock=function(){if(done||busy||cur>=N)return;
     if(ch()===PW[cur]){cur++;beep(1200,.04);$("hkm").textContent="";draw();if(cur===N)win()}
     else{beep(140,.25,"sawtooth");$("hkm").textContent="Caractère refusé.";var b=$("big");b.classList.remove("shk");void b.offsetWidth;b.classList.add("shk")}};
@@ -816,9 +840,9 @@ var WG={
   var done=false;
   hstep(p,2,function(g){
    var C=shuf(p.choices);
-   g.innerHTML='<div class="phn"><p class="pht">💬 Taliana</p><div class="bub">J\'ai pris le fourgon blindé en photo pendant sa halte 📍 Je file aux urgences 🦶🔫</div>'+pic(p.sel)+'</div><p class="q" style="text-align:center;margin-top:12px">Sur quel parking le fourgon fait-il sa halte ?</p><div class="chs">'+C.map(function(c){return '<button type="button" class="ghost">'+esc(c)+'</button>'}).join("")+'</div><p class="msg" id="sm" role="status"></p><div id="sd"></div>';
+   g.innerHTML='<div class="phn"><p class="pht">💬 Taliana</p><div class="bub">J\'ai pris le fourgon blindé en photo 📍 Désolée, j\'ai pas le temps, je file aux urgences 🏥🦶🔫</div>'+pic(p.sel)+'</div><p class="q" style="text-align:center;margin-top:12px">Sur quel parking le fourgon fait-il sa halte ?</p><div class="chs">'+C.map(function(c){return '<button type="button" class="ghost">'+esc(c)+'</button>'}).join("")+'</div><p class="msg" id="sm" role="status"></p><div id="sd"></div>';
    Array.prototype.forEach.call(g.querySelectorAll(".chs button"),function(b){b.onclick=function(){if(done)return;
-    if(b.textContent===p.target){done=true;b.classList.add("good");g.querySelectorAll(".chs button").forEach(function(x){x.disabled=true});$("sm").textContent="";bgFade(2500);playPass();
+    if(b.textContent===p.target){done=true;b.classList.add("good");g.querySelectorAll(".chs button").forEach(function(x){x.disabled=true});$("sm").textContent="";bgFade(2500);
      dlg($("sd"),p.after,function(){$("go").click()})}
     else{S.wrong=(S.wrong||0)+1;sv();b.disabled=true;bad($("sm"),"T'es sûr que tu viens de Los Santos, toi ?",true)}}});
   });
@@ -841,7 +865,7 @@ var WG={
    document.addEventListener("keydown",kd);document.addEventListener("keyup",ku);
    function blocked(x,y){if(x<PR||x>W-PR||y<62+PR||y>H-PR)return true;for(var i=0;i<CARS.length;i++){var q=CARS[i];if(x+PR>q.x&&x-PR<q.x+q.w&&y+PR>q.y&&y-PR<q.y+q.h)return true}return false}
    function losBlocked(ax,ay,bx,by){for(var s=1;s<12;s++){var x=ax+(bx-ax)*s/12,y=ay+(by-ay)*s/12;for(var i=0;i<CARS.length;i++){var q=CARS[i];if(x>q.x&&x<q.x+q.w&&y>q.y&&y<q.y+q.h)return true}}return false}
-   function cams(){return [{mx:180,my:H-2,x:180,y:361.5+43.5*Math.sin(T*1.6)},{mx:W-6,my:66,x:252.5+87.5*Math.sin(T*1.25),y:100}]}
+   function cams(){return [{mx:180,my:H-2,x:180,y:361.5+43.5*Math.sin(T*1.6)},{mx:W-6,my:66,x:252.5+87.5*Math.sin(T*1.25),y:100},{mx:W-4,my:255,x:295+55*Math.sin(T*1.5+1),y:255},{mx:180,my:166,x:180+70*Math.sin(T*1.1+2),y:212}]}
    function caught(t){frz=1.9;K={};$("gri").textContent="T'ES GRILLÉ !";$("gri").hidden=false;playFail();
     setTimeout(function(){$("gri").hidden=true;reset();frz=0;$("obj").textContent="Objectif : 👔 récupérer la tenue de convoyeur, puis 🚐 monter dans le fourgon."},1900)}
    function draw(){
@@ -854,8 +878,8 @@ var WG={
     if(!bag){c.beginPath();c.arc(BAG.x,BAG.y,13,0,7);c.fillStyle="rgba(245,197,66,"+(.25+.2*Math.sin(T*5))+")";c.fill();c.font="16px serif";c.fillText("👔",BAG.x,BAG.y+1)}
     var a=gd.dir>0?0:Math.PI;c.fillStyle="rgba(255,236,120,.28)";c.beginPath();c.moveTo(gd.x,gd.y);c.arc(gd.x,gd.y,110,a-.55,a+.55);c.closePath();c.fill();
     c.font="20px serif";c.fillText("👮",gd.x,gd.y);
-    cams().forEach(function(q){c.strokeStyle="rgba(255,60,60,.5)";c.lineWidth=1.5;c.beginPath();c.moveTo(q.mx,q.my);c.lineTo(q.x,q.y);c.stroke();c.beginPath();c.arc(q.x,q.y,22,0,7);c.fillStyle="rgba(255,46,46,.33)";c.fill();c.strokeStyle="#ff2e2e";c.stroke();c.font="16px serif";c.fillText("📹",q.mx,q.my-(q.my>H/2?8:-6))});
-    c.font="18px serif";c.fillText(frz>0?"💥":"🥷",P.x,P.y);if(bag){c.font="10px serif";c.fillText("👔",P.x+10,P.y-10)}
+    cams().forEach(function(q){c.strokeStyle="rgba(255,60,60,.5)";c.lineWidth=1.5;c.beginPath();c.moveTo(q.mx,q.my);c.lineTo(q.x,q.y);c.stroke();c.beginPath();c.arc(q.x,q.y,27,0,7);c.fillStyle="rgba(255,46,46,.33)";c.fill();c.strokeStyle="#ff2e2e";c.stroke();c.font="16px serif";c.fillText("📹",q.mx,q.my-(q.my>H/2?8:-6))});
+    c.beginPath();c.arc(P.x,P.y,13,0,7);c.strokeStyle="#ff2e88";c.lineWidth=3;c.shadowColor="#ff2e88";c.shadowBlur=10;c.stroke();c.shadowBlur=0;c.font="18px serif";c.fillText(frz>0?"💥":"🥷",P.x,P.y);if(bag){c.font="10px serif";c.fillText("👔",P.x+10,P.y-10)}
    }
    function loop(now){raf=requestAnimationFrame(loop);var dt=Math.min(.05,(now-last)/1000);last=now;
     if(frz<=0&&!done){T+=dt;
@@ -865,11 +889,11 @@ var WG={
      if(!bag&&Math.hypot(P.x-BAG.x,P.y-BAG.y)<16){bag=true;beep(988,.08);setTimeout(function(){beep(1319,.1)},90);$("obj").textContent="Tenue récupérée ! Direction le fourgon 🚐."}
      var dx=P.x-gd.x,dy=P.y-gd.y,dd=Math.hypot(dx,dy),fa=gd.dir>0?0:Math.PI,an=Math.abs(Math.atan2(Math.sin(Math.atan2(dy,dx)-fa),Math.cos(Math.atan2(dy,dx)-fa)));
      if(dd<16||(dd<110&&an<.55&&!losBlocked(gd.x,gd.y,P.x,P.y)))caught();
-     else if(cams().some(function(q){return Math.hypot(P.x-q.x,P.y-q.y)<28}))caught();
+     else if(cams().some(function(q){return Math.hypot(P.x-q.x,P.y-q.y)<33}))caught();
      else if(P.x>VAN.x-PR-2&&P.x<VAN.x+VAN.w+PR+2&&P.y<VAN.y+VAN.h+PR+4){if(bag)win();else if(now-warned>1500){warned=now;$("obj").textContent="Il te faut d'abord la tenue de convoyeur 👔 !";beep(300,.1)}}
     }
-    draw();cv.dataset.s=JSON.stringify({x:Math.round(P.x),y:Math.round(P.y),gx:Math.round(gd.x),gdir:gd.dir,c1:Math.round(cams()[0].y),c2:Math.round(cams()[1].x),bag:bag,f:frz>0})}
-   function win(){done=true;K={};$("obj").textContent="Tu es dans le fourgon, en tenue de convoyeur. 🚐";if(!S.mute){var v=passSnd.volume;passSnd.volume=.3;playPass();setTimeout(function(){passSnd.volume=v},6000)}
+    draw();cv.dataset.s=JSON.stringify({x:Math.round(P.x),y:Math.round(P.y),gx:Math.round(gd.x),gdir:gd.dir,c1:Math.round(cams()[0].y),c2:Math.round(cams()[1].x),c3:Math.round(cams()[2].x),bag:bag,f:frz>0})}
+   function win(){done=true;K={};$("obj").textContent="Tu es dans le fourgon, en tenue de convoyeur. 🚐";
     dlg($("sd"),p.after,function(){$("go").click()})}
    raf=requestAnimationFrame(loop);
   });
@@ -881,13 +905,14 @@ var WG={
   function snd(f,vol,fb){if(S.mute)return null;var a=new Audio(encodeURIComponent(f));a.loop=true;a.volume=vol;XA.push(a);a.onerror=fb;var q=a.play();if(q&&q.catch)q.catch(function(){});return a}
   function ring(on){if(on){rgA=snd("audio-m11-sonnerie.mp3",.6,function(){rgA=null;if(!rgI&&!S.mute)rgI=setInterval(function(){beep(1400,.12);setTimeout(function(){beep(1750,.12)},150)},1100)})}else{clearInterval(rgI);rgI=0;if(rgA){rgA.pause();rgA=null}}}
   function alarm(on){var hv=$("hv");if(hv)hv.classList.toggle("alarm",on);if(on){alA=snd("audio-m11-alarme.mp3",.3,function(){alA=null;if(!alI&&!S.mute)alI=setInterval(function(){beep(880,.25,"square");setTimeout(function(){beep(660,.25,"square")},300)},700)})}else{clearInterval(alI);alI=0;if(alA){alA.pause();alA=null}}}
+  function alarmLow(low){if(alA)alA.volume=low?.04:.3;else if(!S.mute){clearInterval(alI);alI=0;if(!low&&$("hv")&&$("hv").classList.contains("alarm"))alI=setInterval(function(){beep(880,.25,"square");setTimeout(function(){beep(660,.25,"square")},300)},700)}}
   function kd(e){if(e.code==="Space"&&$("drb")&&e.target.tagName!=="INPUT"){e.preventDefault();if(!stall&&!cool&&!done)hold=true}}
   function ku(e){if(e.code==="Space")hold=false}
   CLN.push(function(){clearInterval(iv);clearInterval(tmr);dsnd(false);ring(false);alarm(false);document.removeEventListener("keydown",kd);document.removeEventListener("keyup",ku);var c=$("cine");if(c)c.remove()});
   var D=p.dl.slice(),SC=p.script;
   D[1]=Object.assign({},D[1],{on:function(){ring(true)}});D[2]=Object.assign({},D[2],{on:function(){ring(false)}});p.dl=D;
   hstep(p,4,function(g){
-   g.innerHTML='<div id="hv" class="hv"><div id="hd"></div><div id="hz"></div></div>';
+   g.innerHTML='<div id="hv" class="hv"><div id="hz"></div><div id="hd"></div></div>';
    function talk(L,next){dlg($("hd"),L,next)}
    arrive();
    function arrive(){var c=document.createElement("div");c.id="cine";c.innerHTML='<div class="cbar"></div><div class="cs in"><div class="arr"><div class="bk">'+IC.bank+'<b>UNION DEPOSITORY</b></div><div class="gate"></div><div class="vn">'+IC.van+'</div></div><p class="cap1">Union Depository · 03:12</p><p class="cap2" id="acap">Le fourgon des convoyeurs se présente à l\'entrée…</p></div><div class="cbar"></div>';document.body.appendChild(c);
@@ -911,22 +936,31 @@ var WG={
      else if(heat>=100&&!forced){heat=45;cool=2500;hold=false;dsnd(false);depth=Math.max(pins*25,depth-6);beep(150,.45,"sawtooth");msg("Crac ! La mèche a cassé. Changement de mèche…","ko")}
      var np=Math.floor(depth/25);if(np>pins){pins=np;beep(1600,.05);setTimeout(function(){beep(2100,.05)},70);var pe=$("pin"+(pins-1));if(pe)pe.setAttribute("fill","#39ff14")}
      $("gd").style.width=depth+"%";$("gh").style.width=Math.min(100,heat)+"%";$("gh").style.background=heat>75?"#ff2e2e":heat>45?"#ffb02e":"#39ff14";$("hole").setAttribute("r",depth/100*16);b.disabled=stall||cool>0;
-     if(depth>=100){clearInterval(iv);dsnd(false);b.disabled=true;msg("Le coffre cède !","ok");beep(523,.1);setTimeout(function(){talk(SC.open,loot)},900)}
+     if(depth>=100){clearInterval(iv);dsnd(false);b.disabled=true;msg("Le coffre cède !","ok");var rp=document.querySelector(".radio2");if(rp){var ra=rp.querySelector("audio");if(ra)fadeEl(ra,1500);setTimeout(function(){rp.remove()},1500)}beep(523,.1);setTimeout(function(){talk(SC.open,loot)},900)}
     },50);
    }
    function radio(){
-    var d=document.createElement("div");d.className="radio2";d.innerHTML='<p class="trv">📻 La radio de Trevor</p><audio class="aud" controls preload="auto" src="'+encodeURIComponent(p.aud)+'" onerror="this.outerHTML=\'<div class=box>Extrait à venir</div>\'"></audio><div id="rin"><input id="ra" type="text" autocomplete="off" aria-label="Titre ou artiste" placeholder="Titre ou artiste du morceau"><div class="row"><button type="button" id="rok">Répondre à Trevor</button></div><p class="msg" id="rm" role="status"></p></div>';
-    $("hz").insertBefore(d,$("hz").firstChild);var au=d.querySelector("audio");if(au&&!S.mute){au.volume=1;var q=au.play();if(q&&q.catch)q.catch(function(){})}
+    var d=document.createElement("div");d.className="radio2";d.innerHTML='<p class="trv">📻 La radio de Trevor</p><audio class="aud" controls controlsList="nodownload noplaybackrate" preload="auto" src="'+encodeURIComponent(p.aud)+'" onerror="this.outerHTML=\'<div class=box>Extrait à venir</div>\'"></audio><div id="rin"><input id="ra" type="text" autocomplete="off" aria-label="Titre ou artiste" placeholder="Titre ou artiste du morceau"><div class="row"><button type="button" id="rok">Répondre à Trevor</button></div><p class="msg" id="rm" role="status"></p></div>';
+    $("hz").insertBefore(d,$("hz").firstChild);alarmLow(true);var au=d.querySelector("audio");
+    if(!S.mute){var w=new Audio(encodeURIComponent("voix-m11-trevor-wouhou.mp3"));w.onerror=function(){};var wq=w.play();if(wq&&wq.catch)wq.catch(function(){})}
+    setTimeout(function(){if(au&&!S.mute&&$("rin")){au.volume=1;var q=au.play();if(q&&q.catch)q.catch(function(){})}},1200)
     function ans(){var v=norm($("ra").value);
-     if(p.bt.indexOf(v)>=0){$("rin").innerHTML='<div class="dlgw">'+face("Trevor")+'<div class="dlg"><b style="color:'+SPK.Trevor+'">Trevor</b> Ça, c\'est du son ! La mèche a refroidi, on perce le dernier !</div></div>';heat=0;stall=false;beep(880,.08)}
+     if(p.bt.indexOf(v)>=0){$("rin").innerHTML='<p class="msg ok">✔ Bonne réponse !</p>';heat=0;stall=false;alarmLow(false);beep(880,.08);talk([{w:"Trevor",t:"Ça, c'est du son ! La mèche a refroidi : on perce le dernier !"}],function(){})}
      else{S.wrong=(S.wrong||0)+1;sv();bad($("rm"),"Trevor : « Faux ! Même ma mère connaît ce morceau. »",true)}}
     $("rok").onclick=ans;$("ra").onkeydown=function(e){if(e.key==="Enter")ans()};$("ra").focus()}
    function loot(){var au=document.querySelector(".radio2 audio");if(au)au.pause();
-    var left=120,got=0;
-    $("hz").innerHTML='<div class="loot2"><p class="cdn" id="cdn">⏱ 2:00</p><p class="hks c">Cliquez sur chaque butin pour le prendre !</p><div class="lgrid"><button type="button" class="lt" data-v="Lingots d\'or · 4 M$"><div class="gbars"><div><i></i></div><div><i></i><i></i></div><div><i></i><i></i><i></i></div></div><small>Lingots d\'or</small></button><button type="button" class="lt" data-v="Liasses de billets · 1,2 M$"><span>💵</span><small>Billets</small></button><button type="button" class="lt" data-v="Œuvre d\'art · 2,5 M$"><span>🖼️</span><small>Œuvre d\'art</small></button></div><p class="tot" id="sac">Butin : 0 / 3</p><div id="mal"></div></div>';
+    var left=120,got=0,sum=0;
+    var IT=[];for(var k=0;k<4;k++)IT.push({h:'<div class="gbars"><div><i></i></div><div><i></i><i></i></div></div>',n:"Lingots d'or",v:1000000});
+    for(k=0;k<4;k++)IT.push({h:'<span>💵</span>',n:"Liasse de billets",v:300000});
+    for(k=0;k<2;k++)IT.push({h:'<span>🖼️</span>',n:"Œuvre d'art",v:1250000});
+    for(k=0;k<2;k++)IT.push({h:'<span>💎</span>',n:"Bijoux",v:500000});
+    var CELL=shuf([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]).slice(0,IT.length);
+    $("hz").innerHTML='<div class="loot2"><p class="cdn" id="cdn">⏱ 2:00</p><p class="hks c">Le butin est éparpillé dans le coffre : cliquez sur chaque objet pour le prendre !</p><div class="vroom">'+IT.map(function(it,k){var c=CELL[k],x=(c%4)*25+3+Math.random()*7,y=Math.floor(c/4)*25+2+Math.random()*6;return '<button type="button" class="lt2" style="left:'+x+'%;top:'+y+'%;--r:'+(Math.random()*30-15)+'deg" data-k="'+k+'" aria-label="'+it.n+'">'+it.h+'</button>'}).join("")+'</div><p class="tot" id="sac">Butin : 0 $ · 0 / '+IT.length+'</p><div id="mal"></div></div>';
     tmr=setInterval(function(){left=Math.max(0,left-1);var e=$("cdn");if(e)e.textContent="⏱ "+Math.floor(left/60)+":"+("0"+left%60).slice(-2)},1000);
-    Array.prototype.forEach.call(document.querySelectorAll(".lt"),function(b){b.onclick=function(){if(b.classList.contains("took"))return;b.classList.add("took");cash();got++;$("sac").textContent="Butin : "+got+" / 3 · "+b.dataset.v;
-     if(got===3)setTimeout(function(){$("mal").innerHTML='<button type="button" class="mal" id="mlb" aria-label="Mallette cassée">💼<small>Mallette cassée</small></button>';talk(SC.case,function(){$("mlb").classList.add("ringing");ring(true);$("mlb").onclick=phone})},700)}})}
+    function fm(v){return v.toLocaleString("fr-FR")+" $"}
+    Array.prototype.forEach.call(document.querySelectorAll(".lt2"),function(b){b.onclick=function(){if(b.classList.contains("took"))return;b.classList.add("took");cash();var it=IT[+b.dataset.k];got++;sum+=it.v;
+     $("sac").innerHTML="Butin : <b>"+fm(sum)+"</b> · "+got+" / "+IT.length+"<br><small>Dernier objet : "+it.n+" (+"+fm(it.v)+")</small>";
+     if(got===IT.length)setTimeout(function(){$("mal").innerHTML='<button type="button" class="mal" id="mlb" aria-label="Mallette cassée">💼<small>Mallette cassée</small></button>';talk(SC.case,function(){$("mlb").classList.add("ringing");ring(true);$("mlb").onclick=phone})},700)}})}
    function phone(){$("mal").innerHTML='<div class="phone2 ringp"><p class="ptime">03:16</p><div class="ntf">💬 <b>Lamar</b><br>Nouveau message</div><div class="unl"><input type="range" id="sl" min="0" max="100" value="0" aria-label="Glisser pour déverrouiller"><span>glisser pour déverrouiller ▸</span></div></div>';
     var sl=$("sl");sl.oninput=function(){if(+sl.value>=92){sl.oninput=null;ring(false);beep(1200,.05);sms()}};sl.onchange=function(){if(+sl.value<92)sl.value=0}}
    function sms(){$("mal").innerHTML='<div class="phone2 smsv"><p class="pht">‹ Lamar 🐶</p><div id="th"></div></div>';var n=0,th=$("th");
@@ -964,7 +998,7 @@ var WG={
 function mission(){
  begin();draw();radioStop();stopSnd();var m=M[S.m],n=m.st.length,p=m.st[S.s],audio=p.t==="blind test";var mu=p.mu||m.mu;want=!!mu&&!audio&&p.kind!=="radio"&&p.kind!=="heist";bgPlay(mu,want);
  var key=S.m+"-"+S.s;S.hs=S.hs||{};var hs=hints(p),shown=S.hs[key]||0;
- var media=audio?(p.aud?`<audio class="aud" controls preload="auto" src="${encodeURIComponent(p.aud)}" onerror="this.outerHTML='<div class=box>Extrait à venir</div>'"></audio>`:'<div class="box">Extrait à venir</div>'):"";
+ var media=audio?(p.aud?`<audio class="aud" controls controlsList="nodownload noplaybackrate" preload="auto" src="${encodeURIComponent(p.aud)}" onerror="this.outerHTML='<div class=box>Extrait à venir</div>'"></audio>`:'<div class="box">Extrait à venir</div>'):"";
  card.innerHTML=`<p class="era">Mission ${S.m+1} sur 12</p><h2>${m.n}</h2><p class="obj">Objectif : ${m.obj||("réussir "+n+" épreuve"+(n>1?"s":"")+" ("+m.st.map(function(x){return lab(x.t)}).join(", ")+").")}</p><hr><p class="era"><span class="badge">${TY[p.t]}</span> ${p.lbl||("Étape "+(S.s+1)+" sur "+n)}</p>${p.cover?pic(p.cover,"cover",1):""}<p class="q">${p.q}</p>${p.img?pic(p.img):""}${media}${p.kind?'<div id="wg"></div>':""}<input id="ans" type="text" autocomplete="off" aria-label="Votre réponse" placeholder="Votre réponse"><div class="row"><button id="go">Valider</button><button class="ghost" id="hb">Un indice</button></div><div id="hl"></div><p class="msg" id="msg" role="status"></p>`;
  var ans=$("ans"),msg=$("msg"),hb=$("hb"),hl=$("hl");var Wd=p.kind?WG[p.kind](p):null;if(p.kind)ans.style.display="none";
  function lbl(){hb.textContent=shown===0?"Un indice":shown>=hs.length?"Plus d'indice":shown===hs.length-1?"Dernier indice":"Indice suivant";hb.disabled=shown>=hs.length}
@@ -984,12 +1018,13 @@ function mission(){
 function passScr(){
  begin();draw();var p=M[S.lm].st[S.ls],k=S.lm,changed=S.m>S.lm;
  card.innerHTML=`<div class="pass"><p class="gold">Mission réussie</p></div>${infoHTML(p)}<button class="go" id="nx">Mission suivante</button>`;
- $("nx").onclick=function(){stopSnd();fadeXA(3500);S.pass=false;sv();if(S.end){padlock();return}if(changed&&TRANS[k])transition(k,mission);else mission()}
+ $("nx").onclick=function(){stopSnd();fadeXA(3500);(RAD.all||[]).forEach(function(x){if(x.a)fadeEl(x.a,3000)});RAD.all=null;RAD.a=null;S.pass=false;sv();if(S.end){padlock();return}if(changed&&TRANS[k])transition(k,mission);else mission()}
 }
+function plane(){if(S.mute)return;var a=new Audio(encodeURIComponent("audio-avion.mp3"));a.volume=.5;XA.push(a);a.onerror=function(){try{ctx();var n=ac.sampleRate*4,bf=ac.createBuffer(1,n,ac.sampleRate),d=bf.getChannelData(0);for(var i=0;i<n;i++)d[i]=Math.random()*2-1;var src=ac.createBufferSource(),f=ac.createBiquadFilter(),g=ac.createGain(),t=ac.currentTime;src.buffer=bf;f.type="bandpass";f.Q.value=1.2;f.frequency.setValueAtTime(300,t);f.frequency.exponentialRampToValueAtTime(1400,t+1.9);f.frequency.exponentialRampToValueAtTime(250,t+4);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.22,t+1.9);g.gain.exponentialRampToValueAtTime(.0001,t+4);src.connect(f);f.connect(g);g.connect(ac.destination);src.start(t);src.stop(t+4.1)}catch(e){}};var q=a.play();if(q&&q.catch)q.catch(function(){})}
 function transition(k,done){
  begin();draw();var t=TRANS[k];jingle([392,523,659,784]);
- card.innerHTML=`<div class="pass"><p class="era">Chapitre terminé</p><p class="gold">${t[0]}, c'est terminé !</p><p class="q">Direction <strong>${t[1]}</strong>…</p><div class="tbar"><i></i></div></div>`;
- setTimeout(done,4300)
+ card.innerHTML=`<div class="pass"><p class="era">Chapitre terminé</p><p class="gold">${t[0]}, c'est terminé !</p><p class="q">Direction <strong>${t[1]}</strong>…</p><div class="tbar"><i></i><b class="pl" aria-hidden="true">✈️</b></div></div>`;
+ plane();setTimeout(done,4300)
 }
 function padlock(){
  begin();draw();
