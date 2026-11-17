@@ -70,6 +70,7 @@ button.ghost{background:transparent;border:2px solid var(--cyan);color:var(--cya
 h3{font:700 1.05rem Arial,sans-serif;color:var(--pink);margin:18px 0 8px}
 .go{width:100%;background:#1fbf5b;margin-top:16px;font-size:1.25rem;padding:16px}.big{font-size:1.4rem;padding:18px}
 button:disabled{opacity:.4;cursor:not-allowed}
+.pics2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.pics2 .pic{margin:0}
 img{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 .chk{display:block;margin:16px 0;font-family:Arial,sans-serif;cursor:pointer}.chk input{width:22px;height:22px;margin-right:10px;vertical-align:middle;accent-color:#ff2e88}
 .warn{color:#ff3b3b;font-weight:700}.hint{margin:10px 0 0;font-family:Arial,sans-serif}.hint+iframe{display:block;margin-top:8px;border-radius:8px}
@@ -430,6 +431,14 @@ M[8].st[4].show="Liberty Rock Radio 97.8";
 M[8].st[4].hints=[{t:"Cette station est animée par une légende du rock, Iggy Pop."},{t:"Sa fréquence est comprise entre 95 et 100 MHz."},{t:"Elle commence par 97."}];
 M[8].st[4].info="C'est <strong>Liberty Rock Radio 97.8</strong>, la station de rock classique de GTA IV, animée par Iggy Pop. À l'opposé, <strong>The Beat 102.7</strong>, celle de « Flashing Lights », diffuse du hip-hop et du R&B.";
 
+
+/* images fournies pour GTA IV */
+M[8].st[0].ipic="Pochette Graduation.jpg";
+M[8].st[1].ipics=["Times Square.jpg","Star Junction 2.jpg"];
+M[8].st[2].ipic="Coeur.jpg";
+M[8].st[3].ipic="Annihilator.jpg";
+M[8].st[4].cover="Liberty Rock Radio Logo.jpg";
+M[10].st[1].ipic="Portrait de Chop.jpg";
 /* Mission 10 : GTA Chinatown Wars (mini-jeux) */
 M[9].st[0].kind="whistle";
 M[9].st[0].q="Liberty City, 3 h du matin. Huang Lee doit rentrer à sa planque, mais aucun bouton ne vous permettra d'appeler un taxi. Faites-le exactement comme sur Nintendo DS.";
@@ -546,7 +555,7 @@ function nameScr(){
 function lab(t){return t==="énigme"?"question":t}
 var TRANS={2:["GTA premier du nom","GTA 2"],3:["GTA 2","GTA III"],4:["GTA III","Vice City"],5:["Vice City","San Andreas"],6:["San Andreas","Vice City Stories"],7:["Vice City Stories","GTA IV"],8:["GTA IV","Chinatown Wars"],9:["Chinatown Wars","GTA V"],10:["GTA V","GTA VI"]};
 function pic(f,c,hide){return `<img class="pic ${c||""}" draggable="false" src="${encodeURIComponent(f)}" alt="" onerror="${hide?"this.style.display='none'":"this.outerHTML='<div class=box>Image à venir</div>'"}">`}
-function infoHTML(p){return p.info?`<div class="info"><p class="era">Le saviez-vous ?</p>${p.gif?pic(p.gif,"",1):""}${p.ipic?pic(p.ipic,"",1):""}<p>${p.info}</p></div>`:""}
+function infoHTML(p){return p.info?`<div class="info"><p class="era">Le saviez-vous ?</p>${p.gif?pic(p.gif,"",1):""}${p.ipic?pic(p.ipic,"",1):""}${p.ipics?'<div class="pics2">'+p.ipics.map(function(f){return pic(f,"",1)}).join("")+'</div>':""}<p>${p.info}</p></div>`:""}
 function hints(p){return p.hints||[{t:p.hint,link:p.link,lt:p.lt,warn:p.warn,embed:p.embed}]}
 function hintHTML(h){return `<p class="hint">${h.t?"Indice : "+esc(h.t):"Indice :"}${h.link?` <a href="${esc(h.link)}" target="_blank" rel="noopener noreferrer">${esc(h.lt||"Ouvrir la page du jeu")}</a>`:""}${h.warn?` <span class="warn">${esc(h.warn)}</span>`:""}</p>${h.embed||""}`}
 function brief(){
@@ -572,7 +581,7 @@ function dtmfSynth(k){try{ctx();var rows=[[1,2,3],[4,5,6],[7,8,9],["*",0,"#"]],R
 var RAD={a:null,s:null};
 /* ===== Mission 11 : Braquage de l'Union Depository ===== */
 var SPK={Lester:"#7fd4ff",Franklin:"#6fdc6f",Trevor:"#ff9a3c",Taliana:"#ff7ad9",Lamar:"#f5c542"};
-var FACE={Lester:"portrait-lester.png",Franklin:"portrait-franklin.png",Trevor:"portrait-trevor.png",Lamar:"portrait-lamar.png"};
+var FACE={Lester:"Portrait de Lester Crest.jpg",Franklin:"Portrait de Franklin Clinton.jpg",Trevor:"Portrait de Trevor Philips.jpg",Lamar:"Portrait de Lamar Davis.jpg"};
 function face(w){var c=SPK[w]||"#fff",f=FACE[w];return '<div class="face" style="--c:'+c+'"><span>'+esc(w.charAt(0))+'</span>'+(f?'<img src="'+encodeURIComponent(f)+'" alt="" onerror="this.remove()">':'')+'</div>'}
 function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
 function cash(){if(S.mute)return;var a=new Audio(encodeURIComponent("audio-m11-caisse.mp3"));a.onerror=function(){beep(1318,.06,"square");setTimeout(function(){beep(2637,.3,"triangle")},80)};var q=a.play();if(q&&q.catch)q.catch(function(){})}
@@ -793,9 +802,9 @@ var WG={
   return {ok:function(){return done}}
  },
  crew:function(p){
-  var R=[["Hacker","💻",[["Paige Harris",95,15,"Pirate le Pentagone pour s'occuper le dimanche.","crew-paige.jpg"],["Chris Feltz",80,10,"Fiable. Toujours une canette d'energy drink à la main.","crew-chris.jpg"],["Rickie Lukens",50,5,"A déjà piraté… sa propre box. Par erreur.","crew-rickie.jpg"]]],
-   ["Chauffeur","🚗",[["Eddie Toh",92,14,"Ne quitte jamais sa voiture. Même pour dormir.","crew-eddie.jpg"],["Taliana Martinez",78,8,"Conduit vite. Adore jouer avec son flingue.","crew-taliana.jpg"],["Karim Denz",45,5,"Connaît très bien les fourrières de Los Santos.","crew-karim.jpg"]]],
-   ["Tireur","🔫",[["Packie McReary",94,15,"Ancien de la mafia irlandaise. Très motivé.","crew-packie.jpg"],["Mike Welsh",70,7,"Bon tireur. Un peu trop fan des bars de nuit.","crew-mike.jpg"],["Norm Richards",40,4,"A braqué la mauvaise banque deux fois.","crew-norm.jpg"]]]];
+  var R=[["Hacker","💻",[["Paige Harris",95,15,"Pirate le Pentagone pour s'occuper le dimanche.","Portrait de Paige Harris.jpg"],["Chris Feltz",80,10,"Fiable. Toujours une canette d'energy drink à la main.","Portrait de Chris Feltz.jpg"],["Rickie Lukens",50,5,"A déjà piraté… sa propre box. Par erreur.","Portrait de Rickie Lukens.jpg"]]],
+   ["Chauffeur","🚗",[["Eddie Toh",92,14,"Ne quitte jamais sa voiture. Même pour dormir.","Portrait de Eddie Toh.jpg"],["Taliana Martinez",78,8,"Conduit vite. Adore jouer avec son flingue.","Portrait de Taliana Martinez.jpg"],["Karim Denz",45,5,"Connaît très bien les fourrières de Los Santos.","Portrait de Karim Denz.jpg"]]],
+   ["Tireur","🔫",[["Packie McReary",94,15,"Ancien de la mafia irlandaise. Très motivé.","Portrait de Packie McReary.jpg"],["Mike Welsh",70,7,"Bon tireur. Un peu trop fan des bars de nuit.","Portrait de Mike Welsh.jpg"],["Norm Richards",40,4,"A braqué la mauvaise banque deux fois.","Portrait de Norm Richards.jpg"]]]];
   var BEST=["Chris Feltz","Taliana Martinez","Mike Welsh"],sel=[null,null,null],done=false;
   hstep(p,0,function(g){
    var O;do{O=R.map(function(r){return shuf(r[2])})}while(new Set(O.map(function(c,k){return c.map(function(x){return x[0]}).indexOf(BEST[k])})).size<3);
@@ -871,7 +880,7 @@ var WG={
    function blocked(x,y){if(x<PR||x>W-PR||y<62+PR||y>H-PR)return true;for(var i=0;i<CARS.length;i++){var q=CARS[i];if(x+PR>q.x&&x-PR<q.x+q.w&&y+PR>q.y&&y-PR<q.y+q.h)return true}return false}
    function losBlocked(ax,ay,bx,by){for(var s=1;s<12;s++){var x=ax+(bx-ax)*s/12,y=ay+(by-ay)*s/12;for(var i=0;i<CARS.length;i++){var q=CARS[i];if(x>q.x&&x<q.x+q.w&&y>q.y&&y<q.y+q.h)return true}}return false}
    function cams(){return [{mx:180,my:H-2,x:180,y:361.5+43.5*Math.sin(T*1.6)},{mx:W-6,my:66,x:252.5+87.5*Math.sin(T*1.25),y:100},{mx:W-4,my:255,x:295+55*Math.sin(T*1.5+1),y:255},{mx:180,my:166,x:180+70*Math.sin(T*1.1+2),y:212}]}
-   function caught(t){frz=1.9;K={};$("gri").textContent="T'ES GRILLÉ !";$("gri").hidden=false;playFail();
+   function caught(t){frz=1.9;K={};$("gri").textContent="T'ES GRILLÉ !";$("gri").hidden=false;playFail();if(!S.mute){var po=new Audio(encodeURIComponent("Arrivée de la police.mp3"));po.volume=.7;XA.push(po);var pq=po.play();if(pq&&pq.catch)pq.catch(function(){});setTimeout(function(){fadeEl(po,800)},3200)}
     setTimeout(function(){$("gri").hidden=true;reset();frz=0;$("obj").textContent="Objectif : 👔 récupérer la tenue de convoyeur, puis 🚐 monter dans le fourgon."},1900)}
    function draw(){
     c.fillStyle="#26272d";c.fillRect(0,0,W,H);
