@@ -215,6 +215,12 @@ img{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 .mal.ringing{animation:ring .35s infinite;border-color:#f5c542}
 #mal .phone2{margin:12px auto 0}
 .buzz1{animation:buzz .5s}
+.crew3{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:0 0 10px}
+.cm{width:86px;background:#fafafa;color:#222;padding:4px 4px 5px;text-align:center;box-shadow:0 2px 4px #0009;font:700 .55rem/1.2 Arial,sans-serif;transform:rotate(-1.5deg)}.cm:nth-child(2){transform:rotate(2deg)}
+.cm b{display:block;font-size:.6rem}.cm small{color:#c0392b;text-transform:uppercase;font-size:.5rem}
+.cmp{position:relative;aspect-ratio:1;background:#1b1c21;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:3px}.cmp span{font-size:1.8rem}.cmp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cx{display:none;position:absolute;inset:0}.cx:before,.cx:after{content:"";position:absolute;left:-10%;right:-10%;top:46%;height:7px;background:#e3122a;border-radius:3px;transform:rotate(45deg);box-shadow:0 0 6px #0008}.cx:after{transform:rotate(-45deg)}
+.cm.x .cx{display:block}.cm.x img,.cm.x span{filter:grayscale(1) brightness(.7)}.cm.xnew .cx{animation:stamp .6s both}
 .callp{margin:0 auto 12px;align-items:center;text-align:center}.callp .pht{color:#ccc}.cface .face{width:96px;height:96px;flex-basis:96px;margin:6px auto}.cface .face span{font-size:2.6rem}.callp .cn{font:900 1.5rem Impact,'Arial Black',sans-serif;margin:0}.callp .csub{margin:0;color:#9fe;font-size:.85rem}
 .v3 canvas{display:block;width:100%!important;height:auto!important;border-radius:10px;border:2px solid var(--cyan)}
 #pkw.w3{max-width:none}#pk.mini{position:absolute;top:8px;right:8px;width:92px;margin:0;aspect-ratio:360/420;opacity:.88;border:2px solid var(--cyan);border-radius:6px;z-index:2}
@@ -244,6 +250,7 @@ img{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 .bub.l{background:#2c2f3a;border-radius:14px 14px 14px 4px;max-width:88%;animation:pop .4s}
 .bub.key{background:#f5c542;color:#000;font:900 1.5rem 'Courier New',monospace;letter-spacing:.25em;text-align:center;max-width:100%}
 #cend{margin-top:14px}
+.ftime{font:900 1.5rem 'Courier New',monospace;color:#00e5ff;margin:4px 0;text-shadow:0 0 12px #00e5ff88}
 
 
 .street{position:relative;height:80px;border-radius:10px;background:linear-gradient(#120a1f 62%,#2a2a33 62%);overflow:hidden;margin-bottom:12px}
@@ -482,7 +489,7 @@ M[9].st[1].info="Dans Chinatown Wars sur DS, voler une voiture garée lançait u
 M[10].obj="Réussir les 4 missions de préparation pour terminer par le braquage final du coffre de Lamar.";
 M[10].st[0].kind="crew";M[10].st[0].noPass=1;M[10].st[0].lbl="Mission de préparation 1";
 M[10].st[0].q="Recruter l'équipe du braquage.";
-M[10].st[0].dl=[{w:"Franklin",t:"{N}, j'ai un coup pour toi. Un vieux pote d'enfance m'a fait un sale coup : il s'est barré avec mon butin.",a:"voix-m11-01.mp3"},{w:"Franklin",t:"Si t'es bon, je partagerai la somme avec toi. Lester supervise, et toi et moi, on se charge du reste.",a:"voix-m11-02.mp3"},{w:"Lester",t:"Il nous faut une équipe :\n• un hacker, pour trouver le mot de passe du téléphone de Lamar et le numéro de son coffre ;\n• un chauffeur, qui récupérera le fourgon et les tenues de convoyeurs de fonds ;\n• et un tireur, si ça merde (zéro risque).\nEt la liste en bas du tableau, tu n'y touches pas. J'ai déjà travaillé avec eux : compte pas sur eux.",a:"voix-m11-03.mp3"},{w:"Franklin",t:"Je veux la meilleure équipe possible. Mais je ne lâche pas plus de 25 % du butin à l'équipe. Pas un de plus.",a:"voix-m11-04.mp3"}];
+M[10].st[0].dl=[{w:"Franklin",t:"{N}, j'ai un coup pour toi. Un vieux pote d'enfance m'a fait un sale coup : il s'est barré avec mon butin.",a:"voix-m11-01.mp3"},{w:"Franklin",t:"Si t'es bon, je partagerai la somme avec toi. Lester supervise, et toi et moi, on se charge du reste.",a:"voix-m11-02.mp3"},{w:"Lester",t:"Il nous faut une équipe :\n• un hacker, pour trouver le mot de passe du téléphone de Lamar et le numéro de son coffre ;\n• un chauffeur, qui récupérera le fourgon et les tenues de convoyeurs de fonds ;\n• et un tireur, qui repérera le fourgon et les tenues, et nous aidera si ça dérape (zéro risque).\nEt la liste en bas du tableau, tu n'y touches pas. J'ai déjà travaillé avec eux : compte pas sur eux.",a:"voix-m11-03.mp3"},{w:"Franklin",t:"Je veux la meilleure équipe possible. Mais je ne lâche pas plus de 25 % du butin à l'équipe. Pas un de plus.",a:"voix-m11-04.mp3"}];
 M[10].st[0].show="Chris Feltz, Mike Welsh et Taliana Martinez (25 %)";
 M[10].st[0].hints=[{t:"Il faut la meilleure compétence totale possible, pas forcément le meilleur à chaque poste."},{t:"Les plus forts coûtent trop cher ensemble : sacrifiez un peu de talent à chaque poste."},{t:"La bonne équipe coûte exactement 25 %."}];
 M[10].st[0].info="Dans GTA V, avant chaque braquage, on choisit ses complices : plus ils sont doués, plus leur part du butin est élevée. Un complice bon marché peut faire capoter le coup… mais il progresse s'il survit au braquage.";
@@ -512,7 +519,7 @@ M[10].st[3].after=[{w:"Lester",t:"Bien joué.",a:"voix-m11-20.mp3"},{w:"Franklin
 M[10].st[3].show="Fourgon blindé et tenue de convoyeur récupérés";
 M[10].st[3].hints=[];
 M[10].st[3].info="Dans GTA V, chaque grand braquage se prépare par des « missions de préparation » : voler un véhicule, du matériel ou des uniformes. Le dernier coup du jeu, « The Big Score », vise justement des lingots d'or de la Union Depository.";
-M[10].st[4].kind="heist";M[10].st[4].lbl="Braquage final";
+M[10].st[4].kind="heist";M[10].st[4].mu="audio-m11-braquage.mp3";M[10].st[4].lbl="Braquage final";
 M[10].st[4].q="Braquer le coffre de Lamar à l'Union Depository.";
 M[10].st[4].dl=[{w:"Lester",t:"Bon. Toute l'équipe a foiré. Il ne reste que toi.",a:"voix-m11-22.mp3"},{w:"Franklin",t:"Hé, et moi, tu m'oublies ? T'inquiète, vieux briscard : j'appelle un vieil ami.",a:"voix-m11-23.mp3"},{w:"Trevor",t:"Si c'est le support informatique de SGP, va chier !!!",a:"voix-m11-24.mp3"},{w:"Franklin",t:"Non, c'est Franklin. J'ai besoin de toi maintenant : rejoins la position.",a:"voix-m11-25.mp3"},{w:"Trevor",t:"Ça sent les problèmes… j'adore ! OK, j'suis partant !",a:"voix-m11-26.mp3"}];
 M[10].st[4].script={
@@ -562,7 +569,7 @@ function audCtl(a){if(a._ctl)return;a._ctl=1;var d=document.createElement("div")
  d.onclick=function(e){var b=e.target.closest("button");if(!b)return;var v=b.dataset.v;if(v==="m")a.muted=!a.muted;else{a.muted=false;a.volume=Math.max(0,Math.min(1,Math.round((a.volume+(v==="+"?.1:-.1))*10)/10))}show()};a.addEventListener("volumechange",show);show()}
 new MutationObserver(function(){document.querySelectorAll("audio.aud").forEach(audCtl)}).observe(document.body,{childList:true,subtree:true});
 /* chrono et frise */
-function tshow(){var el=$("timer");clearInterval(tm);function t(){el.textContent=(S.end?"Temps final ":"Temps ")+fmt((S.end||Date.now())-S.start)}t();if(!S.end)tm=setInterval(t,500)}
+function tshow(){var el=$("timer");clearInterval(tm);var st=S.end||S.stop;function t(){el.textContent=(st?"Temps final ":"Temps ")+fmt((st||Date.now())-S.start)}t();if(!st)tm=setInterval(t,500)}
 function adminNav(){
  if(!S.admin)return;var el=$("adm");
  if(!el){el=document.createElement("div");el.id="adm";el.style.cssText="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:6px 0 2px;font:700 .75rem Arial,sans-serif;color:#ffd9a0";
@@ -572,7 +579,7 @@ function adminNav(){
   am.innerHTML=M.map(function(m,i){return '<option value="'+i+'">'+(i+1)+'. '+m.s+'</option>'}).join("");
   function steps(){var m=M[+am.value];as.innerHTML=m.st.map(function(x,j){return '<option value="'+j+'">Étape '+(j+1)+'</option>'}).join("")}
   am.onchange=steps;
-  $("ag").onclick=function(){S.m=+am.value;S.s=+as.value;S.pass=false;delete S.end;sv();mission()};
+  $("ag").onclick=function(){S.m=+am.value;S.s=+as.value;S.pass=false;delete S.end;if(S.m<11)delete S.stop;sv();tshow();mission()};
   el._steps=steps;
  }
  if(S.m>=0&&S.m<M.length&&!S.end){$("am").value=S.m;el._steps();$("as").value=S.s}else{el._steps()}
@@ -645,7 +652,7 @@ function board(i){
  var pts=[10,30,50,70,90].map(function(x,k){return x+","+(k%2?6:2)}).slice(0,i+1).join(" ");
  return '<div class="bd"><div class="bdh"><span class="bt2">BRAQUAGE DE L\'UNION DEPOSITORY</span><span class="bs2">Lamar sera à sec.</span></div><div class="pins2"><svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true"><polyline points="10,2 30,6 50,2 70,6 90,2" fill="none" stroke="#c0392b55" stroke-width=".8"/><polyline class="str" points="'+pts+'" fill="none" stroke="#e74c3c" stroke-width="1.2"/></svg>'+
   P.map(function(x,k){return '<div class="pol2'+(k<i?" done":k===i?" cur":"")+(k===i-1?" jd":"")+'" style="--r:'+R[k]+'deg"><div class="ph2">'+x[0]+'</div><b>'+x[1]+'</b>'+x[2]+'</div>'}).join("")+
-  '</div><div class="extra">'+X.filter(function(x){return x.s<=i}).map(function(x,k){return x.h.replace('<div class="pi ','<div style="--r:'+((k*37)%9-4)+'deg" class="pi '+(x.s===i&&i>0?"new ":""))}).join("")+'</div>'+
+  '</div>'+(i>=1?'<div class="crew3">'+[["Chris Feltz","Hacker",1],["Mike Welsh","Chauffeur",3],["Taliana Martinez","Tireuse",2]].map(function(c){return '<div class="cm'+(i>c[2]?" x":"")+'" id="cmf'+c[2]+'"><div class="cmp"><span>🥷</span><img src="'+encodeURIComponent("Portrait de "+c[0]+".jpg")+'" alt="" onerror="this.remove()"><i class="cx" aria-hidden="true"></i></div><b>'+c[0]+'</b><small>'+c[1]+'</small></div>'}).join("")+'</div>':'')+'<div class="extra">'+X.filter(function(x){return x.s<=i}).map(function(x,k){return x.h.replace('<div class="pi ','<div style="--r:'+((k*37)%9-4)+'deg" class="pi '+(x.s===i&&i>0?"new ":""))}).join("")+'</div>'+
   '<div class="norec"><b>⛔ À NE PAS RECRUTER :</b> '+NOREC.map(function(n){return '<s>'+esc(n)+'</s>'}).join(" · ")+'</div></div>'
 }
 function pname(){var n=String(S.name||"").trim().split(/\s+/)[0]||"l'agent";return n.charAt(0).toUpperCase()+n.slice(1)}
@@ -685,7 +692,8 @@ function hstep(p,i,game,noKeep){
  function replayBtn(){if(noKeep){$("dl").innerHTML="";return}$("dl").innerHTML='<button type="button" class="ghost sm" id="rb">↺ Relire le briefing</button>';$("rb").onclick=function(){dlg($("dl"),p.dl,replayBtn)}}
  if(S.dls[key]&&!noKeep){replayBtn();game($("gm"));return}
  $("gm").hidden=true;
- dlg($("dl"),p.dl,function(){if(!noKeep){S.dls[key]=1;sv()}replayBtn();$("gm").hidden=false;game($("gm"))})
+ var DL=p.dl;if(i>=1&&i<=3)DL=p.dl.map(function(l,k){return k===0?Object.assign({},l,{on:function(){var c=$("cmf"+i);if(c){c.classList.add("x","xnew");beep(180,.3,"sawtooth")}}}):l});
+ dlg($("dl"),DL,function(){if(!noKeep){S.dls[key]=1;sv()}replayBtn();$("gm").hidden=false;game($("gm"))})
 }
 var CLN=[],XA=[];
 /* pas de clic droit / glisser sur les images et les extraits audio */
@@ -851,7 +859,7 @@ var WG={
  crew:function(p){
   var R=[["Hacker","💻",[["Paige Harris",95,15,"Pirate le Pentagone pour s'occuper le dimanche.","Portrait de Paige Harris.jpg"],["Chris Feltz",80,10,"Fiable. Toujours une canette d'energy drink à la main.","Portrait de Chris Feltz.jpg"],["Rickie Lukens",50,5,"A déjà piraté… sa propre box. Par erreur.","Portrait de Rickie Lukens.jpg"]]],
    ["Chauffeur","🚗",[["Eddie Toh",92,14,"Ne quitte jamais sa voiture. Même pour dormir.","Portrait de Eddie Toh.jpg"],["Mike Welsh",70,7,"Conduit vite. Un peu trop fan des bars de nuit.","Portrait de Mike Welsh.jpg"],["Karim Denz",45,5,"Connaît très bien les fourrières de Los Santos.","Portrait de Karim Denz.jpg"]]],
-   ["Tireur","🔫",[["Packie McReary",94,15,"Ancien de la mafia irlandaise. Très motivé.","Portrait de Packie McReary.jpg"],["Taliana Martinez",78,8,"Tireuse d'élite. Adore faire tourner son flingue.","Portrait de Taliana Martinez.jpg"],["Norm Richards",40,4,"A braqué la mauvaise banque deux fois.","Portrait de Norm Richards.jpg"]]]];
+   ["Tireur","🔫",[["Packie McReary",94,15,"Ancien de la mafia irlandaise. Très motivé.","Portrait de Packie McReary.jpg"],["Taliana Martinez",78,8,"Tireuse d'élite. Adore faire tourner son flingue.","Portrait de Taliana Martinez.jpg"],["Norm Richards",40,4,"Sosie officiel de Freddie Mercury. A braqué la mauvaise banque deux fois.","Portrait de Norm Richards.jpg"]]]];
   var BEST=["Chris Feltz","Mike Welsh","Taliana Martinez"],sel=[null,null,null],done=false;
   hstep(p,0,function(g){
    var O;do{O=R.map(function(r){return shuf(r[2])})}while(new Set(O.map(function(c,k){return c.map(function(x){return x[0]}).indexOf(BEST[k])})).size<3);
@@ -1078,12 +1086,14 @@ var WG={
   var done=false,iv=0,osc=null,og=null,hold=false,depth=0,heat=0,cool=0,stall=true,forced=false,pins=0,alA=null,alI=0,rgA=null,rgI=0,tmr=0;
   function dsnd(on,h){if(S.mute)on=false;try{if(on){ctx();if(!osc){osc=ac.createOscillator();og=ac.createGain();osc.type="sawtooth";og.gain.value=.05;osc.connect(og);og.connect(ac.destination);osc.start()}osc.frequency.value=95+h*1.4+Math.random()*12}else if(osc){osc.stop();osc=null}}catch(e){}}
   function snd(f,vol,fb){if(S.mute)return null;var a=new Audio(encodeURIComponent(f));a.loop=true;a.volume=vol;XA.push(a);a.onerror=fb;var q=a.play();if(q&&q.catch)q.catch(function(){});return a}
+  var smsI=0;function smsSnd(){if(S.mute)return;var a=new Audio(encodeURIComponent("GTA V SMS.mp3"));a.volume=.8;a.onerror=function(){beep(1568,.07);setTimeout(function(){beep(2093,.09)},90)};var q=a.play();if(q&&q.catch)q.catch(function(){})}
+  function smsLoop(on){clearInterval(smsI);smsI=0;if(on){smsSnd();smsI=setInterval(smsSnd,1800)}}
   function ring(on){if(on){rgA=snd("audio-m11-sonnerie.mp3",.6,function(){rgA=null;if(!rgI&&!S.mute)rgI=setInterval(function(){beep(1400,.12);setTimeout(function(){beep(1750,.12)},150)},1100)})}else{clearInterval(rgI);rgI=0;if(rgA){rgA.pause();rgA=null}}}
-  function alarm(on){var hv=$("hv");if(hv)hv.classList.toggle("alarm",on);if(on){alA=snd("audio-m11-alarme.mp3",.3,function(){alA=null;if(!alI&&!S.mute)alI=setInterval(function(){beep(880,.25,"square");setTimeout(function(){beep(660,.25,"square")},300)},700)})}else{clearInterval(alI);alI=0;if(alA){alA.pause();alA=null}}}
+  function alarm(on){var hv=$("hv");if(hv)hv.classList.toggle("alarm",on);if(on){if(bg&&!bg.paused)fadeTo(bg,bgV()*.35,800);alA=snd("audio-m11-alarme.mp3",.3,function(){alA=null;if(!alI&&!S.mute)alI=setInterval(function(){beep(880,.25,"square");setTimeout(function(){beep(660,.25,"square")},300)},700)})}else{clearInterval(alI);alI=0;if(alA){alA.pause();alA=null}}}
   function alarmLow(low){if(alA)alA.volume=low?.04:.3;else if(!S.mute){clearInterval(alI);alI=0;if(!low&&$("hv")&&$("hv").classList.contains("alarm"))alI=setInterval(function(){beep(880,.25,"square");setTimeout(function(){beep(660,.25,"square")},300)},700)}}
   function kd(e){if(e.code==="Space"&&$("drb")&&e.target.tagName!=="INPUT"){e.preventDefault();if(!stall&&!cool&&!done)hold=true}}
   function ku(e){if(e.code==="Space")hold=false}
-  CLN.push(function(){clearInterval(iv);clearInterval(tmr);dsnd(false);ring(false);alarm(false);document.removeEventListener("keydown",kd);document.removeEventListener("keyup",ku);var c=$("cine");if(c)c.remove()});
+  CLN.push(function(){clearInterval(iv);clearInterval(tmr);clearInterval(smsI);dsnd(false);ring(false);alarm(false);document.removeEventListener("keydown",kd);document.removeEventListener("keyup",ku);var c=$("cine");if(c)c.remove()});
   var D=p.dl.slice(),SC=p.script;
   D[2]=Object.assign({},D[2],{preT:"Franklin compose le numéro de Trevor…",pre:function(next){var fin=false,a=null,tt=0;function go(){if(fin)return;fin=true;clearTimeout(tt);if(a)try{a.pause()}catch(e){}next()}
    tt=setTimeout(go,15000);if(S.mute){setTimeout(go,1500);return}a=new Audio(encodeURIComponent("Phone Dial and Ring Sound.mp3"));a.volume=.7;XA.push(a);a.onended=go;
@@ -1127,7 +1137,7 @@ var WG={
    }
    function radio(){
     var d=document.createElement("div");d.className="radio2";d.innerHTML='<p class="trv">📻 La radio de Trevor</p><audio class="aud" controls controlsList="nodownload noplaybackrate" preload="auto" src="'+encodeURIComponent(p.aud)+'" onerror="this.outerHTML=\'<div class=box>Extrait à venir</div>\'"></audio><div id="rin"><input id="ra" type="text" autocomplete="off" aria-label="Titre ou artiste" placeholder="Titre ou artiste du morceau"><div class="row"><button type="button" id="rok">Répondre à Trevor</button></div><p class="msg" id="rm" role="status"></p></div>';
-    $("hz").insertBefore(d,$("hz").firstChild);alarmLow(true);var au=d.querySelector("audio");
+    $("hz").insertBefore(d,$("hz").firstChild);alarmLow(true);bgFade(1200);var au=d.querySelector("audio");
     if(!S.mute){var w=new Audio(encodeURIComponent("voix-m11-trevor-wouhou.mp3"));w.onerror=function(){};var wq=w.play();if(wq&&wq.catch)wq.catch(function(){})}
     setTimeout(function(){if(au&&!S.mute&&$("ra")){au.volume=1;var q=au.play();if(q&&q.catch)q.catch(function(){})}},1200)
     function ans(){var v=norm($("ra").value);
@@ -1135,24 +1145,24 @@ var WG={
      else{S.wrong=(S.wrong||0)+1;sv();bad($("rm"),"Trevor : « Faux ! Même ma mère connaît ce morceau. »",true)}}
     $("rok").onclick=ans;$("ra").onkeydown=function(e){if(e.key==="Enter")ans()};$("ra").focus()}
    function loot(){var au=document.querySelector(".radio2 audio");if(au)au.pause();
-    var left=30,got=0,sum=0,CAP=6;
+    var left=15,got=0,sum=0,CAP=6;
     var IT=[],k;function add(n,h,nm,v){for(k=0;k<n;k++)IT.push({h:h,n:nm,v:v})}
     add(6,'<div class="gbars"><div><i></i></div><div><i></i><i></i></div></div>',"Lingots d'or",1000000);add(6,'<span>💵</span>',"Liasse de billets",300000);
     add(3,'<span>🖼️</span>',"Œuvre d'art",1250000);add(3,'<span>💎</span>',"Bijoux",500000);add(2,'<span>⌚</span>',"Montre de luxe",150000);
     var CELL=shuf(Array.apply(null,Array(20)).map(function(_,i){return i}));
-    $("hz").innerHTML='<div class="loot2"><p class="cdn" id="cdn">⏱ 0:30</p><p class="hks c">Le butin est éparpillé dans le coffre : cliquez sur chaque objet pour le mettre dans le sac !</p><div class="vroom">'+IT.map(function(it,k){var c=CELL[k],x=(c%4)*25+2+Math.random()*6,y=Math.floor(c/4)*20+1+Math.random()*4;return '<button type="button" class="lt2" style="left:'+x+'%;top:'+y+'%;--r:'+(Math.random()*30-15)+'deg" data-k="'+k+'" aria-label="'+it.n+'">'+it.h+'</button>'}).join("")+'</div><div class="bags" id="bags"></div><p class="tot" id="sac">Butin : 0 $ · 0 / '+IT.length+'</p><div id="mal"></div></div>';
+    $("hz").innerHTML='<div class="loot2"><p class="cdn" id="cdn">⏱ 0:15</p><p class="hks c">Le butin est éparpillé dans le coffre : cliquez sur chaque objet pour le mettre dans le sac !</p><div class="vroom">'+IT.map(function(it,k){var c=CELL[k],x=(c%4)*25+2+Math.random()*6,y=Math.floor(c/4)*20+1+Math.random()*4;return '<button type="button" class="lt2" style="left:'+x+'%;top:'+y+'%;--r:'+(Math.random()*30-15)+'deg" data-k="'+k+'" aria-label="'+it.n+'">'+it.h+'</button>'}).join("")+'</div><div class="bags" id="bags"></div><p class="tot" id="sac">Butin : 0 $ · 0 / '+IT.length+'</p><div id="mal"></div></div>';
     function bags(){var n=Math.max(1,Math.ceil(got/CAP)+(got%CAP===0&&got<IT.length&&got>0?1:0)),h="";for(var b=0;b<n;b++){var c=Math.max(0,Math.min(CAP,got-b*CAP));h+='<div class="bag'+(c===CAP?" full":"")+(b===n-1&&c===0&&b>0?" new":"")+'"><div class="bfill" style="height:'+(c/CAP*100)+'%"></div><span>Sac '+(b+1)+'</span><b>'+c+' / '+CAP+'</b></div>'}$("bags").innerHTML=h}
     bags();
     tmr=setInterval(function(){left=Math.max(0,left-1);var e=$("cdn");if(e)e.textContent=left?"⏱ 0:"+("0"+left).slice(-2):"⏱ 0:00 · VITE !"},1000);
     function fm(v){return v.toLocaleString("fr-FR")+" $"}
     Array.prototype.forEach.call(document.querySelectorAll(".lt2"),function(b){b.onclick=function(){if(b.classList.contains("took"))return;b.classList.add("took");cash();var it=IT[+b.dataset.k];got++;sum+=it.v;bags();
      $("sac").innerHTML="Butin : <b>"+fm(sum)+"</b> · "+got+" / "+IT.length+"<br><small>Dernier objet : "+it.n+" (+"+fm(it.v)+")</small>";
-     if(got===IT.length){clearInterval(tmr);setTimeout(function(){$("mal").innerHTML='<button type="button" class="mal" id="mlb" aria-label="Mallette cassée">💼<small>Mallette cassée</small></button>';talk(SC.case,function(){$("mlb").classList.add("ringing");ring(true);$("mlb").onclick=phone})},700)}}})}
+     if(got===IT.length){clearInterval(tmr);setTimeout(function(){$("mal").innerHTML='<button type="button" class="mal" id="mlb" aria-label="Mallette cassée">💼<small>Mallette cassée</small></button>';talk(SC.case,function(){$("mlb").classList.add("ringing");smsLoop(true);$("mlb").onclick=phone})},700)}}})}
    function phone(){$("mal").innerHTML='<div class="phone2 ringp"><p class="ptime">03:16</p><div class="ntf">💬 <b>Jason 🌴</b><br>Nouveau message</div><div class="unl"><input type="range" id="sl" min="0" max="100" value="0" aria-label="Glisser pour déverrouiller"><span>glisser pour déverrouiller ▸</span></div></div>';
-    var sl=$("sl");sl.oninput=function(){if(+sl.value>=92){sl.oninput=null;ring(false);beep(1200,.05);sms()}};sl.onchange=function(){if(+sl.value<92)sl.value=0}}
+    var sl=$("sl");sl.oninput=function(){if(+sl.value>=92){sl.oninput=null;smsLoop(false);beep(1200,.05);sms()}};sl.onchange=function(){if(+sl.value<92)sl.value=0}}
    function sms(){$("mal").innerHTML='<div class="phone2 smsv"><p class="pht">‹ Jason 🌴</p><div id="th"></div></div>';var n=0,th=$("th");
-    (function nx(){th.innerHTML+='<div class="bub l key">'+esc(VKEY)+'</div>';beep(900,.05);var ph=document.querySelector(".smsv");ph.classList.remove("buzz1");void ph.offsetWidth;ph.classList.add("buzz1");n++;if(n<4)setTimeout(nx,1200);else setTimeout(function(){talk(SC.end,finish)},900)})()}
-   function finish(){alarm(false);clearInterval(tmr);done=true;var c=document.createElement("div");c.id="cine";c.innerHTML='<div class="cbar"></div><div class="cs in"><p class="gold">Mission terminée</p><p class="cap2">Le code reçu par SMS : <b>'+esc(VKEY)+'</b>. Notez-le précieusement.</p><button type="button" class="go" id="cgo">C\'est bon, j\'ai noté le code</button></div><div class="cbar"></div>';document.body.appendChild(c);
+    (function nx(){th.innerHTML+='<div class="bub l key">'+esc(VKEY)+'</div>';smsSnd();var ph=document.querySelector(".smsv");ph.classList.remove("buzz1");void ph.offsetWidth;ph.classList.add("buzz1");n++;if(n<4)setTimeout(nx,1200);else setTimeout(function(){talk(SC.end,finish)},900)})()}
+   function finish(){alarm(false);clearInterval(tmr);done=true;if(!S.stop){S.stop=Date.now();sv()}tshow();var c=document.createElement("div");c.id="cine";c.innerHTML='<div class="cbar"></div><div class="cs in"><p class="gold">Mission terminée</p><p class="ftime">⏱ Temps final : <b>'+fmt(S.stop-S.start)+'</b></p><p class="cap2">Le chrono est arrêté : c\'est ce temps qui comptera pour votre score.</p><p class="cap2">Le code reçu par SMS : <b>'+esc(VKEY)+'</b>. Notez-le précieusement.</p><button type="button" class="go" id="cgo">C\'est bon, j\'ai noté le code</button></div><div class="cbar"></div>';document.body.appendChild(c);
     $("cgo").onclick=function(){c.remove();$("go").click()}}
    p._alarm=alarm;
   },true);
@@ -1183,7 +1193,7 @@ var WG={
  }
 };
 function mission(){
- begin();draw();radioStop();stopSnd();var m=M[S.m],n=m.st.length,p=m.st[S.s],audio=p.t==="blind test";var mu=p.mu||m.mu;want=!!mu&&!audio&&p.kind!=="radio"&&p.kind!=="heist"&&!(p.kind==="crew"&&!(S.dls&&S.dls["m11-0"]));bgPlay(mu,want);
+ begin();draw();radioStop();stopSnd();var m=M[S.m],n=m.st.length,p=m.st[S.s],audio=p.t==="blind test";var mu=p.mu||m.mu;want=!!mu&&!audio&&p.kind!=="radio"&&!(p.kind==="crew"&&!(S.dls&&S.dls["m11-0"]));bgPlay(mu,want);
  var key=S.m+"-"+S.s;S.hs=S.hs||{};var hs=hints(p),shown=S.hs[key]||0;
  var media=audio?(p.aud?`<audio class="aud" controls controlsList="nodownload noplaybackrate" preload="auto" src="${encodeURIComponent(p.aud)}" onerror="this.outerHTML='<div class=box>Extrait à venir</div>'"></audio>`:'<div class="box">Extrait à venir</div>'):"";
  card.innerHTML=`<p class="era">Mission ${S.m+1} sur 12</p><h2>${m.n}</h2>${(m.obj||S.m===11)?'<p class="obj">Objectif : '+(m.obj||("réussir "+n+" épreuve"+(n>1?"s":"")+"."))+'</p>':""}<hr><p class="era"><span class="badge">${TY[p.t]}</span> <span id="slbl">${p.lbl||("Étape "+(S.s+1)+" sur "+n)}</span></p>${p.cover?pic(p.cover,"cover",1):""}<p class="q">${p.q}</p>${p.img?pic(p.img):""}${media}${p.kind?'<div id="wg"></div>':""}<input id="ans" type="text" autocomplete="off" aria-label="Votre réponse" placeholder="Votre réponse"><div class="row"><button id="go">Valider</button><button class="ghost" id="hb">Un indice</button></div><div id="hl"></div><p class="msg" id="msg" role="status"></p>`;
@@ -1197,7 +1207,7 @@ function mission(){
  }
  function ok(){
   S.lm=S.m;S.ls=S.s;
-  if(S.s<n-1)S.s++;else{S.m++;S.s=0;want=false;bgPlay(0,false);if(S.m===12)S.end=Date.now()}
+  if(S.s<n-1)S.s++;else{S.m++;S.s=0;want=false;bgPlay(0,false);if(S.m===12)S.end=S.stop||Date.now()}
   S.pass=true;sv();if(p.kind==="radio"){if(RAD.s){try{RAD.s.s.stop()}catch(e){}RAD.s=null}(RAD.all||[]).forEach(function(x){if(!x.good&&x.a)x.a.pause()})}else if(!p.noPass)playPass();passScr()
  }
  $("go").onclick=check;ans.onkeydown=function(e){if(e.key==="Enter")check()};adminBtn($("go").parentNode,"Passer (admin)",ok);if(!p.kind)ans.focus()
