@@ -70,12 +70,29 @@ button.ghost{background:transparent;border:2px solid var(--cyan);color:var(--cya
 h3{font:700 1.05rem Arial,sans-serif;color:var(--pink);margin:18px 0 8px}
 .go{width:100%;background:#1fbf5b;margin-top:16px;font-size:1.25rem;padding:16px}.big{font-size:1.4rem;padding:18px}
 button:disabled{opacity:.4;cursor:not-allowed}
+.bgvol{display:inline-flex;align-items:center;gap:4px;margin-right:8px;font-size:.9rem}.bgvol input{width:78px;padding:0;border:0;accent-color:#ff2e88;background:transparent}
+.actl{display:flex;align-items:center;justify-content:center;gap:8px;margin:-6px 0 14px;font:600 .85rem Arial,sans-serif}.actl span{min-width:4.5em;text-align:center}
 .pics2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.pics2 .pic{margin:0}
 img{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 .chk{display:block;margin:16px 0;font-family:Arial,sans-serif;cursor:pointer}.chk input{width:22px;height:22px;margin-right:10px;vertical-align:middle;accent-color:#ff2e88}
 .warn{color:#ff3b3b;font-weight:700}.hint{margin:10px 0 0;font-family:Arial,sans-serif}.hint+iframe{display:block;margin-top:8px;border-radius:8px}
 .aud{width:100%;margin:0 0 16px}.cover{max-height:230px}.rules p{margin:0 0 8px}
 .tbar{position:relative;height:6px;background:#ffffff22;border-radius:3px;margin-top:34px;overflow:visible}.tbar i{border-radius:3px}.tbar .pl{position:absolute;top:-24px;left:0;font-size:26px;line-height:1;font-style:normal;animation:plane 4.2s linear forwards;filter:drop-shadow(0 0 6px #00e5ff)}@keyframes plane{from{left:-6px}to{left:calc(100% - 26px)}}.tbar i{display:block;height:100%;background:var(--cyan);animation:fill 4.2s linear forwards}@keyframes fill{from{width:0}to{width:100%}}
+.car90{max-width:440px;margin:0 auto 16px;padding:14px 14px 10px;border-radius:14px;background:linear-gradient(#2a2b30,#121316);border:2px solid #3b3d44;box-shadow:inset 0 2px 0 #4a4c54,0 8px 24px #000a}
+.cfp{display:grid;grid-template-columns:62px 1fr 62px;gap:10px;align-items:center}
+.knob{position:relative;width:58px;height:58px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#6a6d76,#1b1c20 70%);box-shadow:0 3px 6px #000c,inset 0 0 0 3px #2e3036}
+.knob i{position:absolute;inset:6px;border-radius:50%;background:repeating-conic-gradient(#3a3c43 0 6deg,#26282d 6deg 12deg);transition:transform .15s}.knob i:after{content:"";position:absolute;top:3px;left:50%;width:3px;height:12px;margin-left:-1.5px;background:#ff8a00;border-radius:2px}
+.knob b{position:absolute;bottom:-17px;left:0;right:0;text-align:center;font:700 .55rem Arial,sans-serif;color:#9a9ca4;letter-spacing:.1em}
+.ccen{min-width:0}
+.lcd{display:flex;align-items:baseline;gap:8px;justify-content:center;background:linear-gradient(#0d2a1a,#06170e);border:2px solid #000;border-radius:6px;padding:6px 10px;color:#7dff9c;text-shadow:0 0 8px #3dff6c;font-family:'Courier New',monospace;box-shadow:inset 0 0 12px #000}
+.lb,.lmh{font-size:.75rem;font-weight:700}.lfq{font-size:2.3rem;font-weight:900;letter-spacing:2px}
+.lst{font-size:.7rem;font-weight:900;padding:1px 4px;border:1px solid currentColor;border-radius:3px;opacity:.15}.lst.on{opacity:1;animation:bl 1.2s steps(1) 2}
+.car90 .rscale{height:22px;margin:8px 0 6px;background:#0b0b0d repeating-linear-gradient(90deg,#ffffff44 0 1px,transparent 1px 12px)}
+.tape{display:flex;align-items:center;gap:8px;justify-content:center;font:700 .5rem Arial,sans-serif;color:#77797f;letter-spacing:.12em}.tape span{flex:1;height:8px;border-radius:4px;background:#050506;box-shadow:inset 0 1px 2px #000}
+.pre{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:22px 0 10px}.pre span{text-align:center;padding:5px 0;border-radius:4px;background:linear-gradient(#45474f,#2a2b31);color:#d6d7dc;font:700 .8rem Arial,sans-serif;box-shadow:0 2px 0 #000}
+.car90 input[type=range]{padding:0;border:0;background:transparent;accent-color:#ff8a00}
+.car90 .row{justify-content:center}.br90{text-align:center;margin:8px 0 0;font:italic 700 .65rem Arial,sans-serif;color:#77797f;letter-spacing:.2em}
+@media (max-width:430px){.cfp{grid-template-columns:44px 1fr 44px}.knob{width:42px;height:42px}.lfq{font-size:1.7rem}}
 .radio,.phone{max-width:340px;margin:0 auto 16px;padding:16px;border:2px solid var(--cyan);border-radius:14px;background:#0d0618}
 .rdisp{font:900 2.6rem 'Courier New',monospace;color:var(--cyan);text-align:center;text-shadow:0 0 14px #19e3d688}.rdisp small{font-size:1rem}
 .rscale{position:relative;height:34px;margin:6px 0 12px;border-radius:6px;background:#1a0b2e repeating-linear-gradient(90deg,#ffffff55 0 2px,transparent 2px 20px)}.rscale i{position:absolute;top:-4px;bottom:-4px;width:4px;margin-left:-2px;background:var(--pink);box-shadow:0 0 10px var(--pink);border-radius:2px}
@@ -95,6 +112,7 @@ img{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 .norec{background:#f1ead8;color:#2a2116;font-size:.72rem;padding:5px 8px;transform:rotate(.6deg);box-shadow:0 2px 4px #0008}.norec b{color:#a3122a}.norec s{text-decoration-color:#c0392b;text-decoration-thickness:2px}
 .dlg{background:#000c;border-left:4px solid var(--cyan);padding:10px 12px;border-radius:6px;font:1rem/1.4 Arial,sans-serif;min-height:3.4em}
 .dlr{margin:8px 0 12px}button.sm{padding:6px 12px;font-size:.85rem}
+.pits{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:12px}.pits .postit{margin:0;flex:1 1 200px}.postit.p2{background:#b8f5a6;transform:rotate(1.2deg)}
 .postit{background:#fff27a;color:#2a2116;padding:10px 12px;font:600 .82rem/1.45 Arial,sans-serif;transform:rotate(-1.2deg);box-shadow:0 3px 6px #0008;margin:0 0 12px;max-width:300px}
 .cands{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px}
 .cand{background:#0d0618;border:2px solid #ffffff33;border-radius:8px;padding:7px;font:.72rem/1.3 Arial,sans-serif;text-align:left;color:var(--ink);display:flex;flex-direction:column;gap:3px}
@@ -117,7 +135,8 @@ img{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 .cell{aspect-ratio:1;background:#3a3b42;display:flex;align-items:center;justify-content:center;font-size:1.15rem;border-radius:3px;cursor:pointer}
 .cell.car{background:#1b1c21;cursor:default}.cell.see{background:#a3122a99}.cell.me{box-shadow:inset 0 0 0 2px var(--cyan)}
 .dpad{display:grid;grid-template-columns:repeat(3,58px);gap:6px;justify-content:center}.dpad button{padding:10px 0;width:58px}
-.vault{text-align:center}.vd{width:200px;max-width:70%;display:block;margin:0 auto 10px}
+.vault{text-align:center}.vd{width:260px;max-width:80%;display:block;margin:0 auto 10px;overflow:visible;filter:drop-shadow(0 6px 14px #000a)}
+.vd .spk{opacity:0}.vd.on .spk{animation:spk .12s steps(2) infinite}.vd.on .dvib{animation:dvib .06s linear infinite}@keyframes spk{0%{opacity:1}50%{opacity:.2}}@keyframes dvib{0%{transform:translate(.6px,0)}50%{transform:translate(-.6px,.4px)}100%{transform:translate(.4px,-.3px)}}
 .gauges{display:grid;grid-template-columns:auto 1fr;gap:6px 10px;align-items:center;max-width:320px;margin:0 auto;font:700 .8rem Arial,sans-serif;color:#ffd9a0;text-align:left}
 .gg{height:12px;background:#222;border-radius:6px;overflow:hidden}.gg i{display:block;height:100%;width:0;background:var(--cyan)}
 .trv{font:900 1rem Arial,sans-serif;color:#ff9a3c;margin:12px 0 8px}
@@ -140,13 +159,14 @@ img{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 .pins2{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin:16px 0 10px}
 .pins2 svg{position:absolute;left:0;top:-6px;width:100%;height:12px;z-index:3;pointer-events:none}
 .pins2 .str{stroke-dasharray:200;stroke-dashoffset:200;animation:strd 1.6s .3s ease forwards}@keyframes strd{to{stroke-dashoffset:0}}
-.pol2{position:relative;background:#fafafa;padding:4px 4px 5px;box-shadow:0 2px 4px #0009;transform:rotate(var(--r));text-align:center;color:#222;font:700 .56rem/1.15 Arial,sans-serif;outline:2px solid var(--pink);outline-offset:1px}
+.pol2{position:relative;background:#fafafa;padding:4px 4px 5px;box-shadow:0 2px 4px #0009;transform:rotate(var(--r));text-align:center;color:#222;font:700 .5rem/1.15 Arial,sans-serif;hyphens:auto;outline:2px solid var(--pink);outline-offset:1px}
 .pol2 b{display:block;color:#c0392b;font-size:.55rem;text-transform:uppercase}
 .ph2{background:#dfe3e8;padding:3px 0;margin-bottom:3px;height:36px;display:flex;align-items:center;justify-content:center}.ph2 svg{width:100%;height:32px;overflow:visible}.ph2 .emo{font-size:1.4rem}
 .pol2:before{content:"";position:absolute;top:-6px;left:50%;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:#e74c3c;box-shadow:0 1px 2px #000;z-index:4}
 .pol2.done:after{content:"✔";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#c0392b;font:900 2.3rem Arial,sans-serif;text-shadow:0 0 3px #fff}
 .pol2.jd:after{animation:stamp .7s .4s both}@keyframes stamp{0%{transform:scale(3);opacity:0}70%{transform:scale(.9);opacity:1}100%{transform:scale(1)}}
-.pol2.cur{outline:3px solid var(--pink);animation:curp 1.4s ease-in-out infinite}@keyframes curp{50%{box-shadow:0 0 0 4px #ff2e8866,0 2px 4px #0009}}
+.pol2.cur{outline:3px solid var(--pink);animation:curp 1.4s ease-in-out infinite,blink2 1s steps(1) infinite}.pol2:not(.done):not(.cur){animation:blink3 2.4s ease-in-out infinite}.pol2:nth-child(3){animation-delay:.3s}.pol2:nth-child(4){animation-delay:.6s}.pol2:nth-child(5){animation-delay:.9s}.pol2:nth-child(6){animation-delay:1.2s}@keyframes blink2{50%{outline-color:#fff27a}}@keyframes blink3{50%{opacity:.55}}
+.phw{position:relative}.phw img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.phw .xx{position:absolute;inset:0;width:100%;height:100%}@keyframes curp{50%{box-shadow:0 0 0 4px #ff2e8866,0 2px 4px #0009}}
 .extra{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start;margin:0 0 10px}
 .pi{transform:rotate(var(--r));box-shadow:0 2px 5px #0009;font:600 .66rem/1.3 'Comic Sans MS','Segoe Print',cursive;color:#2a2116;position:relative}
 .pi:before{content:"";position:absolute;top:-4px;left:50%;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:#2980b9;box-shadow:0 1px 2px #000}
@@ -156,6 +176,7 @@ img{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 .face{position:relative;flex:0 0 52px;width:52px;height:52px;border-radius:50%;border:3px solid var(--c);background:radial-gradient(circle at 50% 35%,#3a3d48,#15161b);overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:0 0 12px var(--c)}
 .face span{font:900 1.4rem Impact,'Arial Black',sans-serif;color:var(--c)}.face img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .dlgw{display:flex;gap:10px;align-items:center}.dlgw .face+.face{margin-left:-22px}.dlgw .dlg{flex:1}
+.dlg .dt{white-space:pre-line}.dlg.calling{font-style:italic;color:#9fe;animation:bl 1.2s steps(1) infinite}
 .dct{display:block;text-align:right;opacity:.5;font-size:.7rem;margin-top:4px}
 .dlr .dn{padding:6px 14px;font-size:.88rem}
 .cph{position:relative;width:100%;aspect-ratio:1;border-radius:6px;background:#1b1c21;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:4px}.cph span{font-size:2rem}.cph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -169,6 +190,8 @@ img{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 .slots{display:flex;flex-wrap:nowrap;justify-content:center;gap:2px;margin:8px 0 12px}.slots span{width:14px;height:20px;font-size:.85rem!important;border-bottom:2px solid #39ff1455;font:900 .95rem 'Courier New',monospace;color:#39ff1466}.slots .ok{color:#39ff14}.slots .cu{color:#fff;animation:bl 1s steps(1) infinite}
 .hbig{font:900 3.4rem 'Courier New',monospace;height:4.2rem;line-height:4.2rem;margin:0 auto 6px;width:4.4rem;border:2px solid #333;border-radius:10px}.hbig .g{color:#39ff14;text-shadow:0 0 12px #39ff14}.hbig .r{color:#ff3b3b;text-shadow:0 0 10px #ff3b3b}
 .hbig.shk{animation:shk .35s}@keyframes shk{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.appw{display:flex;align-items:center;gap:8px;background:#1d2b1d;color:#cfe;border-radius:6px 6px 0 0;padding:4px 8px;font:700 .8rem 'Courier New',monospace;margin:6px 0 8px;border-bottom:1px solid #39ff1455}.appw .dots{display:flex;gap:4px}.appw .dots i{width:8px;height:8px;border-radius:50%;background:#ff5f57}.appw .dots i:nth-child(2){background:#febc2e}.appw .dots i:nth-child(3){background:#28c840}.appw .ver{margin-left:auto;opacity:.6;font-weight:400}
+.hkb{white-space:normal;line-height:1.3}
 .notes{background:#fff9d6;color:#2a2116;border-radius:10px;padding:10px 12px;text-align:left;font:600 .85rem/1.5 Arial,sans-serif}.notes .era{color:#7a5a12}
 .pkw{position:relative;max-width:360px;margin:0 auto}
 .grille{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:900 clamp(2rem,10vw,3rem) Impact,'Arial Black',sans-serif;color:#fff;background:#a3122acc;border-radius:10px;text-shadow:3px 3px 0 #000;animation:stamp .5s both;text-align:center}
@@ -192,10 +215,15 @@ img{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 .mal.ringing{animation:ring .35s infinite;border-color:#f5c542}
 #mal .phone2{margin:12px auto 0}
 .buzz1{animation:buzz .5s}
+.callp{margin:0 auto 12px;align-items:center;text-align:center}.callp .pht{color:#ccc}.cface .face{width:96px;height:96px;flex-basis:96px;margin:6px auto}.cface .face span{font-size:2.6rem}.callp .cn{font:900 1.5rem Impact,'Arial Black',sans-serif;margin:0}.callp .csub{margin:0;color:#9fe;font-size:.85rem}
 .v3 canvas{display:block;width:100%!important;height:auto!important;border-radius:10px;border:2px solid var(--cyan)}
 #pkw.w3{max-width:none}#pk.mini{position:absolute;top:8px;right:8px;width:92px;margin:0;aspect-ratio:360/420;opacity:.88;border:2px solid var(--cyan);border-radius:6px;z-index:2}
-.vroom{position:relative;height:280px;margin:8px 0;border-radius:12px;background:linear-gradient(#2c2e33,#1b1c21);border:3px solid #6d7078;box-shadow:inset 0 0 30px #000}
-.lt2{position:absolute;width:21%;height:22%;padding:0;display:flex;align-items:center;justify-content:center;background:none;border:0;transform:rotate(var(--r));transition:transform .45s,opacity .45s;cursor:pointer}
+.bags{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:10px 0 4px}
+.bag{position:relative;width:92px;height:52px;border-radius:14px 14px 10px 10px;background:linear-gradient(#2d3e66,#17213a);border:2px solid #0b1020;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font:700 .7rem Arial,sans-serif;box-shadow:0 4px 8px #000a}
+.bag:before{content:"";position:absolute;top:-2px;left:26px;right:26px;height:10px;border:3px solid #0b1020;border-bottom:0;border-radius:10px 10px 0 0}
+.bag .bfill{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(#f5c54288,#c9a22788);transition:height .3s}.bag span,.bag b{position:relative}.bag.full{border-color:#f5c542}.bag.new{animation:drop .5s both}
+.vroom{position:relative;height:340px;margin:8px 0;border-radius:12px;background:linear-gradient(#2c2e33,#1b1c21);border:3px solid #6d7078;box-shadow:inset 0 0 30px #000}
+.lt2{position:absolute;width:21%;height:18%;padding:0;display:flex;align-items:center;justify-content:center;background:none;border:0;transform:rotate(var(--r));transition:transform .45s,opacity .45s;cursor:pointer}
 .lt2 span{font-size:2.1rem;filter:drop-shadow(0 3px 4px #000)}.lt2 .gbars i{width:24px;height:11px}.lt2:hover{transform:rotate(var(--r)) scale(1.15)}
 .lt2.took{transform:translateY(120px) scale(.2);opacity:0;pointer-events:none}
 .call{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#0d0618;border:2px solid #6fdc6f;border-radius:16px;padding:14px;margin-bottom:12px;animation:buzz .6s infinite}
@@ -241,7 +269,7 @@ img{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 .gb.open .gbflap{transform:rotateX(-80deg)}
 #flash{position:fixed;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:999}#flash.on{animation:phares .5s steps(1) infinite}@keyframes phares{0%{opacity:.85}50%{opacity:0}}
 .hwb.zap{animation:zap .5s}@keyframes zap{0%,100%{box-shadow:none}20%,60%{box-shadow:0 0 0 3px #fff,0 0 30px 10px #7fd4ff}40%{box-shadow:none}}
-.ignw svg{width:200px;max-width:70%;touch-action:none;cursor:grab}.ignw .cap{font-size:.85rem}
+.ignw svg{width:320px;max-width:100%;touch-action:none;cursor:grab}.ignw .cap{font-size:.85rem}
 .ign{margin-top:12px;width:100%;padding:12px;font:900 1rem Arial,sans-serif;border-radius:10px;border:2px solid #ff2e88;background:#2a0d1c;color:#fff;touch-action:none;user-select:none;-webkit-user-select:none}
 .ignbar{height:8px;background:#222;border-radius:4px;overflow:hidden;margin-top:8px}.ignbar i{display:block;height:100%;width:0;background:#ff2e88}
 .pad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
@@ -259,7 +287,7 @@ img{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 <main>
 <h1>Grand Theft Quest</h1>
 <p class="sub">Retracez l'histoire de GTA et ouvrez le coffre.</p>
-<div id="top" class="hidden"><div class="bar"><span class="brand">Grand Theft Quest</span><span><span class="timer" id="timer"></span><button class="mute" id="mt" aria-label="Couper ou remettre la musique">♪ On</button></span></div><ol class="frise" id="fr" aria-label="Progression des missions"></ol></div>
+<div id="top" class="hidden"><div class="bar"><span class="brand">Grand Theft Quest</span><span><span class="timer" id="timer"></span><label class="bgvol" title="Volume de la musique de fond">🎵<input type="range" id="bgv" min="0" max="100" step="5" aria-label="Volume de la musique de fond"></label><button class="mute" id="mt" aria-label="Couper ou remettre la musique">♪ On</button></span></div><ol class="frise" id="fr" aria-label="Progression des missions"></ol></div>
 <section class="card" id="card"></section>
 </main>
 
@@ -308,7 +336,7 @@ M[0].st[0].a=["3","trois"];
 M[0].st[0].hint="Consultez la page du jeu.";
 M[0].st[0].link="https://www.imdb.com/fr/title/tt0248048/?ref_=ext_shr_lnk";
 M[0].st[0].show="3 (Liberty City, San Andreas, Vice City)";
-M[0].st[0].info="Les trois villes du tout premier GTA sont <strong>Liberty City</strong> (inspirée de New York), <strong>San Andreas</strong> (inspirée de San Francisco) et <strong>Vice City</strong> (inspirée de Miami).";
+M[0].st[0].ipic="Map GTA 1.jpg";M[0].st[0].info="Les trois villes du tout premier GTA sont <strong>Liberty City</strong> (inspirée de New York), <strong>San Andreas</strong> (inspirée de San Francisco) et <strong>Vice City</strong> (inspirée de Miami).";
 /* Mission 2 : London 1969 */
 M[1].st[0].show="Dan Houser";
 M[1].st[0].info="Né à Londres, <strong>Dan Houser</strong> signe seul l'écriture de cette extension : c'est le début de sa carrière de scénariste chez Rockstar. Il y glisse l'ambiance du Swinging London, de l'argot cockney et des clins d'œil aux frères Kray, célèbres figures du crime londonien. Ce goût du détail de culture populaire deviendra la marque de fabrique de toute la saga.";
@@ -325,13 +353,13 @@ M[3].st[0].a=["jesussave","jesussaves","jesus","eglisejesussaves","leglisejesuss
 M[3].st[0].show="Jesus Saves (l'église)";
 M[3].st[0].hint="Regardez cette vidéo.";
 M[3].st[0].lt="Ouvrir la vidéo";
-M[3].st[0].link="https://www.youtube.com/watch?v=DRc8vJRUrRo&t=93s";
+M[3].st[0].link="https://youtu.be/DRc8vJRUrRo?si=naek7f8qjxV-bYxD";M[3].st[0].ipic="Jesus Saves.jpg";
 M[3].st[0].info="Dans GTA 2, il n'y a pas de bouton de sauvegarde : il faut trouver l'église <strong>Jesus Saves</strong> et y entrer, ce qui coûte de l'argent, donc mieux vaut avoir réussi quelques missions avant. Au fait, le héros s'appelle <strong>Claude Speed</strong> : ne le confondez pas avec Claude, le héros muet de GTA III.";
 /* Mission 5 : GTA III (2 questions) */
 M[4].st[0].q="Quel célèbre quartier, présent dans le 3ème opus, est le repaire de la mafia chinoise appelée la Triade ?";
 M[4].st[0].a=["chinatown","quartierchinois","lequartierchinois"];
 M[4].st[0].show="Chinatown";
-M[4].st[0].info="<strong>Chinatown</strong>, sur l'île de Portland à Liberty City, est le territoire de la Triade. Son conflit avec la famille mafieuse Leone ouvre le premier acte de l'histoire de GTA III. Retenez ce quartier : la Triade reviendra au cœur de l'intrigue de Chinatown Wars, plus loin dans votre parcours.";
+M[4].st[0].info="<strong>Chinatown</strong>, sur l'île de Portland à Liberty City, est le territoire de la Triade. Son conflit avec la famille mafieuse Leone ouvre le premier acte de l'histoire de GTA III. Comme toute Liberty City, il s'inspire de New York : c'est la réplique du <strong>Chinatown de Manhattan</strong>. Retenez ce quartier : la Triade reviendra au cœur de l'intrigue de Chinatown Wars, plus loin dans votre parcours.";M[4].st[0].ipic="chinatown new york.jpg";
 M[4].st[1].q="Dans GTA III, quel membre de la famille Leone ordonne à Claude d'éliminer les trois chefs de la Triade ?";
 M[4].st[1].a=["tonicipriani","toni","cipriani"];
 M[4].st[1].show="Toni Cipriani";
@@ -346,7 +374,7 @@ M[5].st[0].q="Blind test : quel groupe joue ce morceau, présent dans le jeu GTA
 M[5].st[0].a=["toto"];
 M[5].st[0].show="Toto (Africa)";
 M[5].st[0].hint="0 + 0 = ?";
-M[5].st[0].info="C'est <strong>Toto</strong>, avec « Africa » (1982). Ce morceau passe sur la radio Emotion 98.3 dans Vice City, et on l'entend aussi pendant la cinématique qui suit l'achat de l'usine de glaces Cherry Popper. Un morceau devenu culte bien au-delà du jeu.";
+M[5].st[0].ipic="Pochette Toto Africa.jpg";M[5].st[0].info="C'est <strong>Toto</strong>, avec « Africa » (1982). Ce morceau passe sur la radio Emotion 98.3 dans Vice City, et on l'entend aussi pendant la cinématique qui suit l'achat de l'usine de glaces Cherry Popper. Un morceau devenu culte bien au-delà du jeu.";
 M[5].st[1].q="Quelle est la célèbre voiture de cet opus, inspirée de la Ferrari Testarossa ?";
 M[5].st[1].a=["cheetah","lacheetah","grotticheetah"];
 M[5].st[1].show="La Cheetah";
@@ -357,7 +385,7 @@ M[6].st[0].a=["ahorsewithnoname","horsewithnoname","unchevalsansnom","chevalsans
 M[6].st[0].show="A Horse with No Name (America)";
 M[6].st[0].hint="Walter White chante aussi ce morceau dans Breaking Bad.";
 M[6].st[0].vid="san-andreas.mp4";
-M[6].st[0].gif="walter-white.gif";
+M[6].st[0].gif="walter-white.gif";M[6].st[0].gifBelow=1;
 M[6].st[0].alt2="Walter White chante le morceau dans Breaking Bad";
 M[6].st[0].info="C'est <strong>« A Horse with No Name »</strong> du groupe America (1972), diffusé sur K-DST, la radio rock de San Andreas, idéale pour rouler dans le désert. Walter White le chante lui aussi dans Breaking Bad, dans la saison 3, épisode « Caballo sin Nombre », juste avant de se faire arrêter par la police.";
 M[6].st[1].q="Quel code de triche de San Andreas donne d'un coup la vie, l'armure et de l'argent au joueur ?";
@@ -404,25 +432,24 @@ M[4].st[0].img="img-m5.jpg";
 M[4].st[0].hints=[{t:"Repérez le quartier sur cette vue.",embed:'<iframe src="https://www.google.com/maps/embed?pb=!4v1793663095953!6m8!1m7!1sTEoD-BQPIbWUULJROHiBCQ!2m2!1d41.8528475711565!2d-87.63197830536967!3f170.78263005687643!4f12.620798403512566!5f0.7820865974627469" width="600" height="450" style="border:0;max-width:100%" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>'}];
 M[4].st[1].cover="Jacquette GTA 3.jpg";M[4].st[1].ipic="Toni Cipriani.jpg";
 M[4].st[1].hints=[{t:"Michael Madsen lui a prêté sa voix.",link:"https://www.imdb.com/fr/title/tt0277723/?ref_=ls_t_5",lt:"Voir la page du jeu"}];
-M[4].st[2].aud="audio-m5.mp3";M[4].st[2].hint="Célèbre musique connue dans un film avec le fameux Tony Montana.";
+M[4].st[2].aud="audio-m5.mp3";M[4].st[2].ipic="FlashBack FM.jpg";M[4].st[2].hint="Célèbre musique connue dans un film avec le fameux Tony Montana.";
 M[5].st[0].aud="audio-m6.mp3";
-M[5].st[1].q="Quelle est cette célèbre voiture de GTA Vice City ?";M[5].st[1].hints=[{t:"Très fortement inspirée de la Ferrari Testarossa des années 80."},{t:"Tous les véhicules du jeu sont listés ici.",link:"https://www.gta-vicecity.fr/vehicules.html",lt:"Voir les véhicules"},{t:"6e ligne, dernière colonne."}];
+M[5].st[1].q="Quelle est cette célèbre voiture de GTA Vice City ?";M[5].st[1].hints=[{t:"Très fortement inspirée de la Ferrari Testarossa des années 80."},{t:"Tous les véhicules du jeu sont listés ici.",link:"https://www.gta-vicecity.fr/vehicules.html",lt:"Voir les véhicules"},{t:"Sur la grille de départ, je serais sur la 6e ligne, en dernière position."}];M[5].st[1].ipic="Ferrari testarossa.jpg";
 M[6].st[0].aud="audio-m7.mp3";M[6].st[0].ipic="In the desert.jpg";
 M[6].st[0].hints=[{t:"Walter White chante cette chanson dans l'épisode « Caballo sin nombre » de la saison 3 de Breaking Bad."},{t:"Dernier indice :",link:"https://www.youtube.com/watch?v=3VvoH7lff8A",lt:"Ouvrir la vidéo"}];
-M[6].st[1].q="Quel objet est débloqué en réalisant ce code de triche sur PS2 ?";M[6].st[1].img="img-m7.png";
+M[6].st[1].q="Quel objet est débloqué en réalisant ce code de triche sur PS2 ?";M[6].st[1].img="img-m7.jpg";
 M[6].st[1].a=["jetpack","unjetpack","lejetpack"];M[6].st[1].show="Un jetpack";
 M[6].st[1].hints=[{t:"Les astuces du jeu sont listées ici.",link:"https://www.gamekult.com/jeux/grand-theft-auto-san-andreas-3010001510/astuces.html",lt:"Voir les astuces"}];
 M[6].st[1].info="C'est le <strong>jetpack</strong> ! Dans San Andreas, c'est un prototype militaire de l'Area 69 : CJ doit le voler pour The Truth dans la mission « Black Project », et il réapparaît ensuite à Verdant Meadows.";M[6].st[1].ipic="Jetpack 1.png";
 M[7].st[0].aud="audio-m8.mp3";M[7].st[0].hints=[{t:"Il fait partie du groupe Genesis."},{t:"Le break de batterie de ce tube est mythique : une pub l'a même fait rejouer… par un gorille."}];M[7].st[0].ipic="Phil Collins Portrait.jpg";
 M[8].st[0].aud="audio-m9.mp3";
-M[8].st[0].hints=[{t:"Cet artiste a d'abord été producteur avant de devenir rappeur."},{t:"La pochette de son album de 2007 met en scène un ours en peluche, sa mascotte de l'époque."},{t:"Il a été marié à Kim Kardashian et se fait aujourd'hui appeler « Ye »."}];
-M[8].obj="Réussir 5 épreuves.";
+M[8].st[0].hints=[{t:"Cet artiste a d'abord été producteur avant de devenir rappeur."},{t:"Il a samplé les Daft Punk sur l'un de ses plus grands tubes, puis travaillé avec eux sur un album."},{t:"Il a été marié à Kim Kardashian et se fait aujourd'hui appeler « Ye »."}];
 /* GTA IV : 3 épreuves interactives */
 M[8].st[3].kind="phone";M[8].st[3].target="3595550100";
 M[8].st[3].q="Sur le téléphone de Niko, composez le numéro de triche qui fait apparaître l'hélicoptère armé de la NOOSE, l'Annihilator.";
 M[8].st[3].show="359-555-0100 (FLY-555-0100)";
 M[8].st[3].hints=[{t:"Les numéros de triche de GTA IV suivent le format XXX-555-XXXX."},{t:"Ce numéro s'écrit aussi avec des lettres : trois lettres, puis 555-0100. Regardez les lettres sur les touches du clavier."},{t:"Les trois lettres sont F, L et Y."}];
-M[8].st[3].info="Le numéro est <strong>359-555-0100</strong>, soit <strong>FLY-555-0100</strong> en lettres. Dans GTA IV, les codes de triche se composent sur le téléphone de Niko. Attention : appeler l'Annihilator bloque certains succès, dont « Walk Free » et « One Man Army ».";
+M[8].st[3].info="Le numéro est <strong>359-555-0100</strong>, soit <strong>FLY-555-0100</strong> en lettres. Dans GTA IV, les codes de triche se composent sur le téléphone de Niko.";
 M[8].st[4].kind="radio";M[8].st[4].target=97.8;
 M[8].st[4].q="Réglez le cadran sur la fréquence de Liberty Rock Radio, la station de rock classique de GTA IV.";
 M[8].st[4].aud="audio-m9b.m4a";
@@ -437,7 +464,7 @@ M[8].st[0].ipic="Pochette Graduation.jpg";
 M[8].st[1].ipics=["Times Square.jpg","Star Junction 2.jpg"];
 M[8].st[2].ipic="Coeur.jpg";
 M[8].st[3].ipic="Annihilator.jpg";
-M[8].st[4].cover="Liberty Rock Radio Logo.jpg";
+M[8].st[4].ipic="Liberty Rock Radio Logo.jpg";
 M[10].st[1].ipic="Portrait de Chop.jpg";
 /* Mission 10 : GTA Chinatown Wars (mini-jeux) */
 M[9].st[0].kind="whistle";
@@ -448,21 +475,21 @@ M[9].st[0].info="Sur Nintendo DS, Chinatown Wars permettait d'appeler un taxi <s
 M[9].st[1].kind="hotwire";
 M[9].st[1].q="Une voiture garée vous tend les bras… mais pas de clé. Démarrez-la comme Huang Lee.";
 M[9].st[1].show="Voiture démarrée sans clé";
-M[9].st[1].hints=[{t:"Le cache est vissé : un tournevis tourne dans quel sens pour dévisser ?"},{t:"Un conducteur range toujours ses papiers dans la boîte à gants…"},{t:"Tout le monde commence par la masse. Pour le contact, il faut tenir la clé."}];
+M[9].st[1].hints=[{t:"Le cache est vissé : un tournevis tourne dans quel sens pour dévisser ?"},{t:"Un conducteur range toujours ses papiers dans la boîte à gants…"},{t:"Tout le monde commence par la masse. Ensuite, faites se toucher les deux derniers fils… plusieurs fois s'il le faut."}];
 M[9].st[1].info="Dans Chinatown Wars sur DS, voler une voiture garée lançait un <strong>mini-jeu sur l'écran tactile</strong> : dévisser un cache, brancher des fils, tourner un tournevis dans le contacteur… Sur PSP, sans écran tactile, ces mini-jeux ont été simplifiés en appuis de boutons.";
 
 /* Mission 11 : GTA V, « Braquage de l'Union Depository » (4 préparations + le braquage final) */
 M[10].obj="Réussir les 4 missions de préparation pour terminer par le braquage final du coffre de Lamar.";
 M[10].st[0].kind="crew";M[10].st[0].noPass=1;M[10].st[0].lbl="Mission de préparation 1";
 M[10].st[0].q="Recruter l'équipe du braquage.";
-M[10].st[0].dl=[{w:"Franklin",t:"Lester, j'ai un coup pour toi. Un vieux pote d'enfance m'a fait un sale coup : il s'est barré avec mon butin.",a:"voix-m11-01.mp3"},{w:"Franklin",t:"Si t'es bon, je partagerai la somme avec toi. Lester supervise, et Trevor pourra nous aider si ça foire.",a:"voix-m11-02.mp3"},{w:"Lester",t:"Il nous faut une équipe : un hacker, un chauffeur et un tireur. Et la liste en bas du tableau, tu n'y touches pas. J'ai déjà travaillé avec eux : compte pas sur eux.",a:"voix-m11-03.mp3"},{w:"Franklin",t:"Je veux la meilleure équipe possible. Mais je ne lâche pas plus de 25 % du butin à l'équipe. Pas un de plus.",a:"voix-m11-04.mp3"}];
-M[10].st[0].show="Chris Feltz, Taliana Martinez et Mike Welsh (25 %)";
+M[10].st[0].dl=[{w:"Franklin",t:"{N}, j'ai un coup pour toi. Un vieux pote d'enfance m'a fait un sale coup : il s'est barré avec mon butin.",a:"voix-m11-01.mp3"},{w:"Franklin",t:"Si t'es bon, je partagerai la somme avec toi. Lester supervise, et toi et moi, on se charge du reste.",a:"voix-m11-02.mp3"},{w:"Lester",t:"Il nous faut une équipe :\n• un hacker, pour trouver le mot de passe du téléphone de Lamar et le numéro de son coffre ;\n• un chauffeur, qui récupérera le fourgon et les tenues de convoyeurs de fonds ;\n• et un tireur, si ça merde (zéro risque).\nEt la liste en bas du tableau, tu n'y touches pas. J'ai déjà travaillé avec eux : compte pas sur eux.",a:"voix-m11-03.mp3"},{w:"Franklin",t:"Je veux la meilleure équipe possible. Mais je ne lâche pas plus de 25 % du butin à l'équipe. Pas un de plus.",a:"voix-m11-04.mp3"}];
+M[10].st[0].show="Chris Feltz, Mike Welsh et Taliana Martinez (25 %)";
 M[10].st[0].hints=[{t:"Il faut la meilleure compétence totale possible, pas forcément le meilleur à chaque poste."},{t:"Les plus forts coûtent trop cher ensemble : sacrifiez un peu de talent à chaque poste."},{t:"La bonne équipe coûte exactement 25 %."}];
 M[10].st[0].info="Dans GTA V, avant chaque braquage, on choisit ses complices : plus ils sont doués, plus leur part du butin est élevée. Un complice bon marché peut faire capoter le coup… mais il progresse s'il survit au braquage.";
 M[10].st[1].kind="hack";M[10].st[1].lbl="Mission de préparation 2";M[10].st[1].mu="audio-m11-braquage.mp3";
 M[10].st[1].q="Pirater le téléphone de Lamar pour trouver le numéro de son coffre.";
 M[10].st[1].pw="CHOPISMINEBITCH!";
-M[10].st[1].dl=[{w:"Lester",t:"Première tuile : Chris a renversé sa canette de Junk Energy Drink sur son PC.",a:"voix-m11-05.mp3"},{w:"Lester",t:"Junk, ça donne des ailes, paraît-il. Son PC est HS, il s'est envolé, et Chris ne pourra pas nous aider. Fait chier !",a:"voix-m11-06.mp3"},{w:"Franklin",t:"Pas grave. On va pirater le téléphone de Lamar : il note tout dedans, même le numéro de son coffre.",a:"voix-m11-07.mp3"},{w:"Lester",t:"Mon programme fait défiler les caractères de son code. Vert, c'est le bon : appuie sur espace pour le verrouiller. Rouge, tu attends.",a:"voix-m11-08.mp3"}];
+M[10].st[1].dl=[{w:"Lester",t:"Merde, Chris a renversé sa canette de Junk Energy Drink sur son PC…",a:"voix-m11-05.mp3"},{w:"Lester",t:"Junk Energy donne des ailes, mais là, c'est son PC qui s'est envolé. Chris ne pourra pas nous aider. Fait chier !…",a:"voix-m11-06.mp3"},{w:"Franklin",t:"Lester, tu penses pouvoir t'en occuper ? Lamar note tout sur son téléphone : on devrait pouvoir y trouver le numéro de son coffre.",a:"voix-m11-07.mp3"},{w:"Lester",t:"Mon programme fait défiler les caractères de son code. Vert, c'est le bon : appuie sur espace pour le verrouiller. Rouge, tu attends.",a:"voix-m11-08.mp3"}];
 M[10].st[1].after=[{w:"Franklin",t:"« Chop is mine, bitch » ?! Il sera jamais à toi, conn**d !",a:"voix-m11-09.mp3"}];
 M[10].st[1].gif="gif-m11.gif";
 M[10].st[1].show="CHOPISMINEBITCH! · coffre n° 0451";
@@ -470,9 +497,9 @@ M[10].st[1].hints=[{t:"Ne verrouillez que quand le caractère s'affiche en vert.
 M[10].st[1].info="Chop, le rottweiler, appartient d'abord à Lamar, mais c'est Franklin qui finit par s'en occuper. Une application compagnon de GTA V permettait même de le dresser depuis son téléphone.";
 M[10].st[2].kind="spot";M[10].st[2].lbl="Mission de préparation 3";M[10].st[2].mu="audio-m11-braquage.mp3";
 M[10].st[2].q="Localiser la halte du fourgon blindé.";
-M[10].st[2].dl=[{w:"Lester",t:"Deuxième tuile : Taliana s'est tiré une balle dans le pied.",a:"voix-m11-10.mp3"},{w:"Lester",t:"Elle a voulu faire tourner son flingue autour du doigt… Elle s'est prise pour John Marston ou quoi ? Elle a oublié la sécurité. Et ses orteils.",a:"voix-m11-11.mp3"},{w:"Lester",t:"Il nous faut le fourgon blindé et les tenues des convoyeurs de fonds : c'est notre ticket d'entrée dans la banque, jusqu'au coffre.",a:"voix-m11-12.mp3"},{w:"Lester",t:"Avant de filer aux urgences, Taliana a photographié le fourgon pendant sa halte. Elle n'a pas eu le temps de dire où. À toi de reconnaître le parking.",a:"voix-m11-13.mp3"}];
+M[10].st[2].dl=[{w:"Lester",t:"C'est pas vrai ! Taliana devait repérer le fourgon, mais elle s'est tiré une balle dans le pied.",a:"voix-m11-10.mp3"},{w:"Lester",t:"Elle a voulu faire tourner son flingue autour du doigt… Elle s'est prise pour John Marston ou quoi ?",a:"voix-m11-11.mp3"},{w:"Lester",t:"Il nous faut le fourgon blindé et les tenues des convoyeurs de fonds : c'est notre ticket d'entrée dans la banque, jusqu'au coffre.",a:"voix-m11-12.mp3"},{w:"Lester",t:"Avant de filer aux urgences, Taliana a photographié le fourgon pendant sa halte. Elle n'a pas eu le temps de dire où. À toi de reconnaître le parking.",a:"voix-m11-13.mp3"}];
 M[10].st[2].after=[{w:"Lester",t:"Ah, tu connais l'endroit, hein ! Gros malin !",a:"voix-m11-14.mp3"},{w:"Lester",t:"Le fourgon doit sûrement s'arrêter ici pour récupérer les fonds.",a:"voix-m11-15.mp3"}];
-M[10].st[2].sel="img-m11.jpg";
+M[10].st[2].sel="Vanilla Unicorn.jpg";M[10].st[2].ipic="Vanilla Unicorn2.jpg";
 M[10].st[2].choices=["Parking du Vanilla Unicorn","Parking du Bahama Mamas","Parking du Tequi-la-la","Parking du Yellow Jack Inn","Parking du Hen House","Parking du Split Sides West"];
 M[10].st[2].target="Parking du Vanilla Unicorn";
 M[10].st[2].show="Le parking du Vanilla Unicorn";
@@ -489,16 +516,16 @@ M[10].st[4].kind="heist";M[10].st[4].lbl="Braquage final";
 M[10].st[4].q="Braquer le coffre de Lamar à l'Union Depository.";
 M[10].st[4].dl=[{w:"Lester",t:"Bon. Toute l'équipe a foiré. Il ne reste que toi.",a:"voix-m11-22.mp3"},{w:"Franklin",t:"Hé, et moi, tu m'oublies ? T'inquiète, vieux briscard : j'appelle un vieil ami.",a:"voix-m11-23.mp3"},{w:"Trevor",t:"Si c'est le support informatique de SGP, va chier !!!",a:"voix-m11-24.mp3"},{w:"Franklin",t:"Non, c'est Franklin. J'ai besoin de toi maintenant : rejoins la position.",a:"voix-m11-25.mp3"},{w:"Trevor",t:"Ça sent les problèmes… j'adore ! OK, j'suis partant !",a:"voix-m11-26.mp3"}];
 M[10].st[4].script={
- brief:[{w:"Franklin",t:"Trevor, le coffre est là. Tu fais sauter les quatre verrous à la perceuse. Doucement : si la mèche chauffe trop, elle casse. Quant à toi, surveille nos arrières.",a:"voix-m11-27.mp3"},{w:"Trevor",t:"WOUHOU ! C'est comme si c'était fait ! C'est partiiiiiiiii ************ !",a:"voix-m11-28.mp3"}],
- over:[{w:"Trevor",t:"Merde ! La mèche a surchauffé… Pas le choix, on doit attendre qu'elle refroidisse.",a:"voix-m11-29.mp3"},{w:"Lester",t:"On s'est fait repérer ! Dépêchez-vous !",a:"voix-m11-30.mp3"},{w:"Franklin",t:"Merde, merde, merde ! On va finir au trou !",a:"voix-m11-31.mp3"},{w:"Trevor",t:"OK les gars, le temps qu'elle refroidisse… on va s'ambiancer !",a:"voix-m11-32.mp3"}],
+ brief:[{w:"Franklin",t:"{N}, le coffre est là. Tu fais sauter les quatre verrous à la perceuse. Doucement : si la mèche chauffe trop, elle casse. Trevor, surveille nos arrières.",a:"voix-m11-27.mp3"},{w:"Trevor",t:"WOUHOU ! C'est comme si c'était fait ! C'est partiiiiiiiii ************ !",a:"voix-m11-28.mp3"}],
+ over:[{w:"Trevor",t:"Merde ! La mèche a surchauffé… Pas le choix, on doit attendre qu'elle refroidisse.",a:"voix-m11-29.mp3"},{w:"Lester",t:"On s'est fait repérer ! Dépêchez-vous !",a:"voix-m11-30.mp3"},{w:"Franklin",t:"Merde, merde, merde ! On va finir au trou !",a:"voix-m11-31.mp3"},{w:"Trevor",t:"OK les gars, le temps qu'elle refroidisse… on va s'ambiancer !",a:"voix-m11-32.mp3"},{w:"Franklin",t:"On n'a pas le temps pour…",a:"voix-m11-39.mp3"}],
  open:[{w:"Trevor",t:"C'est bon, on a réussi, put**n !",a:"voix-m11-33.mp3"},{w:"Franklin",t:"Allez, faut pas traîner, prenez tout.",a:"voix-m11-34.mp3"},{w:"Lester",t:"Dépêchez-vous, il vous reste 2 minutes !",a:"voix-m11-35.mp3"}],
  case:[{w:"Franklin",t:"Attends… C'est quoi cette mallette ? Elle est cassée… Y a un téléphone dedans. Il sonne !",a:"voix-m11-36.mp3"}],
- end:[{w:"Lester",t:"OK, garde ça, ça pourrait servir. Maintenant… CASSEZ-VOUS !",a:"voix-m11-37.mp3"},{w:"Trevor & Franklin",t:"AAAAAAAAAAAH !",a:"voix-m11-38.mp3"}]};
+ end:[{w:"Lester",t:"Hm, une invitation pour Leonida ? OK, garde ça, ça pourrait servir. Maintenant… CASSEZ-VOUS !",a:"voix-m11-37.mp3"},{w:"Trevor & Franklin",t:"AAAAAAAAAAAH !",a:"voix-m11-38.mp3"}]};
 M[10].st[4].aud="audio-m11.mp3";
 M[10].st[4].bt=["sleepwalking","thechaingangof1974","chaingangof1974","thechaingang","chaingang","sleepwalkingthechaingangof1974","thechaingangof1974sleepwalking"];
 M[10].st[4].show="Blind test : Sleepwalking, The Chain Gang of 1974";
 M[10].st[4].hints=[{t:"Maintenez la barre ESPACE pour percer, et relâchez avant que la jauge de chauffe devienne rouge."},{t:"Le morceau de Trevor a servi de musique à la bande-annonce officielle de GTA V."},{t:"Le groupe porte le nom d'un « gang » et d'une année des années 70."}];
-M[10].st[4].info="<strong>Sleepwalking</strong> de The Chain Gang of 1974 accompagnait la bande-annonce officielle de GTA V, avant de passer sur la station Radio Mirror Park du jeu.<br><br>🔑 <strong>Clé à retenir pour GTA VI : "+VKEY+"</strong>";
+M[10].st[4].info="<strong>Sleepwalking</strong> de The Chain Gang of 1974 accompagnait la bande-annonce officielle de GTA V, avant de passer sur la station Radio Mirror Park du jeu.";
 /* =========================== */
 var TY={"mini-jeu":"🎮 Mini-jeu","musique":"♪ Musique","blind test":"♫ Blind test","énigme":"? Question","énigme finale":"★ Énigme finale"};
 var KEY="gtq_v2",S=ld(),tm,ac,bg,bgSrc="",want=false,card=document.getElementById("card");
@@ -523,9 +550,17 @@ function stopSnd(){[passSnd,failSnd].forEach(function(a){try{a.pause();a.current
 function playPass(){if(S.mute)return;passSnd.currentTime=0;var p=passSnd.play();if(p&&p.catch)p.catch(fanfare)}
 /* musique de fond */
 function fadeEl(a,ms){if(!a||a.paused)return;var v0=a.volume,t0=Date.now(),iv=setInterval(function(){var k=(Date.now()-t0)/ms;if(k>=1){clearInterval(iv);try{a.pause()}catch(e){}}else a.volume=v0*(1-k)},60)}
-function bgPlay(src,on){try{if(!src||!on||S.mute){if(bg){if(S.mute)bg.pause();else fadeEl(bg,1500)}return}if(!bg||bgSrc!==src){if(bg)fadeEl(bg,2500);bg=new Audio(encodeURIComponent(src));bgSrc=src;bg.loop=true}bg.volume=.18;var p=bg.play();if(p&&p.catch)p.catch(function(){})}catch(e){}}
+function fadeTo(a,v1,ms){var v0=a.volume,t0=Date.now(),iv=setInterval(function(){var k=Math.min(1,(Date.now()-t0)/ms);a.volume=v0+(v1-v0)*k;if(k>=1)clearInterval(iv)},50)}
+function bgV(){var v=S.bgv;return .18*(v===undefined?1:v/100)}
+function bgPlay(src,on){try{if(!src||!on||S.mute){if(bg){if(S.mute)bg.pause();else fadeEl(bg,1500)}return}if(!bg||bgSrc!==src){if(bg)fadeEl(bg,2500);bg=new Audio(encodeURIComponent(src));bgSrc=src;bg.loop=true}bg.volume=bgV();var p=bg.play();if(p&&p.catch)p.catch(function(){})}catch(e){}}
 document.addEventListener("click",function(){if(want&&bg&&bg.paused&&!S.mute){var p=bg.play();if(p&&p.catch)p.catch(function(){})}},true);
 function mlabel(){$("mt").textContent=S.mute?"♪ Off":"♪ On"}
+(function(){var r=$("bgv");r.value=S.bgv===undefined?100:S.bgv;r.oninput=function(){S.bgv=+r.value;sv();if(bg)bg.volume=bgV()}})();
+/* commandes de volume sous chaque extrait de blind test */
+function audCtl(a){if(a._ctl)return;a._ctl=1;var d=document.createElement("div");d.className="actl";d.innerHTML='<button type="button" class="ghost sm" data-v="m" aria-label="Couper le son de l\'extrait">🔇</button><button type="button" class="ghost sm" data-v="-" aria-label="Baisser le son de l\'extrait">−</button><span>100 %</span><button type="button" class="ghost sm" data-v="+" aria-label="Monter le son de l\'extrait">+</button>';
+ a.insertAdjacentElement("afterend",d);var sp=d.querySelector("span");function show(){sp.textContent=a.muted?"coupé":Math.round(a.volume*100)+" %";d.querySelector('[data-v="m"]').textContent=a.muted?"🔈":"🔇"}
+ d.onclick=function(e){var b=e.target.closest("button");if(!b)return;var v=b.dataset.v;if(v==="m")a.muted=!a.muted;else{a.muted=false;a.volume=Math.max(0,Math.min(1,Math.round((a.volume+(v==="+"?.1:-.1))*10)/10))}show()};a.addEventListener("volumechange",show);show()}
+new MutationObserver(function(){document.querySelectorAll("audio.aud").forEach(audCtl)}).observe(document.body,{childList:true,subtree:true});
 /* chrono et frise */
 function tshow(){var el=$("timer");clearInterval(tm);function t(){el.textContent=(S.end?"Temps final ":"Temps ")+fmt((S.end||Date.now())-S.start)}t();if(!S.end)tm=setInterval(t,500)}
 function adminNav(){
@@ -555,7 +590,7 @@ function nameScr(){
 function lab(t){return t==="énigme"?"question":t}
 var TRANS={2:["GTA premier du nom","GTA 2"],3:["GTA 2","GTA III"],4:["GTA III","Vice City"],5:["Vice City","San Andreas"],6:["San Andreas","Vice City Stories"],7:["Vice City Stories","GTA IV"],8:["GTA IV","Chinatown Wars"],9:["Chinatown Wars","GTA V"],10:["GTA V","GTA VI"]};
 function pic(f,c,hide){return `<img class="pic ${c||""}" draggable="false" src="${encodeURIComponent(f)}" alt="" onerror="${hide?"this.style.display='none'":"this.outerHTML='<div class=box>Image à venir</div>'"}">`}
-function infoHTML(p){return p.info?`<div class="info"><p class="era">Le saviez-vous ?</p>${p.gif?pic(p.gif,"",1):""}${p.ipic?pic(p.ipic,"",1):""}${p.ipics?'<div class="pics2">'+p.ipics.map(function(f){return pic(f,"",1)}).join("")+'</div>':""}<p>${p.info}</p></div>`:""}
+function infoHTML(p){return p.info?`<div class="info"><p class="era">Le saviez-vous ?</p>${p.gif&&!p.gifBelow?pic(p.gif,"",1):""}${p.ipic?pic(p.ipic,"",1):""}${p.ipics?'<div class="pics2">'+p.ipics.map(function(f){return pic(f,"",1)}).join("")+'</div>':""}<p>${p.info}</p>${p.gif&&p.gifBelow?pic(p.gif,"",1):""}</div>`:""}
 function hints(p){return p.hints||[{t:p.hint,link:p.link,lt:p.lt,warn:p.warn,embed:p.embed}]}
 function hintHTML(h){return `<p class="hint">${h.t?"Indice : "+esc(h.t):"Indice :"}${h.link?` <a href="${esc(h.link)}" target="_blank" rel="noopener noreferrer">${esc(h.lt||"Ouvrir la page du jeu")}</a>`:""}${h.warn?` <span class="warn">${esc(h.warn)}</span>`:""}</p>${h.embed||""}`}
 function brief(){
@@ -581,11 +616,11 @@ function dtmfSynth(k){try{ctx();var rows=[[1,2,3],[4,5,6],[7,8,9],["*",0,"#"]],R
 var RAD={a:null,s:null};
 /* ===== Mission 11 : Braquage de l'Union Depository ===== */
 var SPK={Lester:"#7fd4ff",Franklin:"#6fdc6f",Trevor:"#ff9a3c",Taliana:"#ff7ad9",Lamar:"#f5c542"};
-var FACE={Lester:"Portrait de Lester Crest.jpg",Franklin:"Portrait de Franklin Clinton.jpg",Trevor:"Portrait de Trevor Philips.jpg",Lamar:"Portrait de Lamar Davis.jpg"};
+var FACE={Lester:"Portrait de Lester.jpg",Franklin:"Portrait de Franklin.jpg",Trevor:"Portrait de Trevor.jpg",Lamar:"Portrait de Lamar.jpg"};
 function face(w){var c=SPK[w]||"#fff",f=FACE[w];return '<div class="face" style="--c:'+c+'"><span>'+esc(w.charAt(0))+'</span>'+(f?'<img src="'+encodeURIComponent(f)+'" alt="" onerror="this.remove()">':'')+'</div>'}
 function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
 function cash(){if(S.mute)return;var a=new Audio(encodeURIComponent("audio-m11-caisse.mp3"));a.onerror=function(){beep(1318,.06,"square");setTimeout(function(){beep(2637,.3,"triangle")},80)};var q=a.play();if(q&&q.catch)q.catch(function(){})}
-function bgFade(ms){if(!bg||bg.paused)return;var b0=bg,v0=b0.volume,t0=Date.now(),iv=setInterval(function(){var k=(Date.now()-t0)/ms;if(k>=1){clearInterval(iv);try{b0.pause();b0.volume=.18}catch(e){}}else b0.volume=v0*(1-k)},60)}
+function bgFade(ms){if(!bg||bg.paused)return;var b0=bg,v0=b0.volume,t0=Date.now(),iv=setInterval(function(){var k=(Date.now()-t0)/ms;if(k>=1){clearInterval(iv);try{b0.pause();b0.volume=bgV()}catch(e){}}else b0.volume=v0*(1-k)},60)}
 var IC={
  team:'<svg viewBox="0 0 64 40" aria-hidden="true">'+[10,24,40,54].map(function(x,i){return '<ellipse cx="'+x+'" cy="36" rx="8" ry="6" fill="#111"/><circle cx="'+x+'" cy="'+(19+i%2*2)+'" r="8" fill="#1d1d1d"/><rect x="'+(x-5)+'" y="'+(17+i%2*2)+'" width="10" height="3" rx="1.5" fill="#f1ead8"/><circle cx="'+(x-2.5)+'" cy="'+(18.5+i%2*2)+'" r="1" fill="#111"/><circle cx="'+(x+2.5)+'" cy="'+(18.5+i%2*2)+'" r="1" fill="#111"/>'}).join("")+'</svg>',
  hack:'<svg viewBox="0 0 64 40" aria-hidden="true"><rect x="7" y="3" width="50" height="29" rx="3" fill="#06140a" stroke="#555" stroke-width="2"/><text x="32" y="16" fill="#39ff14" font-family="monospace" font-size="9" text-anchor="middle">☠ ACCESS</text><text x="32" y="27" fill="#39ff14" font-family="monospace" font-size="8" text-anchor="middle">&gt;_ 0101</text><path d="M2 34h60l-4 4H6z" fill="#666"/></svg>',
@@ -594,17 +629,18 @@ var IC={
  map:'<svg viewBox="0 0 80 56" aria-hidden="true"><rect width="80" height="56" fill="#e9e2c9"/><path d="M0 40 C12 34 18 46 30 50 L30 56 0 56Z" fill="#7fb3d5"/><path d="M8 0 48 56M0 22 80 18M40 0 62 56M60 0 80 40" stroke="#b9ad86" stroke-width="2.5" fill="none"/><circle cx="46" cy="22" r="7" fill="none" stroke="#c0392b" stroke-width="2"/><path d="M38 30 30 40" stroke="#c0392b" stroke-width="1.5"/></svg>',
  lamar:'<svg viewBox="0 0 60 56" aria-hidden="true"><rect width="60" height="56" fill="#cfd6dd"/><circle cx="30" cy="22" r="11" fill="#5b3a29"/><path d="M19 17c3-8 19-8 22 0" fill="#2b1b12"/><ellipse cx="30" cy="54" rx="20" ry="14" fill="#1f6feb"/><path d="M6 6 54 50M54 6 6 50" stroke="#c0392b" stroke-width="3" opacity=".75"/></svg>',
  club:'<svg viewBox="0 0 60 56" aria-hidden="true"><rect width="60" height="56" fill="#1b1028"/><rect x="6" y="20" width="48" height="30" fill="#2c1a3d"/><rect x="10" y="12" width="40" height="8" rx="2" fill="none" stroke="#ff2e88" stroke-width="1.5"/><text x="30" y="18.5" font-size="5" fill="#ff2e88" text-anchor="middle">★ ? ? ? ★</text><rect x="25" y="36" width="10" height="14" fill="#111"/><rect x="0" y="50" width="60" height="6" fill="#444"/></svg>',
+ vanu:'<svg viewBox="0 0 64 40" aria-hidden="true"><rect x="1" y="12" width="30" height="15" rx="2" fill="#151515"/><path d="M31 15h5l5 6v6H31z" fill="#151515"/><rect x="1" y="19" width="40" height="2.5" fill="#c0392b"/><circle cx="9" cy="28" r="3.5" fill="#333" stroke="#888"/><circle cx="34" cy="28" r="3.5" fill="#333" stroke="#888"/><path d="M46 10l5-3h4l5 3-2 6h-2v17H48V16h-2z" fill="#24407a"/><path d="M51 7h8" stroke="#0d1b3d" stroke-width="3"/><rect x="53" y="16" width="4" height="5" rx="1" fill="#f5c542"/></svg>',
  vault:'<svg viewBox="0 0 60 56" aria-hidden="true"><rect width="60" height="56" fill="#2c2e33"/><circle cx="30" cy="28" r="22" fill="#6d7078" stroke="#9a9ca4" stroke-width="3"/><circle cx="30" cy="28" r="7" fill="#3d3f45"/><path d="M30 16v24M18 28h24" stroke="#3d3f45" stroke-width="3"/></svg>'
 };
 function board(i){
- var P=[[IC.team,"Prépa 1","L'équipe"],[IC.hack,"Prépa 2","Piratage"],['<span class="emo">📸</span>',"Prépa 3","Repérage"],[IC.van,"Prépa 4","Le fourgon"],[IC.bank,"Final","Le coffre"]],R=[-4,3,-2,4,-3];
+ var P=[[IC.team,"Prépa 1","Recrutement"],[IC.hack,"Prépa 2","Trouver le n° de coffre de Lamar"],['<span class="emo">📸</span>',"Prépa 3","Trouver un fourgon de l'Union Depository et les tenues"],[IC.vanu,"Prépa 4","Voler le fourgon et les tenues"],[IC.bank,"Final","Le coffre"]],R=[-4,3,-2,4,-3];
  var X=[{s:0,h:'<div class="pi note">Plan A : <s>demander gentiment à Lamar</s><br>Plan B : <b>tout lui prendre</b></div>'},
   {s:0,h:'<div class="pi pho">'+IC.map+'<span>Union Depository</span></div>'},
-  {s:0,h:'<div class="pi pho">'+IC.lamar+'<span>CIBLE : L. DAVIS</span></div>'},
+  {s:0,h:'<div class="pi pho"><div class="phw">'+IC.lamar+'<img src="'+encodeURIComponent(FACE.Lamar)+'" alt="" onerror="this.remove()"><svg class="xx" viewBox="0 0 60 56" preserveAspectRatio="none" aria-hidden="true"><path d="M6 6 54 50M54 6 6 50" stroke="#c0392b" stroke-width="3" opacity=".8"/></svg></div><span>CIBLE : L. DAVIS</span></div>'},
   {s:0,h:'<div class="pi note y">Cagoules × <s>3</s> 4<br><s>Appeler Trevor</s> JAMAIS.</div>'},
   {s:2,h:'<div class="pi note g">Coffre privé<br>n° <b>0451</b> ✔</div>'},
-  {s:3,h:'<div class="pi pho">'+IC.club+'<span>Halte du fourgon</span></div>'},
-  {s:4,h:'<div class="pi note">Fourgon ✔<br>Tenues de convoyeurs ✔<br><s>Mike</s> <s>Taliana</s> <s>Chris</s></div>'},
+  {s:3,h:'<div class="pi pho"><div class="phw">'+IC.club+'<img src="'+encodeURIComponent("Vanilla Unicorn2.jpg")+'" alt="" onerror="this.remove()"></div><span>Halte du fourgon</span></div>'},
+  {s:4,h:'<div class="pi note">Fourgon ✔<br>Tenues de convoyeurs ✔<br><s>Chris</s> <s>Taliana</s> <s>Mike</s></div>'},
   {s:4,h:'<div class="pi pho">'+IC.vault+'<span>Le coffre</span></div>'}];
  var pts=[10,30,50,70,90].map(function(x,k){return x+","+(k%2?6:2)}).slice(0,i+1).join(" ");
  return '<div class="bd"><div class="bdh"><span class="bt2">BRAQUAGE DE L\'UNION DEPOSITORY</span><span class="bs2">Lamar sera à sec.</span></div><div class="pins2"><svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true"><polyline points="10,2 30,6 50,2 70,6 90,2" fill="none" stroke="#c0392b55" stroke-width=".8"/><polyline class="str" points="'+pts+'" fill="none" stroke="#e74c3c" stroke-width="1.2"/></svg>'+
@@ -612,12 +648,14 @@ function board(i){
   '</div><div class="extra">'+X.filter(function(x){return x.s<=i}).map(function(x,k){return x.h.replace('<div class="pi ','<div style="--r:'+((k*37)%9-4)+'deg" class="pi '+(x.s===i&&i>0?"new ":""))}).join("")+'</div>'+
   '<div class="norec"><b>⛔ À NE PAS RECRUTER :</b> '+NOREC.map(function(n){return '<s>'+esc(n)+'</s>'}).join(" · ")+'</div></div>'
 }
+function pname(){var n=String(S.name||"").trim().split(/\s+/)[0]||"l'agent";return n.charAt(0).toUpperCase()+n.slice(1)}
 function dlg(box,lines,done){
  var i=0,a=null,tw=0,fired={};
  function stopA(){if(a){try{a.pause()}catch(e){}a=null}clearInterval(tw)}
  CLN.push(stopA);
  function show(){
-  stopA();var L=lines[i],t=L.t,k=0,last=i===lines.length-1,c=SPK[L.w]||"#fff";
+  stopA();var L=lines[i];if(L.pre&&!fired["p"+i]){fired["p"+i]=1;box.innerHTML='<div class="dlg calling">📞 '+esc(L.preT||"Appel en cours…")+'</div>';L.pre(show);return}
+  var t=L.t.replace(/\{N\}/g,pname()),k=0,last=i===lines.length-1,c=SPK[L.w]||"#fff";
   box.innerHTML='<div class="dlgw">'+L.w.split(" & ").map(face).join("")+'<div class="dlg"><b style="color:'+c+'">'+esc(L.w)+'</b> <span class="dt"></span><small class="dct">'+(i+1)+'/'+lines.length+'</small></div></div><div class="row dlr"><button type="button" class="ghost sm dp"'+(i?'':' disabled')+'>◀ Précédent</button><button type="button" class="sm dn">'+(last?"Continuer ▶":"Suivant ▶")+'</button></div>';
   var dt=box.querySelector(".dt");tw=setInterval(function(){k+=2;dt.textContent=t.slice(0,k);if(k>=t.length)clearInterval(tw)},26);
   if(L.a&&!S.mute){a=new Audio(encodeURIComponent(L.a));var pr=a.play();if(pr&&pr.catch)pr.catch(function(){})}
@@ -636,11 +674,12 @@ function hstep(p,i,game,noKeep){
  $("wg").innerHTML='<div id="bdw">'+board(i)+'</div><div id="dl"></div><div id="gm"></div>';$("go").style.display="none";
  var key="m11-"+i;S.dls=S.dls||{};
  if(i===0&&!S.dls[key]){
-  $("bdw").hidden=true;$("gm").hidden=true;var stop=ringer();
-  $("dl").innerHTML='<div class="call">'+face("Franklin")+'<div><p class="era">📞 Appel groupé entrant…</p><p class="cn">Franklin</p><p class="hks">avec Lester et vous</p></div><button type="button" id="pick">📞 Décrocher</button></div>';
-  $("pick").onclick=function(){stop();beep(1200,.05);
+  $("bdw").hidden=true;$("gm").hidden=true;var stop=ringer();if($("slbl"))$("slbl").textContent="Prologue";
+  var now=new Date(),hh=("0"+now.getHours()).slice(-2)+":"+("0"+now.getMinutes()).slice(-2);
+  $("dl").innerHTML='<div class="phone2 ringp callp"><p class="pht">iFruit de '+esc(S.name||"")+'</p><p class="ptime">'+hh+'</p><div class="cface">'+face("Franklin")+'</div><p class="cn">Franklin</p><p class="csub">Appel groupé avec Lester et vous</p><div class="unl"><input type="range" id="pick" min="0" max="100" value="0" aria-label="Glisser pour décrocher"><span>glisser pour décrocher ▸</span></div></div>';
+  var pk=$("pick");pk.onchange=function(){if(+pk.value<92)pk.value=0};pk.oninput=function(){if(+pk.value<92)return;pk.oninput=null;stop();beep(1200,.05);bgPlay(M[10].mu,true);
    var L=p.dl.map(function(l,k){return k===2?Object.assign({},l,{on:function(){var b=$("bdw");b.hidden=false;b.classList.add("slam");thump()}}):l});
-   dlg($("dl"),L,function(){S.dls[key]=1;sv();replayBtn();$("gm").hidden=false;game($("gm"))})};
+   dlg($("dl"),L,function(){S.dls[key]=1;sv();if($("slbl"))$("slbl").textContent=p.lbl;replayBtn();$("gm").hidden=false;game($("gm"))})};
   function replayBtn(){$("dl").innerHTML='<button type="button" class="ghost sm" id="rb">↺ Relire le briefing</button>';$("rb").onclick=function(){dlg($("dl"),p.dl,replayBtn)}}
   return}
  function replayBtn(){if(noKeep){$("dl").innerHTML="";return}$("dl").innerHTML='<button type="button" class="ghost sm" id="rb">↺ Relire le briefing</button>';$("rb").onclick=function(){dlg($("dl"),p.dl,replayBtn)}}
@@ -655,7 +694,8 @@ function fadeXA(ms){XA.forEach(function(a){if(a.paused)return;var v0=a.volume,t0
 function radioStop(){cleanW();(RAD.all||[]).forEach(function(x){if(x.a)try{x.a.pause()}catch(e){}});RAD.all=null;if(RAD.a){try{RAD.a.pause()}catch(e){}RAD.a=null}if(RAD.s){try{RAD.s.s.stop()}catch(e){}RAD.s=null}}
 var WG={
  radio:function(p){
-  $("wg").innerHTML='<div class="radio"><div class="rdisp"><span id="rf">90.0</span><small> FM</small></div><div class="rscale"><i id="rn"></i></div><input type="range" id="rr" min="87.5" max="108" step="0.1" value="90" aria-label="Fréquence radio"><div class="row"><button type="button" class="ghost" id="rm">− 0,1</button><button type="button" class="ghost" id="rp">+ 0,1</button></div></div>';
+  $("wg").innerHTML='<div class="car90"><div class="cfp"><div class="knob" aria-hidden="true"><i></i><b>VOL</b></div><div class="ccen"><div class="lcd"><span class="lb">FM1</span><span class="lfq" id="rf">90.0</span><span class="lmh">MHz</span><span class="lst" id="lst">ST</span></div><div class="rscale"><i id="rn"></i></div><div class="tape"><span></span>AUTO REVERSE · DOLBY B NR<span></span></div></div><div class="knob" id="kt" aria-hidden="true"><i></i><b>TUNE</b></div></div>'+
+   '<div class="pre"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span></div><input type="range" id="rr" min="87.5" max="108" step="0.1" value="90" aria-label="Fréquence radio"><div class="row"><button type="button" class="ghost" id="rm">◀◀ − 0,1</button><button type="button" class="ghost" id="rp">+ 0,1 ▶▶</button></div><p class="br90">SONIX · CAR STEREO CR-90</p></div>';
   radioStop();
   var r=$("rr"),f=90,locked=false,st=null,rA=null,cur=null;
   var ST=[{f:p.target,aud:p.aud,good:true}].concat(p.decoys||[]);
@@ -664,10 +704,10 @@ var WG={
   function startStatic(){if(st)return;try{ctx();if(ac.state==="suspended")ac.resume();var n=ac.sampleRate*2,bf=ac.createBuffer(1,n,ac.sampleRate),d=bf.getChannelData(0);for(var i=0;i<n;i++)d[i]=Math.random()*2-1;var s=ac.createBufferSource(),g=ac.createGain();s.buffer=bf;s.loop=true;g.gain.value=S.mute?0:.03;s.connect(g);g.connect(ac.destination);s.start();st={s:s,g:g};RAD.s=st}catch(e){}}
   function stopStatic(){if(st){try{st.s.stop()}catch(e){}st=null;RAD.s=null}}
   function burst(){if(!st)return;try{if(S.mute)return;var t=ac.currentTime,g=st.g.gain;g.cancelScheduledValues(t);g.setValueAtTime(.17,t);g.linearRampToValueAtTime(.03,t+.35)}catch(e){}}
-  function draw(){$("rr").value=f;$("rf").textContent=f.toFixed(1);$("rn").style.left=((f-87.5)/20.5*100)+"%"}
+  function draw(){$("rr").value=f;$("rf").textContent=f.toFixed(1);$("rn").style.left=((f-87.5)/20.5*100)+"%";$("kt").firstChild.style.transform="rotate("+((f-87.5)*17)+"deg)";$("lst").classList.toggle("on",!!cur)}
   function set(v){f=Math.round(Math.max(87.5,Math.min(108,v))*10)/10;draw();
    var hit=null;ST.forEach(function(x){if(Math.abs(f-x.f)<.05&&x.a&&!x.bad)hit=x});
-   if(hit!==cur){if(cur){cur.a.pause();RAD.a=null}cur=hit;
+   if(hit!==cur){if(cur){cur.a.pause();RAD.a=null}cur=hit;$("lst").classList.toggle("on",!!hit);
     if(hit){stopStatic();RAD.a=hit.a;try{var pr=hit.a.play();if(pr&&pr.catch)pr.catch(function(){})}catch(e){}}}
    locked=Math.abs(f-p.target)<.05;
    if(!hit){startStatic();burst()}}
@@ -731,9 +771,10 @@ var WG={
    W.map(function(w){return '<tr><td><span class="dotc" style="background:'+w[0]+'"></span>'+w[1]+'</td><td>→</td><td><strong>'+w[2]+'</strong></td></tr>'}).join("")+
    '</table><p class="warn">⚠ Brancher la masse en premier, puis la batterie. Sinon : court-circuit.</p></div>'+
    '<p class="hwst" id="hst"></p>'+
-   '<div class="ignw" id="ign" hidden><svg id="isv" viewBox="-30 -20 260 230" aria-label="Contacteur à clé"><circle cx="100" cy="100" r="78" fill="#2b2d33" stroke="#9a9ca4" stroke-width="4"/><circle cx="100" cy="100" r="58" fill="#1b1c21"/>'+
-   [["OFF",-90],["ACC",-45],["ON",0],["START",40]].map(function(x){var a=(x[1]-90)*Math.PI/180;return '<text x="'+(100+102*Math.cos(a))+'" y="'+(105+102*Math.sin(a))+'" fill="'+(x[0]==="START"?"#ff2e88":"#ffd9a0")+'" font-size="13" font-family="Arial" font-weight="700" text-anchor="middle">'+x[0]+'</text>'}).join("")+
-   '<g id="key" style="transform-origin:100px 100px;transform:rotate(-90deg)"><rect x="92" y="40" width="16" height="120" rx="6" fill="#c9a227"/><circle cx="100" cy="100" r="30" fill="#d9b23a" stroke="#8a6d12" stroke-width="3"/><rect x="96" y="44" width="8" height="40" rx="3" fill="#8a6d12"/><circle cx="100" cy="100" r="8" fill="#8a6d12"/></g></svg><div class="ignbar"><i id="ibi"></i></div></div></div>';
+   '<div class="ignw" id="ign" hidden><p class="hks c">Il reste deux fils dénudés : mettez-les en contact pour démarrer.</p><svg id="isv" viewBox="0 0 300 170" aria-label="Deux fils dénudés à mettre en contact"><rect width="300" height="170" rx="10" fill="#140b1d"/><rect x="100" y="0" width="100" height="32" rx="4" fill="#2b2d33"/><text x="150" y="20" fill="#9a9ca4" font-size="9" font-family="Arial" text-anchor="middle">SOUS LE VOLANT</text>'+
+   '<path d="M125 32 C 112 72, 92 96, 108 112" stroke="#ff3b3b" stroke-width="8" fill="none" stroke-linecap="round"/><line x1="108" y1="112" x2="120" y2="121" stroke="#d98c3a" stroke-width="4" stroke-linecap="round"/><circle cx="120" cy="121" r="3" fill="#ffb15c"/><text x="70" y="150" fill="#ff8b8b" font-size="10" font-family="Arial">BATTERIE</text>'+
+   '<path id="w2" d="" stroke="#8b5a2b" stroke-width="8" fill="none" stroke-linecap="round"/><g id="tip"><line x1="0" y1="0" x2="-12" y2="8" stroke="#d98c3a" stroke-width="4" stroke-linecap="round"/><circle cx="-12" cy="8" r="9" fill="#ffffff10" stroke="#ffffff40" stroke-dasharray="3 3"/></g><text x="215" y="150" fill="#d4a373" font-size="10" font-family="Arial">DÉMARREUR</text>'+
+   '<g id="spk" opacity="0">'+[0,45,90,135,180,225,270,315].map(function(a){var r=a*Math.PI/180;return '<line x1="120" y1="121" x2="'+(120+22*Math.cos(r))+'" y2="'+(121+22*Math.sin(r))+'" stroke="#fff6a8" stroke-width="2.5"/>'}).join("")+'<circle cx="120" cy="121" r="9" fill="#ffffff"/><circle cx="120" cy="121" r="16" fill="#7fd4ff55"/></g></svg><div class="ignbar"><i id="ibi"></i></div><p class="msg" id="im" role="status"></p></div></div>';
   $("go").style.display="none";
   var done=false,left=scr.length,conn={},n=0,tm=0,crank=0;
   /* sons optionnels fournis : démarreur (boucle) et moteur qui démarre */
@@ -782,20 +823,26 @@ var WG={
    if(n===1&&W[w][2]!=="BAT"){short("Bzzzt ! Court-circuit : la batterie devait suivre la masse.");return}
    conn[w]=hit;n++;$("hln").innerHTML+='<path d="M30 '+Y[c]+' C140 '+Y[c]+' 130 '+Y[hit]+' 230 '+Y[hit]+'" stroke="'+W[w][0]+'" stroke-width="7" fill="none" stroke-linecap="round" opacity=".95"/>';beep(700,.08);msg("");
    if(n===5){beep(1047,.12);$("ign").hidden=false;$("gb").hidden=true;$("schb").hidden=true}};
-  var held=0,isv=$("isv"),key=$("key"),kang=-90,drag=false,off0=0;
-  function setK(d){kang=d;key.style.transform="rotate("+d+"deg)"}
-  function kAng(e){var r=isv.getBoundingClientRect(),x=e.clientX-(r.left+r.width/2),y=e.clientY-(r.top+r.height/2);return Math.atan2(y,x)*180/Math.PI}
-  function startCr(){if(crank)return;held=0;
+  var isv=$("isv"),tries=0,busy=false,dragW=false,A={x:120,y:121},B0={x:222,y:118},B={x:222,y:118};
+  function drawW(){$("w2").setAttribute("d","M175 32 C 190 74, "+(B.x+24)+" "+(B.y-34)+", "+B.x+" "+B.y);$("tip").setAttribute("transform","translate("+B.x+","+B.y+")")}
+  function sp(e){var r=isv.getBoundingClientRect();return {x:(e.clientX-r.left)/r.width*300,y:(e.clientY-r.top)/r.height*170}}
+  function im(t,k){$("im").className="msg"+(k?" "+k:"");$("im").textContent=t}
+  isv.onpointerdown=function(e){if(done||busy)return;var q=sp(e);if(Math.hypot(q.x-B.x,q.y-B.y)<34){e.preventDefault();isv.setPointerCapture(e.pointerId);dragW=true;beep(900,.02)}};
+  isv.onpointermove=function(e){if(!dragW)return;var q=sp(e);B.x=Math.max(20,Math.min(285,q.x));B.y=Math.max(40,Math.min(160,q.y));drawW();if(Math.hypot(B.x-12-A.x,B.y+8-A.y)<13)contact()};
+  isv.onpointerup=isv.onpointercancel=function(){dragW=false};
+  function spring(){var x0=B.x,y0=B.y,t0=Date.now(),iv2=setInterval(function(){var k=Math.min(1,(Date.now()-t0)/350);B.x=x0+(B0.x-x0)*k;B.y=y0+(B0.y-y0)*k;drawW();if(k>=1)clearInterval(iv2)},30)}
+  function contact(){dragW=false;busy=true;tries++;B.x=A.x+12;B.y=A.y-8;drawW();
+   var sk=$("spk");sk.style.transition="none";sk.setAttribute("opacity","1");for(var i=0;i<5;i++)(function(i){setTimeout(function(){beep(2500+Math.random()*2500,.03,"square");sk.setAttribute("opacity",i%2?"1":".3")},i*70)})(i);
+   setTimeout(function(){sk.setAttribute("opacity","0")},450);
+   im(tries<3?"Ça crépite… le démarreur tourne !":"Ça crépite… allez, allez…");
    if(crOk&&!S.mute){try{crA.currentTime=0;var pr=crA.play();if(pr&&pr.catch)pr.catch(function(){})}catch(e){}crank=1}
    else crank=setInterval(function(){beep(70+Math.random()*30,.09,"sawtooth")},140);
-   tm=setInterval(function(){held+=50;$("ibi").style.width=Math.min(100,held/18)+"%";if(held>=1800){stopCr();start()}},50)}
-  function endCr(){if(crank||tm){stopCr();held=0;$("ibi").style.width="0"}}
-  isv.onpointerdown=function(e){if(done)return;e.preventDefault();isv.setPointerCapture(e.pointerId);drag=true;key.style.transition="none";off0=kAng(e)-kang;beep(1200,.02)};
-  isv.onpointermove=function(e){if(!drag||done)return;var d=kAng(e)-off0;while(d-kang>180)d-=360;while(d-kang<-180)d+=360;d=Math.max(-90,Math.min(40,d));
-   var pz=kang<-30?0:kang<20?1:2,nz=d<-30?0:d<20?1:2;if(nz!==pz)beep(nz>pz?900:600,.03);setK(d);
-   if(d>=32)startCr();else endCr()};
-  isv.onpointerup=isv.onpointercancel=function(){if(done)return;drag=false;endCr();if(kang>0){key.style.transition="transform .25s";setK(0)}};
-  function start(){done=true;msg("Vroum ! Le moteur tourne.");drag=false;key.style.transition="transform .3s";setK(0);
+   var held=0;tm=setInterval(function(){held+=50;$("ibi").style.width=Math.min(100,held/16)+"%";
+    if(held>=1600){stopCr();$("ibi").style.width="0";
+     if(tries<3){im(tries===1?"Le moteur tousse… mais ne démarre pas. Recommencez !":"Presque ! Encore une fois…","ko");spring();busy=false}
+     else start()}},50)}
+  drawW();
+  function start(){done=true;im("Vroum ! Le moteur tourne.","ok");msg("");
    if(S.mute){}else if(stOk){try{stA.currentTime=0;var pr=stA.play();if(pr&&pr.catch)pr.catch(function(){})}catch(e){}}
    else{try{ctx();var o=ac.createOscillator(),g=ac.createGain(),t=ac.currentTime;o.type="sawtooth";o.frequency.setValueAtTime(60,t);o.frequency.exponentialRampToValueAtTime(190,t+.7);o.frequency.exponentialRampToValueAtTime(90,t+1.6);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.12,t+.1);g.gain.exponentialRampToValueAtTime(.001,t+1.8);o.connect(g);g.connect(ac.destination);o.start(t);o.stop(t+1.9)}catch(e){}}
    setTimeout(function(){$("go").click()},2200)}
@@ -803,12 +850,12 @@ var WG={
  },
  crew:function(p){
   var R=[["Hacker","💻",[["Paige Harris",95,15,"Pirate le Pentagone pour s'occuper le dimanche.","Portrait de Paige Harris.jpg"],["Chris Feltz",80,10,"Fiable. Toujours une canette d'energy drink à la main.","Portrait de Chris Feltz.jpg"],["Rickie Lukens",50,5,"A déjà piraté… sa propre box. Par erreur.","Portrait de Rickie Lukens.jpg"]]],
-   ["Chauffeur","🚗",[["Eddie Toh",92,14,"Ne quitte jamais sa voiture. Même pour dormir.","Portrait de Eddie Toh.jpg"],["Taliana Martinez",78,8,"Conduit vite. Adore jouer avec son flingue.","Portrait de Taliana Martinez.jpg"],["Karim Denz",45,5,"Connaît très bien les fourrières de Los Santos.","Portrait de Karim Denz.jpg"]]],
-   ["Tireur","🔫",[["Packie McReary",94,15,"Ancien de la mafia irlandaise. Très motivé.","Portrait de Packie McReary.jpg"],["Mike Welsh",70,7,"Bon tireur. Un peu trop fan des bars de nuit.","Portrait de Mike Welsh.jpg"],["Norm Richards",40,4,"A braqué la mauvaise banque deux fois.","Portrait de Norm Richards.jpg"]]]];
-  var BEST=["Chris Feltz","Taliana Martinez","Mike Welsh"],sel=[null,null,null],done=false;
+   ["Chauffeur","🚗",[["Eddie Toh",92,14,"Ne quitte jamais sa voiture. Même pour dormir.","Portrait de Eddie Toh.jpg"],["Mike Welsh",70,7,"Conduit vite. Un peu trop fan des bars de nuit.","Portrait de Mike Welsh.jpg"],["Karim Denz",45,5,"Connaît très bien les fourrières de Los Santos.","Portrait de Karim Denz.jpg"]]],
+   ["Tireur","🔫",[["Packie McReary",94,15,"Ancien de la mafia irlandaise. Très motivé.","Portrait de Packie McReary.jpg"],["Taliana Martinez",78,8,"Tireuse d'élite. Adore faire tourner son flingue.","Portrait de Taliana Martinez.jpg"],["Norm Richards",40,4,"A braqué la mauvaise banque deux fois.","Portrait de Norm Richards.jpg"]]]];
+  var BEST=["Chris Feltz","Mike Welsh","Taliana Martinez"],sel=[null,null,null],done=false;
   hstep(p,0,function(g){
    var O;do{O=R.map(function(r){return shuf(r[2])})}while(new Set(O.map(function(c,k){return c.map(function(x){return x[0]}).indexOf(BEST[k])})).size<3);
-   g.innerHTML='<div class="postit">📌 <b>Consignes de Lester</b><br>1 hacker, 1 chauffeur, 1 tireur.<br>La meilleure équipe possible…<br><b>mais 25 % du butin maximum pour l\'équipe.</b></div>'+
+   g.innerHTML='<div class="pits"><div class="postit">📌 <b>Consignes de Lester</b><br>1 hacker, 1 chauffeur, 1 tireur.<br>La meilleure équipe possible.</div><div class="postit p2">📌 <b>Consigne de Franklin</b><br>25 % du butin <b>maximum</b> pour toute l\'équipe.</div></div>'+
     R.map(function(r,ri){return '<p class="era">'+r[1]+' '+r[0]+'</p><div class="cands">'+O[ri].map(function(c,ci){return '<button type="button" class="cand" data-r="'+ri+'" data-c="'+ci+'"><div class="cph"><span>🥷</span><img src="'+encodeURIComponent(c[4])+'" alt="" onerror="this.remove()"></div><b>'+c[0]+'</b><span class="sk"><i style="width:'+c[1]+'%"></i></span><small>Compétence '+c[1]+' %<br>Part '+c[2]+' %</small><em>'+c[3]+'</em><i class="stp">RECRUTÉ</i></button>'}).join("")+'</div>'}).join("")+
     '<p class="tot" id="tot">Part de l\'équipe : 0 %</p><div class="row"><button type="button" id="hire">Recruter cette équipe</button></div><p class="msg" id="cm" role="status"></p>';
    function tot(){var t=0;sel.forEach(function(c){if(c)t+=c[2]});return t}
@@ -821,7 +868,7 @@ var WG={
     if(sel.some(function(c,k){return c[0]!==BEST[k]})){ko("Lester : « Ça rentre dans le budget… mais pour 25 %, on peut avoir une bien meilleure équipe. »");return}
     done=true;cash();g.querySelectorAll(".cand.sel").forEach(function(b){b.classList.add("hired")});
     var r=document.createElement("div");r.className="rain";r.innerHTML=new Array(14).join("<i>💵</i>");g.appendChild(r);
-    m.className="msg ok";m.textContent="Lester : « Chris, Taliana et Mike. La meilleure équipe pour 25 %. Qu'est-ce qui pourrait mal tourner ? »";
+    m.className="msg ok";m.textContent="Lester : « Chris, Mike et Taliana. La meilleure équipe pour 25 %. Qu'est-ce qui pourrait mal tourner ? »";
     setTimeout(function(){$("go").click()},3200)};
   });
   return {ok:function(){return done}}
@@ -833,14 +880,14 @@ var WG={
   hstep(p,1,function(g){
    var N=PW.length,cur=0,busy=false,AL="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?#$".split(""),SET=[],pos=[];
    for(var i=0;i<N;i++){SET.push(shuf(shuf(AL.filter(function(c){return c!==PW[i]})).slice(0,7).concat(PW[i])));pos.push(Math.floor(Math.random()*8))}
-   g.innerHTML='<div class="lph" id="hkp"><p class="pht">📱 iFruit de Lamar · <span id="lk">🔒 verrouillé</span></p><div id="hks"><div class="slots" id="slots"></div><div class="hbig" id="big"></div><p class="hks">Le bon caractère s\'affiche en <b style="color:#39ff14">VERT</b>, les mauvais en <b style="color:#ff3b3b">ROUGE</b>.</p><button type="button" class="hkb" id="lockb">VERROUILLER (espace)</button><p class="hkm" id="hkm"></p></div></div>';
+   g.innerHTML='<div class="lph" id="hkp"><p class="pht">📱 iFruit de Lamar · <span id="lk">🔒 verrouillé</span></p><div id="hks"><div class="appw"><span class="dots"><i></i><i></i><i></i></span>BruteForce.exe<span class="ver">v2.3</span></div><div class="slots" id="slots"></div><div class="hbig" id="big"></div><p class="hks">Le bon caractère s\'affiche en <b style="color:#39ff14">VERT</b>, les mauvais en <b style="color:#ff3b3b">ROUGE</b>.</p><button type="button" class="hkb" id="lockb">🔒 Cliquer ici ou appuyer sur ESPACE pour verrouiller la lettre</button><p class="hkm" id="hkm"></p></div></div>';
    function ch(){return SET[cur][pos[cur]%8]}
    function draw(){var h="";for(var k=0;k<N;k++)h+='<span class="'+(k<cur?"ok":k===cur?"cu":"")+'">'+(k<cur?esc(PW[k]):k===cur?"▮":"•")+'</span>';$("slots").innerHTML=h;
     if(cur<N){var c=ch();$("big").innerHTML='<span class="'+(c===PW[cur]?"g":"r")+'">'+esc(c)+'</span>'}}
    iv=setInterval(function(){if(!busy&&!done&&cur<N){pos[cur]++;draw()}},650);draw();
    lock=function(){if(done||busy||cur>=N)return;
     if(ch()===PW[cur]){cur++;beep(1200,.04);$("hkm").textContent="";draw();if(cur===N)win()}
-    else{beep(140,.25,"sawtooth");$("hkm").textContent="Caractère refusé.";var b=$("big");b.classList.remove("shk");void b.offsetWidth;b.classList.add("shk")}};
+    else{beep(140,.25,"sawtooth");if(cur>0)cur--;$("hkm").textContent="Caractère refusé : retour d'une lettre en arrière.";draw();var b=$("big");b.classList.remove("shk");void b.offsetWidth;b.classList.add("shk")}};
    $("lockb").onclick=function(){lock()};
    document.addEventListener("keydown",kd);
    function win(){busy=true;clearInterval(iv);jingle([523,659,784]);$("lk").textContent="🔓 déverrouillé";
@@ -878,6 +925,10 @@ var WG={
    Array.prototype.forEach.call(g.querySelectorAll(".dpad button"),function(b){var k=b.dataset.k;b.onpointerdown=function(e){e.preventDefault();K[k]=1};b.onpointerup=b.onpointerleave=b.onpointercancel=function(){K[k]=0}});
    document.addEventListener("keydown",kd);document.addEventListener("keyup",ku);
    function blocked(x,y){if(x<PR||x>W-PR||y<62+PR||y>H-PR)return true;for(var i=0;i<CARS.length;i++){var q=CARS[i];if(x+PR>q.x&&x-PR<q.x+q.w&&y+PR>q.y&&y-PR<q.y+q.h)return true}return false}
+   function onCar(x,y){for(var i=0;i<CARS.length;i++){var q=CARS[i];if(x+PR>q.x&&x-PR<q.x+q.w&&y+PR>q.y&&y-PR<q.y+q.h)return true}return false}
+   var alT0=0,alA=null;function carAlarm(){var now=performance.now();if(now-alT0<5200)return;alT0=now;var o=$("obj");if(o)o.textContent="Attention, tu as touché une voiture : son alarme hurle !";if(S.mute)return;
+    alA=new Audio(encodeURIComponent("audio-m10-alarme.mp3"));alA.volume=.6;XA.push(alA);alA.onerror=function(){for(var i=0;i<12;i++)(function(i){setTimeout(function(){beep(i%2?620:900,.18,"square")},i*400)})(i)};alA.loop=true;var q=alA.play();if(q&&q.catch)q.catch(function(){});setTimeout(function(){if(alA)fadeEl(alA,400)},5000)}
+   CLN.push(function(){if(alA)try{alA.pause()}catch(e){}});
    function losBlocked(ax,ay,bx,by){for(var s=1;s<12;s++){var x=ax+(bx-ax)*s/12,y=ay+(by-ay)*s/12;for(var i=0;i<CARS.length;i++){var q=CARS[i];if(x>q.x&&x<q.x+q.w&&y>q.y&&y<q.y+q.h)return true}}return false}
    function cams(){return [{mx:180,my:H-2,x:180,y:361.5+43.5*Math.sin(T*1.6)},{mx:W-6,my:66,x:252.5+87.5*Math.sin(T*1.25),y:100},{mx:W-4,my:255,x:295+55*Math.sin(T*1.5+1),y:255},{mx:180,my:166,x:180+70*Math.sin(T*1.1+2),y:212}]}
    function caught(t){frz=1.9;K={};$("gri").textContent="T'ES GRILLÉ !";$("gri").hidden=false;playFail();if(!S.mute){var po=new Audio(encodeURIComponent("Arrivée de la police.mp3"));po.volume=.7;XA.push(po);var pq=po.play();if(pq&&pq.catch)pq.catch(function(){});setTimeout(function(){fadeEl(po,800)},3200)}
@@ -899,7 +950,7 @@ var WG={
     if(frz<=0&&!done){T+=dt;
      if(gd.wait>0)gd.wait-=dt;else{gd.x+=gd.dir*48*dt;if(gd.x>335){gd.x=335;gd.dir=-1;gd.wait=.6}if(gd.x<70){gd.x=70;gd.dir=1;gd.wait=.6}}
      var vx=(K.r?1:0)-(K.l?1:0),vy=(K.d?1:0)-(K.u?1:0),l=Math.hypot(vx,vy);
-     if(l){vx/=l;vy/=l;pdir=Math.atan2(vy,vx);var nx=P.x+vx*95*dt,ny=P.y+vy*95*dt;if(!blocked(nx,P.y))P.x=nx;if(!blocked(P.x,ny))P.y=ny}
+     if(l){vx/=l;vy/=l;pdir=Math.atan2(vy,vx);var nx=P.x+vx*95*dt,ny=P.y+vy*95*dt;if(!blocked(nx,P.y))P.x=nx;else if(onCar(nx,P.y))carAlarm();if(!blocked(P.x,ny))P.y=ny;else if(onCar(P.x,ny))carAlarm()}
      if(!bag&&Math.hypot(P.x-BAG.x,P.y-BAG.y)<16){bag=true;beep(988,.08);setTimeout(function(){beep(1319,.1)},90);$("obj").textContent="Tenue récupérée ! Direction le fourgon 🚐."}
      var dx=P.x-gd.x,dy=P.y-gd.y,dd=Math.hypot(dx,dy),fa=gd.dir>0?0:Math.PI,an=Math.abs(Math.atan2(Math.sin(Math.atan2(dy,dx)-fa),Math.cos(Math.atan2(dy,dx)-fa)));
      if(dd<16||(dd<110&&an<.55&&!losBlocked(gd.x,gd.y,P.x,P.y)))caught();
@@ -907,7 +958,7 @@ var WG={
      else if(P.x>VAN.x-PR-2&&P.x<VAN.x+VAN.w+PR+2&&P.y<VAN.y+VAN.h+PR+4){if(bag)win();else if(now-warned>1500){warned=now;$("obj").textContent="Il te faut d'abord la tenue de convoyeur 👔 !";beep(300,.1)}}
     }
     draw();if(R3)R3.render(dt);cv.dataset.s=JSON.stringify({x:Math.round(P.x),y:Math.round(P.y),gx:Math.round(gd.x),gdir:gd.dir,c1:Math.round(cams()[0].y),c2:Math.round(cams()[1].x),c3:Math.round(cams()[2].x),bag:bag,f:frz>0})}
-   function win(){done=true;K={};$("obj").textContent="Tu es dans le fourgon, en tenue de convoyeur. 🚐";
+   function win(){done=true;K={};if(alA)try{alA.pause()}catch(e){}["pkw","obj"].forEach(function(id){var e=$(id);if(e)e.hidden=true});g.querySelectorAll(".dpad,.hks.c").forEach(function(e){e.hidden=true});
     dlg($("sd"),p.after,function(){$("go").click()})}
    raf=requestAnimationFrame(loop);
    /* ---- vue 3D à la troisième personne (Three.js) ; le plan 2D devient la mini-carte ---- */
@@ -1034,7 +1085,9 @@ var WG={
   function ku(e){if(e.code==="Space")hold=false}
   CLN.push(function(){clearInterval(iv);clearInterval(tmr);dsnd(false);ring(false);alarm(false);document.removeEventListener("keydown",kd);document.removeEventListener("keyup",ku);var c=$("cine");if(c)c.remove()});
   var D=p.dl.slice(),SC=p.script;
-  D[1]=Object.assign({},D[1],{on:function(){ring(true)}});D[2]=Object.assign({},D[2],{on:function(){ring(false)}});p.dl=D;
+  D[2]=Object.assign({},D[2],{preT:"Franklin compose le numéro de Trevor…",pre:function(next){var fin=false,a=null,tt=0;function go(){if(fin)return;fin=true;clearTimeout(tt);if(a)try{a.pause()}catch(e){}next()}
+   tt=setTimeout(go,15000);if(S.mute){setTimeout(go,1500);return}a=new Audio(encodeURIComponent("Phone Dial and Ring Sound.mp3"));a.volume=.7;XA.push(a);a.onended=go;
+   a.onerror=function(){a=null;for(var i=0;i<8;i++)(function(i){setTimeout(function(){beep([941,697,770,852,941,697,770][i%7]||900,.08)},i*130)})(i);[0,1,2].forEach(function(r){setTimeout(function(){beep(425,.9,"sine")},1400+r*1800)});setTimeout(go,6600)};var q=a.play();if(q&&q.catch)q.catch(function(){})}});p.dl=D;
   hstep(p,4,function(g){
    g.innerHTML='<div id="hv" class="hv"><div id="hz"></div><div id="hd"></div></div>';
    function talk(L,next){dlg($("hd"),L,next)}
@@ -1044,9 +1097,16 @@ var WG={
     setTimeout(function(){c.classList.add("out");setTimeout(function(){c.remove();talk(SC.brief,drill)},600)},6200)}
    function drill(){
     var PA=[-90,0,90,180];
-    $("hz").innerHTML='<div class="vault"><svg viewBox="0 0 200 200" class="vd" aria-label="Porte du coffre"><circle cx="100" cy="100" r="94" fill="#5d6068" stroke="#2c2e33" stroke-width="6"/><circle cx="100" cy="100" r="72" fill="#474a52" stroke="#8a8d95" stroke-width="3"/>'+
-     PA.map(function(a,i){var r=a*Math.PI/180;return '<circle id="pin'+i+'" cx="'+(100+50*Math.cos(r))+'" cy="'+(100+50*Math.sin(r))+'" r="9" fill="#b9bbc3" stroke="#2c2e33" stroke-width="2"/>'}).join("")+
-     '<circle cx="100" cy="100" r="20" fill="#2c2e33"/><circle id="hole" cx="100" cy="100" r="0" fill="#000"/><text x="100" y="186" fill="#d6d7dc" font-size="9" font-family="Arial" text-anchor="middle">COFFRE PRIVÉ N° 0451</text></svg>'+
+    var rv="";for(var q=0;q<28;q++){var ra=q*Math.PI*2/28;rv+='<circle cx="'+(100+86*Math.cos(ra)).toFixed(1)+'" cy="'+(100+86*Math.sin(ra)).toFixed(1)+'" r="2.2" fill="#d4d7de" stroke="#55585f" stroke-width=".6"/>'}
+    var tk="";for(q=0;q<40;q++){var ta=q*Math.PI*2/40;tk+='<line x1="'+(100+31*Math.cos(ta)).toFixed(1)+'" y1="'+(100+31*Math.sin(ta)).toFixed(1)+'" x2="'+(100+(q%5?34:36)*Math.cos(ta)).toFixed(1)+'" y2="'+(100+(q%5?34:36)*Math.sin(ta)).toFixed(1)+'" stroke="#1d1e22" stroke-width=".8"/>'}
+    $("hz").innerHTML='<div class="vault"><svg viewBox="-10 -10 220 230" class="vd" id="vsv" aria-label="Porte du coffre de Lamar"><defs><radialGradient id="stl" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#c3c7cf"/><stop offset=".55" stop-color="#7b7f88"/><stop offset="1" stop-color="#3e4148"/></radialGradient><linearGradient id="rim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8d9199"/><stop offset=".5" stop-color="#3b3e44"/><stop offset="1" stop-color="#6b6f77"/></linearGradient><radialGradient id="hub" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#f3d27a"/><stop offset="1" stop-color="#8a6d12"/></radialGradient></defs>'+
+     '<rect x="-8" y="-8" width="216" height="216" rx="10" fill="#26272c" stroke="#121316" stroke-width="3"/><rect x="-6" y="40" width="16" height="30" rx="3" fill="#55585f"/><rect x="-6" y="130" width="16" height="30" rx="3" fill="#55585f"/>'+
+     '<circle cx="100" cy="100" r="96" fill="url(#rim)" stroke="#16171a" stroke-width="4"/>'+rv+'<circle cx="100" cy="100" r="78" fill="url(#stl)" stroke="#2a2c31" stroke-width="3"/><circle cx="100" cy="100" r="70" fill="none" stroke="#ffffff22" stroke-width="1"/>'+
+     PA.map(function(a,i){var r=a*Math.PI/180,x=100+52*Math.cos(r),y=100+52*Math.sin(r);return '<g><circle id="pin'+i+'" cx="'+x+'" cy="'+y+'" r="10" fill="#b9bbc3" stroke="#2c2e33" stroke-width="2.5"/><rect x="'+(x-1.5)+'" y="'+(y-6)+'" width="3" height="12" fill="#2c2e33"/><circle id="hol'+i+'" cx="'+x+'" cy="'+y+'" r="0" fill="#050505"/></g>'}).join("")+
+     '<circle cx="100" cy="100" r="37" fill="#9da1a9" stroke="#2c2e33" stroke-width="2"/>'+tk+'<g stroke="#2f3136" stroke-width="5" stroke-linecap="round"><line x1="100" y1="74" x2="100" y2="126"/><line x1="77.5" y1="87" x2="122.5" y2="113"/><line x1="77.5" y1="113" x2="122.5" y2="87"/></g><circle cx="100" cy="100" r="11" fill="url(#hub)" stroke="#5a4308" stroke-width="2"/>'+
+     '<rect x="52" y="188" width="96" height="16" rx="3" fill="#c9a227" stroke="#5a4308"/><text x="100" y="199" fill="#2a1d00" font-size="7.5" font-weight="700" font-family="Arial" text-anchor="middle">L. DAVIS · COFFRE N° 0451</text>'+
+     '<g id="drl"><g class="dvib"><rect x="-1.6" y="0" width="3.2" height="20" fill="#cfd2d8"/><path d="M-1.6 4h3.2M-1.6 9h3.2M-1.6 14h3.2" stroke="#7a7d84" stroke-width=".8"/><rect x="-5.5" y="19" width="11" height="9" rx="1.5" fill="#2b2b2b"/><rect x="-11" y="27" width="22" height="34" rx="5" fill="#f5c542" stroke="#8a6d12"/><rect x="-11" y="38" width="22" height="5" fill="#222"/><rect x="-6" y="58" width="12" height="30" rx="4" fill="#1d1d1f"/><rect x="5" y="62" width="5" height="9" rx="2" fill="#c0392b"/></g>'+
+     '<g class="spk">'+[0,1,2,3,4,5].map(function(k){var aa=(-150+k*22)*Math.PI/180;return '<line x1="0" y1="0" x2="'+(14*Math.cos(aa)).toFixed(1)+'" y2="'+(14*Math.sin(aa)).toFixed(1)+'" stroke="'+(k%2?"#fff6a8":"#ffb02e")+'" stroke-width="1.6" stroke-linecap="round"/>'}).join("")+'</g></g></svg>'+
      '<p class="dhelp">⌨️ Maintenez la <b>barre ESPACE</b> pour percer (ou le bouton ci-dessous). Relâchez avant la surchauffe !</p>'+
      '<div class="gauges"><span>Profondeur</span><div class="gg"><i id="gd"></i></div><span>Chauffe</span><div class="gg heat"><i id="gh"></i></div></div><p class="msg" id="dm" role="status"></p><button type="button" class="ign" id="drb">🛠️ Maintenir pour percer</button></div>';
     function msg(t,k){$("dm").className="msg"+(k?" "+k:"");$("dm").textContent=t}
@@ -1058,8 +1118,10 @@ var WG={
      if(on){depth=Math.min(100,depth+.3);heat+=1.5+Math.random()*.6;dsnd(true,heat)}else{heat=Math.max(0,heat-1.1);dsnd(false)}
      if(pins>=3&&depth>=88&&!forced){forced=true;heat=100;stall=true;hold=false;dsnd(false);beep(150,.45,"sawtooth");msg("Crac ! La mèche a surchauffé…","ko");setTimeout(function(){talk(SC.over,radio)},700)}
      else if(heat>=100&&!forced){heat=45;cool=2500;hold=false;dsnd(false);depth=Math.max(pins*25,depth-6);beep(150,.45,"sawtooth");msg("Crac ! La mèche a cassé. Changement de mèche…","ko")}
-     var np=Math.floor(depth/25);if(np>pins){pins=np;beep(1600,.05);setTimeout(function(){beep(2100,.05)},70);var pe=$("pin"+(pins-1));if(pe)pe.setAttribute("fill","#39ff14")}
-     $("gd").style.width=depth+"%";$("gh").style.width=Math.min(100,heat)+"%";$("gh").style.background=heat>75?"#ff2e2e":heat>45?"#ffb02e":"#39ff14";$("hole").setAttribute("r",depth/100*16);b.disabled=stall||cool>0;
+     var np=Math.floor(depth/25);if(np>pins){pins=np;beep(1600,.05);setTimeout(function(){beep(2100,.05)},70);var pe=$("pin"+(pins-1));if(pe)pe.setAttribute("fill","#39ff14");var ph=$("hol"+(pins-1));if(ph)ph.setAttribute("r",7)}
+     $("gd").style.width=depth+"%";$("gh").style.width=Math.min(100,heat)+"%";$("gh").style.background=heat>75?"#ff2e2e":heat>45?"#ffb02e":"#39ff14";b.disabled=stall||cool>0;
+     var ci=Math.min(pins,3),cr=PA[ci]*Math.PI/180,cx=100+52*Math.cos(cr),cy=100+52*Math.sin(cr),ho=$("hol"+ci);if(ho&&pins<4)ho.setAttribute("r",Math.max(0,Math.min(1,(depth-ci*25)/25))*7);
+     var dr=$("drl");if(dr){dr.setAttribute("transform","translate("+cx.toFixed(1)+","+cy.toFixed(1)+") rotate("+(ci===2?-35:35)+") scale(.8)");dr.style.display=depth>=100?"none":"";$("vsv").classList.toggle("on",on)}
      if(depth>=100){clearInterval(iv);dsnd(false);b.disabled=true;msg("Le coffre cède !","ok");var rp=document.querySelector(".radio2");if(rp){var ra=rp.querySelector("audio");if(ra)fadeEl(ra,1500);setTimeout(function(){rp.remove()},1500)}beep(523,.1);setTimeout(function(){talk(SC.open,loot)},900)}
     },50);
    }
@@ -1067,30 +1129,31 @@ var WG={
     var d=document.createElement("div");d.className="radio2";d.innerHTML='<p class="trv">📻 La radio de Trevor</p><audio class="aud" controls controlsList="nodownload noplaybackrate" preload="auto" src="'+encodeURIComponent(p.aud)+'" onerror="this.outerHTML=\'<div class=box>Extrait à venir</div>\'"></audio><div id="rin"><input id="ra" type="text" autocomplete="off" aria-label="Titre ou artiste" placeholder="Titre ou artiste du morceau"><div class="row"><button type="button" id="rok">Répondre à Trevor</button></div><p class="msg" id="rm" role="status"></p></div>';
     $("hz").insertBefore(d,$("hz").firstChild);alarmLow(true);var au=d.querySelector("audio");
     if(!S.mute){var w=new Audio(encodeURIComponent("voix-m11-trevor-wouhou.mp3"));w.onerror=function(){};var wq=w.play();if(wq&&wq.catch)wq.catch(function(){})}
-    setTimeout(function(){if(au&&!S.mute&&$("rin")){au.volume=1;var q=au.play();if(q&&q.catch)q.catch(function(){})}},1200)
+    setTimeout(function(){if(au&&!S.mute&&$("ra")){au.volume=1;var q=au.play();if(q&&q.catch)q.catch(function(){})}},1200)
     function ans(){var v=norm($("ra").value);
-     if(p.bt.indexOf(v)>=0){$("rin").innerHTML='<p class="msg ok">✔ Bonne réponse !</p>';heat=0;stall=false;alarmLow(false);beep(880,.08);talk([{w:"Trevor",t:"Ça, c'est du son ! La mèche a refroidi : on perce le dernier !"}],function(){})}
+     if(p.bt.indexOf(v)>=0){$("rin").innerHTML='<p class="msg ok">✔ Bonne réponse !</p>';heat=0;stall=false;alarmLow(false);var ra2=document.querySelector(".radio2 audio");if(ra2)fadeTo(ra2,.15,800);beep(880,.08);talk([{w:"Trevor",t:"Ça, c'est du son ! La mèche a refroidi : on perce le dernier !"}],function(){})}
      else{S.wrong=(S.wrong||0)+1;sv();bad($("rm"),"Trevor : « Faux ! Même ma mère connaît ce morceau. »",true)}}
     $("rok").onclick=ans;$("ra").onkeydown=function(e){if(e.key==="Enter")ans()};$("ra").focus()}
    function loot(){var au=document.querySelector(".radio2 audio");if(au)au.pause();
-    var left=120,got=0,sum=0;
-    var IT=[];for(var k=0;k<4;k++)IT.push({h:'<div class="gbars"><div><i></i></div><div><i></i><i></i></div></div>',n:"Lingots d'or",v:1000000});
-    for(k=0;k<4;k++)IT.push({h:'<span>💵</span>',n:"Liasse de billets",v:300000});
-    for(k=0;k<2;k++)IT.push({h:'<span>🖼️</span>',n:"Œuvre d'art",v:1250000});
-    for(k=0;k<2;k++)IT.push({h:'<span>💎</span>',n:"Bijoux",v:500000});
-    var CELL=shuf([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]).slice(0,IT.length);
-    $("hz").innerHTML='<div class="loot2"><p class="cdn" id="cdn">⏱ 2:00</p><p class="hks c">Le butin est éparpillé dans le coffre : cliquez sur chaque objet pour le prendre !</p><div class="vroom">'+IT.map(function(it,k){var c=CELL[k],x=(c%4)*25+3+Math.random()*7,y=Math.floor(c/4)*25+2+Math.random()*6;return '<button type="button" class="lt2" style="left:'+x+'%;top:'+y+'%;--r:'+(Math.random()*30-15)+'deg" data-k="'+k+'" aria-label="'+it.n+'">'+it.h+'</button>'}).join("")+'</div><p class="tot" id="sac">Butin : 0 $ · 0 / '+IT.length+'</p><div id="mal"></div></div>';
-    tmr=setInterval(function(){left=Math.max(0,left-1);var e=$("cdn");if(e)e.textContent="⏱ "+Math.floor(left/60)+":"+("0"+left%60).slice(-2)},1000);
+    var left=30,got=0,sum=0,CAP=6;
+    var IT=[],k;function add(n,h,nm,v){for(k=0;k<n;k++)IT.push({h:h,n:nm,v:v})}
+    add(6,'<div class="gbars"><div><i></i></div><div><i></i><i></i></div></div>',"Lingots d'or",1000000);add(6,'<span>💵</span>',"Liasse de billets",300000);
+    add(3,'<span>🖼️</span>',"Œuvre d'art",1250000);add(3,'<span>💎</span>',"Bijoux",500000);add(2,'<span>⌚</span>',"Montre de luxe",150000);
+    var CELL=shuf(Array.apply(null,Array(20)).map(function(_,i){return i}));
+    $("hz").innerHTML='<div class="loot2"><p class="cdn" id="cdn">⏱ 0:30</p><p class="hks c">Le butin est éparpillé dans le coffre : cliquez sur chaque objet pour le mettre dans le sac !</p><div class="vroom">'+IT.map(function(it,k){var c=CELL[k],x=(c%4)*25+2+Math.random()*6,y=Math.floor(c/4)*20+1+Math.random()*4;return '<button type="button" class="lt2" style="left:'+x+'%;top:'+y+'%;--r:'+(Math.random()*30-15)+'deg" data-k="'+k+'" aria-label="'+it.n+'">'+it.h+'</button>'}).join("")+'</div><div class="bags" id="bags"></div><p class="tot" id="sac">Butin : 0 $ · 0 / '+IT.length+'</p><div id="mal"></div></div>';
+    function bags(){var n=Math.max(1,Math.ceil(got/CAP)+(got%CAP===0&&got<IT.length&&got>0?1:0)),h="";for(var b=0;b<n;b++){var c=Math.max(0,Math.min(CAP,got-b*CAP));h+='<div class="bag'+(c===CAP?" full":"")+(b===n-1&&c===0&&b>0?" new":"")+'"><div class="bfill" style="height:'+(c/CAP*100)+'%"></div><span>Sac '+(b+1)+'</span><b>'+c+' / '+CAP+'</b></div>'}$("bags").innerHTML=h}
+    bags();
+    tmr=setInterval(function(){left=Math.max(0,left-1);var e=$("cdn");if(e)e.textContent=left?"⏱ 0:"+("0"+left).slice(-2):"⏱ 0:00 · VITE !"},1000);
     function fm(v){return v.toLocaleString("fr-FR")+" $"}
-    Array.prototype.forEach.call(document.querySelectorAll(".lt2"),function(b){b.onclick=function(){if(b.classList.contains("took"))return;b.classList.add("took");cash();var it=IT[+b.dataset.k];got++;sum+=it.v;
+    Array.prototype.forEach.call(document.querySelectorAll(".lt2"),function(b){b.onclick=function(){if(b.classList.contains("took"))return;b.classList.add("took");cash();var it=IT[+b.dataset.k];got++;sum+=it.v;bags();
      $("sac").innerHTML="Butin : <b>"+fm(sum)+"</b> · "+got+" / "+IT.length+"<br><small>Dernier objet : "+it.n+" (+"+fm(it.v)+")</small>";
-     if(got===IT.length)setTimeout(function(){$("mal").innerHTML='<button type="button" class="mal" id="mlb" aria-label="Mallette cassée">💼<small>Mallette cassée</small></button>';talk(SC.case,function(){$("mlb").classList.add("ringing");ring(true);$("mlb").onclick=phone})},700)}})}
-   function phone(){$("mal").innerHTML='<div class="phone2 ringp"><p class="ptime">03:16</p><div class="ntf">💬 <b>Lamar</b><br>Nouveau message</div><div class="unl"><input type="range" id="sl" min="0" max="100" value="0" aria-label="Glisser pour déverrouiller"><span>glisser pour déverrouiller ▸</span></div></div>';
+     if(got===IT.length){clearInterval(tmr);setTimeout(function(){$("mal").innerHTML='<button type="button" class="mal" id="mlb" aria-label="Mallette cassée">💼<small>Mallette cassée</small></button>';talk(SC.case,function(){$("mlb").classList.add("ringing");ring(true);$("mlb").onclick=phone})},700)}}})}
+   function phone(){$("mal").innerHTML='<div class="phone2 ringp"><p class="ptime">03:16</p><div class="ntf">💬 <b>Jason 🌴</b><br>Nouveau message</div><div class="unl"><input type="range" id="sl" min="0" max="100" value="0" aria-label="Glisser pour déverrouiller"><span>glisser pour déverrouiller ▸</span></div></div>';
     var sl=$("sl");sl.oninput=function(){if(+sl.value>=92){sl.oninput=null;ring(false);beep(1200,.05);sms()}};sl.onchange=function(){if(+sl.value<92)sl.value=0}}
-   function sms(){$("mal").innerHTML='<div class="phone2 smsv"><p class="pht">‹ Lamar 🐶</p><div id="th"></div></div>';var n=0,th=$("th");
+   function sms(){$("mal").innerHTML='<div class="phone2 smsv"><p class="pht">‹ Jason 🌴</p><div id="th"></div></div>';var n=0,th=$("th");
     (function nx(){th.innerHTML+='<div class="bub l key">'+esc(VKEY)+'</div>';beep(900,.05);var ph=document.querySelector(".smsv");ph.classList.remove("buzz1");void ph.offsetWidth;ph.classList.add("buzz1");n++;if(n<4)setTimeout(nx,1200);else setTimeout(function(){talk(SC.end,finish)},900)})()}
-   function finish(){alarm(false);clearInterval(tmr);done=true;var c=document.createElement("div");c.id="cine";c.innerHTML='<div class="cbar"></div><div class="cs in"><p class="gold">Mission terminée</p><p class="cap2">La clé reçue par SMS : <b>'+esc(VKEY)+'</b>. Gardez-la précieusement.</p></div><div class="cbar"></div>';document.body.appendChild(c);
-    setTimeout(function(){c.remove();$("go").click()},3600)}
+   function finish(){alarm(false);clearInterval(tmr);done=true;var c=document.createElement("div");c.id="cine";c.innerHTML='<div class="cbar"></div><div class="cs in"><p class="gold">Mission terminée</p><p class="cap2">Le code reçu par SMS : <b>'+esc(VKEY)+'</b>. Notez-le précieusement.</p><button type="button" class="go" id="cgo">C\'est bon, j\'ai noté le code</button></div><div class="cbar"></div>';document.body.appendChild(c);
+    $("cgo").onclick=function(){c.remove();$("go").click()}}
    p._alarm=alarm;
   },true);
   SC.over=SC.over.map(function(l,k){return k===1?Object.assign({},l,{on:function(){alarm(true)}}):l});
@@ -1120,10 +1183,10 @@ var WG={
  }
 };
 function mission(){
- begin();draw();radioStop();stopSnd();var m=M[S.m],n=m.st.length,p=m.st[S.s],audio=p.t==="blind test";var mu=p.mu||m.mu;want=!!mu&&!audio&&p.kind!=="radio"&&p.kind!=="heist";bgPlay(mu,want);
+ begin();draw();radioStop();stopSnd();var m=M[S.m],n=m.st.length,p=m.st[S.s],audio=p.t==="blind test";var mu=p.mu||m.mu;want=!!mu&&!audio&&p.kind!=="radio"&&p.kind!=="heist"&&!(p.kind==="crew"&&!(S.dls&&S.dls["m11-0"]));bgPlay(mu,want);
  var key=S.m+"-"+S.s;S.hs=S.hs||{};var hs=hints(p),shown=S.hs[key]||0;
  var media=audio?(p.aud?`<audio class="aud" controls controlsList="nodownload noplaybackrate" preload="auto" src="${encodeURIComponent(p.aud)}" onerror="this.outerHTML='<div class=box>Extrait à venir</div>'"></audio>`:'<div class="box">Extrait à venir</div>'):"";
- card.innerHTML=`<p class="era">Mission ${S.m+1} sur 12</p><h2>${m.n}</h2><p class="obj">Objectif : ${m.obj||("réussir "+n+" épreuve"+(n>1?"s":"")+" ("+m.st.map(function(x){return lab(x.t)}).join(", ")+").")}</p><hr><p class="era"><span class="badge">${TY[p.t]}</span> ${p.lbl||("Étape "+(S.s+1)+" sur "+n)}</p>${p.cover?pic(p.cover,"cover",1):""}<p class="q">${p.q}</p>${p.img?pic(p.img):""}${media}${p.kind?'<div id="wg"></div>':""}<input id="ans" type="text" autocomplete="off" aria-label="Votre réponse" placeholder="Votre réponse"><div class="row"><button id="go">Valider</button><button class="ghost" id="hb">Un indice</button></div><div id="hl"></div><p class="msg" id="msg" role="status"></p>`;
+ card.innerHTML=`<p class="era">Mission ${S.m+1} sur 12</p><h2>${m.n}</h2>${(m.obj||S.m===11)?'<p class="obj">Objectif : '+(m.obj||("réussir "+n+" épreuve"+(n>1?"s":"")+"."))+'</p>':""}<hr><p class="era"><span class="badge">${TY[p.t]}</span> <span id="slbl">${p.lbl||("Étape "+(S.s+1)+" sur "+n)}</span></p>${p.cover?pic(p.cover,"cover",1):""}<p class="q">${p.q}</p>${p.img?pic(p.img):""}${media}${p.kind?'<div id="wg"></div>':""}<input id="ans" type="text" autocomplete="off" aria-label="Votre réponse" placeholder="Votre réponse"><div class="row"><button id="go">Valider</button><button class="ghost" id="hb">Un indice</button></div><div id="hl"></div><p class="msg" id="msg" role="status"></p>`;
  var ans=$("ans"),msg=$("msg"),hb=$("hb"),hl=$("hl");var Wd=p.kind?WG[p.kind](p):null;if(p.kind)ans.style.display="none";
  function lbl(){hb.textContent=shown===0?"Un indice":shown>=hs.length?"Plus d'indice":shown===hs.length-1?"Dernier indice":"Indice suivant";hb.disabled=shown>=hs.length}
  for(var i=0;i<shown;i++)hl.innerHTML+=hintHTML(hs[i]);lbl();if(!hs.length)hb.style.display="none";
@@ -1140,15 +1203,15 @@ function mission(){
  $("go").onclick=check;ans.onkeydown=function(e){if(e.key==="Enter")check()};adminBtn($("go").parentNode,"Passer (admin)",ok);if(!p.kind)ans.focus()
 }
 function passScr(){
- begin();draw();var p=M[S.lm].st[S.ls],k=S.lm,changed=S.m>S.lm;
+ begin();draw();if(bg&&!bg.paused)fadeTo(bg,bgV()*.4,600);var p=M[S.lm].st[S.ls],k=S.lm,changed=S.m>S.lm;
  card.innerHTML=`<div class="pass"><p class="gold">Mission réussie</p></div>${infoHTML(p)}<button class="go" id="nx">Mission suivante</button>`;
  $("nx").onclick=function(){stopSnd();fadeXA(3500);(RAD.all||[]).forEach(function(x){if(x.a)fadeEl(x.a,3000)});RAD.all=null;RAD.a=null;S.pass=false;sv();if(S.end){padlock();return}if(changed&&TRANS[k])transition(k,mission);else mission()}
 }
-function plane(){if(S.mute)return;var a=new Audio(encodeURIComponent("audio-avion.mp3"));a.volume=.5;XA.push(a);a.onerror=function(){try{ctx();var n=ac.sampleRate*4,bf=ac.createBuffer(1,n,ac.sampleRate),d=bf.getChannelData(0);for(var i=0;i<n;i++)d[i]=Math.random()*2-1;var src=ac.createBufferSource(),f=ac.createBiquadFilter(),g=ac.createGain(),t=ac.currentTime;src.buffer=bf;f.type="bandpass";f.Q.value=1.2;f.frequency.setValueAtTime(300,t);f.frequency.exponentialRampToValueAtTime(1400,t+1.9);f.frequency.exponentialRampToValueAtTime(250,t+4);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.22,t+1.9);g.gain.exponentialRampToValueAtTime(.0001,t+4);src.connect(f);f.connect(g);g.connect(ac.destination);src.start(t);src.stop(t+4.1)}catch(e){}};var q=a.play();if(q&&q.catch)q.catch(function(){})}
+function plane(){if(S.mute)return null;var a=new Audio(encodeURIComponent("audio-avion.mp3"));a.volume=.22;XA.push(a);a.onerror=function(){try{ctx();var n=ac.sampleRate*4,bf=ac.createBuffer(1,n,ac.sampleRate),d=bf.getChannelData(0);for(var i=0;i<n;i++)d[i]=Math.random()*2-1;var src=ac.createBufferSource(),f=ac.createBiquadFilter(),g=ac.createGain(),t=ac.currentTime;src.buffer=bf;f.type="bandpass";f.Q.value=1.2;f.frequency.setValueAtTime(300,t);f.frequency.exponentialRampToValueAtTime(1400,t+1.9);f.frequency.exponentialRampToValueAtTime(250,t+4);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.22,t+1.9);g.gain.exponentialRampToValueAtTime(.0001,t+4);src.connect(f);f.connect(g);g.connect(ac.destination);src.start(t);src.stop(t+4.1)}catch(e){}};var q=a.play();if(q&&q.catch)q.catch(function(){});return a}
 function transition(k,done){
  begin();draw();var t=TRANS[k];jingle([392,523,659,784]);
- card.innerHTML=`<div class="pass"><p class="era">Chapitre terminé</p><p class="gold">${t[0]}, c'est terminé !</p><p class="q">Direction <strong>${t[1]}</strong>…</p><div class="tbar"><i></i><b class="pl" aria-hidden="true">✈️</b></div></div>`;
- plane();setTimeout(done,4300)
+ card.innerHTML=`<div class="pass"><p class="era">Chapitre terminé</p><p class="gold">${t[0]}, c'est terminé&nbsp;!</p><p class="q">Direction <strong>${t[1]}</strong>…</p><div class="tbar"><i></i><b class="pl" aria-hidden="true">✈️</b></div></div>`;
+ var pa=plane();setTimeout(function(){if(pa)fadeEl(pa,1200);done()},4300)
 }
 function padlock(){
  begin();draw();
