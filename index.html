@@ -235,6 +235,14 @@ img{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 .bag{position:relative;width:92px;height:52px;border-radius:14px 14px 10px 10px;background:linear-gradient(#2d3e66,#17213a);border:2px solid #0b1020;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font:700 .7rem Arial,sans-serif;box-shadow:0 4px 8px #000a}
 .bag:before{content:"";position:absolute;top:-2px;left:26px;right:26px;height:10px;border:3px solid #0b1020;border-bottom:0;border-radius:10px 10px 0 0}
 .bag .bfill{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(#f5c54288,#c9a22788);transition:height .3s}.bag span,.bag b{position:relative}.bag.full{border-color:#f5c542}.bag.new{animation:drop .5s both}
+.vwrap{position:relative;perspective:1000px}.vwrap .vroom{transition:filter 1.2s}.vroom.dark{filter:brightness(.15)}
+.vdoor{position:absolute;inset:0;z-index:6;border-radius:12px;background:linear-gradient(135deg,#a3a8b0,#666a72 55%,#3a3d43);border:5px solid #24262b;box-shadow:inset 0 0 0 7px #858a93,inset 0 0 40px #000a,0 12px 30px #000;display:flex;align-items:center;justify-content:center;transform-origin:left center;backface-visibility:hidden}
+.vdoor:before,.vdoor:after{content:"";position:absolute;left:-4px;width:16px;height:46px;border-radius:4px;background:linear-gradient(90deg,#2b2d32,#8d9199,#2b2d32)}.vdoor:before{top:40px}.vdoor:after{bottom:40px}
+.vdoor svg{width:min(250px,72%);height:auto;filter:drop-shadow(0 6px 14px #000a)}
+.vdoor .vh{transform-box:view-box;transform-origin:100px 100px;transition:transform 1s cubic-bezier(.4,0,.2,1)}.vdoor .vh.turn{transform:rotate(-270deg)}
+.vdoor.open{animation:vdo 1.9s cubic-bezier(.55,0,.25,1) forwards}@keyframes vdo{0%{transform:rotateY(0)}10%{transform:rotateY(-3deg) translateX(2px)}85%{opacity:1}100%{transform:rotateY(-112deg);opacity:0}}
+.lfail{position:absolute;inset:0;z-index:7;border-radius:12px;background:#000c;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:16px;animation:stamp .5s both}
+.lfail b{font:900 clamp(1.8rem,8vw,2.6rem) Impact,"Arial Black",sans-serif;color:#ff2e2e;text-shadow:3px 3px 0 #000;letter-spacing:1px}.lfail span{font:600 .95rem Arial,sans-serif;color:#fff}
 .vroom{position:relative;height:340px;margin:8px 0;border-radius:12px;background:linear-gradient(#2c2e33,#1b1c21);border:3px solid #6d7078;box-shadow:inset 0 0 30px #000}
 .lt2{position:absolute;width:21%;height:18%;padding:0;display:flex;align-items:center;justify-content:center;background:none;border:0;transform:rotate(var(--r));transition:transform .45s,opacity .45s;cursor:pointer}
 .lt2 span{font-size:2.1rem;filter:drop-shadow(0 3px 4px #000)}.lt2 .gbars i{width:24px;height:11px}.lt2:hover{transform:rotate(var(--r)) scale(1.15)}
@@ -308,7 +316,7 @@ img{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 <script>
 /* ===== À PERSONNALISER ===== */
 var VAULT_CODE="GTA6"; /* code du cadenas final (provisoire) */
-var NOREC=["Alexis.L","Florian.R","Benjamin.D","Noah.M","Roman.F","Gwenael.B","Dylan.M","Hugo.K","Cédric.L","Mélidie.D","Danaé.T","Mustapha.B","Julien.P","Jerome.DM","Victoria.M","Damien.N"]; /* agents « à ne pas recruter » affichés en bas du tableau de Lester */
+var NOREC=["Alexis.L","Florian.R","Benjamin.D","Noah.M","Roman.F","Gwenael.B","Dylan.M","Hugo.K","Cédric.L","Mélidie.D","Danaé.T","Mustapha.B","Julien.P","Jerome.DM","Victoria.M","Sergei.B","Damien.N"]; /* agents « à ne pas recruter » affichés en bas du tableau de Lester */
 var VKEY="LEONIDA"; /* clé de Vigénère révélée dans la cinématique de fin de GTA V */
 var M=[
  {n:"Grand Theft Auto",s:"GTA",st:["énigme"]},
@@ -554,6 +562,10 @@ function esc(t){return String(t).replace(/[&<>"']/g,function(c){return "&#"+c.ch
 function fmt(ms){var t=Math.max(0,Math.floor(ms/1000)),m=Math.floor(t/60);return (m<10?"0":"")+m+":"+("0"+t%60).slice(-2)}
 /* sons */
 var passSnd=new Audio(encodeURIComponent("Mission Passed.mp3")),failSnd=new Audio(encodeURIComponent("Mission Failed.mp3"));passSnd.preload=failSnd.preload="auto";
+function phoneFx(el){try{ctx();if(ac.state==="suspended")ac.resume();var src=ac.createMediaElementSource(el),hp=ac.createBiquadFilter(),lp=ac.createBiquadFilter(),pk=ac.createBiquadFilter(),ws=ac.createWaveShaper(),g=ac.createGain(),cv=new Float32Array(256);
+ hp.type="highpass";hp.frequency.value=350;hp.Q.value=.8;lp.type="lowpass";lp.frequency.value=3300;lp.Q.value=.9;pk.type="peaking";pk.frequency.value=1600;pk.Q.value=1;pk.gain.value=7;
+ for(var i=0;i<256;i++){var x=i/128-1;cv[i]=Math.tanh(x*2.2)/Math.tanh(2.2)}ws.curve=cv;g.gain.value=1.15;
+ src.connect(hp);hp.connect(lp);lp.connect(pk);pk.connect(ws);ws.connect(g);g.connect(ac.destination)}catch(e){}return el}
 function ctx(){ac=ac||new (window.AudioContext||window.webkitAudioContext)()}
 function tone(f,t,d,type,v){if(S.mute)return;var o=ac.createOscillator(),g=ac.createGain(),s=ac.currentTime+t;o.type=type;o.frequency.value=f;g.gain.setValueAtTime(0,s);g.gain.linearRampToValueAtTime(v,s+.02);g.gain.exponentialRampToValueAtTime(.001,s+d);o.connect(g);g.connect(ac.destination);o.start(s);o.stop(s+d+.05)}
 function beep(f,d,t){try{ctx();tone(f,0,d,t||"square",.07)}catch(e){}}
@@ -663,7 +675,7 @@ function board(i){
   '<div class="norec"><b>⛔ À NE PAS RECRUTER :</b> '+NOREC.map(function(n){return '<s>'+esc(n)+'</s>'}).join(" · ")+'</div></div>'
 }
 function pname(){var n=String(S.name||"").trim().split(/\s+/)[0]||"l'agent";return n.charAt(0).toUpperCase()+n.slice(1)}
-var VOX=null;function vox(f){try{if(VOX)VOX.pause()}catch(e){}VOX=null;if(S.mute||!f)return;VOX=new Audio(encodeURIComponent(f));XA.push(VOX);var pr=VOX.play();if(pr&&pr.catch)pr.catch(function(){})}
+var VOX=null;function vox(f){try{if(VOX)VOX.pause()}catch(e){}VOX=null;if(S.mute||!f)return;VOX=phoneFx(new Audio(encodeURIComponent(f)));XA.push(VOX);var pr=VOX.play();if(pr&&pr.catch)pr.catch(function(){})}
 function dlg(box,lines,done){
  var i=0,a=null,tw=0,fired={};
  function stopA(){if(a){[].concat(a).forEach(function(x){try{x.pause()}catch(e){}});a=null}clearInterval(tw)}
@@ -673,7 +685,7 @@ function dlg(box,lines,done){
   var t=L.t.replace(/\{N\}/g,pname()),k=0,last=i===lines.length-1,c=SPK[L.w]||"#fff";
   box.innerHTML='<div class="dlgw">'+L.w.split(" & ").map(face).join("")+'<div class="dlg"><b style="color:'+c+'">'+esc(L.w)+'</b> <span class="dt"></span><small class="dct">'+(i+1)+'/'+lines.length+'</small></div></div><div class="row dlr"><button type="button" class="ghost sm dp"'+(i?'':' disabled')+'>◀ Précédent</button><button type="button" class="sm dn">'+(last?"Continuer ▶":"Suivant ▶")+'</button></div>';
   var dt=box.querySelector(".dt");tw=setInterval(function(){k+=2;dt.textContent=t.slice(0,k);if(k>=t.length)clearInterval(tw)},26);
-  if(L.a&&!S.mute){a=[].concat(L.a).map(function(f){var x=new Audio(encodeURIComponent(f));var pr=x.play();if(pr&&pr.catch)pr.catch(function(){});return x})}
+  if(L.a&&!S.mute){a=[].concat(L.a).map(function(f){var x=phoneFx(new Audio(encodeURIComponent(f)));var pr=x.play();if(pr&&pr.catch)pr.catch(function(){});return x})}
   if(L.on&&!fired[i]){fired[i]=1;try{L.on()}catch(e){}}
   box.querySelector(".dp").onclick=function(){if(i>0){i--;show()}};
   box.querySelector(".dn").onclick=function(){if(last){stopA();box.innerHTML="";if(done)done();return}i++;show()};
@@ -1242,32 +1254,47 @@ var WG={
      $("gd").style.width=depth+"%";$("gh").style.width=Math.min(100,heat)+"%";$("gh").style.background=heat>75?"#ff2e2e":heat>45?"#ffb02e":"#39ff14";b.disabled=stall||cool>0;
      var ci=Math.min(pins,3),cr=PA[ci]*Math.PI/180,cx=100+52*Math.cos(cr),cy=100+52*Math.sin(cr),ho=$("hol"+ci);if(ho&&pins<4)ho.setAttribute("r",Math.max(0,Math.min(1,(depth-ci*25)/25))*7);
      var dr=$("drl");if(dr){dr.setAttribute("transform","translate("+cx.toFixed(1)+","+cy.toFixed(1)+") rotate("+(ci===2?-35:35)+") scale(.8)");dr.style.display=depth>=100?"none":"";$("vsv").classList.toggle("on",on)}
-     if(depth>=100){clearInterval(iv);dsnd(false);b.disabled=true;msg("Le coffre cède !","ok");var rp=document.querySelector(".radio2");if(rp){var ra=rp.querySelector("audio");if(ra)fadeEl(ra,1500);setTimeout(function(){rp.remove()},1500)}beep(523,.1);setTimeout(function(){talk(SC.open,loot)},900)}
+     if(depth>=100){clearInterval(iv);dsnd(false);b.disabled=true;msg("Le coffre cède !","ok");var rp=document.querySelector(".radio2");if(rp){var ra=rp.querySelector("audio");if(ra)fadeEl(ra,1500);setTimeout(function(){rp.remove()},1500)}beep(523,.1);setTimeout(openVault,900)}
     },50);
    }
    function radio(){
     var d=document.createElement("div");d.className="radio2";d.innerHTML='<p class="trv">📻 La radio de Trevor</p><audio class="aud" controls controlsList="nodownload noplaybackrate" preload="auto" src="'+encodeURIComponent(p.aud)+'" onerror="this.outerHTML=\'<div class=box>Extrait à venir</div>\'"></audio><div id="rin"><input id="ra" type="text" autocomplete="off" aria-label="Titre ou artiste" placeholder="Titre ou artiste du morceau"><div class="row"><button type="button" id="rok">Répondre à Trevor</button></div><p class="msg" id="rm" role="status"></p></div>';
     $("hz").insertBefore(d,$("hz").firstChild);alarmLow(true);bgFade(1200);var au=d.querySelector("audio");
-    if(!S.mute){var w=new Audio(encodeURIComponent("voix-m11-trevor-wouhou.mp3"));w.onerror=function(){};var wq=w.play();if(wq&&wq.catch)wq.catch(function(){})}
+    if(!S.mute){var w=phoneFx(new Audio(encodeURIComponent("voix-m11-trevor-wouhou.mp3")));w.onerror=function(){};var wq=w.play();if(wq&&wq.catch)wq.catch(function(){})}
     setTimeout(function(){if(au&&!S.mute&&$("ra")){au.volume=1;var q=au.play();if(q&&q.catch)q.catch(function(){})}},1200)
     function ans(){var v=norm($("ra").value);
      if(p.bt.indexOf(v)>=0){$("rin").innerHTML='<p class="msg ok">✔ Bonne réponse !</p>';heat=0;stall=false;alarmLow(false);var ra2=document.querySelector(".radio2 audio");if(ra2)fadeTo(ra2,.15,800);beep(880,.08);talk([{w:"Trevor",t:"Ça, c'est du son ! La mèche a refroidi : on perce le dernier !",a:"voix-m11-40.mp3"}],function(){})}
      else{S.wrong=(S.wrong||0)+1;sv();vox("voix-m11-45.mp3");bad($("rm"),"Trevor : « Faux ! Même ma mère connaît ce morceau. »",true)}}
     $("rok").onclick=ans;$("ra").onkeydown=function(e){if(e.key==="Enter")ans()};$("ra").focus()}
-   function loot(){var au=document.querySelector(".radio2 audio");if(au)au.pause();
-    var left=15,got=0,sum=0,CAP=6;
-    var IT=[],k;function add(n,h,nm,v){for(k=0;k<n;k++)IT.push({h:h,n:nm,v:v})}
+   var LT=null;
+   function grab(){if(S.mute)return;var a=new Audio(encodeURIComponent("sac.mp3"));a.volume=.7;XA.push(a);a.onerror=function(){cash()};var q=a.play();if(q&&q.catch)q.catch(function(){})}
+   function lootInit(){if(LT)return LT;var IT=[],k;function add(n,h,nm,v){for(k=0;k<n;k++)IT.push({h:h,n:nm,v:v})}
     add(6,'<div class="gbars"><div><i></i></div><div><i></i><i></i></div></div>',"Lingots d'or",1000000);add(6,'<span>💵</span>',"Liasse de billets",300000);
     add(3,'<span>🖼️</span>',"Œuvre d'art",1250000);add(3,'<span>💎</span>',"Bijoux",500000);add(2,'<span>⌚</span>',"Montre de luxe",150000);
     var CELL=shuf(Array.apply(null,Array(20)).map(function(_,i){return i}));
-    $("hz").innerHTML='<div class="loot2"><p class="cdn" id="cdn">⏱ 0:15</p><p class="hks c">Le butin est éparpillé dans le coffre : cliquez sur chaque objet pour le mettre dans le sac !</p><div class="vroom">'+IT.map(function(it,k){var c=CELL[k],x=(c%4)*25+2+Math.random()*6,y=Math.floor(c/4)*20+1+Math.random()*4;return '<button type="button" class="lt2" style="left:'+x+'%;top:'+y+'%;--r:'+(Math.random()*30-15)+'deg" data-k="'+k+'" aria-label="'+it.n+'">'+it.h+'</button>'}).join("")+'</div><div class="bags" id="bags"></div><p class="tot" id="sac">Butin : 0 $ · 0 / '+IT.length+'</p><div id="mal"></div></div>';
-    function bags(){var n=Math.max(1,Math.ceil(got/CAP)+(got%CAP===0&&got<IT.length&&got>0?1:0)),h="";for(var b=0;b<n;b++){var c=Math.max(0,Math.min(CAP,got-b*CAP));h+='<div class="bag'+(c===CAP?" full":"")+(b===n-1&&c===0&&b>0?" new":"")+'"><div class="bfill" style="height:'+(c/CAP*100)+'%"></div><span>Sac '+(b+1)+'</span><b>'+c+' / '+CAP+'</b></div>'}$("bags").innerHTML=h}
+    IT.forEach(function(it,k){var c=CELL[k];it.x=(c%4)*25+2+Math.random()*6;it.y=Math.floor(c/4)*20+1+Math.random()*4;it.r=Math.random()*30-15});
+    LT={IT:IT,left:15,got:0,sum:0,lock:true,over:false};return LT}
+   function fm(v){return v.toLocaleString("fr-FR")+" $"}
+   function buildLoot(door){var L=lootInit(),IT=L.IT,CAP=6;L.left=15;L.got=0;L.sum=0;L.over=false;L.lock=true;clearInterval(tmr);
+    $("hz").innerHTML='<div class="loot2"><p class="cdn" id="cdn">⏱ 0:15</p><p class="hks c">Le butin est éparpillé dans le coffre : cliquez sur chaque objet pour le mettre dans le sac !</p><div class="vwrap"><div class="vroom'+(door?' dark':'')+'">'+IT.map(function(it,k){return '<button type="button" class="lt2" style="left:'+it.x+'%;top:'+it.y+'%;--r:'+it.r+'deg" data-k="'+k+'" aria-label="'+it.n+'">'+it.h+'</button>'}).join("")+'</div>'+(door?'<div class="vdoor">'+door+'</div>':'')+'</div><div class="bags" id="bags"></div><p class="tot" id="sac">Butin : 0 $ · 0 / '+IT.length+'</p><div id="mal"></div></div>';
+    function bags(){var got=L.got,n=Math.max(1,Math.ceil(got/CAP)+(got%CAP===0&&got<IT.length&&got>0?1:0)),h="";for(var b=0;b<n;b++){var c=Math.max(0,Math.min(CAP,got-b*CAP));h+='<div class="bag'+(c===CAP?" full":"")+(b===n-1&&c===0&&b>0?" new":"")+'"><div class="bfill" style="height:'+(c/CAP*100)+'%"></div><span>Sac '+(b+1)+'</span><b>'+c+' / '+CAP+'</b></div>'}$("bags").innerHTML=h}
     bags();
-    tmr=setInterval(function(){left=Math.max(0,left-1);var e=$("cdn");if(e)e.textContent=left?"⏱ 0:"+("0"+left).slice(-2):"⏱ 0:00 · VITE !"},1000);
-    function fm(v){return v.toLocaleString("fr-FR")+" $"}
-    Array.prototype.forEach.call(document.querySelectorAll(".lt2"),function(b){b.onclick=function(){if(b.classList.contains("took"))return;b.classList.add("took");cash();var it=IT[+b.dataset.k];got++;sum+=it.v;bags();
-     $("sac").innerHTML="Butin : <b>"+fm(sum)+"</b> · "+got+" / "+IT.length+"<br><small>Dernier objet : "+it.n+" (+"+fm(it.v)+")</small>";
-     if(got===IT.length){clearInterval(tmr);setTimeout(function(){$("mal").innerHTML='<button type="button" class="mal" id="mlb" aria-label="Mallette cassée">💼<small>Mallette cassée</small></button>';talk(SC.case,function(){$("mlb").classList.add("ringing");smsLoop(true);$("mlb").onclick=phone})},700)}}})}
+    Array.prototype.forEach.call(document.querySelectorAll(".lt2"),function(b){b.onclick=function(){if(L.lock||L.over||b.classList.contains("took"))return;b.classList.add("took");grab();var it=IT[+b.dataset.k];L.got++;L.sum+=it.v;bags();
+     $("sac").innerHTML="Butin : <b>"+fm(L.sum)+"</b> · "+L.got+" / "+IT.length+"<br><small>Dernier objet : "+it.n+" (+"+fm(it.v)+")</small>";
+     if(L.got===IT.length){L.over=true;clearInterval(tmr);setTimeout(function(){$("mal").innerHTML='<button type="button" class="mal" id="mlb" aria-label="Mallette cassée">💼<small>Mallette cassée</small></button>';talk(SC.case,function(){$("mlb").classList.add("ringing");smsLoop(true);$("mlb").onclick=phone})},700)}}})}
+   function startLoot(){var L=lootInit();L.lock=false;clearInterval(tmr);
+    tmr=setInterval(function(){if(L.over)return clearInterval(tmr);L.left=Math.max(0,L.left-1);var e=$("cdn");if(e)e.textContent="⏱ 0:"+("0"+L.left).slice(-2);if(!L.left&&L.got<L.IT.length)lootFail()},1000)}
+   function lootFail(){var L=lootInit();L.over=true;clearInterval(tmr);S.wrong=(S.wrong||0)+1;sv();playFail();var n=L.IT.length-L.got;
+    var w=document.querySelector(".vwrap");if(!w)return;var f=document.createElement("div");f.className="lfail";f.innerHTML='<b>MISSION ÉCHOUÉE</b><span>Trop lent ! Il restait '+n+' objet'+(n>1?'s':'')+' dans le coffre.</span><button type="button" class="go" id="lretry">↻ Recommencer la mission</button>';w.appendChild(f);
+    $("lretry").onclick=function(){stopSnd();buildLoot(null);startLoot()}}
+   function openVault(){var au=document.querySelector(".radio2 audio");if(au)au.pause();var sv0=$("vsv"),door="";
+    if(sv0){var cl=sv0.cloneNode(true);cl.removeAttribute("id");["drl"].forEach(function(id){var x=cl.querySelector("#"+id);if(x)x.remove()});Array.prototype.forEach.call(cl.querySelectorAll("[id]"),function(x){if(!/^(stl|rim|hub)$/.test(x.id))x.removeAttribute("id")});
+     var hg=cl.querySelector('g[stroke-width="5"]');if(hg)hg.setAttribute("class","vh");door=cl.outerHTML}
+    buildLoot(door);var d=document.querySelector(".vdoor"),h=d&&d.querySelector(".vh"),r=document.querySelector(".vroom");
+    beep(160,.15,"square");
+    setTimeout(function(){if(h)h.classList.add("turn");beep(95,.6,"sawtooth")},250);
+    setTimeout(function(){beep(70,.25,"square");setTimeout(function(){beep(45,1.1,"sawtooth")},180);if(d)d.classList.add("open");if(r)r.classList.remove("dark")},1300);
+    setTimeout(function(){if(d)d.remove();talk(SC.open,startLoot)},3300)}
    function phone(){$("mal").innerHTML='<div class="phone2 ringp"><p class="ptime">03:16</p><div class="ntf">💬 <b>Jason 🌴</b><br>Nouveau message</div><div class="unl"><input type="range" id="sl" min="0" max="100" value="0" aria-label="Glisser pour déverrouiller"><span>glisser pour déverrouiller ▸</span></div></div>';
     var sl=$("sl");sl.oninput=function(){if(+sl.value>=92){sl.oninput=null;smsLoop(false);beep(1200,.05);sms()}};sl.onchange=function(){if(+sl.value<92)sl.value=0}}
    function sms(){$("mal").innerHTML='<div class="phone2 smsv"><p class="pht">‹ Jason 🌴</p><div id="th"></div></div>';var n=0,th=$("th");
