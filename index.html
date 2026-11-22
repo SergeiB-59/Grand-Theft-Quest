@@ -534,7 +534,7 @@ M[10].st[4].script={
  over:[{w:"Trevor",t:"Merde ! La mèche a surchauffé… Pas le choix, on doit attendre qu'elle refroidisse.",a:"voix-m11-29.mp3"},{w:"Lester",t:"On s'est fait repérer ! Dépêchez-vous !",a:"voix-m11-30.mp3"},{w:"Franklin",t:"Merde, merde, merde ! On va finir au trou !",a:"voix-m11-31.mp3"},{w:"Trevor",t:"OK les gars, le temps qu'elle refroidisse… on va s'ambiancer !",a:"voix-m11-32.mp3"},{w:"Franklin",t:"On n'a pas le temps pour…",a:"voix-m11-39.mp3"}],
  open:[{w:"Trevor",t:"C'est bon, on a réussi, put**n !",a:"voix-m11-33.mp3"},{w:"Franklin",t:"Allez, faut pas traîner, prenez tout.",a:"voix-m11-34.mp3"},{w:"Lester",t:"Dépêchez-vous, il vous reste 2 minutes !",a:"voix-m11-35.mp3"}],
  case:[{w:"Franklin",t:"Attends… C'est quoi cette mallette ? Elle est cassée… Y a un téléphone dedans. Il sonne !",a:"voix-m11-36.mp3"}],
- end:[{w:"Lester",t:"Hm, une invitation pour Leonida ? OK, garde ça, ça pourrait servir. Maintenant… CASSEZ-VOUS !",a:"voix-m11-37.mp3"},{w:"Trevor & Franklin",t:"AAAAAAAAAAAH !",a:"voix-m11-38.mp3"}]};
+ end:[{w:"Lester",t:"Hm, une invitation pour Leonida ? OK, garde ça, ça pourrait servir. Maintenant… CASSEZ-VOUS !",a:"voix-m11-37.mp3"},{w:"Trevor & Franklin",t:"AAAAAAAAAAAH !",a:["voix-m11-38-trevor.mp3","voix-m11-38-franklin.mp3"]}]};
 M[10].st[4].aud="audio-m11.mp3";
 M[10].st[4].bt=["sleepwalking","thechaingangof1974","chaingangof1974","thechaingang","chaingang","sleepwalkingthechaingangof1974","thechaingangof1974sleepwalking"];
 M[10].st[4].show="Blind test : Sleepwalking, The Chain Gang of 1974";
@@ -663,16 +663,17 @@ function board(i){
   '<div class="norec"><b>⛔ À NE PAS RECRUTER :</b> '+NOREC.map(function(n){return '<s>'+esc(n)+'</s>'}).join(" · ")+'</div></div>'
 }
 function pname(){var n=String(S.name||"").trim().split(/\s+/)[0]||"l'agent";return n.charAt(0).toUpperCase()+n.slice(1)}
+var VOX=null;function vox(f){try{if(VOX)VOX.pause()}catch(e){}VOX=null;if(S.mute||!f)return;VOX=new Audio(encodeURIComponent(f));XA.push(VOX);var pr=VOX.play();if(pr&&pr.catch)pr.catch(function(){})}
 function dlg(box,lines,done){
  var i=0,a=null,tw=0,fired={};
- function stopA(){if(a){try{a.pause()}catch(e){}a=null}clearInterval(tw)}
+ function stopA(){if(a){[].concat(a).forEach(function(x){try{x.pause()}catch(e){}});a=null}clearInterval(tw)}
  CLN.push(stopA);
  function show(){
   stopA();var L=lines[i];if(L.pre&&!fired["p"+i]){fired["p"+i]=1;box.innerHTML='<div class="dlg calling">📞 '+esc(L.preT||"Appel en cours…")+'</div>';L.pre(show);return}
   var t=L.t.replace(/\{N\}/g,pname()),k=0,last=i===lines.length-1,c=SPK[L.w]||"#fff";
   box.innerHTML='<div class="dlgw">'+L.w.split(" & ").map(face).join("")+'<div class="dlg"><b style="color:'+c+'">'+esc(L.w)+'</b> <span class="dt"></span><small class="dct">'+(i+1)+'/'+lines.length+'</small></div></div><div class="row dlr"><button type="button" class="ghost sm dp"'+(i?'':' disabled')+'>◀ Précédent</button><button type="button" class="sm dn">'+(last?"Continuer ▶":"Suivant ▶")+'</button></div>';
   var dt=box.querySelector(".dt");tw=setInterval(function(){k+=2;dt.textContent=t.slice(0,k);if(k>=t.length)clearInterval(tw)},26);
-  if(L.a&&!S.mute){a=new Audio(encodeURIComponent(L.a));var pr=a.play();if(pr&&pr.catch)pr.catch(function(){})}
+  if(L.a&&!S.mute){a=[].concat(L.a).map(function(f){var x=new Audio(encodeURIComponent(f));var pr=x.play();if(pr&&pr.catch)pr.catch(function(){});return x})}
   if(L.on&&!fired[i]){fired[i]=1;try{L.on()}catch(e){}}
   box.querySelector(".dp").onclick=function(){if(i>0){i--;show()}};
   box.querySelector(".dn").onclick=function(){if(last){stopA();box.innerHTML="";if(done)done();return}i++;show()};
@@ -878,12 +879,12 @@ var WG={
    Array.prototype.forEach.call(g.querySelectorAll(".cand"),function(b){b.onclick=function(){if(done)return;var r=+b.dataset.r;sel[r]=O[r][+b.dataset.c];Array.prototype.forEach.call(g.querySelectorAll('.cand[data-r="'+r+'"]'),function(x){x.classList.toggle("sel",x===b)});beep(800,.03);upd()}});
    $("hire").onclick=function(){if(done)return;var m=$("cm");
     function ko(t){S.wrong=(S.wrong||0)+1;sv();bad(m,t,true)}
-    if(sel.indexOf(null)>=0){bad(m,"Lester : « Il me faut un hacker, un chauffeur ET un tireur. »",true);return}
-    if(tot()>25){ko("Lester : « "+tot()+" % pour l'équipe ? Tu veux me ruiner ? »");return}
-    if(sel.some(function(c,k){return c[0]!==BEST[k]})){ko("Lester : « Ça rentre dans le budget… mais pour 25 %, on peut avoir une bien meilleure équipe. »");return}
+    if(sel.indexOf(null)>=0){vox("voix-m11-41.mp3");bad(m,"Lester : « Il me faut un hacker, un chauffeur ET un tireur. »",true);return}
+    if(tot()>25){vox("voix-m11-42.mp3");ko("Lester : « Plus de 25 % pour l'équipe ? Tu veux me ruiner ? »");return}
+    if(sel.some(function(c,k){return c[0]!==BEST[k]})){vox("voix-m11-43.mp3");ko("Lester : « Ça rentre dans le budget… mais pour 25 %, on peut avoir une bien meilleure équipe. »");return}
     done=true;cash();g.querySelectorAll(".cand.sel").forEach(function(b){b.classList.add("hired")});
     var r=document.createElement("div");r.className="rain";r.innerHTML=new Array(14).join("<i>💵</i>");g.appendChild(r);
-    m.className="msg ok";m.textContent="Lester : « Chris, Mike et Taliana. La meilleure équipe pour 25 %. Qu'est-ce qui pourrait mal tourner ? »";
+    vox("voix-m11-44.mp3");m.className="msg ok";m.textContent="Lester : « Chris, Mike et Taliana. La meilleure équipe pour 25 %. Qu'est-ce qui pourrait mal tourner ? »";
     setTimeout(function(){$("go").click()},3200)};
   });
   return {ok:function(){return done}}
@@ -919,7 +920,7 @@ var WG={
    Array.prototype.forEach.call(g.querySelectorAll(".chs button"),function(b){b.onclick=function(){if(done)return;
     if(b.textContent===p.target){done=true;b.classList.add("good");g.querySelectorAll(".chs button").forEach(function(x){x.disabled=true});$("sm").textContent="";bgFade(2500);
      dlg($("sd"),p.after,function(){$("go").click()})}
-    else{S.wrong=(S.wrong||0)+1;sv();b.disabled=true;bad($("sm"),"T'es sûr que tu viens de Los Santos, toi ?",true)}}});
+    else{S.wrong=(S.wrong||0)+1;sv();b.disabled=true;vox("voix-m11-46.mp3");bad($("sm"),"Lester : « T'es sûr que tu viens de Los Santos, toi ? »",true)}}});
   });
   return {ok:function(){return done}}
  },
@@ -1250,8 +1251,8 @@ var WG={
     if(!S.mute){var w=new Audio(encodeURIComponent("voix-m11-trevor-wouhou.mp3"));w.onerror=function(){};var wq=w.play();if(wq&&wq.catch)wq.catch(function(){})}
     setTimeout(function(){if(au&&!S.mute&&$("ra")){au.volume=1;var q=au.play();if(q&&q.catch)q.catch(function(){})}},1200)
     function ans(){var v=norm($("ra").value);
-     if(p.bt.indexOf(v)>=0){$("rin").innerHTML='<p class="msg ok">✔ Bonne réponse !</p>';heat=0;stall=false;alarmLow(false);var ra2=document.querySelector(".radio2 audio");if(ra2)fadeTo(ra2,.15,800);beep(880,.08);talk([{w:"Trevor",t:"Ça, c'est du son ! La mèche a refroidi : on perce le dernier !"}],function(){})}
-     else{S.wrong=(S.wrong||0)+1;sv();bad($("rm"),"Trevor : « Faux ! Même ma mère connaît ce morceau. »",true)}}
+     if(p.bt.indexOf(v)>=0){$("rin").innerHTML='<p class="msg ok">✔ Bonne réponse !</p>';heat=0;stall=false;alarmLow(false);var ra2=document.querySelector(".radio2 audio");if(ra2)fadeTo(ra2,.15,800);beep(880,.08);talk([{w:"Trevor",t:"Ça, c'est du son ! La mèche a refroidi : on perce le dernier !",a:"voix-m11-40.mp3"}],function(){})}
+     else{S.wrong=(S.wrong||0)+1;sv();vox("voix-m11-45.mp3");bad($("rm"),"Trevor : « Faux ! Même ma mère connaît ce morceau. »",true)}}
     $("rok").onclick=ans;$("ra").onkeydown=function(e){if(e.key==="Enter")ans()};$("ra").focus()}
    function loot(){var au=document.querySelector(".radio2 audio");if(au)au.pause();
     var left=15,got=0,sum=0,CAP=6;
