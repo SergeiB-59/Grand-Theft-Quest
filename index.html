@@ -28,12 +28,31 @@ body.h6on{overflow:hidden}
 .h6start span{display:block;margin-top:6px;font:900 clamp(.8rem,1.5vw,1.15rem) Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;text-shadow:0 0 8px #000,0 0 14px #00e5ff}
 .h6start:hover,.h6start:focus-visible{animation:none;outline:none}.h6start:hover b,.h6start:focus-visible b{color:#ffe600}.h6start:focus-visible{box-shadow:0 0 0 3px #fff;border-radius:10px}
 @keyframes h6blink{0%{opacity:1}62%{opacity:0}100%{opacity:1}}
-.h6p{position:absolute;left:0;top:0;bottom:0;width:min(470px,42vw);overflow-y:auto;padding:22px 22px 28px;background:linear-gradient(90deg,rgba(14,6,26,.93),rgba(14,6,26,.84) 85%,rgba(14,6,26,0));backdrop-filter:blur(3px);color:var(--ink)}
+.h6p{position:absolute;left:0;top:0;bottom:0;width:max(380px,calc(50vw - .145 * max(100vw,178.6vh)));overflow-y:auto;padding:22px 22px 28px;background:linear-gradient(90deg,rgba(14,6,26,.93),rgba(14,6,26,.84) 85%,rgba(14,6,26,0));backdrop-filter:blur(3px);color:var(--ink)}
 .h6p h2{margin:2px 0 10px}.h6p h3{font:900 1rem Arial,sans-serif;color:var(--cyan);text-transform:uppercase;letter-spacing:.08em;margin:16px 0 8px}
 .h6logo{font:900 clamp(1.6rem,3vw,2.3rem)/1 Impact,'Arial Black',sans-serif;margin:0 0 14px;color:#fff;letter-spacing:.04em;text-shadow:0 0 12px #ff2e88,3px 3px 0 #ff2e88}
 .h6p .frise{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;overflow:visible;padding:0}.h6p .frise li{display:flex;align-items:center;gap:8px;text-align:left;flex:none}.h6p .frise li::before{display:none}
 .h6need{font:700 .88rem Arial,sans-serif;color:#ffd36b;margin:10px 0 0}.home6.ready .h6need{color:#39ff14}
 .h6alt{display:none}
+@media (min-width:761px){
+ .h6p{font-size:clamp(15px,calc((50vw - .145 * max(100vw,178.6vh)) / 29),24px);padding:1.4em 1.4em 1.8em}
+ .h6p p,.h6p .info p,.h6p .chk,.h6p .info{font-size:1em;line-height:1.5}
+ .h6p .h6logo{font-size:2.2em}.h6p h2{font-size:1.45em}.h6p .era{font-size:.85em}.h6p h3{font-size:1em}
+ .h6p .frise li{font-size:.82em;gap:.6em}.h6p .frise .d{width:2.2em;height:2.2em;font-size:.95em}
+ .h6p .chk input{width:1.3em;height:1.3em}.h6p .h6need{font-size:.9em}.h6p .h6more{font-size:.85em}
+}
+.home6.zoom{pointer-events:none;animation:h6fade 1.9s ease-in forwards}
+.home6.zoom .h6p{transition:transform .5s cubic-bezier(.6,0,.9,.4),opacity .4s;transform:translateX(-105%);opacity:0}
+.home6.zoom .h6start{animation:h6pop .5s ease-out forwards}.home6.zoom .h6tip{display:none}
+.home6.zoom .h6img{transform-origin:57% 81%;animation:h6zoom 1.75s cubic-bezier(.55,0,.75,.2) forwards}
+.home6.zoom::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 70%,transparent 30%,#0e061a 75%);opacity:0;animation:h6vig 1.75s ease-in forwards;pointer-events:none}
+@keyframes h6zoom{0%{transform:scale(1);filter:none}60%{filter:blur(0)}100%{transform:scale(5.5) rotate(-4deg);filter:blur(6px) brightness(1.6)}}
+@keyframes h6pop{0%{transform:translate(-50%,-50%) scale(1);opacity:1}35%{transform:translate(-50%,-50%) scale(1.25);opacity:1;filter:drop-shadow(0 0 24px #ffe600)}100%{transform:translate(-50%,-50%) scale(2.6);opacity:0}}
+@keyframes h6vig{0%{opacity:0}70%{opacity:.6}100%{opacity:1}}
+@keyframes h6fade{0%,72%{opacity:1}100%{opacity:0}}
+#card.land6{animation:land6 .9s 1.25s cubic-bezier(.2,.9,.3,1) both}@keyframes land6{0%{transform:scale(1.12);opacity:0;filter:blur(6px)}100%{transform:none;opacity:1;filter:none}}
+@media (prefers-reduced-motion:reduce){.home6.zoom .h6img,.home6.zoom::after,#card.land6{animation:none}.home6.zoom{animation:h6fade .4s forwards}}
+
 .h6tip{position:absolute;left:57%;top:92%;transform:translate(-50%,-50%) scale(.8);margin:0;padding:10px 16px;border-radius:12px;background:#ffe600;color:#2b0b4d;font:900 clamp(.85rem,1.4vw,1.05rem) Arial,sans-serif;box-shadow:0 6px 18px #000a;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;white-space:nowrap}.h6tip.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
 @media (max-width:760px){.h6tip{top:auto;bottom:4%;white-space:normal;width:86%}.h6arr{display:none}}
 .h6more{position:sticky;bottom:0;display:block;width:100%;margin-top:14px;padding:10px;border:0;border-radius:10px;background:linear-gradient(90deg,#ff2e88,#7a1f6b);color:#fff;font:900 .85rem Arial,sans-serif;cursor:pointer;animation:h6bob 1.4s ease-in-out infinite;box-shadow:0 -10px 20px #0e061a}.h6more[hidden]{display:none}@keyframes h6bob{50%{transform:translateY(-3px)}}
@@ -707,7 +726,8 @@ function brief(){
  function upd(){h.classList.toggle("ready",$("ck").checked);$("h6need").textContent=$("ck").checked?"C'est parti : appuie sur START sur la carte !":"Coche la case ci-dessus, puis appuie sur START sur la carte."}
  $("ck").onchange=upd;upd();
  var tipT=0;function go(){if(!$("ck").checked){beep(300,.12);var l=$("ckl");l.scrollIntoView({behavior:"smooth",block:"center"});l.classList.remove("nudge");void l.offsetWidth;l.classList.add("nudge");$("ck").focus({preventScroll:true});$("h6need").textContent="⚠️ Coche d'abord cette case pour accepter les règles, puis appuie sur START.";var tp=$("h6tip");tp.classList.add("on");clearTimeout(tipT);tipT=setTimeout(function(){tp.classList.remove("on")},3500);return}
-  clearInterval(iv);S.rules=true;sv();beep(660,.12);setTimeout(function(){beep(990,.15)},120);h.classList.add("out");setTimeout(function(){h.remove();document.body.classList.remove("h6on");prologue()},450)}
+  clearInterval(iv);S.rules=true;sv();beep(660,.12);setTimeout(function(){beep(990,.15)},120);whoosh();h.classList.add("zoom");document.body.classList.remove("h6on");prologue();var cd=$("card");if(cd){cd.classList.remove("land6");void cd.offsetWidth;cd.classList.add("land6")}setTimeout(function(){h.remove()},1900)}
+ function whoosh(){if(S.mute)return;try{ctx();var n=Math.floor(ac.sampleRate*1.4),bf=ac.createBuffer(1,n,ac.sampleRate),d=bf.getChannelData(0);for(var i=0;i<n;i++)d[i]=(Math.random()*2-1)*Math.sin(Math.PI*i/n);var so=ac.createBufferSource(),f=ac.createBiquadFilter(),g=ac.createGain();so.buffer=bf;f.type="bandpass";f.Q.value=1.2;f.frequency.setValueAtTime(300,ac.currentTime);f.frequency.exponentialRampToValueAtTime(3500,ac.currentTime+1.3);g.gain.value=.22;so.connect(f);f.connect(g);g.connect(ac.destination);so.start()}catch(e){}}
  $("st").onclick=go;$("st2").onclick=go;
  var pn=h.querySelector(".h6p"),mo=$("h6more");function mv(){mo.hidden=pn.scrollHeight-pn.clientHeight-pn.scrollTop<60}pn.addEventListener("scroll",mv);window.addEventListener("resize",mv);mv();mo.onclick=function(){$("ckl").scrollIntoView({behavior:"smooth",block:"center"})}
 }
