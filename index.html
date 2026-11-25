@@ -88,7 +88,8 @@ body.h6on{overflow:hidden}
 .h6wait{margin:12px 0 0;padding:10px 14px;border-radius:12px;background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.4)}
 .r7 h4{margin:14px 0 6px;font:900 .8em Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}.r7 h4:first-of-type{margin-top:6px}
 .r7ia{margin:0 0 4px;padding:10px 12px;border-radius:10px;background:#ff2e2e;color:#fff;font:900 1em/1.3 Arial,sans-serif;text-align:center;animation:r7b 1s steps(1,end) infinite}@keyframes r7b{50%{background:#7a0000;color:#ffd0d0}}
-.r7pts{list-style:none;margin:8px 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.r7pts li{padding:8px 10px;border-radius:10px;background:rgba(255,255,255,.06);display:flex;flex-direction:column;gap:2px}.r7pts b{color:#ffd36b;font-family:Arial,sans-serif}.r7pts span{font-size:.88em}.r7pts li.dq{background:rgba(255,46,46,.18);outline:1px solid #ff2e2e}.r7pts li.dq b{color:#ff6b6b}
+.pts6{margin:6px 0 12px;text-align:center;font-family:Arial,sans-serif;font-size:22px;color:#ffd36b}.pts6 b{font-size:56px;line-height:1;margin-right:6px;color:#fff;text-shadow:0 0 18px rgba(255,211,107,.8)}
+.r7pts{list-style:none;margin:8px 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.r7pts li{padding:8px 10px;border-radius:10px;background:rgba(255,255,255,.06);display:flex;flex-direction:column;gap:2px}.r7pts b{color:#ffd36b;font-family:Arial,sans-serif}.r7pts span{font-size:.88em}.r7pts li.gd{background:rgba(60,220,120,.16);outline:1px solid #3cdc78}.r7pts li.gd b{color:#6dffa4}.r7pts li.dq{background:rgba(255,46,46,.18);outline:1px solid #ff2e2e}.r7pts li.dq b{color:#ff6b6b}
 .h6go{margin:16px 0 8px;font:900 1.15em Arial,sans-serif;color:#ffd36b}
 .h6cred{position:absolute;right:16px;bottom:12px;margin:0;font:700 13px Arial,sans-serif;color:#fff;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000,0 0 4px #000;z-index:3;pointer-events:none}
 .home6.zoom .h6cred{opacity:0;transition:opacity .4s}
@@ -498,7 +499,7 @@ img{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 var VAULT_CODE="GTA6"; /* code du cadenas final (provisoire) */
 var NOREC=["Alexis.L","Florian.R","Benjamin.D","Noah.M","Roman.F","Gwenael.B","Dylan.M","Hugo.K","Cédric.L","Mélidie.D","Danaé.T","Mustapha.B","Julien.P","Jerome.DM","Victoria.M","Sergei.B","Damien.N"]; /* agents « à ne pas recruter » affichés en bas du tableau de Lester */
 var VKEY="VOYXSNK";
-var SHEET_URL=""; /* adresse de l'application Web Google Apps Script (se termine par /exec) : chaque fin de partie y est envoyée */
+var SHEET_URL="https://script.google.com/macros/s/AKfycbzMP7DE6xNtedCQRqVxiEtdeyaSfMoCf852hrqqn-fleVj407YhQD_4afbtvg7H2sUlfg/exec"; /* adresse de l'application Web Google Apps Script (se termine par /exec) : chaque fin de partie y est envoyée */
 var TRAILER_YT="i06GMloD_qA",TRAILER_T=26; /* bande-annonce YouTube de fin : identifiant de la vidéo (après « v= » dans le lien) et seconde de départ (1 min 30 = 90) */ /* clé de Vigénère révélée dans la cinématique de fin de GTA V */
 var M=[
  {n:"Grand Theft Auto",s:"GTA",st:["énigme"]},
@@ -830,10 +831,10 @@ function brief(){
  <h3>Règles du jeu</h3><div class="info rules r7">
  <p class="r7ia">TOUTE UTILISATION DE L'IA EST INTERDITE, sous peine de disqualification immédiate.</p>
  <h4>Comment jouer</h4><p>Répondez aux questions, blind tests, énigmes… Vous pouvez répondre directement, demander un indice ou, en dernier recours, faire une recherche sur le web. Mais attention :</p>
- <ul class="r7pts"><li><b>−1 point</b><span>par sortie d'onglet</span></li><li><b>−1 point</b><span>par indice utilisé</span></li><li><b>Comptées</b><span>les mauvaises réponses</span></li><li class="dq"><b>Disqualifié</b><span>en cas d'utilisation de l'IA</span></li></ul>
+ <ul class="r7pts"><li class="gd"><b>+3 points</b><span>par bonne réponse</span></li><li><b>−1 point</b><span>par sortie d'onglet</span></li><li><b>−1 point</b><span>par indice utilisé</span></li><li><b>Comptées</b><span>les mauvaises réponses (elles départagent les ex æquo)</span></li><li class="dq"><b>Disqualifié</b><span>en cas d'utilisation de l'IA</span></li></ul>
  <p>⏱ Un chrono est affiché en haut de l'écran.</p>
- <h4>Le gagnant</h4><p>Celui ou celle qui a <strong>le meilleur temps avec le moins de malus possible</strong>.</p>
- <h4>L'ultime énigme</h4><p>Une fois le jeu terminé, une ultime énigme fera son apparition. <strong>Elle n'est pas obligatoire, mais elle peut clairement jouer en votre faveur dans votre score final.</strong></p>
+ <h4>Le gagnant</h4><p>Celui ou celle qui a <strong>le plus de points</strong>. En cas d'égalité, c'est <strong>le meilleur temps</strong> qui l'emporte, puis le moins de mauvaises réponses.</p>
+ <h4>L'ultime énigme</h4><p>Une fois le jeu terminé, une ultime énigme fera son apparition. <strong>Elle n'est pas obligatoire, mais elle peut clairement jouer en votre faveur dans votre score final</strong> : jusqu'à <strong>+3 points</strong> si vous la résolvez (−1 point par indice utilisé pour l'énigme, sans jamais passer en négatif).</p>
  <h4>Avant / après</h4><p>⏳ Durée de jeu estimée : <strong>30 minutes</strong>. Je vous conseille de lancer le quiz pendant votre pause ou en fin de journée.</p><p>💬 <strong>Avant de lancer le challenge</strong>, envoyez un message Teams dans le groupe dédié au challenge.</p><p>📸 <strong>Une fois le jeu terminé</strong>, envoyez une capture d'écran de votre résultat <strong>en message privé</strong> (pas dans le groupe dédié).</p>
  <h4>Conseils</h4><p>🔊 Pour votre confort, réglez le son de Windows entre 60 et 65, pas plus.</p><p>📖 Vous pouvez passer les « Le saviez-vous ? » et les lire à la fin du challenge (le chrono est en pause pendant leur lecture).</p><p>🎧 Pour les blind tests, prenez le temps d'écouter : vous retrouverez peut-être le titre ou le chanteur. N'allez pas chercher l'indice tout de suite !</p>
  <h4>À savoir</h4><p>🔒 Une seule participation : impossible de revenir en arrière ou de recommencer.</p><p>🌐 Navigateur obligatoire : <strong>Google Chrome</strong>.</p>
@@ -853,7 +854,7 @@ function brief(){
 function prologue(){
  card.innerHTML=`<p class="era">Prologue</p><h2>Le message du Superviseur</h2><video id="pv" class="pic" style="max-height:none;width:100%" playsinline preload="auto" src="${encodeURIComponent("Prologue du challenge.mp4")}"></video><div class="row"><button id="pp">Lancer le prologue</button></div>`;
  var v=$("pv"),done=false;
- function go(){if(done)return;done=true;S.start=Date.now();S.m=0;S.s=0;S.pass=false;sv();mission()}
+ function go(){if(done)return;done=true;S.start=Date.now();S.m=0;S.s=0;S.pass=false;sv();sendScore("debut");mission()}
  v.onended=go;v.onerror=go;v.onplaying=function(){$("pp").classList.add("hidden")};
  $("pp").onclick=function(){v.play().catch(go)};
  adminBtn($("pp").parentNode,"Passer le prologue (admin)",go);
@@ -960,7 +961,7 @@ var WG={
   var fn=esc(pname()),full=esc(String(S.name||"").trim()||pname());
   seq([[fn+". C'est Lester."],["Le code de la mallette… <b>"+esc(VKEY)+"</b>. Il m'empêche de dormir."],["J'ai tout essayé. Rien. Toi, t'as l'œil, et je te fais confiance."],["Tu veux bien le déchiffrer pour moi ?"]],function(){
    $("g6ch").innerHTML='<button type="button" id="g6y">👍 OK, je m\'en occupe</button><button type="button" class="ghost" id="g6n">✋ Non merci, j\'arrête là</button>';
-   $("g6y").onclick=function(){$("g6ch").innerHTML="";add("OK, je m'en occupe.","r");S.bonus="go";sv();T(function(){seq([["Je savais que je pouvais compter sur toi."],["Le voilà :"],[esc(VKEY),"l key"]],riddle)},500)};
+   $("g6y").onclick=function(){$("g6ch").innerHTML="";add("OK, je m'en occupe.","r");S.bonus="go";S.b0=Date.now();sv();T(function(){seq([["Je savais que je pouvais compter sur toi."],["Le voilà :"],[esc(VKEY),"l key"]],riddle)},500)};
    $("g6n").onclick=function(){$("g6ch").innerHTML="";add("Non merci, j'arrête là.","r");S.bonus="refuse";sv();T(function(){seq([["Dommage. Profite bien de ta part du butin."]],function(){T(endGame,1800)})},500)}});
   var HS=['Pour trouver la méthode de déchiffrement, pense au prénom de M. Vialpando, l\'ami de CJ dans San Andreas.',
    'Pour trouver la solution, il faut toujours prendre du recul, comme l\'officier <span class="g6ten" tabindex="0">TEN<em class="g6tip" role="tooltip">Hm… t\'es sur la bonne piste.</em></span>penny dans San Andreas.',
@@ -975,7 +976,7 @@ var WG={
    function chk(){if(done)return;if(norm($("g6a").value)!=="leonida"){S.bw=(S.bw||0)+1;sv();bad($("g6m"),"Ce n'est pas ça… réessaie.",true);return}win()}
    $("g6ok").onclick=chk;$("g6a").onkeydown=function(e){if(e.key==="Enter")chk()};adminBtn($("g6ok").parentNode,"Réponse (admin)",win);$("g6a").focus();
    z.scrollIntoView({behavior:"smooth",block:"start"})}
-  function win(){if(done)return;done=true;S.bonus="ok";sv();$("g6z").innerHTML="";window.scrollTo({top:0,behavior:"smooth"});
+  function win(){if(done)return;done=true;S.bonus="ok";S.b1=Date.now();sv();$("g6z").innerHTML="";window.scrollTo({top:0,behavior:"smooth"});
    T(function(){seq([["Bien joué, <b>"+full+"</b> ! 👏"],["LEONIDA…"],["Hm… Jason. Ce nom me dit quelque chose."],["Bon, allez : direction LEONIDA ! 🌴"]],function(){T(cine6,1600)})},1200)}
   /* ---------- la pub « à l'américaine » ---------- */
   function horn(){if(S.mute)return;try{ctx();[233,294,349].forEach(function(f){tone(f,0,.55,"sawtooth",.045)});[233,294,349].forEach(function(f){tone(f,.62,.35,"sawtooth",.045)})}catch(e){}}
@@ -1164,7 +1165,7 @@ var WG={
    hwR.appendChild(ck);hwR.appendChild(vW);hwR.appendChild(vG);
    function view(v){ck.hidden=v!=="ck";vW.hidden=v!=="w";vG.hidden=v!=="g";Array.prototype.forEach.call(hwR.querySelectorAll(".nv7 button"),function(b){b.classList.toggle("on",b.dataset.v===v)});if(v!=="ck")beep(v==="w"?500:620,.04)}
    Array.prototype.forEach.call(hwR.querySelectorAll(".nv7 button"),function(b){b.onclick=function(){view(b.dataset.v)}});
-   var hw=$("hsW");hw.onmouseenter=function(){clearTimeout(hT);hT=setTimeout(function(){view("w")},350)};hw.onmouseleave=function(){clearTimeout(hT)};hw.onclick=function(){clearTimeout(hT);view("w")};
+   $("hsW").onclick=function(){view("w")};
    $("hsG").onclick=function(){view("g")};CLN.push(function(){clearTimeout(hT)})})();
   $("go").style.display="none";
   var done=false,left=scr.length,conn={},n=0,tm=0,crank=0;
@@ -1850,7 +1851,7 @@ function mission(){
   ok()
  }
  function ok(){
-  S.lm=S.m;S.ls=S.s;
+  S.lm=S.m;S.ls=S.s;if(S.s===n-1&&S.start){S.split=S.split||{};S.split[S.m]=Math.round(el7()/1000)}
   if(S.s<n-1)S.s++;else{S.m++;S.s=0;want=false;bgPlay(0,false);if(S.m===12)S.end=S.stop||Date.now()}
   S.pass=true;sv();if(p.kind==="radio"){if(RAD.s){try{RAD.s.s.stop()}catch(e){}RAD.s=null}(RAD.all||[]).forEach(function(x){if(!x.good&&x.a)x.a.pause()})}else if(!p.noPass)playPass();passScr()
  }
@@ -1881,17 +1882,25 @@ function padlock(){
 }
 function sendScore(st){if(!SHEET_URL||!S.start||!S.name)return;S.sid=S.sid||(Date.now().toString(36)+Math.random().toString(36).slice(2,8));sv();
  var secs=Math.round(el7()/1000),bl={ok:"Réussie",refuse:"Refusée",abandon:"Commencée, non terminée",go:"En cours"}[S.bonus]||(st==="fin"?"Non tentée":"Pas encore proposée");
- var body={id:S.sid,name:String(S.name),time:fmt(secs*1000),secs:secs,wrong:S.wrong||0,hints:S.hints||0,tabs:S.tabs||0,bonus:bl,bh:(S.bonus==="ok"||S.bonus==="abandon")?Math.min(3,S.bh||0):"",bw:(S.bonus==="ok"||S.bonus==="abandon")?(S.bw||0):"",status:(S.admin?"Test admin · ":"")+(st==="fin"?"Terminé":"GTA V terminé (énigme bonus en attente)")};
+ var stl={debut:"En cours",gta5:"GTA V terminé (énigme bonus en attente)",fin:"Terminé"}[st]||st,ua=navigator.userAgent,br=/Edg\//.test(ua)?"Edge":/OPR\//.test(ua)?"Opera":/Chrome\/(\d+)/.test(ua)?"Chrome "+RegExp.$1:/Firefox\/(\d+)/.test(ua)?"Firefox "+RegExp.$1:/Safari/.test(ua)?"Safari":"Autre";
+ var sp=S.split||{},dur=[],prev=0;for(var m=0;m<12;m++){if(sp[m]!=null){dur.push(Math.max(0,sp[m]-prev));prev=sp[m]}else dur.push("")}
+ var bo=S.bonus==="ok"||S.bonus==="abandon";
+ var body={id:S.sid,name:String(S.name),points:pts7(),good:good7(),status:(S.admin?"Test admin · ":"")+stl,start:S.start||"",stop:S.stop||"",end:st==="fin"?(S.end||Date.now()):"",time:fmt(secs*1000),secs:secs,wrong:S.wrong||0,hints:S.hints||0,tabs:S.tabs||0,
+  bonus:bl,bh:bo?Math.min(3,S.bh||0):0,bw:bo?(S.bw||0):0,bdur:S.b0&&S.b1?Math.round((S.b1-S.b0)/1000):"",pause:Math.round((S.pt||0)/1000),code:st==="fin"?finalCode():"",key:st==="fin"?sig7(S.name,finalCode()):"",
+  browser:br,screen:(window.screen?screen.width+"×"+screen.height:""),missions:dur};
  try{fetch(SHEET_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(body)}).then(function(){S["sent_"+st]=1;sv()}).catch(function(){})}catch(e){}}
-function finalCode(){var b=(S.bonus==="ok"||S.bonus==="abandon")?Math.min(3,S.bh||0):0;return "T"+fmt(el7())+"M"+(S.wrong||0)+"I"+(S.hints||0)+"S"+(S.tabs||0)+"E"+(S.bonus==="ok"?"OK":"NOK")+"I"+b+"/3"}
+function good7(){var g=0,m=S.m||0;for(var k=0;k<11;k++){if(k<m)g+=M[k].st.length;else if(k===m)g+=S.s||0}return g}
+function bpts7(){return S.bonus==="ok"?Math.max(0,3-Math.min(3,S.bh||0)):0}
+function pts7(){return 3*good7()-(S.hints||0)-(S.tabs||0)+bpts7()}
+function finalCode(){var b=(S.bonus==="ok"||S.bonus==="abandon")?Math.min(3,S.bh||0):0;return "P"+pts7()+"T"+fmt(el7())+"M"+(S.wrong||0)+"I"+(S.hints||0)+"S"+(S.tabs||0)+"E"+(S.bonus==="ok"?"OK":"NOK")+"I"+b+"/3"}
 function sig7(name,code){var n=String(name||"").trim().toLowerCase().replace(/\s+/g," ");return ((hh(n+"|"+code+"|GTQ·VOYXSNK·2026")>>>0).toString(36).toUpperCase()+"0000").slice(0,5)}
-function verif7(){begin();card.innerHTML=`<p class="era">Organisateur</p><h2>Vérifier un score</h2><p>Recopiez le nom de l'agent, son code final et sa clé de contrôle, tels qu'ils apparaissent sur sa capture.</p><input id="vn" type="text" placeholder="Prénom NOM" aria-label="Prénom NOM"><input id="vc" type="text" placeholder="Code final, ex. T20:06M3I35S20EOKI3/3" aria-label="Code final" style="margin-top:8px"><input id="vk" type="text" placeholder="Clé de contrôle" aria-label="Clé de contrôle" style="margin-top:8px"><div class="row"><button id="vb">Vérifier</button></div><p class="msg" id="vm" role="status"></p>`;
+function verif7(){begin();card.innerHTML=`<p class="era">Organisateur</p><h2>Vérifier un score</h2><p>Recopiez le nom de l'agent, son code final et sa clé de contrôle, tels qu'ils apparaissent sur sa capture.</p><input id="vn" type="text" placeholder="Prénom NOM" aria-label="Prénom NOM"><input id="vc" type="text" placeholder="Code final, ex. P61T20:06M3I12S2EOKI1/3" aria-label="Code final" style="margin-top:8px"><input id="vk" type="text" placeholder="Clé de contrôle" aria-label="Clé de contrôle" style="margin-top:8px"><div class="row"><button id="vb">Vérifier</button></div><p class="msg" id="vm" role="status"></p>`;
  $("vb").onclick=function(){var ok=sig7($("vn").value,$("vc").value.trim().replace(/\s+/g,""))===$("vk").value.trim().toUpperCase();var m=$("vm");m.className="msg "+(ok?"ok":"ko");m.textContent=ok?"✔ Score authentique : le code correspond bien à cet agent.":"✘ Ne correspond pas : vérifiez la saisie, sinon le résultat a été modifié."}}
 function endGame(play){["g6c","g6d","g6v"].forEach(function(id){var e=$(id);if(e){if(e._kill)e._kill();e.remove()}});S.m=12;S.s=0;S.pass=false;S.end=S.stop||S.end||Date.now();S.open=true;if(!S.bonus||S.bonus==="go")S.bonus=S.bonus==="go"?"abandon":"none";sv();window.scrollTo(0,0);vault(play===true)}
 function vault(play){
  begin();draw();if(!S.sent_fin)sendScore("fin");if(play===true&&bg&&!bg.paused)bgFade(1200);var yt=S.bonus==="ok"&&TRAILER_YT?`<div class="yt6"><iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(TRAILER_YT)}?start=${TRAILER_T|0}&autoplay=${play===true?1:0}&rel=0&playsinline=1&modestbranding=1" title="Bande-annonce" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>`:"";var pl=function(n,w){return n+" "+w+(n>1?"s":"")};
  var bh=(S.bonus==="ok"||S.bonus==="abandon")?Math.min(3,S.bh||0)+" / 3":"—",code=finalCode(),key=sig7(S.name,code),bn=S.bonus==="ok"?"réussie ✔":S.bonus==="refuse"?"refusée":S.bonus==="abandon"?"commencée, non terminée":"non tentée";
- card.innerHTML=`<div class="win fin6">${yt}<p class="era">Fin du challenge</p><h2>Score final</h2><p>Bravo <strong>${esc(S.name)}</strong>, tu as terminé Grand Theft Quest !</p><dl class="stats6"><dt>⏱ Temps final</dt><dd>${fmt(el7())}</dd><dt>❌ Mauvaises réponses</dt><dd>${S.wrong||0}</dd><dt>💡 Indices utilisés</dt><dd>${S.hints||0}</dd><dt>👀 Sorties d'onglet</dt><dd>${S.tabs||0}</dd><dt>🔐 Énigme bonus de Lester</dt><dd>${bn}</dd><dt>🗝️ Indices utilisés (énigme bonus)</dt><dd>${bh}</dd></dl><p>📸 Fais une capture d'écran de ce score (avec le code et la clé) et envoie-la <strong>en message privé</strong> à ton superviseur, pas dans le groupe du challenge.</p><div class="code6"><p>Code final : <b id="cf6">${code}</b></p><p>Clé de contrôle : <b>${key}</b></p><small>Ce code et cette clé apparaissent sur ta capture : ils permettent de vérifier que le résultat n'a pas été modifié.</small></div><p class="merci6">Merci à toutes et à tous d'avoir participé à Grand Theft Quest ! 🎮🌴</p><div class="row" style="justify-content:center"><button class="ghost" id="rv">Revoir mes réponses et anecdotes</button></div></div>`;
+ card.innerHTML=`<div class="win fin6">${yt}<p class="era">Fin du challenge</p><h2>Score final</h2><p>Bravo <strong>${esc(S.name)}</strong>, tu as terminé Grand Theft Quest !</p><p class="pts6"><b>${pts7()}</b> points</p><dl class="stats6"><dt>✅ Bonnes réponses</dt><dd>${good7()} × 3 = ${3*good7()} pts</dd><dt>⏱ Temps final</dt><dd>${fmt(el7())}</dd><dt>❌ Mauvaises réponses</dt><dd>${S.wrong||0}</dd><dt>💡 Indices utilisés</dt><dd>${S.hints||0}</dd><dt>👀 Sorties d'onglet</dt><dd>${S.tabs||0}</dd><dt>🔐 Énigme bonus de Lester</dt><dd>${bn}</dd><dt>🗝️ Indices utilisés (énigme bonus)</dt><dd>${bh}</dd><dt>⭐ Points de l'énigme bonus</dt><dd>+${bpts7()}</dd></dl><p>📸 Fais une capture d'écran de ce score (avec le code et la clé) et envoie-la <strong>en message privé</strong> à ton superviseur, pas dans le groupe du challenge.</p><div class="code6"><p>Code final : <b id="cf6">${code}</b></p><p>Clé de contrôle : <b>${key}</b></p><small>Ce code et cette clé apparaissent sur ta capture : ils permettent de vérifier que le résultat n'a pas été modifié.</small></div><p class="merci6">Merci à toutes et à tous d'avoir participé à Grand Theft Quest ! 🎮🌴</p><div class="row" style="justify-content:center"><button class="ghost" id="rv">Revoir mes réponses et anecdotes</button></div></div>`;
  $("rv").onclick=review
 }
 
